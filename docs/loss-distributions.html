@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Loss distributions | SCMA470 Risk Analysis and Credibility</title>
+  <meta name="description" content="Chapter 2 Loss distributions | SCMA470 Risk Analysis and Credibility" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Loss distributions | SCMA470 Risk Analysis and Credibility" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Loss distributions | SCMA470 Risk Analysis and Credibility" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-08-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="interactive-lecture.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>3</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>3.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SCMA470 Risk Analysis and Credibility</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="loss-distributions" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Loss distributions</h1>
+<div id="introduction" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introduction</h2>
+<p>The aim of the course is to provide a fundamental basis which applies
+mainly in general insurance. General insurance companies’ products are
+short-term policies that can be purchased for a short period of time.
+Examples of insurance products are</p>
+<ul>
+<li><p>motor insurance;</p></li>
+<li><p>home insurance;</p></li>
+<li><p>health insurance; and</p></li>
+<li><p>travel insurance.</p></li>
+</ul>
+<p>In case of an occurrence of an insured event, two important components
+of financial losses which are of importance for management of an
+insurance company are</p>
+<ul>
+<li><p>the number of claims; and</p></li>
+<li><p>the amounts of those claims.</p></li>
+</ul>
+<p>Mathematical and statistical techniques used to model these sources of
+uncertainty will be discussed. This will enable insurance companies to</p>
+<ul>
+<li><p>calculate premium rates to charge policy holders; and</p></li>
+<li><p>decide how much reserve should be set aside for the future payment
+of incurred claims.</p></li>
+</ul>
+<p>In the chapter, statistical distributions and their properties which are
+suitable for modelling claim sizes are reviewed. These distribution are
+also known as loss distributions. In practice, the shape of loss
+distributions are positive skew with a long right tail. The main
+features of loss distributions include:</p>
+<ul>
+<li><p>having a few small claims;</p></li>
+<li><p>rising to a peak;</p></li>
+<li><p>tailing off gradually with a few very large claims.</p></li>
+</ul>
+</div>
+<div id="exponential-distribution" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Exponential Distribution</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has an exponential distribution with a parameter
+<span class="math inline">\(\lambda &gt; 0\)</span>, denoted by <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span> if its
+probability density function is given by
+<span class="math display">\[f_X(x) = \lambda e^{-\lambda x}, \quad x &gt; 0.\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-28" class="example"><strong>Example 2.1  </strong></span><em>Let <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span> and <span class="math inline">\(0 &lt; a &lt; b\)</span>.</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Find the distribution <span class="math inline">\(F_X(x)\)</span>.</em></p></li>
+<li><p><em>Express <span class="math inline">\(P(a &lt; X &lt; B)\)</span> in terms of <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(F_X(x)\)</span>.</em></p></li>
+<li><p><em>Show that the moment generating function of <span class="math inline">\(X\)</span> is
+<span class="math display">\[M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-1}, \quad t &lt; \lambda.\]</span></em></p></li>
+<li><p><em>Derive the <span class="math inline">\(r\)</span>-th moment about the origin <span class="math inline">\(\mathrm{E}[X^r].\)</span></em></p></li>
+<li><p><em>Derive the coefficient of skewness for <span class="math inline">\(X\)</span>.</em></p></li>
+<li><p><em>Simulate a random sample of size n = 200 from
+<span class="math inline">\(X \sim \text{Exp}(0.5)\)</span> using the command
+<code>sample = rexp(n, rate = lambda)</code> where <span class="math inline">\(n\)</span> and <span class="math inline">\(\lambda\)</span> are the chosen
+parameter values.</em></p></li>
+<li><p><em>Plot a histogram of the random sample using the command
+<code>hist(sample)</code> (use help for available options for <code>hist</code> function
+in R).</em></p></li>
+</ol>
+</div>
+<p><strong>Solution:</strong>
+The code for questions 6 and 7 are given below. The histogram can be generated from the code below.</p>
+<pre frame="single" caption="R code for Example1(6-7)."><code># Example 1(6-7)
+# set.seed is used so that random number generated from different simulations are the same. 
+# The number 5353 can be set arbitrarily. 
+set.seed(5353)
+
+nsample &lt;- 200
+data_exp &lt;- rexp(nsample, rate = 0.5)
+
+dataset &lt;- data_exp
+hist(dataset, breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes&quot; ))
+
+hist(dataset, breaks=100, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;count&quot;, main = paste(&quot;Histogram of claim sizes&quot; ))</code></pre>
+<!-- ![ **The histogram of the simulated random samples from -->
+<!-- $X \sim \text{Exp}(0.5)$** ](FigHistogramExp.eps){#FigHistogramExp -->
+<!-- width="80%"} -->
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<p>Copy and paste the code above and run it.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxuXG5uc2FtcGxlIDwtIDIwMFxuZGF0YV9leHAgPC0gcmV4cChuc2FtcGxlLCByYXRlID0gMC41KVxuXG5kYXRhc2V0IDwtIGRhdGFfZXhwXG5oaXN0KGRhdGFzZXQsIGJyZWFrcz0xMDAscHJvYmFiaWxpdHkgPSBUUlVFLCB4bGFiID0gXCJjbGFpbSBzaXplc1wiIFxuICAgICAsIHlsYWIgPSBcImRlbnNpdHlcIiwgbWFpbiA9IHBhc3RlKFwiSGlzdG9ncmFtIG9mIGNsYWltIHNpemVzXCIgKSkifQ==
+</div>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxuXG5uc2FtcGxlIDwtIDIwMFxuZGF0YV9leHAgPC0gcmV4cChuc2FtcGxlLCByYXRlID0gMC41KVxuXG5kYXRhc2V0IDwtIGRhdGFfZXhwXG5cblxuaGlzdChkYXRhc2V0LCBicmVha3M9MTAwLCB4bGFiID0gXCJjbGFpbSBzaXplc1wiIFxuICAgICAsIHlsYWIgPSBcImNvdW50XCIsIG1haW4gPSBwYXN0ZShcIkhpc3RvZ3JhbSBvZiBjbGFpbSBzaXplc1wiICkpIn0=
+</div>
+<p><strong>Notes</strong>
+1. The exponential distribution can used to model the inter-arrival
+time of an event.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>The exponential distribution has an important property called <strong>lack
+of memory</strong>: if <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, then the random
+variable <span class="math inline">\(X-w\)</span> conditional on <span class="math inline">\(X &gt; w\)</span> has the same distribution as
+<span class="math inline">\(X\)</span>, i.e.
+<span class="math display">\[X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X &gt; w \sim \text{Exp}(\lambda).\]</span></li>
+</ol>
+</div>
+<div id="gamma-distribution" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Gamma distribution</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has a gamma distribution with parameters
+<span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span>, denoted by
+<span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span> or
+<span class="math inline">\(X \sim \text{gamma}(\alpha, \lambda)\)</span> if its probability density
+function is given by
+<span class="math display">\[f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha -1} e^{-\lambda x}, \quad x &gt; 0.\]</span>
+The symbol <span class="math inline">\(\Gamma\)</span> denotes the gamma function, which is defined as
+<span class="math display">\[\Gamma(\alpha) = \int_{0}^\infty x^{\alpha - 1} e^{-x} \mathop{}\!dx, \quad \text{for } \alpha &gt; 0.\]</span>
+It follows that <span class="math inline">\(\Gamma(\alpha + 1) = \alpha \Gamma(\alpha)\)</span> and that
+for a positive integer <span class="math inline">\(n\)</span>, <span class="math inline">\(\Gamma(n) = (n-1)!\)</span>.</p>
+<p>The properties of the gamma distribution are summarised.</p>
+<ul>
+<li><p>The mean and variance of <span class="math inline">\(X\)</span> are
+<span class="math display">\[\mathrm{E}[X] = \frac{\alpha}{\lambda} \text{ and } \mathrm{Var}[X] =\frac{\alpha}{\lambda^2}\]</span></p></li>
+<li><p>The <span class="math inline">\(r\)</span>-th moment about the origin is
+<span class="math display">\[\mathrm{E}[X^r] = \frac{1}{\lambda^r} \frac{\Gamma(\alpha + r)}{\Gamma(\alpha )}, \quad r &gt; 0.\]</span></p></li>
+<li><p>The moment generating function (mgf) of <span class="math inline">\(X\)</span> is
+<span class="math display">\[M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-\alpha}, \quad t &lt; \lambda.\]</span></p></li>
+<li><p>The coefficient of skewness is <span class="math display">\[\frac{2}{\sqrt{\alpha}}.\]</span></p></li>
+</ul>
+<p><strong>Notes</strong>
+1. The exponential function is a special case of the gamma
+distribution, i.e. <span class="math inline">\(\text{Exp}(\lambda)= \mathcal{G}(1,\lambda)\)</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>If <span class="math inline">\(\alpha\)</span> is a positive integer, the sum of <span class="math inline">\(\alpha\)</span> independent,
+identically distributed as <span class="math inline">\(\text{Exp}(\lambda)\)</span>, is
+<span class="math inline">\(\mathcal{G}(\alpha, \lambda)\)</span>.</p></li>
+<li><p>If <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are independent, identically distributed,
+each with a <span class="math inline">\(\mathcal{G}(\alpha, \lambda)\)</span> distribution, then
+<span class="math display">\[\sum_{i = 1}^n X_i \sim \mathcal{G}(n\alpha, \lambda).\]</span></p></li>
+<li><p>The exponential and gamma distributions are not fat-tailed, and
+<strong>may not provide a good fit</strong> to claim amounts.</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-29" class="example"><strong>Example 2.2  </strong></span><em>Using the moment generating function of a gamma
+distribution, show that the sum of independent gamma random variables
+with the same scale parameter <span class="math inline">\(\lambda\)</span>,
+<span class="math inline">\(X \sim \mathcal{G}(\alpha_1, \lambda)\)</span> and
+<span class="math inline">\(Y \sim \mathcal{G}(\alpha_2, \lambda)\)</span>, is
+<span class="math inline">\(S = X+ Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).\)</span></em></p>
+</div>
+<p><strong>Solution:</strong>
+Because <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, <span class="math display">\[\begin{aligned}
+    M_S(t) &amp;= M_{X+Y}(t) = M_X(t) \cdot M_Y(t)\\
+        &amp;= (1 - \frac{t}{\lambda})^{-\alpha_1} \cdot (1 - \frac{t}{\lambda})^{-\alpha_2}     \\
+        &amp;=  (1 - \frac{t}{\lambda})^{-(\alpha_1 + \alpha_2)}. \end{aligned}\]</span>
+Hence <span class="math inline">\(S = X + Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).\)</span></p>
+<div class="example">
+<p><span id="exm:exampleFittingClaimSizes" class="example"><strong>Example 2.3  </strong></span><em>Consider a data set consisting of 200 claim amounts in
+one year from a general insurance portfolio.</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Calculate the sample mean and sample standard deviation.</em></p></li>
+<li><p><em>Use the method of moments to fit these data with both exponential
+and gamma distributions.</em></p></li>
+<li><p><em>Calculate the boundaries for groups or bins so that the expected
+number of claims in each bin is 20 under the fitted exponential
+distribution.</em></p></li>
+<li><p><em>Count the values of the observed claim amounts in each bin.</em></p></li>
+<li><p><em>With these bin boundaries, find the expected number of claims when
+the data are fitted with the gamma distribution.</em></p></li>
+<li><p><em>Plot two histograms for the data set with fitted exponential
+distribution and the dataset with fitted gamma distribution.</em></p></li>
+<li><p><em>Comment on the goodness of fit of the fitted distributions.</em></p></li>
+</ol>
+</div>
+<p><strong>Solution:</strong>
+1. Given that <span class="math inline">\(\sum_{i=1}^n x_i = 206046.4\)</span> and
+<span class="math inline">\(\sum_{i=1}^n x_i^2 = 1,472,400,135\)</span>, we have
+<span class="math display">\[\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{206046.4}{200} = 1030.232.\]</span>
+The sample variance and standard deviation are
+<span class="math display">\[s^2 = \frac{1}{n-1} \left( \sum_{i=1}^n x_i^2 - \frac{(\sum_{i=1}^n x_i)^2}{n} \right) = 5135.093,\]</span>
+and <span class="math display">\[s = 2516.403.\]</span></p>
+<!-- 2.  [\[example2\]]{#example2 label="example2"} -->
+<ol start="2" style="list-style-type: decimal">
+<li><p>We calculate estimates of
+unknown parameters of both exponential and gamma distributions by
+the method of moments. We simply match the mean and central moments,
+i.e. matching <span class="math inline">\(\mathrm{E}[X]\)</span> to the sample mean <span class="math inline">\(\bar{x}\)</span> and
+<span class="math inline">\(\mathrm{Var}[X]\)</span> to the sample variance.</p>
+<p>The MME (moment matching estimation) of the required distributions
+are as follows:</p>
+<ul>
+<li><p>the MME of <span class="math inline">\(\lambda\)</span> for an <span class="math inline">\(\text{Exp}(\lambda)\)</span> distribution
+is the reciprocal of the sample mean,
+<span class="math display">\[\tilde{\lambda} = \frac{1}{\bar{x}} = 0.000971.\]</span></p></li>
+<li><p>the MMEs of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span> for a
+<span class="math inline">\(\mathcal{G}(\alpha, \lambda)\)</span> distribution are
+<span class="math display">\[\begin{aligned}
+\tilde{\alpha} &amp;= \left(\frac{\bar{x}}{s}\right)^2 = 0.167614, \\
+\tilde{\lambda} &amp;= \frac{\tilde{\alpha}}{\bar{x}} = 0.000163.\end{aligned}\]</span></p></li>
+<li><p>the MMEs of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> for a
+<span class="math inline">\(\mathcal{LN}(\mu, \sigma^2)\)</span> distribution are <span class="math display">\[\begin{aligned}
+\tilde{\sigma} &amp;= \sqrt{ \ln \left(  \frac{s^2}{\bar{x}^2} + 1 \right)  }  = 1.393218, \\
+\tilde{\mu} &amp;= \ln(\bar{x}) - \frac{\tilde{\sigma}^2 }{2} = 5.967012.\end{aligned}\]</span></p></li>
+<li><p>the MMEs of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span> for a
+<span class="math inline">\(\text{Pa}(\alpha, \lambda)\)</span> distribution are <span class="math display">\[\begin{aligned}
+\tilde{\alpha} &amp;= \displaystyle{ 2 \left(  \frac{s^2}{\bar{x}^2} \right) \frac{1}{(\frac{s^2}{\bar{x}^2} - 1)}   } = 2.402731,\\
+\tilde{\lambda} &amp;= \bar{x} (\tilde{\alpha} - 1) = 1445.138.\end{aligned}\]</span></p></li>
+</ul></li>
+<li><p>The upper boundaries for the 10 groups or bins so that the expected
+number of claims in each bin is 20 under the fitted exponential
+distribution are determined by
+<span class="math display">\[\Pr(X \le \text{upbd}_j) = \frac{j}{10}, \quad j = 1,2,3, \ldots, 9.\]</span>
+With <span class="math inline">\(\tilde{\lambda}\)</span> from the MME for an <span class="math inline">\(\text{Exp}(\lambda)\)</span> from the previous,
+<!-- [\[example2\]](#example2){reference-type="ref" -->
+<!-- reference="example2"}, -->
+<span class="math display">\[\Pr(X \le x)  = 1 - \exp(-\tilde{\lambda} x).\]</span> We obtain
+<span class="math display">\[\text{upbd}_j = -\frac{1}{\tilde{\lambda}} \ln\left( 1 - \frac{j}{10}\right).\]</span>
+The results are given in Table 2.1.
+<!-- \@ref(tab:tab1) -->
+<!-- [1](#tableFitted){reference-type="ref" reference="tableFitted"}. --></p></li>
+<li><p>The following table shows frequency distributions for observed and
+fitted claims sizes for exponential, gamma, and also lognormal and Pareto fits.</p></li>
+</ol>
+<!-- Table: (\#tab:simple-table) Caption here -->
+<pre><code>Table 2.1 : Frequency distributions for observed and fitted claims sizes.
+
+                     Observation    Exp   Gamma   Lognormal   Pareto
+  ----------------- ------------- ----- ------- ----------- --------
+           (0,109\]      60          20   109.4          36     31.9
+         (109,230\]      31          20    14.3        34.4     27.8
+         (230,367\]      25          20     9.7          26     24.2
+         (367,526\]      17          20     7.8        20.5     21.2
+         (526,714\]      14          20     6.8        16.6     18.6
+         (714,944\]      13          20     6.3        13.9     16.4
+        (944,1240\]       6          20     6.2        11.9     14.6
+       (1240,1658\]       7          20     6.5        10.8     13.2
+       (1658,2372\]      10          20     7.7        10.4     12.5
+    (2372,$\infty$)      17          20    25.4        19.5     19.4</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Let <span class="math inline">\(X\)</span> be the claim size.</p>
+<ul>
+<li><p>The expected number of claims for the fitted exponential
+distribution in the range <span class="math inline">\((a,b]\)</span> is
+<span class="math display">\[200 \cdot \Pr( a &lt; X \le b) = 200( e^{-\tilde{\lambda} a} - e^{-\tilde{\lambda} b} ).\]</span>
+In our case, the expected frequencies under the fitted
+exponential distribution are given in the third column of Table
+<a href="#tableFitted" reference-type="ref" reference="tableFitted">1</a>.</p></li>
+<li><p>The expected number of claims for the fitted gamma distribution
+in the range <span class="math inline">\((a,b]\)</span> is
+<span class="math display">\[200 \cdot\left(  \text{GAMMADIST}\left(b, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right)  - \text{GAMMADIST}\left(a, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right) \right).\]</span>
+The expected frequencies under the fitted gamma distribution are
+given in the fourth column of Table
+<a href="#tableFitted" reference-type="ref" reference="tableFitted">1</a>.</p></li>
+<li><p>For the fitted lognormal, the expected number of claims in the
+range <span class="math inline">\((a,b]\)</span> can be obtained from
+<span class="math display">\[200 \cdot\left(  \text{NORMDIST} \left(\frac{LN(b) - 
+        \tilde{\mu}}{\tilde{\sigma}}\right)  - \text{NORMDIST}\left(\frac{LN(a) - 
+        \tilde{\mu}}{\tilde{\sigma}}\right) \right).\]</span></p></li>
+<li><p>For the fitted Pareto distribution, the expected number of
+claims in the range <span class="math inline">\((a,b]\)</span> can be obtained from
+<span class="math display">\[200 \left[    \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + a} \right)^{\tilde{\alpha}}  - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + b} \right)^{\tilde{\alpha}}   \right].\]</span></p></li>
+</ul></li>
+<li><p>The histograms for the data set with fitted exponential distribution
+and the dataset with fitted gamma distribution are shown in Figures
+<a href="#FittedExpGamma" reference-type="ref" reference="FittedExpGamma">2</a> and
+<a href="#FittedLognormalPareto" reference-type="ref" reference="FittedLognormalPareto">3</a>.</p></li>
+<li><p>Comments:</p>
+<ol style="list-style-type: decimal">
+<li><p>The high positive skewness of the sample reflects the fact that
+SD is large when compared to the mean. Consequently, the
+exponential distribution may not fit the data well.</p></li>
+<li><p>Five claims (2.5%) are greater than 10,000, which is one of the
+main features of the loss distribution.</p></li>
+<li><p>The fit is poor for the exponential distribution, as we see that
+the model under-fits the data for small claims up to 367 and
+over-fits for large claims between 944 to 2372. The gamma fit is
+again poor. We see that the model over-fits for small claims
+between 0-109 and under-fits for claims 230 and 944.</p></li>
+<li><p>Which one of the lognormal and Pareto distributions provides a
+better fit to the observed claim data?</p></li>
+</ol></li>
+</ol>
+<!-- ![ **Histogram of claim sizes with fitted exponential and gamma -->
+<!-- distributions.** ](Example3ClaimSizesExpoGamma.pdf){#FittedExpGamma -->
+<!-- width="80%"} -->
+<!-- ![ **Histogram of claim sizes with fitted lognormal and Pareto -->
+<!-- distributions.** -->
+<!-- ](Example3ClaimSizesParetoLognormal.pdf){#FittedLognormalPareto -->
+<!-- width="80%"} -->
+<p>Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area.</p>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExldCB1cyBwbG90IHRoZSBoaXN0b2dyYW0gb2YgY2xhaW0gc2l6ZXMgXG5hIDwtIDEifQ==
+</div>
+</div>
+<div id="lognormal-distribution" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Lognormal distribution</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has a lognormal distribution with parameters <span class="math inline">\(\mu\)</span>
+and <span class="math inline">\(\sigma^2\)</span>, denoted by <span class="math inline">\(X \sim \mathcal{LN}(\mu, \sigma^2)\)</span> if its
+probability density function is given by
+<span class="math display">\[f_X(x) = \frac{1}{\sigma x \sqrt{2 \pi}} \exp\left(-\frac{1}{2} \left( \frac{\log(x) - \mu}{\sigma} \right)^2 \right) , \quad x &gt; 0.\]</span></p>
+<p>The following relation holds:
+<span class="math display">\[X \sim \mathcal{LN}(\mu, \sigma^2)\Leftrightarrow Y = \log X \sim \mathcal{N}(\mu, \sigma^2).\]</span></p>
+<p>The properties of the lognormal distribution are summarised.</p>
+<ul>
+<li><p>The mean and variance of <span class="math inline">\(X\)</span> are
+<span class="math display">\[\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1).\]</span></p></li>
+<li><p>The <span class="math inline">\(r\)</span>-th moment about the origin is
+<span class="math display">\[\mathrm{E}[X^r] =\exp\left(r\mu +  \frac{1}{2}r^2 \sigma^2 \right).\]</span></p></li>
+<li><p>The moment generating function (mgf) of <span class="math inline">\(X\)</span> is not finite for any
+positive value of <span class="math inline">\(t\)</span>.</p></li>
+<li><p>The coefficient of skewness is
+<span class="math display">\[(\exp(\sigma^2)  + 2) \left(\exp(\sigma^2)  -1 \right)^{1/2} .\]</span></p></li>
+</ul>
+</div>
+<div id="pareto-distribution" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Pareto distribution</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has a Pareto distribution with parameters
+<span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span>, denoted by
+<span class="math inline">\(X \sim \text{Pa}(\alpha, \lambda)\)</span> if its probability density function
+is given by
+<span class="math display">\[f_X(x) = \frac{\alpha \lambda^\alpha}{(\lambda + x)^{\alpha + 1}}, \quad x &gt; 0.\]</span>
+The distribution function is given by
+<span class="math display">\[F_X(x) = 1 - \left(  \frac{\lambda}{\lambda + \alpha} \right)^\alpha, \quad x &gt; 0.\]</span></p>
+<p>The properties of the gamma distribution are summarized.</p>
+<ul>
+<li><p>The mean and variance of <span class="math inline">\(X\)</span> are
+<span class="math display">\[\mathrm{E}[X] = \frac{\lambda}{\alpha - 1}, \alpha &gt; 1 \text{ and } \mathrm{Var}[X] = \frac{\alpha \lambda^2}{(\alpha - 1)^2(\alpha - 2)}, \alpha &gt; 2.\]</span></p></li>
+<li><p>The <span class="math inline">\(r\)</span>-th moment about the origin is
+<span class="math display">\[\mathrm{E}[X^r] =\frac{\Gamma(\alpha-r) \Gamma(1+ r)}{\Gamma(\alpha)} \lambda^r, \quad 0 &lt; r &lt; \alpha.\]</span></p></li>
+<li><p>The moment generating function (mgf) of <span class="math inline">\(X\)</span> is not finite for any
+positive value of <span class="math inline">\(t\)</span>.</p></li>
+<li><p>The coefficient of skewness is
+<span class="math display">\[\frac{2(\alpha + 1)}{\alpha - 3} \sqrt{\frac{\alpha-2}{\alpha}} , \quad \alpha &gt; 3.\]</span></p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>The following conditional tail property for a Pareto distribution is
+useful for reinsurance calculation. Let
+<span class="math inline">\(X \sim \text{Pa}(\alpha, \lambda)\)</span>. Then the random variable
+<span class="math inline">\(X - w\)</span> conditional on <span class="math inline">\(X &gt; w\)</span> has a Pareto distribution with
+parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda + w\)</span>, i.e.
+<span class="math display">\[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - w | X &gt; w \sim \text{Pa}(\alpha,\lambda + w).\]</span></p></li>
+<li><p>The lognormal and Pareto distributions, in practice, provide a
+better fit to claim amounts than exponential and gamma
+distributions.</p></li>
+<li><p>Other loss distribution are useful in practice including <strong>Burr,
+Weibull and loggamma distributions</strong>.</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-30" class="example"><strong>Example 2.4  </strong></span><em>Consider the data set in Example 
+<a href="#exampleFittingClaimSizes" reference-type="ref" reference="exampleFittingClaimSizes">Example 3</a> and those bin boundaries,</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Find the expected number of claims when the data are fitted with
+lognormal and Pareto distributions.</em></p></li>
+<li><p><em>Plot two histograms for the data set with fitted lognormal
+distribution and the dataset with fitted Pareto distribution.</em></p></li>
+<li><p><em>Comment on the goodness of fit of the fitted distributions.</em></p></li>
+</ol>
+</div>
+<p>The following code creates plots of loss distributions in R using
+ggplot2. See the following link for more information
+<a href="http://t-redactyl.io/blog/2016/03/creating-plots-in-r-using-ggplot2-part-9-function-plots.html" class="uri">http://t-redactyl.io/blog/2016/03/creating-plots-in-r-using-ggplot2-part-9-function-plots.html</a></p>
+<pre frame="single" caption="R code creates plots of loss distributionsusing ggplot2."><code># Use ggplots to plot loss distributions
+
+library(ggplot2)
+
+ggplot(data.frame(x=c(0,10)), aes(x=x)) +
+  labs(y=&quot;Probability density&quot;, x = &quot;x&quot;) + 
+  ggtitle(&quot;Exponential distributions&quot;)  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dexp,geom =&quot;line&quot;, args = (mean=0.5), aes(colour = &quot;0.5&quot;)) +
+  stat_function(fun=dexp,geom =&quot;line&quot;, args = (mean=1), aes(colour = &quot;1&quot;)) +
+  stat_function(fun=dexp,geom =&quot;line&quot;, args = (mean=1.5), aes(colour = &quot;1.5&quot;)) +
+  stat_function(fun=dexp,geom =&quot;line&quot;, args = (mean=2), aes(colour = &quot;2&quot;)) +
+  #scale_colour_manual(expression(paste(lambda, &quot;= &quot;)), values = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;))
+  scale_colour_manual(expression(paste(&quot;lambda = &quot;)), values = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;))
+
+ggplot(data.frame(x=c(0,20)), aes(x=x)) +
+  labs(y=&quot;Probability density&quot;, x = &quot;x&quot;) + 
+  ggtitle(&quot;Gamma distribution&quot;)  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dgamma, args=list(shape=2, rate=1), aes(colour = &quot;2&quot;)) +
+  stat_function(fun=dgamma, args=list(shape=6, rate=1) , aes(colour = &quot;6&quot;)) +
+  scale_colour_manual(expression(paste(&quot;rate = 1 and shape = &quot;)), values = c(&quot;red&quot;, &quot;blue&quot;))
+
+ggplot(data.frame(x=c(0,10)), aes(x=x)) +
+  labs(y=&quot;Probability density&quot;, x = &quot;x&quot;) + 
+  ggtitle(&quot;lognormal distribution&quot;)  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 0.25), aes(colour = &quot;0.25&quot;)) +
+  stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 1), aes(colour = &quot;1&quot;)) +
+  scale_colour_manual(expression(paste(&quot;mu = 0 and sigma = &quot;)), values = c(&quot;red&quot;, &quot;blue&quot;))
+
+%\end{MyVerbatim}</code></pre>
+<div class="figure">
+<embed src="FigExp.eps" style="width:80.0%" />
+<p class="caption"><strong>The probability density functions (pdf) of exponential
+distributions with various parameters <span class="math inline">\(\lambda\)</span>.</strong></p>
+</div>
+<div class="figure">
+<embed src="FigGamma.eps" style="width:80.0%" />
+<p class="caption"><strong>The probability density functions (pdf) of gamma distributions with
+various shape parameters <span class="math inline">\(\alpha\)</span> and rate parameter <span class="math inline">\(\lambda = 1\)</span>.</strong></p>
+</div>
+<div class="figure">
+<embed src="FigLognormal.eps" style="width:80.0%" />
+<p class="caption"><strong>The probability density functions (pdf) of lognormal distributions
+with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 0.25\)</span> or 1.</strong></p>
+</div>
+<p>The following code uses to obtain the results in
+Example <a href="#exampleFittingClaimSizes" reference-type="ref" reference="exampleFittingClaimSizes">Example 3</a>.</p>
+<pre frame="single" caption="R code for Example~\ref{exampleFittingClaimSizes}."><code>#LectureNote_Example3_Loss_fitting_student_version
+# by Pairote Satiracoo
+# Version 1.04
+# Date : 18/08/2020
+
+# References(s)
+# http://www.stat.yale.edu/Courses/1997-98/101/chigf.htm
+# https://cran.r-project.org/doc/contrib/Ricci-distributions-en.pdf
+# https://www.unf.edu/~cwinton/html/cop4300/s09/class.notes/c3-GoodnessofFitTests.pdf
+# https://bookdown.org/ekothe/navarro26/chisquare.html
+# https://statisticsbyjim.com/hypothesis-testing/identify-distribution-data/
+# http://spots.gru.edu/nsmith12/openstats/Chisquare_R.pdf
+
+# We use MLE to estimate model parameters.
+
+library(actuar)
+library(stats)
+library(MASS)
+library(fitdistrplus)
+
+set.seed(5353)
+
+nsample &lt;- 200
+#data_gamma &lt;- rgamma(nsample, shape =2, rate = 0.02)
+data_pareto &lt;- rpareto(nsample, shape =1.5, scale = 500)
+
+#dataset1 &lt;- data_gamma
+dataset2 &lt;- data_pareto
+
+dataset &lt;- dataset2
+hist(dataset, breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes&quot; ))
+
+summary(dataset)
+xbar &lt;- mean(dataset)
+var(dataset)
+# sqrt(var(dataset))
+s &lt;- sd(dataset)
+
+# Maximum-likelihood Fitting of Univariate Distributions
+# fitgm &lt;- fitdistr(dataset, dgamma,  list(shape = 1, rate = 0.5), lower=0.001 )
+
+# alpha_hat_gm &lt;- fitgm$estimate[1]
+# lambda_hat_gm &lt;- fitgm$estimate[2]
+
+#fitgm
+
+#ks.test(data_gamma, &quot;pgamma&quot;, shape = 2.1306319446, rate = 0.0209186022 )
+#ks.test(data_gamma, &quot;pgamma&quot;, shape = fitgm$estimate[1], rate = fitgm$estimate[2] )
+#ks.test(data_gamma, &quot;pgamma&quot;, fitgm$estimate[1],fitgm$estimate[2])
+
+
+################################################################################
+
+# Exponential: X ~ exp(lambda)
+
+# Fit the data set with exponential distribution
+dist = &quot;exponential&quot;
+
+# MME is 1/xbar
+1/mean(dataset)  # rate parameter for exp dist, rate =  0.0003402187
+
+# Plot histogram of claim sizes
+hist(dataset,breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes with fitted&quot;, dist ,&quot;distribution&quot; ))
+
+# Add a plot of the density of fitted exponential distribution
+curve(dexp(x ,rate = 1/mean(dataset)   ), add = TRUE, col = &quot;blue&quot;, lwd = 2)
+
+# density() computes kernel density estimates. 
+# Its default method does so with the given kernel and bandwidth for univariate observations.
+lines(density(dataset), col = &quot;red&quot;, lwd = 2)
+legend(5000, 0.0015, legend=c(&quot;density()&quot;, &quot;fitted exp dist&quot;), lty = c(1,1), lwd = 2, col=c(&quot;red&quot;,&quot;blue&quot;))
+
+# Comparison of empirical distribution function (ecdf) and the cdf of the fitted distribution
+plot(ecdf(dataset),
+     main=&quot;Compare ecdf with estimated cdf&quot;, xlab=&quot;claim sizes&quot;, lty=1)
+curve(pexp(x, rate = 1/mean(dataset) ), add=TRUE, col = &quot;blue&quot;, lwd = 2)
+legend(10000, 0.8, legend=c(&quot;ecdf&quot;, &quot;estimated cdf&quot;), lty=1, col = c(&quot;black&quot;,&quot;blue&quot;), lwd = 2)
+
+# Calculate the boundaries for groups or bins so that 
+# the expected number of claims in each bin is 20 under the fitted exponential distribution. 
+
+#upbd (upper boundary of bins) is required in order to construct a grouped frequency
+# of equi-probable groups determined by the fitted expo dist.
+j = 0:9
+upbd = qexp(j/10, 1/mean(dataset))  #1/mean(dataset) gives the parameter of exponential dist
+out &lt;- cut(dataset, breaks = upbd, dig.lab=5)
+table(out)
+# To fix the class interval, i.e. (the upbd when j = 9,infinity)
+upbd[length(upbd)+1] = 1000000
+upbd
+out &lt;- cut(dataset, breaks = upbd)
+tab2_8 &lt;- table(out)
+
+cbind(tab2_8)
+barplot(tab2_8,main=&quot;Claim sizes&quot;,las=2)
+
+# Obtain E(Exp), the fitted claim sizes
+eexp &lt;- diff(200*pexp(upbd, rate = 1/mean(dataset)))
+
+cbind(tab2_8,round(eexp))
+
+ntab2_8 &lt;- as.data.frame(cbind(tab2_8,round(eexp)))
+
+# Change the header name ntab2_8
+names(ntab2_8)[2] &lt;- &quot;EXP&quot;
+
+#summary of exponential fit using chisq.test function in R
+chisq.test(x = tab2_8,
+           p = eexp/sum(eexp))
+
+# Manually compute chi-square statistics
+sum((tab2_8 - eexp)^2 /eexp)                  #chi-square
+1 - pchisq(sum((tab2_8 - eexp)^2 /eexp), 8 )  #Use the same df as 
+#given in text. However, this contradict to the chi-squre test using chisq.test where df = 9 is used!
+
+#The following command is not correct
+#ks.test(unique(tab2_8), &quot;pexp&quot;, rate =  0.0003402187 )
+ks.test(dataset, &quot;pexp&quot;, rate =  1/mean(dataset) )
+
+
+##############################################################
+
+# Gamma: X ~ gamma(alpha, lambda)
+
+# MLE method
+#\hat\alpha is the value of alpha which maximises the following log-likelihood
+#expression:
+
+# We minimize (-1)*la function
+la &lt;- function(a)
+{-(nsample*a*(log(a) - log(mean(dataset)) -1) + sum(log(dataset))*(a - 1) - nsample*log(gamma(a)))}
+
+##### Plot graph of la to approximate the minimum of la function 
+
+temp &lt;- seq(0.1,5,by=0.1)
+plot(temp,la(temp))
+
+
+# nlm() is Non-Linear Minimization
+# p is a starting parameter value for the minimization.
+  nlmout &lt;- nlm(la, p = 1,  hessian=TRUE)
+
+# MLE
+alpha_hat &lt;- nlmout$estimate               # gives \hat\alpha
+lambda_hat &lt;- nlmout$estimate/mean(dataset)  # gives \hat\lambda
+
+
+# Estimate the cumulative frequencies and then take the difference
+# egam &lt;- diff(nsample*pgamma(upbd,alpha_hat ,lambda_hat))
+
+# MME method (However, we will use MLE for the remaining calculation)
+alpha_tilde &lt;- (xbar/s)^2
+lambda_tilde &lt;- alpha_tilde/xbar
+
+# OR
+# mean(dataset)^2/var(dataset)    # gives \tilde\alpha
+# mean(dataset)/var(dataset)      # gives \tilde\lambda
+
+
+# Estimate the cumulative frequencies and then take the difference
+egam &lt;- diff(nsample*pgamma(upbd,alpha_hat ,lambda_hat))
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - egam)^2 /egam)
+1 - pchisq( sum((tab2_8 - egam)^2 /egam) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+
+ks.test(dataset, &quot;pgamma&quot;, shape = alpha_hat, rate = lambda_hat )
+
+dist = &quot;gamma&quot;
+# Figure 2.20 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes with fitted&quot;, dist ,&quot;distribution&quot; ))
+curve(dexp(x ,rate = 1/mean(dataset)   ), add = TRUE, col = &quot;blue&quot;, lwd = 2)
+curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = &quot;green&quot;, lwd = 2)
+legend(300, 0.005, legend=c(&quot;Exp&quot;, &quot;Gamma&quot;), lty = c(1,1), lwd = 2, col=c(&quot;blue&quot;,&quot;green&quot;))
+
+curve(dgamma(x ,shape = alpha_tilde ,rate = lambda_tilde), add = TRUE, col = &quot;red&quot;, lwd = 2)
+
+#lines(density(dataset), col = &quot;red&quot;, lwd = 2)
+#legend(25000, 2e-4, legend=c(&quot;density()&quot;, &quot;fitdistr()&quot;), lty = c(1,1), lwd = 2, col=c(&quot;red&quot;,&quot;blue&quot;))
+
+
+# Figure 2.20 (right)
+plot(ecdf(dataset),
+     main=&quot;Compare ecdf with estimated cdf&quot;, xlab=&quot;claim sizes&quot;, lty=1)
+curve(pgamma(x ,shape = alpha_hat ,rate = lambda_hat), add=TRUE, col = &quot;green&quot;, lwd = 2)
+legend(10000, 0.6, legend=c(&quot;ecdf&quot;, &quot;estimated cdf&quot;), lty=1 ,col = c(&quot;black&quot;,&quot;green&quot;), lwd = 2)
+
+cbind(tab2_8,round(eexp),round(egam,1))
+
+##############################################################
+
+# Lognormal: X ~ lognormal(mu,sigma^2)
+
+# Check if the logged claim sizes have a normal distribution
+logcs &lt;- log(dataset)
+summary(logcs)
+
+require(moments)
+skewness(logcs)
+# The display shows that the logged claim
+# sizes have a distribution which may be similar to a normal distribution 
+# but with a modest negative skew.
+
+# The tail of the left side of the pdf is longer or fatter than the right side
+
+# Figure 2.22 (left)
+hist(logcs,breaks=100,probability = TRUE, xlab = &quot;log(claim size)&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of log(claim sizes)&quot; ))
+
+qqnorm(logcs, datax = TRUE)
+qqline(logcs, datax = TRUE)
+
+
+# MLE method
+# we can find the MLEs of ? and ? directly
+# from the logged data as the sample mean and standard deviation of the log(xi)
+
+# Find MLE directly from dataset
+mu_hat &lt;- mean(logcs)                             # mu_hat
+# Notice -1 in sigma_hat below
+sqrt(sum((logcs- mu_hat)^2)/( length(logcs) -1 ))  #sigma_hat
+# or
+sigma_hat &lt;- sd(logcs)
+
+# Using fitdistr
+fitln &lt;- fitdistr(dataset,&quot;lognormal&quot;)
+p1 &lt;- fitln$estimate[1]
+p2 &lt;- fitln$estimate[2]
+
+# MME method
+sigma_tilda &lt;- sqrt(log(  var(dataset)/mean(dataset)^2 +1  ))  # gives \tilde\sigma
+mu_tilda &lt;- log(mean(dataset)) - sigma_tilda^2/2      # gives \tilde\mu
+
+elognm &lt;- diff(nsample*plnorm(round(upbd), mean(log(dataset)), sd(log(dataset))))
+
+# Replace elognm which are estimates from MME
+#elognm &lt;- diff(nsample*plnorm(round(upbd), mu_tilda, sigma_tilda))
+
+
+cbind(tab2_8,round(eexp),round(egam,1),round(elognm,1))
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - elognm)^2 /elognm)
+1 - pchisq(sum((tab2_8 - elognm)^2 /elognm) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+ks.test(dataset, &quot;plnorm&quot;, meanlog = mean(log(dataset)), sdlog = sd(log(dataset))
+)
+
+dist = &quot;lognormal&quot;
+# Figure 2.23 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes with fitted&quot;, dist ,&quot;distribution&quot; ))
+curve(dlnorm(x, mean(log(dataset)), sd(log(dataset)))    , add = TRUE, col = &quot;red&quot;, lwd = 2)
+curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = &quot;green&quot;, lwd = 2)
+legend(200, 0.01, legend=c(&quot;Lognormal&quot;,&quot;Gamma&quot;), lty = 1, lwd = 2, col= c(&quot;red&quot;,&quot;green&quot;))
+
+#lines(density(dataset), col = &quot;red&quot;, lwd = 2)
+#legend(25000, 2e-4, legend=c(&quot;density()&quot;, &quot;fitdistr()&quot;), lty = c(1,1), lwd = 2, col=c(&quot;red&quot;,&quot;blue&quot;))
+
+
+# Figure 2.20 (right)
+plot(ecdf(dataset),
+     main=&quot;Compare ecdf with estimated cdf&quot;, xlab=&quot;claim sizes&quot;, lty=1)
+curve(plnorm(x, mean(log(dataset)), sd(log(dataset)))  , add=TRUE, col = &quot;red&quot;, lwd = 2)
+legend(20000, 0.8, legend=c(&quot;ecdf&quot;, &quot;estimated cdf&quot;), lty=1 ,col = c(&quot;black&quot;,&quot;green&quot;), lwd = 2)
+
+
+##############################################################
+
+# Pareto: X ~ Pa(alpha, lambda)
+
+# MME 
+alpha_tilde &lt;- 2*var(dataset)/mean(dataset)^2 * 1/(var(dataset)/mean(dataset)^2 - 1) #/tilde/alpha
+lambda_tilde &lt;- mean(dataset)*(alpha_tilde -1)
+
+# MLE
+# The R function nlm is a minimisation procedure, so the negative of
+# the log-likelihood function is declared (as a function of a vector x of length 2)
+# as follows:
+
+fp = function(x)
+{-(nsample*log(x[1]) + nsample*x[1]*log(x[2]) - (x[1]+1)*sum(log(x[2]+dataset))) }
+
+# Use the MME as the initial parameter for nonlinear maximization
+nlmout &lt;- nlm(fp,c(alpha_tilde,lambda_tilde))
+
+alpha_hat &lt;- nlmout$estimate[1]               # gives \hat\alpha
+lambda_hat &lt;- nlmout$estimate[2]   # gives \hat\lambda
+
+
+# Using fitdistr
+fitpareto&lt;-fitdist(dataset,&quot;pareto&quot;, start = list(shape=1,scale=500))
+p1=fitpareto$estimate[1]
+p2=fitpareto$estimate[2]
+
+
+
+# Estimate the cumulative frequencies and then take the difference
+#egam &lt;- diff(nsample*pgamma(upbd,0.6893,0.0002345))
+epareto &lt;- diff(nsample*ppareto(upbd,alpha_hat ,lambda_hat))
+
+
+
+cbind(tab2_8,round(eexp),round(egam,1),round(elognm,1), round(epareto,1))
+
+
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - round(epareto,1))^2 /round(epareto,1))
+1 - pchisq(sum((tab2_8 - epareto)^2 /epareto) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+ks.test(dataset, &quot;ppareto&quot;, shape = alpha_hat, scale = lambda_hat)
+
+dist = &quot;pareto&quot;
+# Figure 2.24 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = &quot;claim sizes&quot; 
+     , ylab = &quot;density&quot;, main = paste(&quot;Histogram of claim sizes with fitted&quot;, dist ,&quot;distribution&quot; ))
+curve(dlnorm(x, mean(log(dataset)), sd(log(dataset)))    , add = TRUE, col = &quot;red&quot;, lwd = 2)
+#curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = &quot;green&quot;, lwd = 2)
+curve(dpareto(x, shape = alpha_hat, scale = lambda_hat), add = TRUE, col = &quot;yellow&quot;, lwd = 2)
+legend(10000, 0.0015, legend=c(&quot;Pareto&quot;,&quot;lognormal&quot;), lty = 1, lwd = 2, col= c(&quot;yellow&quot;,&quot;red&quot;))
+
+#lines(density(dataset), col = &quot;red&quot;, lwd = 2)
+#legend(25000, 2e-4, legend=c(&quot;density()&quot;, &quot;fitdistr()&quot;), lty = c(1,1), lwd = 2, col=c(&quot;red&quot;,&quot;blue&quot;))
+
+
+# Figure 2.24 (right)
+plot(ecdf(dataset),
+     main=&quot;Compare ecdf with estimated cdf&quot;, xlab=&quot;claim sizes&quot;, lty=1)
+curve(ppareto(x, shape = alpha_hat, scale = lambda_hat)  , add=TRUE, col = &quot;yellow&quot;, lwd = 2)
+legend(20000, 0.8, legend=c(&quot;ecdf&quot;, &quot;estimated cdf&quot;), lty=1 ,col = c(&quot;black&quot;,&quot;yellow&quot;), lwd = 2)
+
+
+##############################################################
+
+
+%\end{MyVerbatim}</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/02-Loss-Distributions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/02-Loss-Distributions.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

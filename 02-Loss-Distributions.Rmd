@@ -1,1 +1,872 @@
-# To be added
+Loss distributions
+==================
+
+## Introduction
+
+
+The aim of the course is to provide a fundamental basis which applies
+mainly in general insurance. General insurance companies' products are
+short-term policies that can be purchased for a short period of time.
+Examples of insurance products are
+
+-   motor insurance;
+
+-   home insurance;
+
+-   health insurance; and
+
+-   travel insurance.
+
+In case of an occurrence of an insured event, two important components
+of financial losses which are of importance for management of an
+insurance company are
+
+-   the number of claims; and
+
+-   the amounts of those claims.
+
+Mathematical and statistical techniques used to model these sources of
+uncertainty will be discussed. This will enable insurance companies to
+
+-   calculate premium rates to charge policy holders; and
+
+-   decide how much reserve should be set aside for the future payment
+    of incurred claims.
+
+In the chapter, statistical distributions and their properties which are
+suitable for modelling claim sizes are reviewed. These distribution are
+also known as loss distributions. In practice, the shape of loss
+distributions are positive skew with a long right tail. The main
+features of loss distributions include:
+
+-   having a few small claims;
+
+-   rising to a peak;
+
+-   tailing off gradually with a few very large claims.
+
+Exponential Distribution
+------------------------
+
+A random variable $X$ has an exponential distribution with a parameter
+$\lambda > 0$, denoted by $X \sim \text{Exp}(\lambda)$ if its
+probability density function is given by
+$$f_X(x) = \lambda e^{-\lambda x}, \quad x > 0.$$
+
+::: {.example}
+*Let $X \sim \text{Exp}(\lambda)$ and $0 < a < b$.*
+
+1.  *Find the distribution $F_X(x)$.*
+
+2.  *Express $P(a < X < B)$ in terms of $f_X(x)$ and $F_X(x)$.*
+
+3.  *Show that the moment generating function of $X$ is
+    $$M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-1}, \quad t < \lambda.$$*
+
+4.  *Derive the $r$-th moment about the origin $\mathrm{E}[X^r].$*
+
+5.  *Derive the coefficient of skewness for $X$.*
+
+6.  *Simulate a random sample of size n = 200 from
+    $X \sim \text{Exp}(0.5)$ using the command
+    `sample = rexp(n, rate = lambda)` where $n$ and $\lambda$ are the chosen
+    parameter values.*
+
+7.  *Plot a histogram of the random sample using the command
+    `hist(sample)` (use help for available options for `hist` function
+    in R).*
+:::
+**Solution:**
+The code for questions 6 and 7 are given below. The histogram can be generated from the code below.
+
+``` {frame="single" caption="R code for Example1(6-7)."}
+# Example 1(6-7)
+# set.seed is used so that random number generated from different simulations are the same. 
+# The number 5353 can be set arbitrarily. 
+set.seed(5353)
+
+nsample <- 200
+data_exp <- rexp(nsample, rate = 0.5)
+
+dataset <- data_exp
+hist(dataset, breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes" ))
+
+hist(dataset, breaks=100, xlab = "claim sizes" 
+     , ylab = "count", main = paste("Histogram of claim sizes" ))
+```
+
+<!-- ![ **The histogram of the simulated random samples from -->
+<!-- $X \sim \text{Exp}(0.5)$** ](FigHistogramExp.eps){#FigHistogramExp -->
+<!-- width="80%"} -->
+
+
+
+```{r, include=FALSE}
+tutorial::go_interactive()
+```
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+Copy and paste the code above and run it.
+
+```{r}
+set.seed(5353)
+
+nsample <- 200
+data_exp <- rexp(nsample, rate = 0.5)
+
+dataset <- data_exp
+hist(dataset, breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes" ))
+
+
+```
+
+
+```{r}
+set.seed(5353)
+
+nsample <- 200
+data_exp <- rexp(nsample, rate = 0.5)
+
+dataset <- data_exp
+
+
+hist(dataset, breaks=100, xlab = "claim sizes" 
+     , ylab = "count", main = paste("Histogram of claim sizes" ))
+
+```
+
+
+
+**Notes**
+1.  The exponential distribution can used to model the inter-arrival
+    time of an event.
+
+2.  The exponential distribution has an important property called **lack
+    of memory**: if $X \sim \text{Exp}(\lambda)$, then the random
+    variable $X-w$ conditional on $X > w$ has the same distribution as
+    $X$, i.e.
+    $$X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).$$
+
+Gamma distribution
+------------------
+
+A random variable $X$ has a gamma distribution with parameters
+$\alpha > 0$ and $\lambda > 0$, denoted by
+$X \sim \mathcal{G}(\alpha, \lambda)$ or
+$X \sim \text{gamma}(\alpha, \lambda)$ if its probability density
+function is given by
+$$f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha -1} e^{-\lambda x}, \quad x > 0.$$
+The symbol $\Gamma$ denotes the gamma function, which is defined as
+$$\Gamma(\alpha) = \int_{0}^\infty x^{\alpha - 1} e^{-x} \mathop{}\!dx, \quad \text{for } \alpha > 0.$$
+It follows that $\Gamma(\alpha + 1) = \alpha \Gamma(\alpha)$ and that
+for a positive integer $n$, $\Gamma(n) = (n-1)!$.
+
+The properties of the gamma distribution are summarised.
+
+-   The mean and variance of $X$ are
+    $$\mathrm{E}[X] = \frac{\alpha}{\lambda} \text{ and } \mathrm{Var}[X] =\frac{\alpha}{\lambda^2}$$
+
+-   The $r$-th moment about the origin is
+    $$\mathrm{E}[X^r] = \frac{1}{\lambda^r} \frac{\Gamma(\alpha + r)}{\Gamma(\alpha )}, \quad r > 0.$$
+
+-   The moment generating function (mgf) of $X$ is
+    $$M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-\alpha}, \quad t < \lambda.$$
+
+-   The coefficient of skewness is $$\frac{2}{\sqrt{\alpha}}.$$
+
+**Notes**
+1.  The exponential function is a special case of the gamma
+    distribution, i.e. $\text{Exp}(\lambda)= \mathcal{G}(1,\lambda)$
+
+2.  If $\alpha$ is a positive integer, the sum of $\alpha$ independent,
+    identically distributed as $\text{Exp}(\lambda)$, is
+    $\mathcal{G}(\alpha, \lambda)$.
+
+3.  If $X_1, X_2, \ldots, X_n$ are independent, identically distributed,
+    each with a $\mathcal{G}(\alpha, \lambda)$ distribution, then
+    $$\sum_{i = 1}^n X_i \sim \mathcal{G}(n\alpha, \lambda).$$
+
+4.  The exponential and gamma distributions are not fat-tailed, and
+    **may not provide a good fit** to claim amounts.
+
+::: {.example}
+*Using the moment generating function of a gamma
+distribution, show that the sum of independent gamma random variables
+with the same scale parameter $\lambda$,
+$X \sim \mathcal{G}(\alpha_1, \lambda)$ and
+$Y \sim \mathcal{G}(\alpha_2, \lambda)$, is
+$S = X+ Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).$*
+:::
+
+**Solution:**
+Because $X$ and $Y$ are independent, $$\begin{aligned}
+    M_S(t) &= M_{X+Y}(t) = M_X(t) \cdot M_Y(t)\\
+        &= (1 - \frac{t}{\lambda})^{-\alpha_1} \cdot (1 - \frac{t}{\lambda})^{-\alpha_2}     \\
+        &=  (1 - \frac{t}{\lambda})^{-(\alpha_1 + \alpha_2)}. \end{aligned}$$
+Hence $S = X + Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).$
+
+::: {#exampleFittingClaimSizes .example}
+*Consider a data set consisting of 200 claim amounts in
+one year from a general insurance portfolio.*
+
+1.  *Calculate the sample mean and sample standard deviation.*
+
+2.  *Use the method of moments to fit these data with both exponential
+    and gamma distributions.*
+
+3.  *Calculate the boundaries for groups or bins so that the expected
+    number of claims in each bin is 20 under the fitted exponential
+    distribution.*
+
+4.  *Count the values of the observed claim amounts in each bin.*
+
+5.  *With these bin boundaries, find the expected number of claims when
+    the data are fitted with the gamma distribution.*
+
+6.  *Plot two histograms for the data set with fitted exponential
+    distribution and the dataset with fitted gamma distribution.*
+
+7.  *Comment on the goodness of fit of the fitted distributions.*
+:::
+
+
+**Solution:**
+1.  Given that $\sum_{i=1}^n x_i = 206046.4$ and
+    $\sum_{i=1}^n x_i^2 = 1,472,400,135$, we have
+    $$\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{206046.4}{200} = 1030.232.$$
+    The sample variance and standard deviation are
+    $$s^2 = \frac{1}{n-1} \left( \sum_{i=1}^n x_i^2 - \frac{(\sum_{i=1}^n x_i)^2}{n} \right) = 5135.093,$$
+    and $$s = 2516.403.$$
+
+<!-- 2.  [\[example2\]]{#example2 label="example2"} -->
+
+2. We calculate estimates of
+    unknown parameters of both exponential and gamma distributions by
+    the method of moments. We simply match the mean and central moments,
+    i.e. matching $\mathrm{E}[X]$ to the sample mean $\bar{x}$ and
+    $\mathrm{Var}[X]$ to the sample variance.
+
+    The MME (moment matching estimation) of the required distributions
+    are as follows:
+
+    -   the MME of $\lambda$ for an $\text{Exp}(\lambda)$ distribution
+        is the reciprocal of the sample mean,
+        $$\tilde{\lambda} = \frac{1}{\bar{x}} = 0.000971.$$
+
+    -   the MMEs of $\alpha$ and $\lambda$ for a
+        $\mathcal{G}(\alpha, \lambda)$ distribution are
+        $$\begin{aligned}
+        \tilde{\alpha} &= \left(\frac{\bar{x}}{s}\right)^2 = 0.167614, \\
+        \tilde{\lambda} &= \frac{\tilde{\alpha}}{\bar{x}} = 0.000163.\end{aligned}$$
+
+    -   the MMEs of $\mu$ and $\sigma$ for a
+        $\mathcal{LN}(\mu, \sigma^2)$ distribution are $$\begin{aligned}
+        \tilde{\sigma} &= \sqrt{ \ln \left(  \frac{s^2}{\bar{x}^2} + 1 \right)  }  = 1.393218, \\
+        \tilde{\mu} &= \ln(\bar{x}) - \frac{\tilde{\sigma}^2 }{2} = 5.967012.\end{aligned}$$
+
+    -   the MMEs of $\alpha$ and $\lambda$ for a
+        $\text{Pa}(\alpha, \lambda)$ distribution are $$\begin{aligned}
+        \tilde{\alpha} &= \displaystyle{ 2 \left(  \frac{s^2}{\bar{x}^2} \right) \frac{1}{(\frac{s^2}{\bar{x}^2} - 1)}   } = 2.402731,\\
+        \tilde{\lambda} &= \bar{x} (\tilde{\alpha} - 1) = 1445.138.\end{aligned}$$
+
+3.  The upper boundaries for the 10 groups or bins so that the expected
+    number of claims in each bin is 20 under the fitted exponential
+    distribution are determined by
+    $$\Pr(X \le \text{upbd}_j) = \frac{j}{10}, \quad j = 1,2,3, \ldots, 9.$$
+    With $\tilde{\lambda}$ from the MME for an $\text{Exp}(\lambda)$ from the previous,
+    <!-- [\[example2\]](#example2){reference-type="ref" -->
+    <!-- reference="example2"}, -->
+    $$\Pr(X \le x)  = 1 - \exp(-\tilde{\lambda} x).$$ We obtain
+    $$\text{upbd}_j = -\frac{1}{\tilde{\lambda}} \ln\left( 1 - \frac{j}{10}\right).$$
+    The results are given in Table 2.1. 
+    <!-- \@ref(tab:tab1) -->
+    <!-- [1](#tableFitted){reference-type="ref" reference="tableFitted"}. -->
+
+4.  The following table shows frequency distributions for observed and
+    fitted claims sizes for exponential, gamma, and also lognormal and Pareto fits.
+
+<!-- Table: (\#tab:simple-table) Caption here -->
+
+
+    Table 2.1 : Frequency distributions for observed and fitted claims sizes.
+    
+                         Observation    Exp   Gamma   Lognormal   Pareto
+      ----------------- ------------- ----- ------- ----------- --------
+               (0,109\]      60          20   109.4          36     31.9
+             (109,230\]      31          20    14.3        34.4     27.8
+             (230,367\]      25          20     9.7          26     24.2
+             (367,526\]      17          20     7.8        20.5     21.2
+             (526,714\]      14          20     6.8        16.6     18.6
+             (714,944\]      13          20     6.3        13.9     16.4
+            (944,1240\]       6          20     6.2        11.9     14.6
+           (1240,1658\]       7          20     6.5        10.8     13.2
+           (1658,2372\]      10          20     7.7        10.4     12.5
+        (2372,$\infty$)      17          20    25.4        19.5     19.4
+
+
+
+5.  Let $X$ be the claim size.
+
+    -   The expected number of claims for the fitted exponential
+        distribution in the range $(a,b]$ is
+        $$200 \cdot \Pr( a < X \le b) = 200( e^{-\tilde{\lambda} a} - e^{-\tilde{\lambda} b} ).$$
+        In our case, the expected frequencies under the fitted
+        exponential distribution are given in the third column of Table
+        [1](#tableFitted){reference-type="ref" reference="tableFitted"}.
+
+    -   The expected number of claims for the fitted gamma distribution
+        in the range $(a,b]$ is
+        $$200 \cdot\left(  \text{GAMMADIST}\left(b, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right)  - \text{GAMMADIST}\left(a, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right) \right).$$
+        The expected frequencies under the fitted gamma distribution are
+        given in the fourth column of Table
+        [1](#tableFitted){reference-type="ref" reference="tableFitted"}.
+
+    -   For the fitted lognormal, the expected number of claims in the
+        range $(a,b]$ can be obtained from
+        $$200 \cdot\left(  \text{NORMDIST} \left(\frac{LN(b) - 
+                \tilde{\mu}}{\tilde{\sigma}}\right)  - \text{NORMDIST}\left(\frac{LN(a) - 
+                \tilde{\mu}}{\tilde{\sigma}}\right) \right).$$
+
+    -   For the fitted Pareto distribution, the expected number of
+        claims in the range $(a,b]$ can be obtained from
+        $$200 \left[    \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + a} \right)^{\tilde{\alpha}}  - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + b} \right)^{\tilde{\alpha}}   \right].$$
+
+6.  The histograms for the data set with fitted exponential distribution
+    and the dataset with fitted gamma distribution are shown in Figures
+    [2](#FittedExpGamma){reference-type="ref"
+    reference="FittedExpGamma"} and
+    [3](#FittedLognormalPareto){reference-type="ref"
+    reference="FittedLognormalPareto"}.
+
+7.  Comments:
+
+    1.  The high positive skewness of the sample reflects the fact that
+        SD is large when compared to the mean. Consequently, the
+        exponential distribution may not fit the data well.
+
+    2.  Five claims (2.5%) are greater than 10,000, which is one of the
+        main features of the loss distribution.
+
+    3.  The fit is poor for the exponential distribution, as we see that
+        the model under-fits the data for small claims up to 367 and
+        over-fits for large claims between 944 to 2372. The gamma fit is
+        again poor. We see that the model over-fits for small claims
+        between 0-109 and under-fits for claims 230 and 944.
+
+    4.  Which one of the lognormal and Pareto distributions provides a
+        better fit to the observed claim data?
+
+<!-- ![ **Histogram of claim sizes with fitted exponential and gamma -->
+<!-- distributions.** ](Example3ClaimSizesExpoGamma.pdf){#FittedExpGamma -->
+<!-- width="80%"} -->
+
+<!-- ![ **Histogram of claim sizes with fitted lognormal and Pareto -->
+<!-- distributions.** -->
+<!-- ](Example3ClaimSizesParetoLognormal.pdf){#FittedLognormalPareto -->
+<!-- width="80%"} -->
+
+
+
+
+
+Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area.
+
+```{r, include=FALSE}
+tutorial::go_interactive()
+```
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+```{r}
+# Let us plot the histogram of claim sizes 
+a <- 1
+```
+
+
+
+
+Lognormal distribution
+----------------------
+
+A random variable $X$ has a lognormal distribution with parameters $\mu$
+and $\sigma^2$, denoted by $X \sim \mathcal{LN}(\mu, \sigma^2)$ if its
+probability density function is given by
+$$f_X(x) = \frac{1}{\sigma x \sqrt{2 \pi}} \exp\left(-\frac{1}{2} \left( \frac{\log(x) - \mu}{\sigma} \right)^2 \right) , \quad x > 0.$$
+
+The following relation holds:
+$$X \sim \mathcal{LN}(\mu, \sigma^2)\Leftrightarrow Y = \log X \sim \mathcal{N}(\mu, \sigma^2).$$
+
+The properties of the lognormal distribution are summarised.
+
+-   The mean and variance of $X$ are
+    $$\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1).$$
+
+-   The $r$-th moment about the origin is
+    $$\mathrm{E}[X^r] =\exp\left(r\mu +  \frac{1}{2}r^2 \sigma^2 \right).$$
+
+-   The moment generating function (mgf) of $X$ is not finite for any
+    positive value of $t$.
+
+-   The coefficient of skewness is
+    $$(\exp(\sigma^2)  + 2) \left(\exp(\sigma^2)  -1 \right)^{1/2} .$$
+
+Pareto distribution
+-------------------
+
+A random variable $X$ has a Pareto distribution with parameters
+$\alpha > 0$ and $\lambda > 0$, denoted by
+$X \sim \text{Pa}(\alpha, \lambda)$ if its probability density function
+is given by
+$$f_X(x) = \frac{\alpha \lambda^\alpha}{(\lambda + x)^{\alpha + 1}}, \quad x > 0.$$
+The distribution function is given by
+$$F_X(x) = 1 - \left(  \frac{\lambda}{\lambda + \alpha} \right)^\alpha, \quad x > 0.$$
+
+The properties of the gamma distribution are summarized.
+
+-   The mean and variance of $X$ are
+    $$\mathrm{E}[X] = \frac{\lambda}{\alpha - 1}, \alpha > 1 \text{ and } \mathrm{Var}[X] = \frac{\alpha \lambda^2}{(\alpha - 1)^2(\alpha - 2)}, \alpha > 2.$$
+
+-   The $r$-th moment about the origin is
+    $$\mathrm{E}[X^r] =\frac{\Gamma(\alpha-r) \Gamma(1+ r)}{\Gamma(\alpha)} \lambda^r, \quad 0 < r < \alpha.$$
+
+-   The moment generating function (mgf) of $X$ is not finite for any
+    positive value of $t$.
+
+-   The coefficient of skewness is
+    $$\frac{2(\alpha + 1)}{\alpha - 3} \sqrt{\frac{\alpha-2}{\alpha}} , \quad \alpha > 3.$$
+
+1.  The following conditional tail property for a Pareto distribution is
+    useful for reinsurance calculation. Let
+    $X \sim \text{Pa}(\alpha, \lambda)$. Then the random variable
+    $X - w$ conditional on $X > w$ has a Pareto distribution with
+    parameters $\alpha$ and $\lambda + w$, i.e.
+    $$X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - w | X > w \sim \text{Pa}(\alpha,\lambda + w).$$
+
+2.  The lognormal and Pareto distributions, in practice, provide a
+    better fit to claim amounts than exponential and gamma
+    distributions.
+
+3.  Other loss distribution are useful in practice including **Burr,
+    Weibull and loggamma distributions**.
+
+::: {.example}
+*Consider the data set in Example 
+[Example 3](#exampleFittingClaimSizes){reference-type="ref"
+reference="exampleFittingClaimSizes"} and those bin boundaries,*
+
+1.  *Find the expected number of claims when the data are fitted with
+    lognormal and Pareto distributions.*
+
+2.  *Plot two histograms for the data set with fitted lognormal
+    distribution and the dataset with fitted Pareto distribution.*
+
+3.  *Comment on the goodness of fit of the fitted distributions.*
+:::
+
+The following code creates plots of loss distributions in R using
+ggplot2. See the following link for more information
+<http://t-redactyl.io/blog/2016/03/creating-plots-in-r-using-ggplot2-part-9-function-plots.html>
+
+``` {frame="single" caption="R code creates plots of loss distributionsusing ggplot2."}
+# Use ggplots to plot loss distributions
+
+library(ggplot2)
+
+ggplot(data.frame(x=c(0,10)), aes(x=x)) +
+  labs(y="Probability density", x = "x") + 
+  ggtitle("Exponential distributions")  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dexp,geom ="line", args = (mean=0.5), aes(colour = "0.5")) +
+  stat_function(fun=dexp,geom ="line", args = (mean=1), aes(colour = "1")) +
+  stat_function(fun=dexp,geom ="line", args = (mean=1.5), aes(colour = "1.5")) +
+  stat_function(fun=dexp,geom ="line", args = (mean=2), aes(colour = "2")) +
+  #scale_colour_manual(expression(paste(lambda, "= ")), values = c("red", "blue", "green", "orange"))
+  scale_colour_manual(expression(paste("lambda = ")), values = c("red", "blue", "green", "orange"))
+
+ggplot(data.frame(x=c(0,20)), aes(x=x)) +
+  labs(y="Probability density", x = "x") + 
+  ggtitle("Gamma distribution")  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dgamma, args=list(shape=2, rate=1), aes(colour = "2")) +
+  stat_function(fun=dgamma, args=list(shape=6, rate=1) , aes(colour = "6")) +
+  scale_colour_manual(expression(paste("rate = 1 and shape = ")), values = c("red", "blue"))
+
+ggplot(data.frame(x=c(0,10)), aes(x=x)) +
+  labs(y="Probability density", x = "x") + 
+  ggtitle("lognormal distribution")  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 0.25), aes(colour = "0.25")) +
+  stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 1), aes(colour = "1")) +
+  scale_colour_manual(expression(paste("mu = 0 and sigma = ")), values = c("red", "blue"))
+
+%\end{MyVerbatim}
+```
+
+![ **The probability density functions (pdf) of exponential
+distributions with various parameters $\lambda$.**
+](FigExp.eps){width="80%"}
+
+![ **The probability density functions (pdf) of gamma distributions with
+various shape parameters $\alpha$ and rate parameter $\lambda = 1$.**
+](FigGamma.eps){width="80%"}
+
+![ **The probability density functions (pdf) of lognormal distributions
+with $\mu = 0$ and $\sigma = 0.25$ or 1.**
+](FigLognormal.eps){width="80%"}
+
+The following code uses to obtain the results in
+Example [Example 3](#exampleFittingClaimSizes){reference-type="ref"
+reference="exampleFittingClaimSizes"}.
+
+``` {frame="single" caption="R code for Example~\\ref{exampleFittingClaimSizes}."}
+#LectureNote_Example3_Loss_fitting_student_version
+# by Pairote Satiracoo
+# Version 1.04
+# Date : 18/08/2020
+
+# References(s)
+# http://www.stat.yale.edu/Courses/1997-98/101/chigf.htm
+# https://cran.r-project.org/doc/contrib/Ricci-distributions-en.pdf
+# https://www.unf.edu/~cwinton/html/cop4300/s09/class.notes/c3-GoodnessofFitTests.pdf
+# https://bookdown.org/ekothe/navarro26/chisquare.html
+# https://statisticsbyjim.com/hypothesis-testing/identify-distribution-data/
+# http://spots.gru.edu/nsmith12/openstats/Chisquare_R.pdf
+
+# We use MLE to estimate model parameters.
+
+library(actuar)
+library(stats)
+library(MASS)
+library(fitdistrplus)
+
+set.seed(5353)
+
+nsample <- 200
+#data_gamma <- rgamma(nsample, shape =2, rate = 0.02)
+data_pareto <- rpareto(nsample, shape =1.5, scale = 500)
+
+#dataset1 <- data_gamma
+dataset2 <- data_pareto
+
+dataset <- dataset2
+hist(dataset, breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes" ))
+
+summary(dataset)
+xbar <- mean(dataset)
+var(dataset)
+# sqrt(var(dataset))
+s <- sd(dataset)
+
+# Maximum-likelihood Fitting of Univariate Distributions
+# fitgm <- fitdistr(dataset, dgamma,  list(shape = 1, rate = 0.5), lower=0.001 )
+
+# alpha_hat_gm <- fitgm$estimate[1]
+# lambda_hat_gm <- fitgm$estimate[2]
+
+#fitgm
+
+#ks.test(data_gamma, "pgamma", shape = 2.1306319446, rate = 0.0209186022 )
+#ks.test(data_gamma, "pgamma", shape = fitgm$estimate[1], rate = fitgm$estimate[2] )
+#ks.test(data_gamma, "pgamma", fitgm$estimate[1],fitgm$estimate[2])
+
+
+################################################################################
+
+# Exponential: X ~ exp(lambda)
+
+# Fit the data set with exponential distribution
+dist = "exponential"
+
+# MME is 1/xbar
+1/mean(dataset)  # rate parameter for exp dist, rate =  0.0003402187
+
+# Plot histogram of claim sizes
+hist(dataset,breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes with fitted", dist ,"distribution" ))
+
+# Add a plot of the density of fitted exponential distribution
+curve(dexp(x ,rate = 1/mean(dataset)   ), add = TRUE, col = "blue", lwd = 2)
+
+# density() computes kernel density estimates. 
+# Its default method does so with the given kernel and bandwidth for univariate observations.
+lines(density(dataset), col = "red", lwd = 2)
+legend(5000, 0.0015, legend=c("density()", "fitted exp dist"), lty = c(1,1), lwd = 2, col=c("red","blue"))
+
+# Comparison of empirical distribution function (ecdf) and the cdf of the fitted distribution
+plot(ecdf(dataset),
+     main="Compare ecdf with estimated cdf", xlab="claim sizes", lty=1)
+curve(pexp(x, rate = 1/mean(dataset) ), add=TRUE, col = "blue", lwd = 2)
+legend(10000, 0.8, legend=c("ecdf", "estimated cdf"), lty=1, col = c("black","blue"), lwd = 2)
+
+# Calculate the boundaries for groups or bins so that 
+# the expected number of claims in each bin is 20 under the fitted exponential distribution. 
+
+#upbd (upper boundary of bins) is required in order to construct a grouped frequency
+# of equi-probable groups determined by the fitted expo dist.
+j = 0:9
+upbd = qexp(j/10, 1/mean(dataset))  #1/mean(dataset) gives the parameter of exponential dist
+out <- cut(dataset, breaks = upbd, dig.lab=5)
+table(out)
+# To fix the class interval, i.e. (the upbd when j = 9,infinity)
+upbd[length(upbd)+1] = 1000000
+upbd
+out <- cut(dataset, breaks = upbd)
+tab2_8 <- table(out)
+
+cbind(tab2_8)
+barplot(tab2_8,main="Claim sizes",las=2)
+
+# Obtain E(Exp), the fitted claim sizes
+eexp <- diff(200*pexp(upbd, rate = 1/mean(dataset)))
+
+cbind(tab2_8,round(eexp))
+
+ntab2_8 <- as.data.frame(cbind(tab2_8,round(eexp)))
+
+# Change the header name ntab2_8
+names(ntab2_8)[2] <- "EXP"
+
+#summary of exponential fit using chisq.test function in R
+chisq.test(x = tab2_8,
+           p = eexp/sum(eexp))
+
+# Manually compute chi-square statistics
+sum((tab2_8 - eexp)^2 /eexp)                  #chi-square
+1 - pchisq(sum((tab2_8 - eexp)^2 /eexp), 8 )  #Use the same df as 
+#given in text. However, this contradict to the chi-squre test using chisq.test where df = 9 is used!
+
+#The following command is not correct
+#ks.test(unique(tab2_8), "pexp", rate =  0.0003402187 )
+ks.test(dataset, "pexp", rate =  1/mean(dataset) )
+
+
+##############################################################
+
+# Gamma: X ~ gamma(alpha, lambda)
+
+# MLE method
+#\hat\alpha is the value of alpha which maximises the following log-likelihood
+#expression:
+
+# We minimize (-1)*la function
+la <- function(a)
+{-(nsample*a*(log(a) - log(mean(dataset)) -1) + sum(log(dataset))*(a - 1) - nsample*log(gamma(a)))}
+
+##### Plot graph of la to approximate the minimum of la function 
+
+temp <- seq(0.1,5,by=0.1)
+plot(temp,la(temp))
+
+
+# nlm() is Non-Linear Minimization
+# p is a starting parameter value for the minimization.
+  nlmout <- nlm(la, p = 1,  hessian=TRUE)
+
+# MLE
+alpha_hat <- nlmout$estimate               # gives \hat\alpha
+lambda_hat <- nlmout$estimate/mean(dataset)  # gives \hat\lambda
+
+
+# Estimate the cumulative frequencies and then take the difference
+# egam <- diff(nsample*pgamma(upbd,alpha_hat ,lambda_hat))
+
+# MME method (However, we will use MLE for the remaining calculation)
+alpha_tilde <- (xbar/s)^2
+lambda_tilde <- alpha_tilde/xbar
+
+# OR
+# mean(dataset)^2/var(dataset)    # gives \tilde\alpha
+# mean(dataset)/var(dataset)      # gives \tilde\lambda
+
+
+# Estimate the cumulative frequencies and then take the difference
+egam <- diff(nsample*pgamma(upbd,alpha_hat ,lambda_hat))
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - egam)^2 /egam)
+1 - pchisq( sum((tab2_8 - egam)^2 /egam) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+
+ks.test(dataset, "pgamma", shape = alpha_hat, rate = lambda_hat )
+
+dist = "gamma"
+# Figure 2.20 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes with fitted", dist ,"distribution" ))
+curve(dexp(x ,rate = 1/mean(dataset)   ), add = TRUE, col = "blue", lwd = 2)
+curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = "green", lwd = 2)
+legend(300, 0.005, legend=c("Exp", "Gamma"), lty = c(1,1), lwd = 2, col=c("blue","green"))
+
+curve(dgamma(x ,shape = alpha_tilde ,rate = lambda_tilde), add = TRUE, col = "red", lwd = 2)
+
+#lines(density(dataset), col = "red", lwd = 2)
+#legend(25000, 2e-4, legend=c("density()", "fitdistr()"), lty = c(1,1), lwd = 2, col=c("red","blue"))
+
+
+# Figure 2.20 (right)
+plot(ecdf(dataset),
+     main="Compare ecdf with estimated cdf", xlab="claim sizes", lty=1)
+curve(pgamma(x ,shape = alpha_hat ,rate = lambda_hat), add=TRUE, col = "green", lwd = 2)
+legend(10000, 0.6, legend=c("ecdf", "estimated cdf"), lty=1 ,col = c("black","green"), lwd = 2)
+
+cbind(tab2_8,round(eexp),round(egam,1))
+
+##############################################################
+
+# Lognormal: X ~ lognormal(mu,sigma^2)
+
+# Check if the logged claim sizes have a normal distribution
+logcs <- log(dataset)
+summary(logcs)
+
+require(moments)
+skewness(logcs)
+# The display shows that the logged claim
+# sizes have a distribution which may be similar to a normal distribution 
+# but with a modest negative skew.
+
+# The tail of the left side of the pdf is longer or fatter than the right side
+
+# Figure 2.22 (left)
+hist(logcs,breaks=100,probability = TRUE, xlab = "log(claim size)" 
+     , ylab = "density", main = paste("Histogram of log(claim sizes)" ))
+
+qqnorm(logcs, datax = TRUE)
+qqline(logcs, datax = TRUE)
+
+
+# MLE method
+# we can find the MLEs of ? and ? directly
+# from the logged data as the sample mean and standard deviation of the log(xi)
+
+# Find MLE directly from dataset
+mu_hat <- mean(logcs)                             # mu_hat
+# Notice -1 in sigma_hat below
+sqrt(sum((logcs- mu_hat)^2)/( length(logcs) -1 ))  #sigma_hat
+# or
+sigma_hat <- sd(logcs)
+
+# Using fitdistr
+fitln <- fitdistr(dataset,"lognormal")
+p1 <- fitln$estimate[1]
+p2 <- fitln$estimate[2]
+
+# MME method
+sigma_tilda <- sqrt(log(  var(dataset)/mean(dataset)^2 +1  ))  # gives \tilde\sigma
+mu_tilda <- log(mean(dataset)) - sigma_tilda^2/2      # gives \tilde\mu
+
+elognm <- diff(nsample*plnorm(round(upbd), mean(log(dataset)), sd(log(dataset))))
+
+# Replace elognm which are estimates from MME
+#elognm <- diff(nsample*plnorm(round(upbd), mu_tilda, sigma_tilda))
+
+
+cbind(tab2_8,round(eexp),round(egam,1),round(elognm,1))
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - elognm)^2 /elognm)
+1 - pchisq(sum((tab2_8 - elognm)^2 /elognm) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+ks.test(dataset, "plnorm", meanlog = mean(log(dataset)), sdlog = sd(log(dataset))
+)
+
+dist = "lognormal"
+# Figure 2.23 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes with fitted", dist ,"distribution" ))
+curve(dlnorm(x, mean(log(dataset)), sd(log(dataset)))    , add = TRUE, col = "red", lwd = 2)
+curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = "green", lwd = 2)
+legend(200, 0.01, legend=c("Lognormal","Gamma"), lty = 1, lwd = 2, col= c("red","green"))
+
+#lines(density(dataset), col = "red", lwd = 2)
+#legend(25000, 2e-4, legend=c("density()", "fitdistr()"), lty = c(1,1), lwd = 2, col=c("red","blue"))
+
+
+# Figure 2.20 (right)
+plot(ecdf(dataset),
+     main="Compare ecdf with estimated cdf", xlab="claim sizes", lty=1)
+curve(plnorm(x, mean(log(dataset)), sd(log(dataset)))  , add=TRUE, col = "red", lwd = 2)
+legend(20000, 0.8, legend=c("ecdf", "estimated cdf"), lty=1 ,col = c("black","green"), lwd = 2)
+
+
+##############################################################
+
+# Pareto: X ~ Pa(alpha, lambda)
+
+# MME 
+alpha_tilde <- 2*var(dataset)/mean(dataset)^2 * 1/(var(dataset)/mean(dataset)^2 - 1) #/tilde/alpha
+lambda_tilde <- mean(dataset)*(alpha_tilde -1)
+
+# MLE
+# The R function nlm is a minimisation procedure, so the negative of
+# the log-likelihood function is declared (as a function of a vector x of length 2)
+# as follows:
+
+fp = function(x)
+{-(nsample*log(x[1]) + nsample*x[1]*log(x[2]) - (x[1]+1)*sum(log(x[2]+dataset))) }
+
+# Use the MME as the initial parameter for nonlinear maximization
+nlmout <- nlm(fp,c(alpha_tilde,lambda_tilde))
+
+alpha_hat <- nlmout$estimate[1]               # gives \hat\alpha
+lambda_hat <- nlmout$estimate[2]   # gives \hat\lambda
+
+
+# Using fitdistr
+fitpareto<-fitdist(dataset,"pareto", start = list(shape=1,scale=500))
+p1=fitpareto$estimate[1]
+p2=fitpareto$estimate[2]
+
+
+
+# Estimate the cumulative frequencies and then take the difference
+#egam <- diff(nsample*pgamma(upbd,0.6893,0.0002345))
+epareto <- diff(nsample*ppareto(upbd,alpha_hat ,lambda_hat))
+
+
+
+cbind(tab2_8,round(eexp),round(egam,1),round(elognm,1), round(epareto,1))
+
+
+
+
+# Manually compute chi-square statistics
+sum((tab2_8 - round(epareto,1))^2 /round(epareto,1))
+1 - pchisq(sum((tab2_8 - epareto)^2 /epareto) , 7 ) # Use the same df as given in the text book. This contradicts with df used in the chi-square test
+
+ks.test(dataset, "ppareto", shape = alpha_hat, scale = lambda_hat)
+
+dist = "pareto"
+# Figure 2.24 (left)
+hist(dataset,breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes with fitted", dist ,"distribution" ))
+curve(dlnorm(x, mean(log(dataset)), sd(log(dataset)))    , add = TRUE, col = "red", lwd = 2)
+#curve(dgamma(x ,shape = alpha_hat ,rate = lambda_hat), add = TRUE, col = "green", lwd = 2)
+curve(dpareto(x, shape = alpha_hat, scale = lambda_hat), add = TRUE, col = "yellow", lwd = 2)
+legend(10000, 0.0015, legend=c("Pareto","lognormal"), lty = 1, lwd = 2, col= c("yellow","red"))
+
+#lines(density(dataset), col = "red", lwd = 2)
+#legend(25000, 2e-4, legend=c("density()", "fitdistr()"), lty = c(1,1), lwd = 2, col=c("red","blue"))
+
+
+# Figure 2.24 (right)
+plot(ecdf(dataset),
+     main="Compare ecdf with estimated cdf", xlab="claim sizes", lty=1)
+curve(ppareto(x, shape = alpha_hat, scale = lambda_hat)  , add=TRUE, col = "yellow", lwd = 2)
+legend(20000, 0.8, legend=c("ecdf", "estimated cdf"), lty=1 ,col = c("black","yellow"), lwd = 2)
+
+
+##############################################################
+
+
+%\end{MyVerbatim}
+```
+

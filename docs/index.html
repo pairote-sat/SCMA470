@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="to-be-added.html"/>
+<link rel="next" href="loss-distributions.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,6 +55,69 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -75,23 +138,34 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.1</b> Expectation</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.2</b> Variances of Random Variables</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.3</b> Moments and Moment Generating Function</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.4</b> Probability generating function</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.5</b> Multivariate Distributions</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.6</b> Independent random variables</a></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.7</b> Conditional Distributions</a></li>
-<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.8</b> Covariance</a></li>
-<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.9</b> Correlation</a></li>
-<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.10</b> Model Fitting</a></li>
-<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.11</b> The method of moments</a></li>
-<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.12</b> The method of maximum likelihood</a></li>
-<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.13</b> Goodness of fit tests</a></li>
-<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.14</b> the Pearson chi-square goodness-of-fit criterion</a></li>
-<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.15</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="to-be-added.html"><a href="to-be-added.html"><i class="fa fa-check"></i><b>2</b> To be added</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>3</b> Interactive Lecture</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>3.1</b> DataCamp Light</a></li>
@@ -119,10 +193,12 @@
 <div id="header">
 <h1 class="title">SCMA470 Risk Analysis and Credibility</h1>
 <p class="author"><em>Pairote Satiracoo</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-08-24</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-08-26</em></p>
 </div>
 <div id="basic-probability-concepts" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Basic Probability Concepts</h1>
+<div id="random-variables" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Random Variables</h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 1.1  </strong></span><em>Let <span class="math inline">\(S\)</span> be the sample space of an experiment. A
 real-valued function <span class="math inline">\(X : S \rightarrow \mathbb{R}\)</span> is called a <strong>random
@@ -156,8 +232,57 @@ c.d.f <span class="math inline">\(F\)</span> and there exists a nonnegative, int
 <span class="math display">\[F(x) = \int_{-\infty}^x f(y)\, dy\]</span> Then the function <span class="math inline">\(f\)</span> is called
 the <strong>probability density function</strong> (p.d.f) of a random variable <span class="math inline">\(X\)</span>.</em></p>
 </div>
-<div id="expectation" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Expectation</h2>
+<div id="r-functions-for-probability-distributions" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> R Functions for Probability Distributions</h3>
+<p>In R, density, distribution function, for the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span> is shown as follows:</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="21%" />
+<col width="22%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribution</th>
+<th>Density function: <span class="math inline">\(P(X = x)\)</span></th>
+<th>Distribution function: <span class="math inline">\(P(X ≤ x)\)</span></th>
+<th>Quantile function (inverse c.d.f.)</th>
+<th>random generation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Poisson</td>
+<td><code>dpois(x, lambda, log = FALSE)</code></td>
+<td><code>ppois(q, lambda, lower.tail = TRUE, log.p = FALSE)</code></td>
+<td><code>qpois(p, lambda, lower.tail = TRUE, log.p = FALSE)</code></td>
+<td><code>rpois(n, lambda)</code></td>
+</tr>
+</tbody>
+</table>
+<p>For the binomial distribution, these functions are pbinom, qbinom, dbinom, and rbinom. For the normal distribution, these functions are pnorm, qnorm, dnorm, and rnorm. And so forth.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">k =</span> <span class="fu">factor</span>(x), <span class="at">pK =</span> <span class="fu">dbinom</span>(x, <span class="dv">20</span>, .<span class="dv">5</span>))</span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(myData,<span class="fu">aes</span>(k,<span class="at">ymin=</span><span class="dv">0</span>,<span class="at">ymax=</span>pK)) <span class="sc">+</span> </span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;p(k)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">5</span>)) <span class="sc">+</span>   </span>
+<span id="cb1-7"><a href="index.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;p.m.f of binomial distribution&quot;</span>)</span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>To plot continuous probability distribution in R, we use stat_function to add the density function as its arguement. To specify a different mean or standard deviation, we use the <code>args</code> parameter to supply new values.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="fl">0.1</span>))</span>
+<span id="cb2-3"><a href="index.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="index.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(x),<span class="at">fun=</span>dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>))  <span class="sc">+</span> </span>
+<span id="cb2-5"><a href="index.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;f(x)&quot;</span>, </span>
+<span id="cb2-6"><a href="index.html#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Normal Distribution With Mean = 0 &amp; SD = 1&quot;</span>) </span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+</div>
+<div id="expectation" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Expectation</h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 1.5  </strong></span><em>The <strong>expected value</strong> of a discrete random variable
 <span class="math inline">\(X\)</span> with the set of possible values <span class="math inline">\(A\)</span> and probability mass function
@@ -170,7 +295,7 @@ also occasionally denoted by <span class="math inline">\(\mathrm{E}[X]\)</span>,
 then <span class="math inline">\(\displaystyle \sum_{x \in A} x f(x)\)</span> is nothing but the weighted
 average of <span class="math inline">\(X\)</span>.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-6" class="theorem"><strong>Theorem 1.1  </strong></span><strong>Theorem 1</strong>. <em>Let <span class="math inline">\(X\)</span> be a discrete random variable with set of
+<p><span id="thm:unlabeled-div-6" class="theorem"><strong>Theorem 1.1  </strong></span><em>Let <span class="math inline">\(X\)</span> be a discrete random variable with set of
 possible values <span class="math inline">\(A\)</span> and probability mass function <span class="math inline">\(f(x)\)</span>, and let <span class="math inline">\(g\)</span> be
 a real-valued function. Then <span class="math inline">\(g(X)\)</span> is a random variable with
 <span class="math display">\[\mathrm{E}[g(X)] = \sum_{x \in A} g(x) f(x)\]</span> </em></p>
@@ -181,13 +306,16 @@ probability density function <span class="math inline">\(f\)</span> , the <stron
 defined by <span class="math display">\[\mathrm{E}(X) = \int_{-\infty}^\infty x f(x)\, dx\]</span> </em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-8" class="theorem"><strong>Theorem 1.2  </strong></span><strong>Theorem 2</strong>. * Let <span class="math inline">\(X\)</span> be a continuous random variable with
+<ul>
+<li></li>
+<li>Let <span class="math inline">\(X\)</span> be a continuous random variable with
 probability density function <span class="math inline">\(f (x)\)</span>; then for any function
 <span class="math inline">\(h: \mathbb{R} \rightarrow \mathbb{R}\)</span>,
-<span class="math display">\[\mathrm{E}[h(X)] = \int_{-\infty}^\infty h(x)\, f(x)\, dx\]</span> *</p>
+<span class="math display">\[\mathrm{E}[h(X)] = \int_{-\infty}^\infty h(x)\, f(x)\, dx\]</span> *</li>
+</ul>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.3  </strong></span><strong>Theorem 3</strong>. <em>Let <span class="math inline">\(X\)</span> be a random variable. Let
+<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.2  </strong></span><em>Let <span class="math inline">\(X\)</span> be a random variable. Let
 <span class="math inline">\(h_1, h_2, . . . , h_n\)</span> be real-valued functions, and
 <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span> be real numbers. Then
 <span class="math display">\[\mathrm{E}[a_1 h_1(X) + a_2 h_2(X) + \cdots + a_n h_n(X)] = a_1 \mathrm{E}[h_1(X)] + a_2 \mathrm{E}[h_2(X)] + \ldots +
@@ -196,8 +324,8 @@ probability density function <span class="math inline">\(f (x)\)</span>; then fo
 <p>Moreover, if <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then
 <span class="math display">\[\mathrm{E}(aX +b) = a\mathrm{E}(x) + b\]</span></p>
 </div>
-<div id="variances-of-random-variables" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Variances of Random Variables</h2>
+<div id="variances-of-random-variables" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Variances of Random Variables</h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.7  </strong></span><em>Let <span class="math inline">\(X\)</span> be a discrete random variable with a set of
 possible values <span class="math inline">\(A\)</span>, probability mass function <span class="math inline">\(f(x)\)</span>, and
@@ -220,8 +348,8 @@ defined by
 <span class="math display">\[\mathrm{Var}(aX + b) = a^2\ Var(X), \quad   \sigma_{aX + b}= |a|\sigma_X\]</span>
 where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants.</p>
 </div>
-<div id="moments-and-moment-generating-function" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Moments and Moment Generating Function</h2>
+<div id="moments-and-moment-generating-function" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Moments and Moment Generating Function</h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 1.9  </strong></span><em>For <span class="math inline">\(r &gt; 0\)</span>, the <span class="math inline">\(r\)</span>th moment of <span class="math inline">\(X\)</span> (the <span class="math inline">\(r\)</span>th
 moment about the origin) is <span class="math inline">\(\mathrm{E}[X^r]\)</span>, when it is defined. The
@@ -238,13 +366,57 @@ coefficient of skewness to be given by
 <p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 1.11  </strong></span><em>The coefficient of kurtosis of <span class="math inline">\(X\)</span> is defined by
 <span class="math display">\[\frac{\mathrm{E}[(X - \mathrm{E}[X])^4]}{(\mathrm{Var}[X])^{4/2}}.\]</span> </em></p>
 </div>
+<p><strong>Note</strong> In the formula, subtract from the mean and normalise or divide by the standard deviation center and scale to the standard values. Odd-order moments are increased if there is a long tail to the right and decreased if there is a long tail to the left, while even-order moments are increased if either tail is long. A negative value of the coefficient of skewness that the distribution is skewed to the left, or negatively skewed, meaning that the deviations above the mean tend to be smaller than the deviations below the mean, and vice versa. If the coefficent of skewness is close to zero, this could mean symmetry,</p>
+<p><strong>Note</strong> The fourth moment measures the fatness in the tails, which is always positive. The kurtosis of the standard normal distribution is 3. Using the standard normal distribution as a benchmark, the excess kurtosis of a random variable is defined as the kurtosis minus 3. A higher kurtosis corresponds to a larger extremity of deviations (or outliers), which is called excess kurtosis.</p>
+<p>The following diagram compares the shape between the normal distribution and Student’s t-distribution. Note that to use the legend with the <code>stat_function</code> in ggplot2, we use <code>scale_colour_manual</code> along with <code>colour =</code> inside the <code>aes()</code> as shown below and give names for specific density plots.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="fl">0.1</span>))</span>
+<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(x, <span class="at">colour =</span> <span class="st">&quot;dnorm&quot;</span>),<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>))  <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(x, <span class="at">colour =</span><span class="st">&quot;dt&quot;</span>),<span class="at">fun =</span> dt, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> <span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_colour_manual</span>(<span class="st">&quot;Legend title&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb3-7"><a href="index.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;f(x)&quot;</span>, </span>
+<span id="cb3-8"><a href="index.html#cb3-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Normal Distribution With Mean = 0 &amp; SD = 1&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb3-9"><a href="index.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Next we will simulate 10000 samples from a normal distribution with mean 0, and standard deviation 1, then compute and interpret for the skewness and kurtosis, and plot the histogram. Here we also use
+the function <code>set.seed()</code> to set the seed of R’s random number generator, this is useful for creating simulations or random objects that can be reproduced.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">15</span>) <span class="co"># Set the seed of R&#39;s random number generator</span></span>
+<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulation</span></span>
+<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a>n.sample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Skewness and Kurtosis</span></span>
+<span id="cb4-7"><a href="index.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb4-8"><a href="index.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(n.sample)</span></code></pre></div>
+<pre><code>## [1] -0.03585812</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(n.sample)</span></code></pre></div>
+<pre><code>## [1] 2.963189</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> n.sample),<span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href="index.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">15</span>)</span>
+<span id="cb9-2"><a href="index.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="index.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulation</span></span>
+<span id="cb9-4"><a href="index.html#cb9-4" aria-hidden="true" tabindex="-1"></a>t.sample <span class="ot">&lt;-</span> <span class="fu">rt</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb9-5"><a href="index.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="index.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Skewness and Kurtosis</span></span>
+<span id="cb9-7"><a href="index.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb9-8"><a href="index.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(t.sample)</span></code></pre></div>
+<pre><code>## [1] 0.06196269</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(t.sample)</span></code></pre></div>
+<pre><code>## [1] 7.646659</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> t.sample),<span class="fu">aes</span>(x)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><strong>Example</strong> Let us count the number of samples greater than 5 from the samples of the normal and Student’s t distributions. Comment on your results</p>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlXG5zZXQuc2VlZCgxNSlcbm4uc2FtcGxlIDwtIHJub3JtKG4gPSAxMDAwMCwgbWVhbiA9IDAsIHNkID0gMSlcbnQuc2FtcGxlIDwtIHJ0KG4gPSAxMDAwMCwgZGYgPSA1KSJ9
+</div>
 <div class="definition">
-<ul>
-<li></li>
-<li>The moment generating function (mgf) of a random
+<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 1.12  </strong></span><em>The moment generating function (mgf) of a random
 variable <span class="math inline">\(X\)</span> is defined to be <span class="math display">\[M_X(t) = E[e^{tX}],\]</span> if the expectation
-exists. *</li>
-</ul>
+exists.</em></p>
 </div>
 <p><strong>Note</strong> The moment generating function of <span class="math inline">\(X\)</span> may not defined (may not
 be finite) for all <span class="math inline">\(t\)</span> in <span class="math inline">\(\mathbb{R}\)</span>.</p>
@@ -253,17 +425,18 @@ be finite) for all <span class="math inline">\(t\)</span> in <span class="math i
 <span class="math inline">\(t = 0\)</span>, with <span class="math display">\[M^{(k)}_X (0) = \mathrm{E}[X^k],\]</span> with
 <span class="math inline">\(\mathrm{E}[|X|^k]\)</span> finite. We can obtain the moments by succesive
 differentiation of <span class="math inline">\(M_X(t)\)</span> and letting <span class="math inline">\(t = 0\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 1.1  </strong></span>Derive the formula for the mgf of the standard normal distribution.
+Hint: its mgf is <span class="math inline">\(e^{\f t^2}\)</span>.</p>
 </div>
-<div id="probability-generating-function" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Probability generating function</h2>
+</div>
+<div id="probability-generating-function" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Probability generating function</h2>
 <div class="definition">
-<ul>
-<li></li>
-<li>For a counting variable <span class="math inline">\(N\)</span> (a variable which
+<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.13  </strong></span><em>For a counting variable <span class="math inline">\(N\)</span> (a variable which
 assumes some or all of the values <span class="math inline">\(0, 1, 2, \ldots,\)</span> but no others), The
 probability generating function of <span class="math inline">\(N\)</span> is <span class="math display">\[G_N(t) = E[t^N],\]</span> for those
-<span class="math inline">\(t\)</span> in <span class="math inline">\(\mathbb{R}\)</span> for which the series converges absolutely. *</li>
-</ul>
+<span class="math inline">\(t\)</span> in <span class="math inline">\(\mathbb{R}\)</span> for which the series converges absolutely. </em></p>
 </div>
 <p>Let <span class="math inline">\(p_k = P(N = k)\)</span>. Then
 <span class="math display">\[G_N(t) = E[t^N] = \sum_{k=0}^\infty t^k p_k.\]</span> It can be shown that if
@@ -273,8 +446,8 @@ probability generating function of <span class="math inline">\(N\)</span> is <sp
 both pgf and mgf of <span class="math inline">\(N\)</span> are defined, we have
 <span class="math display">\[G_N(t) = M_N(\log(t)) \quad \text{ and } M_N(t) = G_N(e^t).\]</span></p>
 </div>
-<div id="multivariate-distributions" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Multivariate Distributions</h2>
+<div id="multivariate-distributions" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Multivariate Distributions</h2>
 <p>When <span class="math inline">\(X_1,X_2,\ldots ,X_n\)</span> be random variables defined on the same
 sample space, a multivariate probability density function or probability
 mass function<br />
@@ -282,7 +455,7 @@ mass function<br />
 be extended to more than two random variables and the case of discrete
 random variables.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.12  </strong></span><em>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, defined on the
+<p><span id="def:unlabeled-div-18" class="definition"><strong>Definition 1.14  </strong></span><em>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, defined on the
 same sample space, have a continuous joint distribution if there exists
 a nonnegative function of two variables, <span class="math inline">\(f(x, y)\)</span> on
 <span class="math inline">\(\mathbb{R} \times \mathbb{R}\)</span> , such that for any region <span class="math inline">\(R\)</span> in the
@@ -297,13 +470,18 @@ terms of <span class="math inline">\(f\)</span> , note that, on the one hand, fo
 <span class="math display">\[P(Y \in B) = \int_B f_Y(y) \, dy,\]</span> and on the other hand, we also
 have
 <span class="math display">\[P(Y \in B) = P(X \in (-\infty, \infty), Y \in B) = \int_B \left(    \int_{-\infty}^\infty f(x,y)\, dx  \right) \, dy.\]</span></p>
-<p>We have <span class="math display">\[\label{mar1}  f_Y(y) =   \int_{-\infty}^\infty f(x,y)\, dx\]</span>
-and <span class="math display">\[\label{mar2}  f_X(x) =   \int_{-\infty}^\infty f(x,y)\, dy\]</span></p>
+<p>We have
+<span class="math display" id="eq:label">\[\begin{equation} 
+\tag{1.1} f_Y(y) =   \int_{-\infty}^\infty f(x,y)\, dx
+\end{equation}\]</span>
+and
+<span class="math display" id="eq:label2">\[\begin{equation} 
+\tag{1.2}  f_X(x) =   \int_{-\infty}^\infty f(x,y)\, dy
+\end{equation}\]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-18" class="definition"><strong>Definition 1.13  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint probability density
-function <span class="math inline">\(f (x, y)\)</span>; then the functions <span class="math inline">\(f_X\)</span> and <span class="math inline">\(f_Y\)</span> in
-<a href="#mar2" reference-type="eqref" reference="mar2"><span class="math display">\[mar2\]</span></a> and
-<a href="#mar1" reference-type="eqref" reference="mar1"><span class="math display">\[mar1\]</span></a> are called,
+<p><span id="def:unlabeled-div-19" class="definition"><strong>Definition 1.15  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have joint probability density
+function <span class="math inline">\(f (x, y)\)</span>; then the functions <span class="math inline">\(f_X\)</span> and <span class="math inline">\(f_Y\)</span> in</em> <a href="index.html#eq:label">(1.1)</a> and <a href="index.html#eq:label2">(1.2)</a>
+<em>are called,
 respectively, the <strong>marginal probability density functions</strong> of <span class="math inline">\(X\)</span> and
 <span class="math inline">\(Y\)</span> .</em></p>
 </div>
@@ -321,7 +499,7 @@ found from <span class="math inline">\(F\)</span> as follows:
 <p>We also have
 <span class="math display">\[\mathrm{E}(X) =   \int_{-\infty}^\infty x f_X(x)\, dx , \quad \mathrm{E}(Y) =   \int_{-\infty}^\infty y f_Y(y)\, dy\]</span></p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-19" class="theorem"><strong>Theorem 1.4  </strong></span><strong>Theorem 4</strong>. <em>Let <span class="math inline">\(f (x, y)\)</span> be the joint probability density function
+<p><span id="thm:unlabeled-div-20" class="theorem"><strong>Theorem 1.3  </strong></span><em>Let <span class="math inline">\(f (x, y)\)</span> be the joint probability density function
 of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. If <span class="math inline">\(h\)</span> is a function of two variables
 from <span class="math inline">\(\mathbb{R}^2\)</span> to <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(h(X, Y )\)</span> is a random
 variable with the expected value given by
@@ -331,41 +509,41 @@ provided that the integral is absolutely convergent.</em></p>
 <p>As a consequence of the above theorem, for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>,
 <span class="math display">\[\mathrm{E}(X + Y) = \mathrm{E}(X) + \mathrm{E}(Y)\]</span></p>
 </div>
-<div id="independent-random-variables" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Independent random variables</h2>
+<div id="independent-random-variables" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Independent random variables</h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-20" class="definition"><strong>Definition 1.14  </strong></span><em>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are called
+<p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 1.16  </strong></span><em>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are called
 independent if, for arbitrary subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of real numbers, the
 events <span class="math inline">\(\{X \in A\}\)</span> and <span class="math inline">\(\{Y \in B\}\)</span> are <strong>independent</strong>, that is, if
 <span class="math display">\[P(X \in A, Y \in B) = P(X \in A) P(Y \in B).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-21" class="theorem"><strong>Theorem 1.5  </strong></span><strong>Theorem 5</strong>. <em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables defined on the
+<p><span id="thm:unlabeled-div-22" class="theorem"><strong>Theorem 1.4  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables defined on the
 same sample space. If <span class="math inline">\(F\)</span> is the joint probability distribution function
 of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if for all
 real numbers <span class="math inline">\(t\)</span> and <span class="math inline">\(u\)</span>, <span class="math display">\[F(t,u)  = F_X(t) F_Y(u).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-22" class="theorem"><strong>Theorem 1.6  </strong></span><strong>Theorem 6</strong>. <em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly continuous random variables
+<p><span id="thm:unlabeled-div-23" class="theorem"><strong>Theorem 1.5  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly continuous random variables
 with joint probability density function <span class="math inline">\(f (x, y)\)</span>. Then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are
 independent if and only if <span class="math display">\[f (x, y) = f_X(x) f_Y (y).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-23" class="theorem"><strong>Theorem 1.7  </strong></span><strong>Theorem 7</strong>. <em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables and
+<p><span id="thm:unlabeled-div-24" class="theorem"><strong>Theorem 1.6  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables and
 <span class="math inline">\(g : \mathbb{R} \rightarrow\mathbb{R}\)</span> and
 <span class="math inline">\(h : \mathbb{R} \rightarrow\mathbb{R}\)</span> be real-valued functions; then
 <span class="math inline">\(g(X)\)</span> and <span class="math inline">\(h(Y )\)</span> are also independent random variables.</em></p>
 </div>
 <p>As a consequence of the above theorem, we obtain</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-24" class="theorem"><strong>Theorem 1.8  </strong></span><strong>Theorem 8</strong>. <em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables. Then
+<p><span id="thm:unlabeled-div-25" class="theorem"><strong>Theorem 1.7  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables. Then
 for all real-value functions <span class="math inline">\(g : \mathbb{R} \rightarrow\mathbb{R}\)</span> and
 <span class="math inline">\(h : \mathbb{R} \rightarrow\mathbb{R}\)</span>,
 <span class="math display">\[\mathrm{E}[g(X)h(Y)] = \mathrm{E}[g(X)]\mathrm{E}[h(Y)]\]</span> </em></p>
 </div>
 </div>
-<div id="conditional-distributions" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Conditional Distributions</h2>
+<div id="conditional-distributions" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Conditional Distributions</h2>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two continuous random variables with the joint
 probability density function <span class="math inline">\(f (x, y)\)</span>. Note that the case of discrete
 random variables can be considered in the same way. When no information
@@ -389,8 +567,8 @@ where <span class="math inline">\(f_Y(y) &gt; 0\)</span>.</p>
 <span class="math inline">\(f_X\)</span> because
 <span class="math display">\[f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} =\frac{f_X(x)f_Y(y)}{f_Y(y)} = f_X(x).\]</span></p>
 </div>
-<div id="covariance" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Covariance</h2>
+<div id="covariance" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Covariance</h2>
 <p>The notion of the variance of a random variable <span class="math inline">\(X\)</span>,
 <span class="math inline">\(\mathrm{Var}(X) = \mathrm{E}[ ( X - \mathrm{E}(X))^2]\)</span> measures the
 average magnitude of the fluctuations of the random variable <span class="math inline">\(X\)</span> from
@@ -408,7 +586,7 @@ dispersions of <span class="math inline">\(X\)</span> and <span class="math inli
 that gives information about the joint spread, or dispersion, <span class="math inline">\(X\)</span> and
 <span class="math inline">\(Y\)</span> .</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-25" class="definition"><strong>Definition 1.15  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly distributed random
+<p><span id="def:unlabeled-div-26" class="definition"><strong>Definition 1.17  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly distributed random
 variables; then the <strong>covariance</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined by
 <span class="math display">\[\mathrm{Cov}(X,Y) =  \mathrm{E}[(X - \mathrm{E}(X))(Y - \mathrm{E}(Y))].\]</span></em></p>
 </div>
@@ -433,8 +611,8 @@ uncorrelated.</p>
 the converse of this is not true; that is, two dependent random
 variables might be uncorrelated.</p>
 </div>
-<div id="correlation" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> Correlation</h2>
+<div id="correlation" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> Correlation</h2>
 <p>A large covariance can mean a strong relationship between variables.
 However, we cannot compare variances over data sets with different
 scales. A weak covariance in one data set may be a strong one in a
@@ -442,7 +620,7 @@ different data set with different scales. The problem can be fixed by
 dividing the covariance by the standard deviation to get the correlation
 coefficient.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-26" class="definition"><strong>Definition 1.16  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables with
+<p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 1.18  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables with
 <span class="math inline">\(0&lt; \sigma^2_X, \sigma^2_Y &lt; \infty\)</span>. The covariance between the
 standardized <span class="math inline">\(X\)</span> and the standardized <span class="math inline">\(Y\)</span> is called the correlation
 coefficient between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and is denoted <span class="math inline">\(\rho = \rho(X,Y)\)</span>,
@@ -466,16 +644,16 @@ linear relationship.</p>
 <span class="math display">\[-1 \le \rho(X, Y ) \le 1\]</span>
 <span class="math display">\[\rho(a X + b, cY +d) = \text{sign}(ac) \rho(X, Y )\]</span></p>
 </div>
-<div id="model-fitting" class="section level2" number="1.10">
-<h2><span class="header-section-number">1.10</span> Model Fitting</h2>
+<div id="model-fitting" class="section level2" number="1.11">
+<h2><span class="header-section-number">1.11</span> Model Fitting</h2>
 <p>The contents in this section are taken from Gray and Pitts.</p>
 <p>To fit a parametric model, we have to calculate estimates of the unknown
 parameters of the probability distribution. Various criteria are
 available, including the method of moments, the method of maximum
 likelihood, etc.</p>
 </div>
-<div id="the-method-of-moments" class="section level2" number="1.11">
-<h2><span class="header-section-number">1.11</span> The method of moments</h2>
+<div id="the-method-of-moments" class="section level2" number="1.12">
+<h2><span class="header-section-number">1.12</span> The method of moments</h2>
 <p>The method of moments leads to parameter estimates by simply matching
 the moments of the model,
 <span class="math inline">\(\mathrm{E}[X], \mathrm{E}[X^2], \mathrm{E}[X^3], \ldots ,\)</span> in turn to
@@ -491,8 +669,8 @@ particular matching <span class="math inline">\(\mathrm{E}[X]\)</span> to the sa
 the MME of a parameter <span class="math inline">\(\theta\)</span>, say, is usually denoted
 <span class="math inline">\(\tilde{\theta}\)</span>.</p>
 </div>
-<div id="the-method-of-maximum-likelihood" class="section level2" number="1.12">
-<h2><span class="header-section-number">1.12</span> The method of maximum likelihood</h2>
+<div id="the-method-of-maximum-likelihood" class="section level2" number="1.13">
+<h2><span class="header-section-number">1.13</span> The method of maximum likelihood</h2>
 <p>The method of maximum likelihood is the most widely used method for
 parameter estimation. The estimates it produces are those values of the
 parameters which give the maximum value attainable by the likelihood
@@ -517,31 +695,31 @@ mean, that is <span class="math inline">\(\hat{\lambda} = \bar{x}\)</span></p></
 reciprocal of the sample mean, that is <span class="math inline">\(\hat{\lambda} = 1/\bar{x}\)</span></p></li>
 </ul>
 </div>
-<div id="goodness-of-fit-tests" class="section level2" number="1.13">
-<h2><span class="header-section-number">1.13</span> Goodness of fit tests</h2>
+<div id="goodness-of-fit-tests" class="section level2" number="1.14">
+<h2><span class="header-section-number">1.14</span> Goodness of fit tests</h2>
 <p>We can assess how well the fitted distributions reflect the distribution
-of the data in various ways.We should, of course, examine and compare
+of the data in various ways. We should, of course, examine and compare
 the tables of frequencies and, if appropriate, plot and compare
 empirical distribution functions. More formally, we can perform certain
 statistical tests. Here we will use the Pearson chi-square
 goodness-of-fit criterion.</p>
 </div>
-<div id="the-pearson-chi-square-goodness-of-fit-criterion" class="section level2" number="1.14">
-<h2><span class="header-section-number">1.14</span> the Pearson chi-square goodness-of-fit criterion</h2>
+<div id="the-pearson-chi-square-goodness-of-fit-criterion" class="section level2" number="1.15">
+<h2><span class="header-section-number">1.15</span> the Pearson chi-square goodness-of-fit criterion</h2>
 <p>We construct the test statistic <span class="math display">\[\chi^2 = \frac{\sum(O - E)^2}{E},\]</span>
 where <span class="math inline">\(O\)</span> is the observed frequency in a cell in the frequency table and
 <span class="math inline">\(E\)</span> is the fitted or expected frequency (the frequency expected in that
 cell under the fitted model), and where we sum over all usable cells.</p>
-<p>The null hypothesis is that the sample comes from a specified
+<p><strong>The null hypothesis</strong> is that the sample comes from a specified
 distribution.</p>
 <p>The value of the test statistic is then evaluated in one of two ways.</p>
 <ol style="list-style-type: decimal">
 <li><p>We convert it to a <span class="math inline">\(P\)</span>-value, which is a measure of the strength of
 the evidence against the hypothesis that the data do follow the
-fitted distribution. If the <span class="math inline">\(P\)</span>-value is small enough, we conclude
+fitted distribution. <strong>If the <span class="math inline">\(P\)</span>-value is small enough, we conclude
 that the data do not follow the fitted distribution – we say “the
 fitted distribution does not provide a good fit to the data” (and
-quote the <span class="math inline">\(P\)</span>-value in support of this conclusion).</p></li>
+quote the <span class="math inline">\(P\)</span>-value in support of this conclusion)</strong>.</p></li>
 <li><p>We compare it with values in published tables of the distribution
 function of the appropriate <span class="math inline">\(\chi^2\)</span> distribution, and if the value
 of the statistic is high enough to be in a tail of specified size of
@@ -549,8 +727,8 @@ this reference distribution, we conclude that the fitted
 distribution does not provide a good fit to the data.</p></li>
 </ol>
 </div>
-<div id="kolmogorov-smirnov-k-s-test." class="section level2" number="1.15">
-<h2><span class="header-section-number">1.15</span> Kolmogorov-Smirnov (K-S) test.</h2>
+<div id="kolmogorov-smirnov-k-s-test." class="section level2" number="1.16">
+<h2><span class="header-section-number">1.16</span> Kolmogorov-Smirnov (K-S) test.</h2>
 <p>The K-S test statistic is the maximum difference between the values of
 the ecdf of the sample and the cdf of the fully specified fitted
 distribution.</p>
@@ -565,7 +743,7 @@ to the reference text for more details.</p>
         </div>
       </div>
 
-<a href="to-be-added.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="loss-distributions.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
