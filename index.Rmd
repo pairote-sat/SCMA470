@@ -288,7 +288,7 @@ differentiation of $M_X(t)$ and letting $t = 0$.
 
 ::: {.example}
 Derive the formula for the mgf of the standard normal distribution.
-Hint: its mgf is $e^{\f t^2}$. 
+Hint: its mgf is $e^{\frac{1}{2} t^2}$. 
 :::
 
 

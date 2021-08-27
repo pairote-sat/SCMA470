@@ -42,6 +42,46 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -88,7 +128,7 @@
 
 \title{SCMA470 Risk Analysis and Credibility}
 \author{Pairote Satiracoo}
-\date{2021-08-24}
+\date{2021-08-27}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -116,6 +156,9 @@
 }
 \hypertarget{basic-probability-concepts}{%
 \chapter{Basic Probability Concepts}\label{basic-probability-concepts}}
+
+\hypertarget{random-variables}{%
+\section{Random Variables}\label{random-variables}}
 
 \begin{definition}
 \protect\hypertarget{def:unlabeled-div-1}{}\label{def:unlabeled-div-1}
@@ -168,6 +211,66 @@ the \textbf{probability density function} (p.d.f) of a random variable \(X\).}
 
 \end{definition}
 
+\hypertarget{r-functions-for-probability-distributions}{%
+\subsection{R Functions for Probability Distributions}\label{r-functions-for-probability-distributions}}
+
+In R, density, distribution function, for the Poisson distribution with parameter \(\lambda\) is shown as follows:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.12}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.21}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.22}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.21}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.22}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Distribution
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Density function: \(P(X = x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Distribution function: \(P(X ≤ x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Quantile function (inverse c.d.f.)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+random generation
+\end{minipage} \\
+\midrule
+\endhead
+Poisson & \texttt{dpois(x,\ lambda,\ log\ =\ FALSE)} & \texttt{ppois(q,\ lambda,\ lower.tail\ =\ TRUE,\ log.p\ =\ FALSE)} & \texttt{qpois(p,\ lambda,\ lower.tail\ =\ TRUE,\ log.p\ =\ FALSE)} & \texttt{rpois(n,\ lambda)} \\
+\bottomrule
+\end{longtable}
+
+For the binomial distribution, these functions are pbinom, qbinom, dbinom, and rbinom. For the normal distribution, these functions are pnorm, qnorm, dnorm, and rnorm. And so forth.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\DecValTok{20}
+\NormalTok{myData }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{( }\AttributeTok{k =} \FunctionTok{factor}\NormalTok{(x), }\AttributeTok{pK =} \FunctionTok{dbinom}\NormalTok{(x, }\DecValTok{20}\NormalTok{, .}\DecValTok{5}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{(myData,}\FunctionTok{aes}\NormalTok{(k,}\AttributeTok{ymin=}\DecValTok{0}\NormalTok{,}\AttributeTok{ymax=}\NormalTok{pK)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_linerange}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"p(k)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{breaks=}\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{5}\NormalTok{)) }\SpecialCharTok{+}   
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"p.m.f of binomial distribution"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+To plot continuous probability distribution in R, we use stat\_function to add the density function as its arguement. To specify a different mean or standard deviation, we use the \texttt{args} parameter to supply new values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{(df) }\SpecialCharTok{+} 
+    \FunctionTok{stat\_function}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x),}\AttributeTok{fun=}\NormalTok{dnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{))  }\SpecialCharTok{+} 
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"x"}\NormalTok{, }\AttributeTok{y =} \StringTok{"f(x)"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Normal Distribution With Mean = 0 \& SD = 1"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-2-1.pdf}
+
 \hypertarget{expectation}{%
 \section{Expectation}\label{expectation}}
 
@@ -191,7 +294,7 @@ average of \(X\).
 \begin{theorem}
 \protect\hypertarget{thm:unlabeled-div-6}{}\label{thm:unlabeled-div-6}
 
-\textbf{Theorem 1}. \emph{Let \(X\) be a discrete random variable with set of
+\emph{Let \(X\) be a discrete random variable with set of
 possible values \(A\) and probability mass function \(f(x)\), and let \(g\) be
 a real-valued function. Then \(g(X)\) is a random variable with
 \[\mathrm{E}[g(X)] = \sum_{x \in A} g(x) f(x)\] }
@@ -210,17 +313,21 @@ defined by \[\mathrm{E}(X) = \int_{-\infty}^\infty x f(x)\, dx\] }
 \begin{theorem}
 \protect\hypertarget{thm:unlabeled-div-8}{}\label{thm:unlabeled-div-8}
 
-\textbf{Theorem 2}. * Let \(X\) be a continuous random variable with
-probability density function \(f (x)\); then for any function
-\(h: \mathbb{R} \rightarrow \mathbb{R}\),
-\[\mathrm{E}[h(X)] = \int_{-\infty}^\infty h(x)\, f(x)\, dx\] *
+\begin{itemize}
+\tightlist
+\item
+  Let \(X\) be a continuous random variable with
+  probability density function \(f (x)\); then for any function
+  \(h: \mathbb{R} \rightarrow \mathbb{R}\),
+  \[\mathrm{E}[h(X)] = \int_{-\infty}^\infty h(x)\, f(x)\, dx\] *
+\end{itemize}
 
 \end{theorem}
 
 \begin{theorem}
 \protect\hypertarget{thm:unlabeled-div-9}{}\label{thm:unlabeled-div-9}
 
-\textbf{Theorem 3}. \emph{Let \(X\) be a random variable. Let
+\emph{Let \(X\) be a random variable. Let
 \(h_1, h_2, . . . , h_n\) be real-valued functions, and
 \(a_1, a_2, \ldots, a_n\) be real numbers. Then
 \[\mathrm{E}[a_1 h_1(X) + a_2 h_2(X) + \cdots + a_n h_n(X)] = a_1 \mathrm{E}[h_1(X)] + a_2 \mathrm{E}[h_2(X)] + \ldots +
@@ -295,16 +402,112 @@ coefficient of skewness to be given by
 
 \end{definition}
 
+\textbf{Note} In the formula, subtract from the mean and normalise or divide by the standard deviation center and scale to the standard values. Odd-order moments are increased if there is a long tail to the right and decreased if there is a long tail to the left, while even-order moments are increased if either tail is long. A negative value of the coefficient of skewness that the distribution is skewed to the left, or negatively skewed, meaning that the deviations above the mean tend to be smaller than the deviations below the mean, and vice versa. If the coefficent of skewness is close to zero, this could mean symmetry,
+
+\textbf{Note} The fourth moment measures the fatness in the tails, which is always positive. The kurtosis of the standard normal distribution is 3. Using the standard normal distribution as a benchmark, the excess kurtosis of a random variable is defined as the kurtosis minus 3. A higher kurtosis corresponds to a larger extremity of deviations (or outliers), which is called excess kurtosis.
+
+The following diagram compares the shape between the normal distribution and Student's t-distribution. Note that to use the legend with the \texttt{stat\_function} in ggplot2, we use \texttt{scale\_colour\_manual} along with \texttt{colour\ =} inside the \texttt{aes()} as shown below and give names for specific density plots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{(df) }\SpecialCharTok{+} 
+    \FunctionTok{stat\_function}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, }\AttributeTok{colour =} \StringTok{"dnorm"}\NormalTok{),}\AttributeTok{fun =}\NormalTok{ dnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{))  }\SpecialCharTok{+} 
+    \FunctionTok{stat\_function}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, }\AttributeTok{colour =}\StringTok{"dt"}\NormalTok{),}\AttributeTok{fun =}\NormalTok{ dt, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{df =} \DecValTok{4}\NormalTok{)) }\SpecialCharTok{+}
+     \FunctionTok{scale\_colour\_manual}\NormalTok{(}\StringTok{"Legend title"}\NormalTok{, }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"blue"}\NormalTok{)) }\SpecialCharTok{+} 
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"x"}\NormalTok{, }\AttributeTok{y =} \StringTok{"f(x)"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Normal Distribution With Mean = 0 \& SD = 1"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+Next we will simulate 10000 samples from a normal distribution with mean 0, and standard deviation 1, then compute and interpret for the skewness and kurtosis, and plot the histogram. Here we also use
+the function \texttt{set.seed()} to set the seed of R's random number generator, this is useful for creating simulations or random objects that can be reproduced.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{15}\NormalTok{) }\CommentTok{\# Set the seed of R\textquotesingle{}s random number generator}
+
+\CommentTok{\#Simulation}
+\NormalTok{n.sample }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{10000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\#Skewness and Kurtosis}
+\FunctionTok{library}\NormalTok{(moments)}
+\FunctionTok{skewness}\NormalTok{(n.sample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.03585812
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosis}\NormalTok{(n.sample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.963189
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ n.sample),}\FunctionTok{aes}\NormalTok{(x)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{15}\NormalTok{)}
+
+\CommentTok{\#Simulation}
+\NormalTok{t.sample }\OtherTok{\textless{}{-}} \FunctionTok{rt}\NormalTok{(}\AttributeTok{n =} \DecValTok{10000}\NormalTok{, }\AttributeTok{df =} \DecValTok{5}\NormalTok{)}
+
+\CommentTok{\#Skewness and Kurtosis}
+\FunctionTok{library}\NormalTok{(moments)}
+\FunctionTok{skewness}\NormalTok{(t.sample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.06196269
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosis}\NormalTok{(t.sample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.646659
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ t.sample),}\FunctionTok{aes}\NormalTok{(x)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\textbf{Example} Let us count the number of samples greater than 5 from the samples of the normal and Student's t distributions. Comment on your results
+
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlXG5zZXQuc2VlZCgxNSlcbm4uc2FtcGxlIDwtIHJub3JtKG4gPSAxMDAwMCwgbWVhbiA9IDAsIHNkID0gMSlcbnQuc2FtcGxlIDwtIHJ0KG4gPSAxMDAwMCwgZGYgPSA1KSJ9
+
 \begin{definition}
 \protect\hypertarget{def:unlabeled-div-15}{}\label{def:unlabeled-div-15}
 
-\begin{itemize}
-\tightlist
-\item
-  The moment generating function (mgf) of a random
-  variable \(X\) is defined to be \[M_X(t) = E[e^{tX}],\] if the expectation
-  exists. *
-\end{itemize}
+\emph{The moment generating function (mgf) of a random
+variable \(X\) is defined to be \[M_X(t) = E[e^{tX}],\] if the expectation
+exists.}
 
 \end{definition}
 
@@ -317,20 +520,24 @@ If \(M_X(t)\) is finite for \(|t| < h\) for some \(h > 0\), then, for any
 \(\mathrm{E}[|X|^k]\) finite. We can obtain the moments by succesive
 differentiation of \(M_X(t)\) and letting \(t = 0\).
 
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-16}{}\label{exm:unlabeled-div-16}
+
+Derive the formula for the mgf of the standard normal distribution.
+Hint: its mgf is \(e^{\frac{1}{2} t^2}\).
+
+\end{example}
+
 \hypertarget{probability-generating-function}{%
 \section{Probability generating function}\label{probability-generating-function}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-16}{}\label{def:unlabeled-div-16}
+\protect\hypertarget{def:unlabeled-div-17}{}\label{def:unlabeled-div-17}
 
-\begin{itemize}
-\tightlist
-\item
-  For a counting variable \(N\) (a variable which
-  assumes some or all of the values \(0, 1, 2, \ldots,\) but no others), The
-  probability generating function of \(N\) is \[G_N(t) = E[t^N],\] for those
-  \(t\) in \(\mathbb{R}\) for which the series converges absolutely. *
-\end{itemize}
+\emph{For a counting variable \(N\) (a variable which
+assumes some or all of the values \(0, 1, 2, \ldots,\) but no others), The
+probability generating function of \(N\) is \[G_N(t) = E[t^N],\] for those
+\(t\) in \(\mathbb{R}\) for which the series converges absolutely. }
 
 \end{definition}
 
@@ -353,7 +560,7 @@ be extended to more than two random variables and the case of discrete
 random variables.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-17}{}\label{def:unlabeled-div-17}
+\protect\hypertarget{def:unlabeled-div-18}{}\label{def:unlabeled-div-18}
 
 \emph{Two random variables \(X\) and \(Y\), defined on the
 same sample space, have a continuous joint distribution if there exists
@@ -374,16 +581,21 @@ terms of \(f\) , note that, on the one hand, for any subset \(B\) of \(R\),
 have
 \[P(Y \in B) = P(X \in (-\infty, \infty), Y \in B) = \int_B \left(    \int_{-\infty}^\infty f(x,y)\, dx  \right) \, dy.\]
 
-We have \[\label{mar1}  f_Y(y) =   \int_{-\infty}^\infty f(x,y)\, dx\]
-and \[\label{mar2}  f_X(x) =   \int_{-\infty}^\infty f(x,y)\, dy\]
+We have
+\begin{equation} 
+\label{eq:label} f_Y(y) =   \int_{-\infty}^\infty f(x,y)\, dx
+\end{equation}
+and
+\begin{equation} 
+\label{eq:label2}  f_X(x) =   \int_{-\infty}^\infty f(x,y)\, dy
+\end{equation}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-18}{}\label{def:unlabeled-div-18}
+\protect\hypertarget{def:unlabeled-div-19}{}\label{def:unlabeled-div-19}
 
 \emph{Let \(X\) and \(Y\) have joint probability density
-function \(f (x, y)\); then the functions \(f_X\) and \(f_Y\) in
-\protect\hyperlink{mar2}{\[mar2\]} and
-\protect\hyperlink{mar1}{\[mar1\]} are called,
+function \(f (x, y)\); then the functions \(f_X\) and \(f_Y\) in} \eqref{eq:label} and \eqref{eq:label2}
+\emph{are called,
 respectively, the \textbf{marginal probability density functions} of \(X\) and
 \(Y\) .}
 
@@ -407,9 +619,9 @@ We also have
 \[\mathrm{E}(X) =   \int_{-\infty}^\infty x f_X(x)\, dx , \quad \mathrm{E}(Y) =   \int_{-\infty}^\infty y f_Y(y)\, dy\]
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-19}{}\label{thm:unlabeled-div-19}
+\protect\hypertarget{thm:unlabeled-div-20}{}\label{thm:unlabeled-div-20}
 
-\textbf{Theorem 4}. \emph{Let \(f (x, y)\) be the joint probability density function
+\emph{Let \(f (x, y)\) be the joint probability density function
 of random variables \(X\) and \(Y\). If \(h\) is a function of two variables
 from \(\mathbb{R}^2\) to \(\mathbb{R}\), then \(h(X, Y )\) is a random
 variable with the expected value given by
@@ -425,7 +637,7 @@ As a consequence of the above theorem, for random variables \(X\) and \(Y\),
 \section{Independent random variables}\label{independent-random-variables}}
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-20}{}\label{def:unlabeled-div-20}
+\protect\hypertarget{def:unlabeled-div-21}{}\label{def:unlabeled-div-21}
 
 \emph{Two random variables \(X\) and \(Y\) are called
 independent if, for arbitrary subsets \(A\) and \(B\) of real numbers, the
@@ -435,9 +647,9 @@ events \(\{X \in A\}\) and \(\{Y \in B\}\) are \textbf{independent}, that is, if
 \end{definition}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-21}{}\label{thm:unlabeled-div-21}
+\protect\hypertarget{thm:unlabeled-div-22}{}\label{thm:unlabeled-div-22}
 
-\textbf{Theorem 5}. \emph{Let \(X\) and \(Y\) be two random variables defined on the
+\emph{Let \(X\) and \(Y\) be two random variables defined on the
 same sample space. If \(F\) is the joint probability distribution function
 of \(X\) and \(Y\), then \(X\) and \(Y\) are independent if and only if for all
 real numbers \(t\) and \(u\), \[F(t,u)  = F_X(t) F_Y(u).\]}
@@ -445,18 +657,18 @@ real numbers \(t\) and \(u\), \[F(t,u)  = F_X(t) F_Y(u).\]}
 \end{theorem}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-22}{}\label{thm:unlabeled-div-22}
+\protect\hypertarget{thm:unlabeled-div-23}{}\label{thm:unlabeled-div-23}
 
-\textbf{Theorem 6}. \emph{Let \(X\) and \(Y\) be jointly continuous random variables
+\emph{Let \(X\) and \(Y\) be jointly continuous random variables
 with joint probability density function \(f (x, y)\). Then \(X\) and \(Y\) are
 independent if and only if \[f (x, y) = f_X(x) f_Y (y).\]}
 
 \end{theorem}
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-23}{}\label{thm:unlabeled-div-23}
+\protect\hypertarget{thm:unlabeled-div-24}{}\label{thm:unlabeled-div-24}
 
-\textbf{Theorem 7}. \emph{Let \(X\) and \(Y\) be independent random variables and
+\emph{Let \(X\) and \(Y\) be independent random variables and
 \(g : \mathbb{R} \rightarrow\mathbb{R}\) and
 \(h : \mathbb{R} \rightarrow\mathbb{R}\) be real-valued functions; then
 \(g(X)\) and \(h(Y )\) are also independent random variables.}
@@ -466,9 +678,9 @@ independent if and only if \[f (x, y) = f_X(x) f_Y (y).\]}
 As a consequence of the above theorem, we obtain
 
 \begin{theorem}
-\protect\hypertarget{thm:unlabeled-div-24}{}\label{thm:unlabeled-div-24}
+\protect\hypertarget{thm:unlabeled-div-25}{}\label{thm:unlabeled-div-25}
 
-\textbf{Theorem 8}. \emph{Let \(X\) and \(Y\) be independent random variables. Then
+\emph{Let \(X\) and \(Y\) be independent random variables. Then
 for all real-value functions \(g : \mathbb{R} \rightarrow\mathbb{R}\) and
 \(h : \mathbb{R} \rightarrow\mathbb{R}\),
 \[\mathrm{E}[g(X)h(Y)] = \mathrm{E}[g(X)]\mathrm{E}[h(Y)]\] }
@@ -525,7 +737,7 @@ that gives information about the joint spread, or dispersion, \(X\) and
 \(Y\) .
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-25}{}\label{def:unlabeled-div-25}
+\protect\hypertarget{def:unlabeled-div-26}{}\label{def:unlabeled-div-26}
 
 \emph{Let \(X\) and \(Y\) be jointly distributed random
 variables; then the \textbf{covariance} of \(X\) and \(Y\) is defined by
@@ -569,7 +781,7 @@ dividing the covariance by the standard deviation to get the correlation
 coefficient.
 
 \begin{definition}
-\protect\hypertarget{def:unlabeled-div-26}{}\label{def:unlabeled-div-26}
+\protect\hypertarget{def:unlabeled-div-27}{}\label{def:unlabeled-div-27}
 
 \emph{Let \(X\) and \(Y\) be two random variables with
 \(0< \sigma^2_X, \sigma^2_Y < \infty\). The covariance between the
@@ -669,7 +881,7 @@ include the following:
 \section{Goodness of fit tests}\label{goodness-of-fit-tests}}
 
 We can assess how well the fitted distributions reflect the distribution
-of the data in various ways.We should, of course, examine and compare
+of the data in various ways. We should, of course, examine and compare
 the tables of frequencies and, if appropriate, plot and compare
 empirical distribution functions. More formally, we can perform certain
 statistical tests. Here we will use the Pearson chi-square
@@ -683,7 +895,7 @@ where \(O\) is the observed frequency in a cell in the frequency table and
 \(E\) is the fitted or expected frequency (the frequency expected in that
 cell under the fitted model), and where we sum over all usable cells.
 
-The null hypothesis is that the sample comes from a specified
+\textbf{The null hypothesis} is that the sample comes from a specified
 distribution.
 
 The value of the test statistic is then evaluated in one of two ways.
@@ -693,10 +905,10 @@ The value of the test statistic is then evaluated in one of two ways.
 \item
   We convert it to a \(P\)-value, which is a measure of the strength of
   the evidence against the hypothesis that the data do follow the
-  fitted distribution. If the \(P\)-value is small enough, we conclude
+  fitted distribution. \textbf{If the \(P\)-value is small enough, we conclude
   that the data do not follow the fitted distribution -- we say ``the
   fitted distribution does not provide a good fit to the data'' (and
-  quote the \(P\)-value in support of this conclusion).
+  quote the \(P\)-value in support of this conclusion)}.
 \item
   We compare it with values in published tables of the distribution
   function of the appropriate \(\chi^2\) distribution, and if the value
@@ -715,8 +927,530 @@ distribution.
 The course does not emphasis on the Goodness of Fit Test. Please refer
 to the reference text for more details.
 
-\hypertarget{to-be-added}{%
-\chapter{To be added}\label{to-be-added}}
+\hypertarget{loss-distributions}{%
+\chapter{Loss distributions}\label{loss-distributions}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+The aim of the course is to provide a fundamental basis which applies
+mainly in general insurance. General insurance companies' products are
+short-term policies that can be purchased for a short period of time.
+Examples of insurance products are
+
+\begin{itemize}
+\item
+  motor insurance;
+\item
+  home insurance;
+\item
+  health insurance; and
+\item
+  travel insurance.
+\end{itemize}
+
+In case of an occurrence of an insured event, two important components
+of financial losses which are of importance for management of an
+insurance company are
+
+\begin{itemize}
+\item
+  the number of claims; and
+\item
+  the amounts of those claims.
+\end{itemize}
+
+Mathematical and statistical techniques used to model these sources of
+uncertainty will be discussed. This will enable insurance companies to
+
+\begin{itemize}
+\item
+  calculate premium rates to charge policy holders; and
+\item
+  decide how much reserve should be set aside for the future payment
+  of incurred claims.
+\end{itemize}
+
+In the chapter, statistical distributions and their properties which are
+suitable for modelling claim sizes are reviewed. These distribution are
+also known as loss distributions. In practice, the shape of loss
+distributions are positive skew with a long right tail. The main
+features of loss distributions include:
+
+\begin{itemize}
+\item
+  having a few small claims;
+\item
+  rising to a peak;
+\item
+  tailing off gradually with a few very large claims.
+\end{itemize}
+
+\hypertarget{exponential-distribution}{%
+\section{Exponential Distribution}\label{exponential-distribution}}
+
+A random variable \(X\) has an exponential distribution with a parameter
+\(\lambda > 0\), denoted by \(X \sim \text{Exp}(\lambda)\) if its
+probability density function is given by
+\[f_X(x) = \lambda e^{-\lambda x}, \quad x > 0.\]
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-28}{}\label{exm:unlabeled-div-28}
+
+\emph{Let \(X \sim \text{Exp}(\lambda)\) and \(0 < a < b\).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Find the distribution \(F_X(x)\).}
+\item
+  \emph{Express \(P(a < X < B)\) in terms of \(f_X(x)\) and \(F_X(x)\).}
+\item
+  \emph{Show that the moment generating function of \(X\) is
+  \[M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-1}, \quad t < \lambda.\]}
+\item
+  \emph{Derive the \(r\)-th moment about the origin \(\mathrm{E}[X^r].\)}
+\item
+  \emph{Derive the coefficient of skewness for \(X\).}
+\item
+  \emph{Simulate a random sample of size n = 200 from
+  \(X \sim \text{Exp}(0.5)\) using the command
+  \texttt{sample\ =\ rexp(n,\ rate\ =\ lambda)} where \(n\) and \(\lambda\) are the chosen
+  parameter values.}
+\item
+  \emph{Plot a histogram of the random sample using the command
+  \texttt{hist(sample)} (use help for available options for \texttt{hist} function
+  in R).}
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+The code for questions 6 and 7 is given below. The histogram can be generated from the code below.
+
+\begin{verbatim}
+# set.seed is used so that random number generated from different simulations are the same. 
+# The number 5353 can be set arbitrarily. 
+set.seed(5353)
+
+nsample <- 200
+data_exp <- rexp(nsample, rate = 0.5)
+
+dataset <- data_exp
+hist(dataset, breaks=100,probability = TRUE, xlab = "claim sizes" 
+     , ylab = "density", main = paste("Histogram of claim sizes" ))
+
+hist(dataset, breaks=100, xlab = "claim sizes" 
+     , ylab = "count", main = paste("Histogram of claim sizes" ))
+\end{verbatim}
+
+Copy and paste the code above and run it.
+
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxuXG5uc2FtcGxlIDwtIDIwMFxuZGF0YV9leHAgPC0gcmV4cChuc2FtcGxlLCByYXRlID0gMC41KVxuXG5kYXRhc2V0IDwtIGRhdGFfZXhwXG5oaXN0KGRhdGFzZXQsIGJyZWFrcz0xMDAscHJvYmFiaWxpdHkgPSBUUlVFLCB4bGFiID0gXCJjbGFpbSBzaXplc1wiIFxuICAgICAsIHlsYWIgPSBcImRlbnNpdHlcIiwgbWFpbiA9IHBhc3RlKFwiSGlzdG9ncmFtIG9mIGNsYWltIHNpemVzXCIgKSkifQ==
+
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxuXG5uc2FtcGxlIDwtIDIwMFxuZGF0YV9leHAgPC0gcmV4cChuc2FtcGxlLCByYXRlID0gMC41KVxuXG5kYXRhc2V0IDwtIGRhdGFfZXhwXG5cblxuaGlzdChkYXRhc2V0LCBicmVha3M9MTAwLCB4bGFiID0gXCJjbGFpbSBzaXplc1wiIFxuICAgICAsIHlsYWIgPSBcImNvdW50XCIsIG1haW4gPSBwYXN0ZShcIkhpc3RvZ3JhbSBvZiBjbGFpbSBzaXplc1wiICkpIn0=
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The exponential distribution can used to model the inter-arrival
+  time of an event.
+\item
+  The exponential distribution has an important property called \textbf{lack
+  of memory}: if \(X \sim \text{Exp}(\lambda)\), then the random
+  variable \(X-w\) conditional on \(X > w\) has the same distribution as
+  \(X\), i.e.
+  \[X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).\]
+\end{enumerate}
+
+We can use R to plot the probability density functions (pdf) of exponential distributions with various parameters \(\lambda\), which are shown in Figure \ref{fig:FigExp}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{)), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{x)) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"Probability density"}\NormalTok{, }\AttributeTok{x =} \StringTok{"x"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Exponential distributions"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\FloatTok{0.5}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"0.5"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\DecValTok{1}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\FloatTok{1.5}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1.5"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\DecValTok{2}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"2"}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"lambda = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FigExp-1.pdf}
+\caption{\label{fig:FigExp}The probability density functions (pdf) of exponential distributions with various parameters lambda.}
+\end{figure}
+
+\hypertarget{gamma-distribution}{%
+\section{Gamma distribution}\label{gamma-distribution}}
+
+A random variable \(X\) has a gamma distribution with parameters
+\(\alpha > 0\) and \(\lambda > 0\), denoted by
+\(X \sim \mathcal{G}(\alpha, \lambda)\) or
+\(X \sim \text{gamma}(\alpha, \lambda)\) if its probability density
+function is given by
+\[f_X(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha -1} e^{-\lambda x}, \quad x > 0.\]
+The symbol \(\Gamma\) denotes the gamma function, which is defined as
+\[\Gamma(\alpha) = \int_{0}^\infty x^{\alpha - 1} e^{-x} \mathop{}\!dx, \quad \text{for } \alpha > 0.\]
+It follows that \(\Gamma(\alpha + 1) = \alpha \Gamma(\alpha)\) and that
+for a positive integer \(n\), \(\Gamma(n) = (n-1)!\).
+
+The properties of the gamma distribution are summarised.
+
+\begin{itemize}
+\item
+  The mean and variance of \(X\) are
+  \[\mathrm{E}[X] = \frac{\alpha}{\lambda} \text{ and } \mathrm{Var}[X] =\frac{\alpha}{\lambda^2}\]
+\item
+  The \(r\)-th moment about the origin is
+  \[\mathrm{E}[X^r] = \frac{1}{\lambda^r} \frac{\Gamma(\alpha + r)}{\Gamma(\alpha )}, \quad r > 0.\]
+\item
+  The moment generating function (mgf) of \(X\) is
+  \[M_X(t) = \left(1 -  \frac{t}{\lambda}\right)^{-\alpha}, \quad t < \lambda.\]
+\item
+  The coefficient of skewness is \[\frac{2}{\sqrt{\alpha}}.\]
+\end{itemize}
+
+\textbf{Notes}
+1. The exponential function is a special case of the gamma
+distribution, i.e.~\(\text{Exp}(\lambda)= \mathcal{G}(1,\lambda)\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  If \(\alpha\) is a positive integer, the sum of \(\alpha\) independent,
+  identically distributed as \(\text{Exp}(\lambda)\), is
+  \(\mathcal{G}(\alpha, \lambda)\).
+\item
+  If \(X_1, X_2, \ldots, X_n\) are independent, identically distributed,
+  each with a \(\mathcal{G}(\alpha, \lambda)\) distribution, then
+  \[\sum_{i = 1}^n X_i \sim \mathcal{G}(n\alpha, \lambda).\]
+\item
+  The exponential and gamma distributions are not fat-tailed, and
+  \textbf{may not provide a good fit} to claim amounts.
+\end{enumerate}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-29}{}\label{exm:unlabeled-div-29}
+
+\emph{Using the moment generating function of a gamma
+distribution, show that the sum of independent gamma random variables
+with the same scale parameter \(\lambda\),
+\(X \sim \mathcal{G}(\alpha_1, \lambda)\) and
+\(Y \sim \mathcal{G}(\alpha_2, \lambda)\), is
+\(S = X+ Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).\)}
+
+\end{example}
+
+\textbf{Solution:}
+Because \(X\) and \(Y\) are independent, \[\begin{aligned}
+    M_S(t) &= M_{X+Y}(t) = M_X(t) \cdot M_Y(t)\\
+        &= (1 - \frac{t}{\lambda})^{-\alpha_1} \cdot (1 - \frac{t}{\lambda})^{-\alpha_2}     \\
+        &=  (1 - \frac{t}{\lambda})^{-(\alpha_1 + \alpha_2)}. \end{aligned}\]
+Hence \(S = X + Y \sim \mathcal{G}(\alpha_1 + \alpha_2, \lambda).\)
+
+The probability density functions (pdf) of gamma distributions with
+various shape parameters \(\alpha\) and rate parameter \(\lambda\) = 1 are shown in Figure \ref{fig:FigGamma}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{20}\NormalTok{)), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{x)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"Probability density"}\NormalTok{, }\AttributeTok{x =} \StringTok{"x"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Gamma distribution"}\NormalTok{)  }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dgamma, }\AttributeTok{args=}\FunctionTok{list}\NormalTok{(}\AttributeTok{shape=}\DecValTok{2}\NormalTok{, }\AttributeTok{rate=}\DecValTok{1}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"2"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dgamma, }\AttributeTok{args=}\FunctionTok{list}\NormalTok{(}\AttributeTok{shape=}\DecValTok{6}\NormalTok{, }\AttributeTok{rate=}\DecValTok{1}\NormalTok{) , }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"6"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(lambda, }\StringTok{" = 1 and "}\NormalTok{, alpha ,}\StringTok{" = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FigGamma-1.pdf}
+\caption{\label{fig:FigGamma}The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1.}
+\end{figure}
+
+\hypertarget{lognormal-distribution}{%
+\section{Lognormal distribution}\label{lognormal-distribution}}
+
+A random variable \(X\) has a lognormal distribution with parameters \(\mu\)
+and \(\sigma^2\), denoted by \(X \sim \mathcal{LN}(\mu, \sigma^2)\) if its
+probability density function is given by
+\[f_X(x) = \frac{1}{\sigma x \sqrt{2 \pi}} \exp\left(-\frac{1}{2} \left( \frac{\log(x) - \mu}{\sigma} \right)^2 \right) , \quad x > 0.\]
+
+The following relation holds:
+\[X \sim \mathcal{LN}(\mu, \sigma^2)\Leftrightarrow Y = \log X \sim \mathcal{N}(\mu, \sigma^2).\]
+
+The properties of the lognormal distribution are summarised.
+
+\begin{itemize}
+\item
+  The mean and variance of \(X\) are
+  \[\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1).\]
+\item
+  The \(r\)-th moment about the origin is
+  \[\mathrm{E}[X^r] =\exp\left(r\mu +  \frac{1}{2}r^2 \sigma^2 \right).\]
+\item
+  The moment generating function (mgf) of \(X\) is not finite for any
+  positive value of \(t\).
+\item
+  The coefficient of skewness is
+  \[(\exp(\sigma^2)  + 2) \left(\exp(\sigma^2)  -1 \right)^{1/2} .\]
+\end{itemize}
+
+The probability density functions (pdf) of gamma distributions with
+various shape parameters \(\alpha\) and rate parameter \(lambda = 1\) is shown in Figure \ref{fig:FigLognormal}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{)), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{x)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"Probability density"}\NormalTok{, }\AttributeTok{x =} \StringTok{"x"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"lognormal distribution"}\NormalTok{)  }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dlnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \FloatTok{0.25}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"0.25"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dlnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \DecValTok{1}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"mu = 0 and sigma = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FigLognormal-1.pdf}
+\caption{\label{fig:FigLognormal}The probability density functions (pdf) of lognormal distributions with mu = 0 and sigma = 0.25 or 1.}
+\end{figure}
+
+\hypertarget{pareto-distribution}{%
+\section{Pareto distribution}\label{pareto-distribution}}
+
+A random variable \(X\) has a Pareto distribution with parameters
+\(\alpha > 0\) and \(\lambda > 0\), denoted by
+\(X \sim \text{Pa}(\alpha, \lambda)\) if its probability density function
+is given by
+\[f_X(x) = \frac{\alpha \lambda^\alpha}{(\lambda + x)^{\alpha + 1}}, \quad x > 0.\]
+The distribution function is given by
+\[F_X(x) = 1 - \left(  \frac{\lambda}{\lambda + \alpha} \right)^\alpha, \quad x > 0.\]
+
+The properties of the gamma distribution are summarized.
+
+\begin{itemize}
+\item
+  The mean and variance of \(X\) are
+  \[\mathrm{E}[X] = \frac{\lambda}{\alpha - 1}, \alpha > 1 \text{ and } \mathrm{Var}[X] = \frac{\alpha \lambda^2}{(\alpha - 1)^2(\alpha - 2)}, \alpha > 2.\]
+\item
+  The \(r\)-th moment about the origin is
+  \[\mathrm{E}[X^r] =\frac{\Gamma(\alpha-r) \Gamma(1+ r)}{\Gamma(\alpha)} \lambda^r, \quad 0 < r < \alpha.\]
+\item
+  The moment generating function (mgf) of \(X\) is not finite for any
+  positive value of \(t\).
+\item
+  The coefficient of skewness is
+  \[\frac{2(\alpha + 1)}{\alpha - 3} \sqrt{\frac{\alpha-2}{\alpha}} , \quad \alpha > 3.\]
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The following conditional tail property for a Pareto distribution is
+  useful for reinsurance calculation. Let
+  \(X \sim \text{Pa}(\alpha, \lambda)\). Then the random variable
+  \(X - w\) conditional on \(X > w\) has a Pareto distribution with
+  parameters \(\alpha\) and \(\lambda + w\), i.e.
+  \[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - w | X > w \sim \text{Pa}(\alpha,\lambda + w).\]
+\item
+  The lognormal and Pareto distributions, in practice, provide a
+  better fit to claim amounts than exponential and gamma
+  distributions.
+\item
+  Other loss distribution are useful in practice including \textbf{Burr,
+  Weibull and loggamma distributions}.
+\end{enumerate}
+
+\begin{example}
+\protect\hypertarget{exm:exampleFittingClaimSizes}{}\label{exm:exampleFittingClaimSizes}
+
+\emph{Consider a data set consisting of 200 claim amounts in
+one year from a general insurance portfolio.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Calculate the sample mean and sample standard deviation.}
+\item
+  \emph{Use the method of moments to fit these data with both exponential
+  and gamma distributions.}
+\item
+  \emph{Calculate the boundaries for groups or bins so that the expected
+  number of claims in each bin is 20 under the fitted exponential
+  distribution.}
+\item
+  \emph{Count the values of the observed claim amounts in each bin.}
+\item
+  \emph{With these bin boundaries, find the expected number of claims when
+  the data are fitted with the gamma, lognormal and Pareto distributions.}
+\item
+  \emph{Plot a histogram for the data set along with fitted exponential
+  distribution and fitted gamma distribution. In addition, plot another histogram for the data set along with fitted lognormal
+  and fitted Pareto distribution.}
+\item
+  \emph{Comment on the goodness of fit of the fitted distributions.}
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+1. Given that \(\sum_{i=1}^n x_i = 206046.4\) and
+\(\sum_{i=1}^n x_i^2 = 1,472,400,135\), we have
+\[\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \frac{206046.4}{200} = 1030.232.\]
+The sample variance and standard deviation are
+\[s^2 = \frac{1}{n-1} \left( \sum_{i=1}^n x_i^2 - \frac{(\sum_{i=1}^n x_i)^2}{n} \right) = 6332284,\]
+and \[s = 2516.403.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  We calculate estimates of
+  unknown parameters of both exponential and gamma distributions by
+  the method of moments. We simply match the mean and central moments,
+  i.e.~matching \(\mathrm{E}[X]\) to the sample mean \(\bar{x}\) and
+  \(\mathrm{Var}[X]\) to the sample variance.
+
+  The MME (moment matching estimation) of the required distributions
+  are as follows:
+
+  \begin{itemize}
+  \item
+    the MME of \(\lambda\) for an \(\text{Exp}(\lambda)\) distribution
+    is the reciprocal of the sample mean,
+    \[\tilde{\lambda} = \frac{1}{\bar{x}} = 0.000971.\]
+  \item
+    the MMEs of \(\alpha\) and \(\lambda\) for a
+    \(\mathcal{G}(\alpha, \lambda)\) distribution are
+    \[\begin{aligned}
+    \tilde{\alpha} &= \left(\frac{\bar{x}}{s}\right)^2 = 0.167614, \\
+    \tilde{\lambda} &= \frac{\tilde{\alpha}}{\bar{x}} = 0.000163.\end{aligned}\]
+  \item
+    the MMEs of \(\mu\) and \(\sigma\) for a
+    \(\mathcal{LN}(\mu, \sigma^2)\) distribution are \[\begin{aligned}
+    \tilde{\sigma} &= \sqrt{ \ln \left(  \frac{s^2}{\bar{x}^2} + 1 \right)  }  = 1.393218, \\
+    \tilde{\mu} &= \ln(\bar{x}) - \frac{\tilde{\sigma}^2 }{2} = 5.967012.\end{aligned}\]
+  \item
+    the MMEs of \(\alpha\) and \(\lambda\) for a
+    \(\text{Pa}(\alpha, \lambda)\) distribution are \[\begin{aligned}
+    \tilde{\alpha} &= \displaystyle{ 2 \left(  \frac{s^2}{\bar{x}^2} \right) \frac{1}{(\frac{s^2}{\bar{x}^2} - 1)}   } = 2.402731,\\
+    \tilde{\lambda} &= \bar{x} (\tilde{\alpha} - 1) = 1445.138.\end{aligned}\]
+  \end{itemize}
+\item
+  The upper boundaries for the 10 groups or bins so that the expected
+  number of claims in each bin is 20 under the fitted exponential
+  distribution are determined by
+  \[\Pr(X \le \text{upbd}_j) = \frac{j}{10}, \quad j = 1,2,3, \ldots, 9.\]
+  With \(\tilde{\lambda}\) from the MME for an \(\text{Exp}(\lambda)\) from the previous,
+  \[\Pr(X \le x)  = 1 - \exp(-\tilde{\lambda} x).\] We obtain
+  \[\text{upbd}_j = -\frac{1}{\tilde{\lambda}} \ln\left( 1 - \frac{j}{10}\right).\]
+  The results are given in Table \ref{tab:tableFitted}.
+\item
+  The following table shows frequency distributions for observed and
+  fitted claims sizes for exponential, gamma, and also lognormal and Pareto fits.
+\end{enumerate}
+
+\begin{longtable}[]{@{}rrrrrr@{}}
+\caption{\label{tab:tableFitted} Frequency distributions for observed and fitted claims sizes.}\tabularnewline
+\toprule
+Range & Observation & Exp & Gamma & Lognormal & Pareto \\
+\midrule
+\endfirsthead
+\toprule
+Range & Observation & Exp & Gamma & Lognormal & Pareto \\
+\midrule
+\endhead
+(0,109{]} & 60 & 20 & 109.4 & 36 & 31.9 \\
+(109,230{]} & 31 & 20 & 14.3 & 34.4 & 27.8 \\
+(230,367{]} & 25 & 20 & 9.7 & 26 & 24.2 \\
+(367,526{]} & 17 & 20 & 7.8 & 20.5 & 21.2 \\
+(526,714{]} & 14 & 20 & 6.8 & 16.6 & 18.6 \\
+(714,944{]} & 13 & 20 & 6.3 & 13.9 & 16.4 \\
+(944,1240{]} & 6 & 20 & 6.2 & 11.9 & 14.6 \\
+(1240,1658{]} & 7 & 20 & 6.5 & 10.8 & 13.2 \\
+(1658,2372{]} & 10 & 20 & 7.7 & 10.4 & 12.5 \\
+(2372,\(\infty\)) & 17 & 20 & 25.4 & 19.5 & 19.4 \\
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Let \(X\) be the claim size.
+
+  \begin{itemize}
+  \item
+    The expected number of claims for the fitted exponential
+    distribution in the range \((a,b]\) is
+    \[200 \cdot \Pr( a < X \le b) = 200( e^{-\tilde{\lambda} a} - e^{-\tilde{\lambda} b} ).\]
+    In our case, the expected frequencies under the fitted
+    exponential distribution are given in the third column of Table \ref{tab:tableFitted}.
+  \item
+    (Excel) The expected number of claims for the fitted gamma distribution
+    in the range \((a,b]\) is
+    \[200 \cdot\left(  \text{GAMMADIST}\left(b, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right)  - \text{GAMMADIST}\left(a, \tilde{\alpha}, \frac{1}{\tilde{\lambda}}, \text{TRUE}\right) \right).\]
+    The expected frequencies under the fitted gamma distribution are
+    given in the fourth column of Table \ref{tab:tableFitted}.
+  \item
+    (Excel) For the fitted lognormal, the expected number of claims in the
+    range \((a,b]\) can be obtained from
+    \[200 \cdot\left(  \text{NORMDIST} \left(\frac{LN(b) - 
+            \tilde{\mu}}{\tilde{\sigma}}\right)  - \text{NORMDIST}\left(\frac{LN(a) - 
+            \tilde{\mu}}{\tilde{\sigma}}\right) \right).\]
+  \item
+    For the fitted Pareto distribution, the expected number of
+    claims in the range \((a,b]\) can be obtained from
+    \[200 \left[    \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + a} \right)^{\tilde{\alpha}}  - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + b} \right)^{\tilde{\alpha}}   \right].\]
+  \end{itemize}
+\item
+  The histograms for the data set with fitted distributions
+  are shown in Figures \ref{fig:FittedExpGamma}.
+\item
+  Comments:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    The high positive skewness of the sample reflects the fact that
+    SD is large when compared to the mean. Consequently, the
+    exponential distribution may not fit the data well.
+  \item
+    Five claims (2.5\%) are greater than 10,000, which is one of the
+    main features of the loss distribution.
+  \item
+    The fit is poor for the exponential distribution, as we see that
+    the model under-fits the data for small claims up to 367 and
+    over-fits for large claims between 944 to 2372. The gamma fit is
+    again poor. We see that the model over-fits for small claims
+    between 0-109 and under-fits for claims 230 and 944.
+  \item
+    Which one of the lognormal and Pareto distributions provides a
+    better fit to the observed claim data?
+  \end{enumerate}
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FittedExpGamma-1.pdf}
+\caption{\label{fig:FittedExpGamma}The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1.}
+\end{figure}
+
+Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area. Note that the data set is stored in the variable \texttt{dat}.
+
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
 
 \hypertarget{interactive-lecture}{%
 \chapter{Interactive Lecture}\label{interactive-lecture}}
@@ -729,6 +1463,8 @@ Some \emph{significant} applications are demonstrated in this chapter.
 By default, \texttt{tutorial} will convert all R chunks.
 
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhIDwtIDJcbmIgPC0gM1xuYSArIGIifQ==
+
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
 
   \bibliography{book.bib,packages.bib}
 
