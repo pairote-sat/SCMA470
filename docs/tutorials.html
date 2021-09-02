@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Interactive Lecture | SCMA470 Risk Analysis and Credibility</title>
-  <meta name="description" content="Chapter 5 Interactive Lecture | SCMA470 Risk Analysis and Credibility" />
+  <title>Chapter 4 Tutorials | SCMA470 Risk Analysis and Credibility</title>
+  <meta name="description" content="Chapter 4 Tutorials | SCMA470 Risk Analysis and Credibility" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Interactive Lecture | SCMA470 Risk Analysis and Credibility" />
+  <meta property="og:title" content="Chapter 4 Tutorials | SCMA470 Risk Analysis and Credibility" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Interactive Lecture | SCMA470 Risk Analysis and Credibility" />
+  <meta name="twitter:title" content="Chapter 4 Tutorials | SCMA470 Risk Analysis and Credibility" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tutorials.html"/>
-
+<link rel="prev" href="deductibles-and-reinsurance.html"/>
+<link rel="next" href="interactive-lecture.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -205,19 +205,77 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="interactive-lecture" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Interactive Lecture</h1>
-<p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
-<div id="datacamp-light" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> DataCamp Light</h2>
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-<p>By default, <code>tutorial</code> will convert all R chunks.</p>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhIDwtIDJcbmIgPC0gM1xuYSArIGIifQ==
+<div id="tutorials" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Tutorials</h1>
+<div id="tutorial-1" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Tutorial 1</h2>
+<ol style="list-style-type: decimal">
+<li><p>Using the method of moments, calculate the parameter values for the
+gamma, lognormal and Pareto distributions for which
+<span class="math display">\[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2.\]</span></p></li>
+<li><p>Show that if <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, then the random variable
+<span class="math inline">\(X-w\)</span> conditional on <span class="math inline">\(X &gt; w\)</span> has the same distribution as <span class="math inline">\(X\)</span>, i.e.
+<span class="math display">\[X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X &gt; w \sim \text{Exp}(\lambda).\]</span></p></li>
+<li><p>Derive an expression for the variance of the
+<span class="math inline">\(\text{Pa}(\alpha, \lambda)\)</span> distribution. (Hint: using the pdf)</p></li>
+<li><p>Show that the MLE (the maximum likelihood estimation) of <span class="math inline">\(\lambda\)</span>
+for an <span class="math inline">\(\text{Exp}(\lambda)\)</span> distribution is the reciprocal of the
+sample mean, i.e. <span class="math inline">\(\hat\lambda = 1/ \bar x\)</span>.</p></li>
+<li><p>Claims last year on a portfolio of policies of a risk had a
+lognormal distribution with parameter <span class="math inline">\(\mu = 5\)</span> and
+<span class="math inline">\(\sigma^2 = 0.4\)</span>. It is estimated that all claims will increase by
+15% next year. Find the probability that a claim next year will
+exceed 1000.</p></li>
+</ol>
 </div>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
-</div>
+<div id="tutorial-2" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Tutorial 2</h2>
+<ol style="list-style-type: decimal">
+<li><p>Claims occur on a general insurance portfolio independently and at
+random. Each claim is classified as being of “Type A” or “Type B”.
+Type A claim amounts are distributed <span class="math inline">\(\text{Pa}(3,400)\)</span> and Type B
+claim amounts are distributed <span class="math inline">\(\text{Pa}(4,1000)\)</span>. It is known that
+90% of all claims are of Type A.</p>
+<p>Let <span class="math inline">\(X\)</span> denote a claim chosen at random from the portfolio.</p>
+<ol style="list-style-type: decimal">
+<li><p>Calculate <span class="math inline">\(\Pr(X &gt; 1000).\)</span></p></li>
+<li><p>Calculate <span class="math inline">\(\mathrm{E}[X]\)</span> and <span class="math inline">\(\mathrm{Var}[X]\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(Y\)</span> have a Pareto distribution
+with the same mean and variance as <span class="math inline">\(X\)</span>. Calculate
+<span class="math inline">\(\Pr(Y &gt; 1000).\)</span></p></li>
+<li><p>Comment on the difference in the answers found in 1.1 and 1.2.</p></li>
+</ol></li>
+<li><p>An insurer covers an individual loss <span class="math inline">\(X\)</span> with excess of loss
+reinsurance with retention level <span class="math inline">\(M\)</span>. Let <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> be random
+variables representing the amounts paid by the insurer and
+reinsurer, respectively, i.e. <span class="math inline">\(X = Y + Z\)</span>. Show that
+<span class="math inline">\(\mathrm{Cov}[Y,Z] \ge 0\)</span> and deduce that
+<span class="math display">\[\mathrm{Var}[X] \ge \mathrm{Var}[Y] +  \mathrm{Var}[Z].\]</span> Comment
+on the results obtained.</p></li>
+<li><p>Claim amounts from a general insurance portfolio are lognormally
+distributed with mean 200 and variance 2916. Excess of loss
+reinsurance with retenton level 250 is arranged. Calculate the
+probability that the reinsurer is involved in a claim.</p></li>
+<li><p>Show that if <span class="math inline">\(X \sim \text{Pa}(\alpha, \lambda)\)</span>, then the random
+variable <span class="math inline">\(X-d\)</span> conditional on <span class="math inline">\(X &gt; d\)</span> has a pareto distribution with
+parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda + d\)</span>, i.e.
+<span class="math display">\[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - d | X &gt; d \sim \text{Pa}(\alpha,\lambda + d).\]</span></p></li>
+<li><p>Consider a portfolio of motor insurance policies. In the event of an
+accident, the cost of the repairs to a car has a Pareto distribution
+with parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>. A deductible of 100 is
+applied to all claims and a claim is always made if the cost of the
+repairs exceeds this amount. A sample of 100 claims has mean 200 and
+standard deviation 250.</p>
+<ol style="list-style-type: decimal">
+<li><p>Using the method of moments, estimate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Estimate the proportion of accidents that do not result in a
+claim being made.</p></li>
+<li><p>The insurance company arranges excess of loss reinsurance with
+another insurance company to reduce the mean amount it pays on a
+claim to 160. Calculate the retention limit needed to achieve
+this.</p></li>
+</ol></li>
+</ol>
 
 </div>
 </div>
@@ -226,8 +284,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5
           </div>
         </div>
       </div>
-<a href="tutorials.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="deductibles-and-reinsurance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -259,7 +317,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/pairote-sat/SCMA470/edit/master/05-DCL.Rmd",
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/04-Tutorials.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -267,7 +325,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/pairote-sat/SCMA470/blob/master/05-DCL.Rmd",
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/04-Tutorials.Rmd",
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],

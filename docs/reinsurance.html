@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Reinsurance | SCMA470 Risk Analysis and Credibility</title>
+  <meta name="description" content="Chapter 4 Reinsurance | SCMA470 Risk Analysis and Credibility" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Reinsurance | SCMA470 Risk Analysis and Credibility" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Reinsurance | SCMA470 Risk Analysis and Credibility" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="deductibles.html"/>
+<link rel="next" href="interactive-lecture.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+<li class="chapter" data-level="1.17" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.17</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>2</b> Deductibles and reinsurance</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="deductibles.html"><a href="deductibles.html"><i class="fa fa-check"></i><b>3</b> Deductibles</a></li>
+<li class="chapter" data-level="4" data-path="reinsurance.html"><a href="reinsurance.html"><i class="fa fa-check"></i><b>4</b> Reinsurance</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reinsurance.html"><a href="reinsurance.html#excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>4.1</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="4.2" data-path="reinsurance.html"><a href="reinsurance.html#mixed-distributions"><i class="fa fa-check"></i><b>4.2</b> Mixed distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="reinsurance.html"><a href="reinsurance.html#the-distribution-of-reinsurance-claims"><i class="fa fa-check"></i><b>4.3</b> The distribution of reinsurance claims</a></li>
+<li class="chapter" data-level="4.4" data-path="reinsurance.html"><a href="reinsurance.html#proportional-reinsurance"><i class="fa fa-check"></i><b>4.4</b> Proportional reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>5</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>5.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SCMA470 Risk Analysis and Credibility</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reinsurance" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Reinsurance</h1>
+<p>Reinsurance is insurance purchased by an insurance company in order to
+protect itself from large claims. There are two main types of
+reinsurance arrangement:</p>
+<ol style="list-style-type: decimal">
+<li><p>excess of loss reinsurance; and</p></li>
+<li><p>proportional reinsurance.</p></li>
+</ol>
+<div id="excess-of-loss-reinsurance" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Excess of loss reinsurance</h2>
+<p>Under excess of loss reinsurance arrangement, the direct insurer sets a
+certain limit called a retention level <span class="math inline">\(M &gt;0\)</span>. For a claim <span class="math inline">\(X\)</span>,</p>
+<ul>
+<li><p>the insurance company pays any claim in full if <span class="math inline">\(X \le M\)</span>; and</p></li>
+<li><p>the reinsurer (or reinsurance company) pays the remaining amount of
+<span class="math inline">\(X - M\)</span> if <span class="math inline">\(X &gt; M\)</span>.</p></li>
+</ul>
+<p>The position of the reinsurer under excess of loss reinsurance is the
+same as that of the insurer for a policy with a deductible.</p>
+<p>Let <span class="math inline">\(X\)</span> be the claim amount, <span class="math inline">\(V, Y\)</span> and <span class="math inline">\(Z\)</span> the amounts of the claim
+paid by the policyholder, (direct) insurer and reinsurer, respectively,
+i.e. <span class="math display">\[X = V + Y + Z.\]</span> In what follows, without stated otherwise, we
+consider the case in which there is no deductible in place, i.e. <span class="math inline">\(V = 0\)</span>
+and <span class="math display">\[X = Y + Z.\]</span> So the amount paid by the direct insurer and the
+reinsurer are given by</p>
+<p><span class="math display">\[\begin{aligned}
+    Y = 
+    \begin{cases}
+        X &amp;\text{if }  X \le M\\   
+        M &amp;\text{if }  X &gt; M,
+    \end{cases} \\
+    Z = 
+    \begin{cases}
+        0 &amp;\text{if }  X \le M\\   
+        X - M &amp;\text{if }  X &gt; M.
+    \end{cases}\end{aligned}\]</span> The amounts <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> can also be
+expressed as <span class="math display">\[Y = \min(X,M), \quad Z = \max(0,X-M).\]</span></p>
+<p>d = 1000 M = 10000 X = <span class="math display">\[3000, 800, 25000, 5000, 20000\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 4.1  </strong></span><strong>Example 1</strong>. <em><span id="examplePayouts" label="examplePayouts"><span class="math display">\[examplePayouts\]</span></span> Suppose a policy has a deductible of and the
+insurer arrange excess of loss reinsurance with retention level of . A
+sample of loss amounts in one year consists of the following values, in
+unit of Thai baht: <span class="math display">\[3000, 800, 25000, 5000, 20000 .\]</span> Calculate the
+total amount paid by:</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>the policyholder;</em></p></li>
+<li><p><em>the insurer; and</em></p></li>
+<li><p><em>the reinsurer.</em></p></li>
+</ol>
+</div>
+<p>The total amounts paid by</p>
+<ul>
+<li><p>the policyholders : <span class="math display">\[1000 + 800 + 1000 + 1000 + 1000 = 4800.\]</span></p></li>
+<li><p>The insurer : <span class="math display">\[2000 + 0 + 10000 + 4000 + 10000 = 26000.\]</span></p></li>
+<li><p>The reinsurer : <span class="math display">\[0 + 0 + 14000 + 0 + 9000 = 23000.\]</span></p></li>
+</ul>
+</div>
+<div id="mixed-distributions" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Mixed distributions</h2>
+<p>In the subsequent sections, we will derive the probability distribution
+of the random variables <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span>, which are the insurer’s and
+reinsurer’s payouts on claims. Their distributions are neither purely
+continuous, nor purely discrete. First we start with some important
+properties of such random variables.</p>
+<p>A random variable <span class="math inline">\(U\)</span> which is partly discrete and partly continuous is
+said to be a mixed distribution. The distribution function of <span class="math inline">\(U\)</span>,
+denoted by <span class="math inline">\(F_U(x)\)</span> is continuous and differentiable except for some
+values of <span class="math inline">\(x\)</span> in a countable set <span class="math inline">\(S\)</span>. For a mixed distribution <span class="math inline">\(U\)</span>,
+there exists a function <span class="math inline">\(f_U(x)\)</span> such that
+<span class="math display">\[F_U(x) = \Pr(U \le x) = \int_{-\infty}^x f_U(x) dx + \sum_{x_i \in S, x_i \le x } \Pr(U = x_i).\]</span>
+The expected value of <span class="math inline">\(g(U)\)</span> for some function <span class="math inline">\(g\)</span> is given by
+<span class="math display">\[\label{eqnExpectationMixed}
+ \mathrm{E}[g(U)] = \int_{-\infty}^\infty g(x) f_U(x) \mathop{}\!d{x} + \sum_{x_i \in S } g(x_i) \Pr(U = x_i).\]</span>
+It is the sum of the integral over the intervals at which <span class="math inline">\(f_U(x)\)</span> is
+continuous and the summation over the points in <span class="math inline">\(S\)</span>.</p>
+<p>The function <span class="math inline">\(f_U(x)\)</span> is not the probability density function of <span class="math inline">\(U\)</span>
+because <span class="math inline">\(\int_{-\infty}^\infty f_U(x) dx \neq 1\)</span>. In particular, it is
+the derivative of <span class="math inline">\(F_U(x)\)</span> at the points where <span class="math inline">\(F_U(x)\)</span> is continuous
+and differentiable.</p>
+<p>Recall that <span class="math inline">\(X\)</span> denotes the claim amount and <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> be the amounts
+of the claim paid by the insurer and reinsurer. The distribution
+function and the density function of the claim amount <span class="math inline">\(X\)</span> are denoted by
+<span class="math inline">\(F_{X}\)</span> and <span class="math inline">\(f_X(x)\)</span>, where we assume that <span class="math inline">\(X\)</span> is continuous. In the
+following examples, we will derive the distribution, mean and variance
+of the random variables <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span>. Furthermore, both random variables
+<span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> are examples of mixed distributions.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 4.2  </strong></span><strong>Example 2</strong>. <em>Let <span class="math inline">\(F_Y\)</span> denote the distribution function of
+<span class="math inline">\(Y = \min(X,M)\)</span>. It follows that <span class="math display">\[F_Y(x) = 
+    \begin{cases}
+        F_X(x) &amp;\text{if }  x &lt; M\\   
+        1 &amp;\text{if }  x \ge M
+    \end{cases}.\]</span> Hence, the distribution function of <span class="math inline">\(Y\)</span> is said to be
+a mixed distribution.</em></p>
+</div>
+<p>From <span class="math inline">\(Y = \min(X,M)\)</span>, if <span class="math inline">\(y &lt; M\)</span>, then
+<span class="math display">\[F_Y(y) = \Pr(Y \le y) = \Pr(X \le y) = F_X(y).\]</span> If <span class="math inline">\(y \ge M\)</span>, then
+<span class="math display">\[F_Y(y) = \Pr(Y \le y) = 1,\]</span> which follows because <span class="math inline">\(\min(X,M) \le M\)</span>.</p>
+<p>Hence, <span class="math inline">\(Y\)</span> is mixed with a density function <span class="math inline">\(f_X(x)\)</span>, for <span class="math inline">\(0 \le x &lt; M\)</span>
+and a mass of probability at <span class="math inline">\(M\)</span>, with <span class="math inline">\(Pr(Y = M) = 1 - F_X(M)\)</span>. The
+last equality follows from <span class="math display">\[\begin{aligned}
+    \Pr(Y = M) &amp;= \Pr(X &gt; M) \\
+        &amp;=   1 - \Pr(X \le M) = 1 - F_X(M). \end{aligned}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 4.3  </strong></span><strong>Example 3</strong>. <em>Show that
+<span class="math display">\[\mathrm{E}[Y] = \mathrm{E}[\min(X,M)] = \mathrm{E}[X] - \int_0^\infty y f_X(y+M) \mathop{}\!dy.\]</span></em></p>
+</div>
+<p><span class="math inline">\(\mathrm{E}[Y]\)</span> is the expected payout by the insurer. <span class="math display">\[\begin{aligned}
+    \mathrm{E}[Y] &amp;= \mathrm{E}[\min(X,M)] \\
+        &amp;= \int_0^\infty \min(X,M) \cdot f_X(x) \, dx \\
+        &amp;= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty M \cdot f_X(x) \, dx \\
+        &amp;= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty x \cdot f_X(x) \, dx + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+        &amp;= \mathrm{E}[X] + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+        \intertext{(By the change of the variable, we let $x = y + M$ and obtain)
+} \\
+    &amp;= \mathrm{E}[X] + \int_0^\infty (-y) \cdot f_X(y+M) \, dy \\
+    &amp;=  \mathrm{E}[X] - \int_0^\infty y \cdot f_X(y+M) \, dy \end{aligned}\]</span></p>
+<p>Under excess of loss reinsurance arrangement, the mean amount paid by
+the insurer is reduced by the amount equal to
+<span class="math inline">\(\int_0^\infty y f_X(y+M) \mathop{}\!dy.\)</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 4.4  </strong></span><strong>Example 4</strong>. <em>Let <span class="math inline">\(X\)</span> be an exponential distribution with parameter
+<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(Y = \min(X,M)\)</span>. Then <span class="math display">\[F_Y(x) = 
+    \begin{cases}
+        1 - e^{-\lambda x} &amp;\text{if }  x &lt; M\\   
+        1 &amp;\text{if }  x \ge M
+    \end{cases}.\]</span> A plot of the distribution function <span class="math inline">\(F_Y\)</span> is given in
+Figure <a href="reinsurance.html#figMixedDist" reference-type="ref" reference="figMixedDist">1</a>. Hence, <span class="math inline">\(Y\)</span> is a mixed distribution with a
+density function <span class="math inline">\(f_Y(x) = f_X(x)\)</span> for <span class="math inline">\(0 &lt; x &lt; M\)</span> and a probability
+mass at <span class="math inline">\(M\)</span> is <span class="math inline">\(\Pr(Y = M) = 1 - F_X(M)\)</span>.</em></p>
+<p><em>Using
+<a href="#eqnExpectationMixed" reference-type="eqref" reference="eqnExpectationMixed"><span class="math display">\[eqnExpectationMixed\]</span></a>, the expected value of <span class="math inline">\(Y\)</span>,
+<span class="math inline">\(\mathrm{E}[Y]\)</span> is given by <span class="math display">\[\begin{aligned}
+    \mathrm{E}[Y] &amp;= \int_{0}^M x f_X(x) \mathop{}\!d{x}  + M(1 - F_X(M)).     
+%       &amp;= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty M \cdot f_X(x) \, dx \\
+%       &amp;= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty x \cdot f_X(x) \, dx + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+%       &amp;= \E[X] + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+%       \intertext{(By the change of the variable, we let $x = y + M$ and obtain)
+%} \\
+%   &amp;= \E[X] + \int_0^\infty (-y) \cdot f_X(y+M) \, dy \\
+%   &amp;=  \E[X] - \int_0^\infty y \cdot f_X(y+M) \, dy \\
+%   &amp;= \E[X] -  \int_0^\infty y \cdot \lambda e^{-\lambda(y+M)} \, dy \end{aligned}\]</span></em></p>
+</div>
+<div class="figure">
+<embed src="mixed.pdf" id="figMixedDist" />
+<p class="caption"><span id="figMixedDist" label="figMixedDist"><span class="math display">\[figMixedDist\]</span></span> The
+distribution function <span class="math inline">\(F_Y(x)\)</span> with <span class="math inline">\(\lambda = 1\)</span> and
+<span class="math inline">\(M = 2\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 4.5  </strong></span><strong>Example 5</strong>. <em>Let <span class="math inline">\(F_Z\)</span> denote the distribution function of
+<span class="math inline">\(Z = \max(0,X-M)\)</span>. It follows that <span class="math display">\[F_Z(x) = 
+    \begin{cases}
+        F_{X}(M) &amp;\text{if }  x = 0\\   
+        F_{X}(x + M) &amp;\text{if }  x &gt; 0
+    \end{cases}.\]</span> Hence, the distribution function of <span class="math inline">\(Z\)</span> is a mixed
+distribution with a mass of probability at <span class="math inline">\(0\)</span>.</em></p>
+</div>
+<p>The random variable <span class="math inline">\(Z\)</span> is the <strong>reinsurer’s payout</strong> which also include
+<strong>zero claims</strong>. Later we will consider only <strong>reinsurance claims</strong>,
+which involve the reinsurer, i.e. claims such that <span class="math inline">\(X &gt; M\)</span>.</p>
+<p>The distribution of <span class="math inline">\(Z\)</span> can be derived as follows:</p>
+<ul>
+<li><p>For <span class="math inline">\(x =0\)</span>, <span class="math display">\[F_Z(0) = \Pr(Z = 0) = \Pr(X \le M) = F_X(M).\]</span></p></li>
+<li><p>For <span class="math inline">\(x &gt; 0\)</span>, <span class="math display">\[\begin{aligned}
+    F_Z(0) &amp;= \Pr(Z \le x) = \Pr(\max(0,X-M) \le x) \\
+    &amp;= \Pr(X- M \le x) = \Pr(X \le x + M) = F_X(x + M).\end{aligned}\]</span></p></li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 4.6  </strong></span><strong>Example 6</strong>. <em>Let <span class="math inline">\(X\)</span> be an exponential distribution with parameter
+<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(Z = \max(0,X-M)\)</span>. Derive and plot the probability
+distribution <span class="math inline">\(F_Z\)</span> for <span class="math inline">\(\lambda = 1\)</span> and <span class="math inline">\(M = 2\)</span>.</em></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 4.7  </strong></span><strong>Example 7</strong>. <em>Show that
+<span class="math display">\[\mathrm{E}[Z] = \mathrm{E}[\max(0,X-M)] = \int_M^\infty (x- M) f_X(x) \mathop{}\!dx = \int_0^\infty y f_X(y+M) \mathop{}\!dy.\]</span>
+Comment on the result.</em></p>
+</div>
+<p>The expected payout on the claim by the reinsurer, <span class="math inline">\(\mathrm{E}[Z]\)</span>, and
+can also be found directly as follows: <span class="math display">\[\begin{aligned}
+\mathrm{E}[Z] &amp;= \mathrm{E}[\max(0,X-M)] \\
+    &amp;= \int_0^M 0 \cdot f_X(x) \, dx + \int_M^\infty (X-M) \cdot f_X(x) \, dx \\
+    \intertext{(By the change of the variable, we let $x = y + M$ and obtain)
+} \\
+    &amp;= 0 +  \int_0^\infty y \cdot f_X(y + M) \, dy.\end{aligned}\]</span> It
+follows from the previous results that
+<span class="math display">\[\mathrm{E}[X] = \mathrm{E}[Y + Z] =  \mathrm{E}[Y]+ \mathrm{E}[Z].\]</span></p>
+<p>#from sympy.stats import P, E, variance, Die, Normal</p>
+<p>from sympy.stats import Exponential, density, cdf, E, P, Die, Normal
+from sympy.stats import variance, std, skewness from sympy import Eq,
+simplify from sympy import Symbol</p>
+<p>### THE FOLLOWING SHOULD NOT BE INCLUDED #from sympy import *</p>
+<p>############################################
+#### NEED TO ADD str(‘X’) #X = Die(str(‘X’), 6) #### NEED TO
+ADD str(‘T’) T = Normal(str(‘T’),30, 3) #exp0 = P(T&gt;31) #exp = P(T &gt;
+31, evaluate=False)
+############################################</p>
+<p>var(‘M’) var(‘y’) l = Symbol("lambda", positive=True) #X =
+Symbol("X") #z = Symbol("z")</p>
+<p>X,z = symbols(‘X z’)</p>
+<p>X = Exponential(str("x"), l)</p>
+<p>exp = Integral(y*density(X)(y+M),(y,0,oo)) exp2 =
+Integral(y*density(X)(y),(y,0,oo)) exp3 = E(Exponential(str("y"), l),
+evaluate=False) #exp = P(X &gt; M, evaluate=False)</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 4.8  </strong></span><strong>Example 8</strong>. <em>Let the claim amount <span class="math inline">\(X\)</span> have exponential distribution
+with mean <span class="math inline">\(\mu = 1/\lambda\)</span>.</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Find the proportion of claims which involve the reinsurer.</em></p></li>
+<li><p><em>Find the insurer’s expected payout on a claim.</em></p></li>
+<li><p><em>Find the reinsurer’s expected payout on a claim.</em></p></li>
+</ol>
+</div>
+<ol style="list-style-type: decimal">
+<li><p>The proportion of claims which involve the reinsurer is
+<span class="math display">\[\Pr(X &gt; M) = 1 - F_X(M) = e^{-\lambda M} = e^{-M/\mu}.\]</span></p></li>
+<li><p>The insurer’s expected payout on a claim can be calculated by
+<span class="math display">\[\begin{aligned}
+    \mathrm{E}[Y] &amp;= \mathrm{E}[X] -  \int_0^\infty y \cdot \lambda e^{-\lambda(y+M)} \, dy \\
+        &amp;= \mathrm{E}[X] - e^{-\lambda M} \int_0^\infty y \cdot \lambda e^{-\lambda \cdot y} \, dy \\
+        &amp;= \mathrm{E}[X] - e^{-\lambda M}  \mathrm{E}[X] \\
+        &amp;= (1 - e^{-\lambda M})  \mathrm{E}[X].\end{aligned}\]</span></p></li>
+<li><p>It follows from the above result that the reinsurer’s expected
+payout on a claim is <span class="math inline">\(e^{-\lambda M} \mathrm{E}[X].\)</span></p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 4.9  </strong></span><strong>Example 9</strong>. <em>An insurer covers an individual loss <span class="math inline">\(X\)</span> with excess of
+loss reinsurance with retention level <span class="math inline">\(M\)</span>. Let <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(F_X(x)\)</span>
+denote the pdf and cdf of <span class="math inline">\(X\)</span>, respectively.</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Show that the variance of the amount paid by the insurer on a
+single claim satisfies:
+<span class="math display">\[\mathrm{Var}[\min(X,M)] = \int_0^M x^2 f_X(x) \mathop{}\!dx + M^2 (1 - F_X(M)) - (\mathrm{E}[\min(X,M)])^2.\]</span></em></p></li>
+<li><p><em>Show that the variance of the amount paid by the reinsurer on a
+single claim satisfies:
+<span class="math display">\[\mathrm{Var}[\max(0,X-M)] = \int_M^\infty (x-M)^2 f_X(x) \mathop{}\!dx  - (\mathrm{E}[\max(0,X-M)])^2.\]</span></em></p></li>
+</ol>
+</div>
+</div>
+<div id="the-distribution-of-reinsurance-claims" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> The distribution of reinsurance claims</h2>
+<p>In practice, the reinsurer involves only claims which exceed the
+retention limit, i.e. <span class="math inline">\(X &gt; M\)</span>. Information of claims which are less or
+equal to <span class="math inline">\(M\)</span> may not be available to the reinsurer. The claim amount <span class="math inline">\(Z\)</span>
+paid by the reinsurer can be modified accordingly to take into account
+of non-zero claim sizes.</p>
+<p>Recall from
+Example <a href="reinsurance.html#examplePayouts" reference-type="ref" reference="examplePayouts"><span class="math display">\[examplePayouts\]</span></a>, there are only three claims whose amounts
+exceed the retention level of . Such claims, consisting of , 9000 and
+23000 which involves the reinsurer are known as <strong>reinsurance claims</strong>.</p>
+<p>Let <span class="math inline">\(W = Z|Z&gt;0\)</span> be a random variable representing the amount of a
+non-zero payment by the reinsurer on a reinsurance claim. The
+distribution and density of <span class="math inline">\(W\)</span> can be calculated as follows: for
+<span class="math inline">\(x &gt; 0\)</span>, <span class="math display">\[\begin{aligned}
+     \Pr[W \le x ] &amp;= \Pr[Z \le x | Z &gt;0] \\
+            &amp;= \Pr[X - M \le x | X &gt; M] \\
+            &amp;= \frac{\Pr[M &lt; X \le x + M]}{\Pr[X &gt; M]}\\
+            &amp;= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.\end{aligned}\]</span>
+Differentiating with respect to <span class="math inline">\(x\)</span>, we obtain the density function of
+<span class="math inline">\(W\)</span> as <span class="math display">\[f_W(x) = \frac{f_X(x+M)}{1 - F_X(M)}.\]</span> Hence, the mean and
+variance can be directly obtained from the density function of <span class="math inline">\(W\)</span>.</p>
+</div>
+<div id="proportional-reinsurance" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Proportional reinsurance</h2>
+<p>Under excess of loss reinsurance arrangement, the direct insurer pays a
+fixed proportion <span class="math inline">\(\alpha\)</span>, called the proportion of the risk retained by
+the insurer, and the reinsurer pays the remainder of the claim.</p>
+<p>Let <span class="math inline">\(X\)</span> be the claim amount, <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> the amounts of the claim paid
+by the policyholder, (direct) insurer and reinsurer, respectively, i.e.
+<span class="math display">\[X = Y + Z.\]</span> So the amount paid by the direct insurer and the
+reinsurer are given by <span class="math display">\[Y = \alpha X, \quad Z = (1 - \alpha) X.\]</span> Both
+of the random variables are scaled by the factor of <span class="math inline">\(\alpha\)</span> and
+<span class="math inline">\(1- \alpha\)</span>, respectively.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 4.10  </strong></span><strong>Example 10</strong>. <em>Derive the distribution function and density function
+of <span class="math inline">\(Y\)</span>.</em></p>
+</div>
+<p>Let <span class="math inline">\(X\)</span> has a distribution function <span class="math inline">\(F\)</span> with density function <span class="math inline">\(f\)</span>. The
+distribution function of <span class="math inline">\(Y\)</span> is given by <span class="math display">\[\Pr(Y \le x) = F(x/a).\]</span>
+Hence, the density function is <span class="math display">\[f_Y(x) = \frac{1}{a}f(x/a).\]</span></p>
+<p>You can get more examples from Tutorials.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="deductibles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/03-Deductible-Reinsurance.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/03-Deductible-Reinsurance.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

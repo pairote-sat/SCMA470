@@ -128,7 +128,7 @@
 
 \title{SCMA470 Risk Analysis and Credibility}
 \author{Pairote Satiracoo}
-\date{2021-08-27}
+\date{2021-09-02}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1451,6 +1451,547 @@ Range & Observation & Exp & Gamma & Lognormal & Pareto \\
 Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area. Note that the data set is stored in the variable \texttt{dat}.
 
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
+
+\hypertarget{deductibles-and-reinsurance}{%
+\chapter{Deductibles and reinsurance}\label{deductibles-and-reinsurance}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+In this chapter, we will introduce the concept of risk-sharing. We will
+consider two types of risk-sharing including deductibles and
+reinsurance. The purpose of risk sharing is to spread the risk among the
+parties involved. For example,
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A policyholder purchases automobile insurance with a deductible. The
+  policyholder is responsible for some of the risk , and transfer the
+  larger portion of the risk to the insurer. The policyholder will
+  submit a claim when the loss exceeds the deductible.
+\item
+  A direct insurer can pass on some of the risks to another insurance
+  company known as a reinsurer by purchasing insurance from the
+  reinsurer. It will protect the insurer from paying large claims.
+\end{enumerate}
+
+The main goals of the chapter include the derivation of the distribution
+and corresponding moments of the claim amounts paid by the policyholder,
+direct insurer and the reinsurer in the presence of risk-sharing
+arrangements. In addition, the effects of risk-sharing arrangements will
+reduce the mean and variability of the amount paid by the direct
+insurer, and also the probability that the insurer will be involved on
+very large claims.
+
+\hypertarget{deductibles}{%
+\section{Deductibles}\label{deductibles}}
+
+The insurer can modify the policy so that the policyholder is
+responsible for some of the risk by including a deductible (also known
+as policy excess).
+
+Given a financial loss of \(X\) and a deductible of \(d\),
+
+\begin{itemize}
+\item
+  the insured agrees to bear the first amount of \(d\) of any loss \(X\),
+  and only submits a claim when \(X\) exceeds \(d\).
+\item
+  the insurer will pay the remaining of \(X - d\) if the loss \(X\)
+  exceeds \(d\).
+\end{itemize}
+
+For example, suppose a policy has a deductible of , and you incur a loss
+of in a car accident. You pay the deductible of and the car insurance
+company pays the remaining of .
+
+Let \(X\) be the claim amount, \(V\) and \(Y\) the amounts of the claim paid
+by the policyholder, the (direct) insurer, respectively, i.e.
+\[X = V + Y.\] So the amount paid by the policyholder and the insurer
+are given by
+
+\[\begin{aligned}
+    V = 
+    \begin{cases}
+        X &\text{if }  X \le d\\   
+        d &\text{if }  X > d,
+    \end{cases} \\
+    Y = 
+    \begin{cases}
+        0 &\text{if }  X \le d\\   
+        X - d &\text{if }  X > d.
+    \end{cases}\end{aligned}\] The amounts \(V\) and \(Y\) can also be
+expressed as \[V = \min(X,d), \quad Y = \max(0,X-d).\]
+
+The relationship between the policyholder and insurer is similar to that
+between the insurer and reinsurer. Therefore, the detailed analysis of a
+policy with a deductible is analogous to reinsurance, which will be
+discussed in the following section.
+
+\hypertarget{reinsurance}{%
+\section{Reinsurance}\label{reinsurance}}
+
+Reinsurance is insurance purchased by an insurance company in order to
+protect itself from large claims. There are two main types of
+reinsurance arrangement:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  excess of loss reinsurance; and
+\item
+  proportional reinsurance.
+\end{enumerate}
+
+\hypertarget{excess-of-loss-reinsurance}{%
+\section{Excess of loss reinsurance}\label{excess-of-loss-reinsurance}}
+
+Under excess of loss reinsurance arrangement, the direct insurer sets a
+certain limit called a retention level \(M >0\). For a claim \(X\),
+
+\begin{itemize}
+\item
+  the insurance company pays any claim in full if \(X \le M\); and
+\item
+  the reinsurer (or reinsurance company) pays the remaining amount of
+  \(X - M\) if \(X > M\).
+\end{itemize}
+
+The position of the reinsurer under excess of loss reinsurance is the
+same as that of the insurer for a policy with a deductible.
+
+Let \(X\) be the claim amount, \(V, Y\) and \(Z\) the amounts of the claim
+paid by the policyholder, (direct) insurer and reinsurer, respectively,
+i.e.~\[X = V + Y + Z.\] In what follows, without stated otherwise, we
+consider the case in which there is no deductible in place, i.e.~\(V = 0\)
+and \[X = Y + Z.\] So the amount paid by the direct insurer and the
+reinsurer are given by
+
+\[\begin{aligned}
+    Y = 
+    \begin{cases}
+        X &\text{if }  X \le M\\   
+        M &\text{if }  X > M,
+    \end{cases} \\
+    Z = 
+    \begin{cases}
+        0 &\text{if }  X \le M\\   
+        X - M &\text{if }  X > M.
+    \end{cases}\end{aligned}\] The amounts \(Y\) and \(Z\) can also be
+expressed as \[Y = \min(X,M), \quad Z = \max(0,X-M).\]
+
+d = 1000 M = 10000 X = \[3000, 800, 25000, 5000, 20000\]
+
+\begin{example}
+\protect\hypertarget{exm:examplePayouts}{}\label{exm:examplePayouts}
+
+Suppose a policy has a deductible of and the
+insurer arrange excess of loss reinsurance with retention level of . A
+sample of loss amounts in one year consists of the following values, in
+unit of Thai baht: \[3000, 800, 25000, 5000, 20000 .\] Calculate the
+total amount paid by:*
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{the policyholder;}
+\item
+  \emph{the insurer; and}
+\item
+  \emph{the reinsurer.}
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+
+The total amounts paid by
+
+\begin{itemize}
+\item
+  the policyholders : \[1000 + 800 + 1000 + 1000 + 1000 = 4800.\]
+\item
+  The insurer : \[2000 + 0 + 10000 + 4000 + 10000 = 26000.\]
+\item
+  The reinsurer : \[0 + 0 + 14000 + 0 + 9000 = 23000.\]
+\end{itemize}
+
+\hypertarget{mixed-distributions}{%
+\section{Mixed distributions}\label{mixed-distributions}}
+
+In the subsequent sections, we will derive the probability distribution
+of the random variables \(Y\) and \(Z\), which are the insurer's and
+reinsurer's payouts on claims. Their distributions are neither purely
+continuous, nor purely discrete. First we start with some important
+properties of such random variables.
+
+A random variable \(U\) which is partly discrete and partly continuous is
+said to be a mixed distribution. The distribution function of \(U\),
+denoted by \(F_U(x)\) is continuous and differentiable except for some
+values of \(x\) in a countable set \(S\). For a mixed distribution \(U\),
+there exists a function \(f_U(x)\) such that
+\[F_U(x) = \Pr(U \le x) = \int_{-\infty}^x f_U(x) dx + \sum_{x_i \in S, x_i \le x } \Pr(U = x_i).\]
+The expected value of \(g(U)\) for some function \(g\) is given by
+
+\begin{equation} 
+\label{eq:eqnExpectationMixed} \mathrm{E}[g(U)] = \int_{-\infty}^\infty g(x) f_U(x) \mathop{}\!d{x} + \sum_{x_i \in S } g(x_i) \Pr(U = x_i).
+\end{equation}
+
+It is the sum of the integral over the intervals at which \(f_U(x)\) is
+continuous and the summation over the points in \(S\).
+
+The function \(f_U(x)\) is not the probability density function of \(U\)
+because \(\int_{-\infty}^\infty f_U(x) dx \neq 1\). In particular, it is
+the derivative of \(F_U(x)\) at the points where \(F_U(x)\) is continuous
+and differentiable.
+
+Recall that \(X\) denotes the claim amount and \(Y\) and \(Z\) be the amounts
+of the claim paid by the insurer and reinsurer. The distribution
+function and the density function of the claim amount \(X\) are denoted by
+\(F_{X}\) and \(f_X(x)\), where we assume that \(X\) is continuous. In the
+following examples, we will derive the distribution, mean and variance
+of the random variables \(Y\) and \(Z\). Furthermore, both random variables
+\(Y\) and \(Z\) are examples of mixed distributions.
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-30}{}\label{exm:unlabeled-div-30}
+
+\emph{Let \(F_Y\) denote the distribution function of
+\(Y = \min(X,M)\). It follows that \[F_Y(x) = 
+    \begin{cases}
+        F_X(x) &\text{if }  x < M\\   
+        1 &\text{if }  x \ge M
+    \end{cases}.\] Hence, the distribution function of \(Y\) is said to be
+a mixed distribution.}
+
+\end{example}
+
+\textbf{Solution:}
+From \(Y = \min(X,M)\), if \(y < M\), then
+\[F_Y(y) = \Pr(Y \le y) = \Pr(X \le y) = F_X(y).\] If \(y \ge M\), then
+\[F_Y(y) = \Pr(Y \le y) = 1,\] which follows because \(\min(X,M) \le M\).
+
+Hence, \(Y\) is mixed with a density function \(f_X(x)\), for \(0 \le x < M\)
+and a mass of probability at \(M\), with \(Pr(Y = M) = 1 - F_X(M)\). The
+last equality follows from \[\begin{aligned}
+    \Pr(Y = M) &= \Pr(X > M) \\
+        &=   1 - \Pr(X \le M) = 1 - F_X(M). \end{aligned}\]
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-31}{}\label{exm:unlabeled-div-31}
+
+\emph{Show that
+\[\mathrm{E}[Y] = \mathrm{E}[\min(X,M)] = \mathrm{E}[X] - \int_0^\infty y f_X(y+M) \mathop{}\!dy.\]}
+
+\end{example}
+
+\(\mathrm{E}[Y]\) is the expected payout by the insurer.
+
+\[\begin{aligned}
+    \mathrm{E}[Y] &= \mathrm{E}[\min(X,M)] \\
+        &= \int_0^\infty \min(X,M) \cdot f_X(x) \, dx \\
+        &= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty M \cdot f_X(x) \, dx \\
+        &= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty x \cdot f_X(x) \, dx + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+        &= \mathrm{E}[X] + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
+    &= \mathrm{E}[X] + \int_0^\infty (-y) \cdot f_X(y+M) \, dy \\
+    &=  \mathrm{E}[X] - \int_0^\infty y \cdot f_X(y+M) \, dy 
+\end{aligned}\]
+
+\textbf{Note}
+Under excess of loss reinsurance arrangement, the mean amount paid by
+the insurer is reduced by the amount equal to
+\(\int_0^\infty y f_X(y+M) \mathop{}\!dy.\)
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-32}{}\label{exm:unlabeled-div-32}
+
+\emph{Let \(X\) be an exponential distribution with parameter
+\(\lambda\) and \(Y = \min(X,M)\). Then \[F_Y(x) = 
+    \begin{cases}
+        1 - e^{-\lambda x} &\text{if }  x < M\\   
+        1 &\text{if }  x \ge M
+    \end{cases}.\] A plot of the distribution function \(F_Y\) is given in
+Figure~\protect\hyperlink{figMixedDist}{1}. Hence, \(Y\) is a mixed distribution with a
+density function \(f_Y(x) = f_X(x)\) for \(0 < x < M\) and a probability
+mass at \(M\) is \(\Pr(Y = M) = 1 - F_X(M)\).}
+
+Using
+\eqref{eq:eqnExpectationMixed}, the expected value of \(Y\),
+\(\mathrm{E}[Y]\) is given by
+
+\[\begin{aligned}
+    \mathrm{E}[Y] &= \int_{0}^M x f_X(x) \mathop{}\!d{x}  + M(1 - F_X(M)).  \end{aligned}\]
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-33}{}\label{exm:unlabeled-div-33}
+
+\emph{Let \(F_Z\) denote the distribution function of
+\(Z = \max(0,X-M)\). It follows that \[F_Z(x) = 
+    \begin{cases}
+        F_{X}(M) &\text{if }  x = 0\\   
+        F_{X}(x + M) &\text{if }  x > 0
+    \end{cases}.\] Hence, the distribution function of \(Z\) is a mixed
+distribution with a mass of probability at \(0\).}
+
+\end{example}
+
+\textbf{Solution:}
+The random variable \(Z\) is the \textbf{reinsurer's payout} which also include
+\textbf{zero claims}. Later we will consider only \textbf{reinsurance claims},
+which involve the reinsurer, i.e.~claims such that \(X > M\).
+
+The distribution of \(Z\) can be derived as follows:
+
+\begin{itemize}
+\item
+  For \(x =0\), \[F_Z(0) = \Pr(Z = 0) = \Pr(X \le M) = F_X(M).\]
+\item
+  For \(x > 0\), \[\begin{aligned}
+      F_Z(0) &= \Pr(Z \le x) = \Pr(\max(0,X-M) \le x) \\
+      &= \Pr(X- M \le x) = \Pr(X \le x + M) = F_X(x + M).\end{aligned}\]
+\end{itemize}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-34}{}\label{exm:unlabeled-div-34}
+
+\emph{Let \(X\) be an exponential distribution with parameter
+\(\lambda\) and \(Z = \max(0,X-M)\). Derive and plot the probability
+distribution \(F_Z\) for \(\lambda = 1\) and \(M = 2\).}
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-35}{}\label{exm:unlabeled-div-35}
+
+\emph{Show that
+\[\mathrm{E}[Z] = \mathrm{E}[\max(0,X-M)] = \int_M^\infty (x- M) f_X(x) \mathop{}\!dx = \int_0^\infty y f_X(y+M) \mathop{}\!dy.\]
+Comment on the result.}
+
+\end{example}
+
+\textbf{Solution:}
+The expected payout on the claim by the reinsurer, \(\mathrm{E}[Z]\), and
+can also be found directly as follows: \[\begin{aligned}
+\mathrm{E}[Z] &= \mathrm{E}[\max(0,X-M)] \\
+    &= \int_0^M 0 \cdot f_X(x) \, dx + \int_M^\infty (X-M) \cdot f_X(x) \, dx \\
+    &= 0 +  \int_0^\infty y \cdot f_X(y + M) \, dy.\end{aligned}\] It
+follows from the previous results that
+\[\mathrm{E}[X] = \mathrm{E}[Y + Z] =  \mathrm{E}[Y]+ \mathrm{E}[Z].\]
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-36}{}\label{exm:unlabeled-div-36}
+
+\emph{Let the claim amount \(X\) have exponential distribution
+with mean \(\mu = 1/\lambda\).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Find the proportion of claims which involve the reinsurer.}
+\item
+  \emph{Find the insurer's expected payout on a claim.}
+\item
+  \emph{Find the reinsurer's expected payout on a claim.}
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+1. The proportion of claims which involve the reinsurer is
+\[\Pr(X > M) = 1 - F_X(M) = e^{-\lambda M} = e^{-M/\mu}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  The insurer's expected payout on a claim can be calculated by
+  \[\begin{aligned}
+      \mathrm{E}[Y] &= \mathrm{E}[X] -  \int_0^\infty y \cdot \lambda e^{-\lambda(y+M)} \, dy \\
+          &= \mathrm{E}[X] - e^{-\lambda M} \int_0^\infty y \cdot \lambda e^{-\lambda \cdot y} \, dy \\
+          &= \mathrm{E}[X] - e^{-\lambda M}  \mathrm{E}[X] \\
+          &= (1 - e^{-\lambda M})  \mathrm{E}[X].\end{aligned}\]
+\item
+  It follows from the above result that the reinsurer's expected
+  payout on a claim is \(e^{-\lambda M} \mathrm{E}[X].\)
+\end{enumerate}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-37}{}\label{exm:unlabeled-div-37}
+
+\emph{An insurer covers an individual loss \(X\) with excess of
+loss reinsurance with retention level \(M\). Let \(f_X(x)\) and \(F_X(x)\)
+denote the pdf and cdf of \(X\), respectively.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Show that the variance of the amount paid by the insurer on a
+  single claim satisfies:
+  \[\mathrm{Var}[\min(X,M)] = \int_0^M x^2 f_X(x) \mathop{}\!dx + M^2 (1 - F_X(M)) - (\mathrm{E}[\min(X,M)])^2.\]}
+\item
+  \emph{Show that the variance of the amount paid by the reinsurer on a
+  single claim satisfies:
+  \[\mathrm{Var}[\max(0,X-M)] = \int_M^\infty (x-M)^2 f_X(x) \mathop{}\!dx  - (\mathrm{E}[\max(0,X-M)])^2.\]}
+\end{enumerate}
+
+\end{example}
+
+\hypertarget{the-distribution-of-reinsurance-claims}{%
+\section{The distribution of reinsurance claims}\label{the-distribution-of-reinsurance-claims}}
+
+In practice, the reinsurer involves only claims which exceed the
+retention limit, i.e.~\(X > M\). Information of claims which are less or
+equal to \(M\) may not be available to the reinsurer. The claim amount \(Z\)
+paid by the reinsurer can be modified accordingly to take into account
+of non-zero claim sizes.
+
+Recall from
+Example \ref{exm:examplePayouts}, there are only three claims whose amounts
+exceed the retention level of . Such claims, consisting of , 9000 and
+23000 which involves the reinsurer are known as \textbf{reinsurance claims}.
+
+Let \(W = Z|Z>0\) be a random variable representing the amount of a
+non-zero payment by the reinsurer on a reinsurance claim. The
+distribution and density of \(W\) can be calculated as follows: for
+\(x > 0\), \[\begin{aligned}
+     \Pr[W \le x ] &= \Pr[Z \le x | Z >0] \\
+            &= \Pr[X - M \le x | X > M] \\
+            &= \frac{\Pr[M < X \le x + M]}{\Pr[X > M]}\\
+            &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.\end{aligned}\]
+Differentiating with respect to \(x\), we obtain the density function of
+\(W\) as \[f_W(x) = \frac{f_X(x+M)}{1 - F_X(M)}.\] Hence, the mean and
+variance can be directly obtained from the density function of \(W\).
+
+\hypertarget{proportional-reinsurance}{%
+\section{Proportional reinsurance}\label{proportional-reinsurance}}
+
+Under excess of loss reinsurance arrangement, the direct insurer pays a
+fixed proportion \(\alpha\), called the proportion of the risk retained by
+the insurer, and the reinsurer pays the remainder of the claim.
+
+Let \(X\) be the claim amount, \(Y\) and \(Z\) the amounts of the claim paid
+by the policyholder, (direct) insurer and reinsurer, respectively, i.e.
+\[X = Y + Z.\] So the amount paid by the direct insurer and the
+reinsurer are given by \[Y = \alpha X, \quad Z = (1 - \alpha) X.\] Both
+of the random variables are scaled by the factor of \(\alpha\) and
+\(1- \alpha\), respectively.
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-38}{}\label{exm:unlabeled-div-38}
+
+\emph{Derive the distribution function and density function
+of \(Y\).}
+
+\end{example}
+
+\textbf{Solution:}
+Let \(X\) has a distribution function \(F\) with density function \(f\). The
+distribution function of \(Y\) is given by \[\Pr(Y \le x) = F(x/a).\]
+Hence, the density function is \[f_Y(x) = \frac{1}{a}f(x/a).\]
+
+You can get more examples from Tutorials.
+
+\hypertarget{tutorials}{%
+\chapter{Tutorials}\label{tutorials}}
+
+\hypertarget{tutorial-1}{%
+\section{Tutorial 1}\label{tutorial-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Using the method of moments, calculate the parameter values for the
+  gamma, lognormal and Pareto distributions for which
+  \[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2.\]
+\item
+  Show that if \(X \sim \text{Exp}(\lambda)\), then the random variable
+  \(X-w\) conditional on \(X > w\) has the same distribution as \(X\), i.e.
+  \[X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).\]
+\item
+  Derive an expression for the variance of the
+  \(\text{Pa}(\alpha, \lambda)\) distribution. (Hint: using the pdf)
+\item
+  Show that the MLE (the maximum likelihood estimation) of \(\lambda\)
+  for an \(\text{Exp}(\lambda)\) distribution is the reciprocal of the
+  sample mean, i.e.~\(\hat\lambda = 1/ \bar x\).
+\item
+  Claims last year on a portfolio of policies of a risk had a
+  lognormal distribution with parameter \(\mu = 5\) and
+  \(\sigma^2 = 0.4\). It is estimated that all claims will increase by
+  15\% next year. Find the probability that a claim next year will
+  exceed 1000.
+\end{enumerate}
+
+\hypertarget{tutorial-2}{%
+\section{Tutorial 2}\label{tutorial-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Claims occur on a general insurance portfolio independently and at
+  random. Each claim is classified as being of ``Type A'' or ``Type B''.
+  Type A claim amounts are distributed \(\text{Pa}(3,400)\) and Type B
+  claim amounts are distributed \(\text{Pa}(4,1000)\). It is known that
+  90\% of all claims are of Type A.
+
+  Let \(X\) denote a claim chosen at random from the portfolio.
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    Calculate \(\Pr(X > 1000).\)
+  \item
+    Calculate \(\mathrm{E}[X]\) and \(\mathrm{Var}[X]\).
+  \item
+    Let \(Y\) have a Pareto distribution
+    with the same mean and variance as \(X\). Calculate
+    \(\Pr(Y > 1000).\)
+  \item
+    Comment on the difference in the answers found in 1.1 and 1.2.
+  \end{enumerate}
+\item
+  An insurer covers an individual loss \(X\) with excess of loss
+  reinsurance with retention level \(M\). Let \(Y\) and \(Z\) be random
+  variables representing the amounts paid by the insurer and
+  reinsurer, respectively, i.e.~\(X = Y + Z\). Show that
+  \(\mathrm{Cov}[Y,Z] \ge 0\) and deduce that
+  \[\mathrm{Var}[X] \ge \mathrm{Var}[Y] +  \mathrm{Var}[Z].\] Comment
+  on the results obtained.
+\item
+  Claim amounts from a general insurance portfolio are lognormally
+  distributed with mean 200 and variance 2916. Excess of loss
+  reinsurance with retenton level 250 is arranged. Calculate the
+  probability that the reinsurer is involved in a claim.
+\item
+  Show that if \(X \sim \text{Pa}(\alpha, \lambda)\), then the random
+  variable \(X-d\) conditional on \(X > d\) has a pareto distribution with
+  parameters \(\alpha\) and \(\lambda + d\), i.e.
+  \[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - d | X > d \sim \text{Pa}(\alpha,\lambda + d).\]
+\item
+  Consider a portfolio of motor insurance policies. In the event of an
+  accident, the cost of the repairs to a car has a Pareto distribution
+  with parameters \(\alpha\) and \(\lambda\). A deductible of 100 is
+  applied to all claims and a claim is always made if the cost of the
+  repairs exceeds this amount. A sample of 100 claims has mean 200 and
+  standard deviation 250.
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    Using the method of moments, estimate \(\alpha\) and \(\lambda\).
+  \item
+    Estimate the proportion of accidents that do not result in a
+    claim being made.
+  \item
+    The insurance company arranges excess of loss reinsurance with
+    another insurance company to reduce the mean amount it pays on a
+    claim to 160. Calculate the retention limit needed to achieve
+    this.
+  \end{enumerate}
+\end{enumerate}
 
 \hypertarget{interactive-lecture}{%
 \chapter{Interactive Lecture}\label{interactive-lecture}}

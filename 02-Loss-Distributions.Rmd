@@ -542,6 +542,7 @@ ggplot(dat) +
 
 
 
+
 <!-- curve(dgamma(x ,shape = alpha_tilde ,rate = lambda_tilde), add = TRUE, col = "red", lwd = 2) -->
 
 
@@ -556,11 +557,6 @@ ggplot(dat) +
 <!-- ![ **The probability density functions (pdf) of exponential -->
 <!-- distributions with various parameters $\lambda$.** -->
 <!-- ](FigExp.eps){width="80%"} -->
-
-
-
-
-
 
 
 <!-- The following code uses to obtain the results in -->

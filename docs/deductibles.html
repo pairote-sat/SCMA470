@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Deductibles | SCMA470 Risk Analysis and Credibility</title>
+  <meta name="description" content="Chapter 3 Deductibles | SCMA470 Risk Analysis and Credibility" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Deductibles | SCMA470 Risk Analysis and Credibility" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Deductibles | SCMA470 Risk Analysis and Credibility" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="deductibles-and-reinsurance.html"/>
+<link rel="next" href="reinsurance.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+<li class="chapter" data-level="1.17" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.17</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>2</b> Deductibles and reinsurance</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="deductibles.html"><a href="deductibles.html"><i class="fa fa-check"></i><b>3</b> Deductibles</a></li>
+<li class="chapter" data-level="4" data-path="reinsurance.html"><a href="reinsurance.html"><i class="fa fa-check"></i><b>4</b> Reinsurance</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reinsurance.html"><a href="reinsurance.html#excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>4.1</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="4.2" data-path="reinsurance.html"><a href="reinsurance.html#mixed-distributions"><i class="fa fa-check"></i><b>4.2</b> Mixed distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="reinsurance.html"><a href="reinsurance.html#the-distribution-of-reinsurance-claims"><i class="fa fa-check"></i><b>4.3</b> The distribution of reinsurance claims</a></li>
+<li class="chapter" data-level="4.4" data-path="reinsurance.html"><a href="reinsurance.html#proportional-reinsurance"><i class="fa fa-check"></i><b>4.4</b> Proportional reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>5</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>5.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SCMA470 Risk Analysis and Credibility</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="deductibles" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Deductibles</h1>
+<p>The insurer can modify the policy so that the policyholder is
+responsible for some of the risk by including a deductible (also known
+as policy excess).</p>
+<p>Given a financial loss of <span class="math inline">\(X\)</span> and a deductible of <span class="math inline">\(d\)</span>,</p>
+<ul>
+<li><p>the insured agrees to bear the first amount of <span class="math inline">\(d\)</span> of any loss <span class="math inline">\(X\)</span>,
+and only submits a claim when <span class="math inline">\(X\)</span> exceeds <span class="math inline">\(d\)</span>.</p></li>
+<li><p>the insurer will pay the remaining of <span class="math inline">\(X - d\)</span> if the loss <span class="math inline">\(X\)</span>
+exceeds <span class="math inline">\(d\)</span>.</p></li>
+</ul>
+<p>For example, suppose a policy has a deductible of , and you incur a loss
+of in a car accident. You pay the deductible of and the car insurance
+company pays the remaining of .</p>
+<p>Let <span class="math inline">\(X\)</span> be the claim amount, <span class="math inline">\(V\)</span> and <span class="math inline">\(Y\)</span> the amounts of the claim paid
+by the policyholder, the (direct) insurer, respectively, i.e.
+<span class="math display">\[X = V + Y.\]</span> So the amount paid by the policyholder and the insurer
+are given by</p>
+<p><span class="math display">\[\begin{aligned}
+    V = 
+    \begin{cases}
+        X &amp;\text{if }  X \le d\\   
+        d &amp;\text{if }  X &gt; d,
+    \end{cases} \\
+    Y = 
+    \begin{cases}
+        0 &amp;\text{if }  X \le d\\   
+        X - d &amp;\text{if }  X &gt; d.
+    \end{cases}\end{aligned}\]</span> The amounts <span class="math inline">\(V\)</span> and <span class="math inline">\(Y\)</span> can also be
+expressed as <span class="math display">\[V = \min(X,d), \quad Y = \max(0,X-d).\]</span></p>
+<p>The relationship between the policyholder and insurer is similar to that
+between the insurer and reinsurer. Therefore, the detailed analysis of a
+policy with a deductible is analogous to reinsurance, which will be
+discussed in the following section.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="deductibles-and-reinsurance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reinsurance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/03-Deductible-Reinsurance.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/03-Deductible-Reinsurance.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

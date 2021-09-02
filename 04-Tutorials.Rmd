@@ -1,0 +1,82 @@
+# Tutorials 
+
+## Tutorial 1
+
+1.  Using the method of moments, calculate the parameter values for the
+    gamma, lognormal and Pareto distributions for which
+    $$\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2.$$
+
+2.  Show that if $X \sim \text{Exp}(\lambda)$, then the random variable
+    $X-w$ conditional on $X > w$ has the same distribution as $X$, i.e.
+    $$X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).$$
+
+3.  Derive an expression for the variance of the
+    $\text{Pa}(\alpha, \lambda)$ distribution. (Hint: using the pdf)
+
+4.  Show that the MLE (the maximum likelihood estimation) of $\lambda$
+    for an $\text{Exp}(\lambda)$ distribution is the reciprocal of the
+    sample mean, i.e. $\hat\lambda = 1/ \bar x$.
+
+5.  Claims last year on a portfolio of policies of a risk had a
+    lognormal distribution with parameter $\mu = 5$ and
+    $\sigma^2 = 0.4$. It is estimated that all claims will increase by
+    15% next year. Find the probability that a claim next year will
+    exceed 1000.
+
+
+
+## Tutorial 2
+
+
+1.  Claims occur on a general insurance portfolio independently and at
+    random. Each claim is classified as being of "Type A" or "Type B".
+    Type A claim amounts are distributed $\text{Pa}(3,400)$ and Type B
+    claim amounts are distributed $\text{Pa}(4,1000)$. It is known that
+    90% of all claims are of Type A.
+
+    Let $X$ denote a claim chosen at random from the portfolio.
+
+    1.  Calculate $\Pr(X > 1000).$
+
+    2.  Calculate $\mathrm{E}[X]$ and $\mathrm{Var}[X]$.
+
+    3.  Let $Y$ have a Pareto distribution
+        with the same mean and variance as $X$. Calculate
+        $\Pr(Y > 1000).$
+
+    4.  Comment on the difference in the answers found in 1.1 and 1.2.
+
+2.  An insurer covers an individual loss $X$ with excess of loss
+    reinsurance with retention level $M$. Let $Y$ and $Z$ be random
+    variables representing the amounts paid by the insurer and
+    reinsurer, respectively, i.e. $X = Y + Z$. Show that
+    $\mathrm{Cov}[Y,Z] \ge 0$ and deduce that
+    $$\mathrm{Var}[X] \ge \mathrm{Var}[Y] +  \mathrm{Var}[Z].$$ Comment
+    on the results obtained.
+
+3.  Claim amounts from a general insurance portfolio are lognormally
+    distributed with mean 200 and variance 2916. Excess of loss
+    reinsurance with retenton level 250 is arranged. Calculate the
+    probability that the reinsurer is involved in a claim.
+
+4.  Show that if $X \sim \text{Pa}(\alpha, \lambda)$, then the random
+    variable $X-d$ conditional on $X > d$ has a pareto distribution with
+    parameters $\alpha$ and $\lambda + d$, i.e.
+    $$X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - d | X > d \sim \text{Pa}(\alpha,\lambda + d).$$
+
+5.  Consider a portfolio of motor insurance policies. In the event of an
+    accident, the cost of the repairs to a car has a Pareto distribution
+    with parameters $\alpha$ and $\lambda$. A deductible of 100 is
+    applied to all claims and a claim is always made if the cost of the
+    repairs exceeds this amount. A sample of 100 claims has mean 200 and
+    standard deviation 250.
+
+    1.  Using the method of moments, estimate $\alpha$ and $\lambda$.
+
+    2.  Estimate the proportion of accidents that do not result in a
+        claim being made.
+
+    3.  The insurance company arranges excess of loss reinsurance with
+        another insurance company to reduce the mean amount it pays on a
+        claim to 160. Calculate the retention limit needed to achieve
+        this.
