@@ -151,7 +151,7 @@ hist(dataset, breaks=100, xlab = "claim sizes"
     $$X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).$$
 
 
-We can use R to plot the probability density functions (pdf) of exponential distributions with various parameters $\lambda$, which are shown in  Figure \@ref(fig:FigExp).
+We can use R to plot the probability density functions (pdf) of exponential distributions with various parameters $\lambda$, which are shown in  Figure \@ref(fig:FigExp). Here we use `scale_colour_manual` to override defaults with scales package (see cheat sheet for details).
 
 
 ```{r FigExp, tut = FALSE, fig.cap= 'The probability density functions (pdf) of exponential distributions with various parameters lambda.'}
@@ -164,7 +164,7 @@ ggplot(data.frame(x=c(0,10)), aes(x=x)) +
   stat_function(fun=dexp,geom ="line", args = (mean=1), aes(colour = "1")) +
   stat_function(fun=dexp,geom ="line", args = (mean=1.5), aes(colour = "1.5")) +
   stat_function(fun=dexp,geom ="line", args = (mean=2), aes(colour = "2")) + 
-  scale_colour_manual(expression(paste("lambda = ")), values = c("red", "blue", "green", "orange"))
+  scale_colour_manual(expression(paste(lambda, " = ")), values = c("red", "blue", "green", "orange"))
 ```
 
 
@@ -282,7 +282,7 @@ The properties of the lognormal distribution are summarised.
     $$(\exp(\sigma^2)  + 2) \left(\exp(\sigma^2)  -1 \right)^{1/2} .$$
 
 The probability density functions (pdf) of gamma distributions with
-various shape parameters $\alpha$ and rate parameter $lambda = 1$ is shown in Figure \@ref(fig:FigLognormal).
+various shape parameters $\alpha$ and rate parameter $\lambda = 1$ is shown in Figure \@ref(fig:FigLognormal).
 
 ```{r FigLognormal, tut = FALSE, fig.cap= 'The probability density functions (pdf) of lognormal distributions with mu = 0 and sigma = 0.25 or 1.'}
 ggplot(data.frame(x=c(0,10)), aes(x=x)) +
@@ -291,7 +291,7 @@ ggplot(data.frame(x=c(0,10)), aes(x=x)) +
   theme(plot.title = element_text(hjust = 0.5)) +
   stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 0.25), aes(colour = "0.25")) +
   stat_function(fun=dlnorm, args = list(meanlog = 0, sdlog = 1), aes(colour = "1")) +
-  scale_colour_manual(expression(paste("mu = 0 and sigma = ")), values = c("red", "blue"))
+  scale_colour_manual(expression(paste(mu, " = 0 and ", sigma, "= ")), values = c("red", "blue"))
 
 ```
 
@@ -307,7 +307,7 @@ $$f_X(x) = \frac{\alpha \lambda^\alpha}{(\lambda + x)^{\alpha + 1}}, \quad x > 0
 The distribution function is given by
 $$F_X(x) = 1 - \left(  \frac{\lambda}{\lambda + \alpha} \right)^\alpha, \quad x > 0.$$
 
-The properties of the gamma distribution are summarized.
+The properties of the Pareto distribution are summarized.
 
 -   The mean and variance of $X$ are
     $$\mathrm{E}[X] = \frac{\lambda}{\alpha - 1}, \alpha > 1 \text{ and } \mathrm{Var}[X] = \frac{\alpha \lambda^2}{(\alpha - 1)^2(\alpha - 2)}, \alpha > 2.$$
@@ -321,6 +321,7 @@ The properties of the gamma distribution are summarized.
 -   The coefficient of skewness is
     $$\frac{2(\alpha + 1)}{\alpha - 3} \sqrt{\frac{\alpha-2}{\alpha}} , \quad \alpha > 3.$$
 
+**Note**
 1.  The following conditional tail property for a Pareto distribution is
     useful for reinsurance calculation. Let
     $X \sim \text{Pa}(\alpha, \lambda)$. Then the random variable
@@ -335,6 +336,19 @@ The properties of the gamma distribution are summarized.
 3.  Other loss distribution are useful in practice including **Burr,
     Weibull and loggamma distributions**.
 
+
+
+
+```{r FigPareto, tut = FALSE, fig.cap= 'The probability density functions (pdf) of Pareto distributions with various shape alpha and rate parameter lambda = 1.', message= FALSE}
+library(actuar)
+ggplot(data.frame(x=c(0,60)), aes(x=x)) +
+  labs(y="Probability density", x = "x") + 
+  ggtitle("Pareto distribution")  +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  stat_function(fun=dpareto, args=list(shape=3, scale=20), aes(colour = "alpha = 3, lambda = 20")) +
+  stat_function(fun=dpareto, args=list(shape=6, scale=50), aes(colour = "alpha = 6, lambda = 50")) +
+  scale_colour_manual("Parameters", values = c("red", "blue"), labels = c(expression(paste(alpha, " = 3 and ", lambda, "= 20")),  expression(paste(alpha, " = 6 and ", lambda, "= 50")))) 
+```
 
 
 ::: {.example #exampleFittingClaimSizes}
@@ -462,7 +476,7 @@ Range  | Observation |    Exp |  Gamma |  Lognormal |  Pareto
         $$200 \left[    \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + a} \right)^{\tilde{\alpha}}  - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + b} \right)^{\tilde{\alpha}}   \right].$$
 
 6.  The histograms for the data set with fitted distributions
-    are shown in Figures \@ref(fig:FittedExpGamma).
+    are shown in Figures \@ref(fig:FittedExpGamma) and \@ref(fig:FittedLognormalPareto).
     <!-- [2](#FittedExpGamma){reference-type="ref" -->
     <!-- reference="FittedExpGamma"} and -->
     <!-- [3](#FittedLognormalPareto){reference-type="ref" -->
@@ -496,29 +510,54 @@ Range  | Observation |    Exp |  Gamma |  Lognormal |  Pareto
 <!-- width="80%"} -->
 
 
+```{r, echo = FALSE}
+dat <- c(31.08942156,915.0259362,32.02379562,885.875451,9314.100797,707.1738866,2114.362486,601.5827866,435.3788135,49.80179619,1802.38382,211.636439,153.5984719,60.05966992,48.17157697,948.7234626,132.4273109,151.710815,2967.961036,735.4149332,304.5807587,50.53311069,224.7665546,356.1809438,475.7668441,3044.149513,13.50664894,67.98274449,304.1439966,238.000105,399.0798263,149.28078,128.2848379,21.42027718,73.31426732,49.46882791,667.5327275,44.67360185,14894.07839,660.7614307,100.7628628,632.2812391,42.90884777,66.17693135,50.69454132,186.8781667,168.5408615,151.739978,2419.532354,434.4564032,69.03460232,162.6698593,226.6110395,33.61503495,233.027996,3244.945893,354.2534813,78.61052744,231.566614,283.0206491,457.6785426,134.2933058,61.34265063,38.25691912,1578.909048,441.6199826,761.4177777,275.6978588,521.0355916,2189.62783,117.2667885,240.3403153,672.4512938,753.8958019,84.98883079,3665.417976,60.35977515,4.01933309,14.95951366,196.7146403,153.7133165,98.31875053,104.4486324,358.9205878,2.254986331,2059.603959,37.63898608,56.48944035,1143.082948,410.7585516,12.65402986,19.83322514,1305.134797,2019.360735,1286.98479,8892.182131,5.814518749,296.1551295,86.75308161,486.7851405,7.491389798,180.3255281,1414.297748,524.4628208,1042.690334,1291.481474,115.4950998,360.6310737,3233.716838,149.5191039,8.845837473,83.87296324,42.99614517,623.9704853,45.74990074,144.2449793,368.575642,866.9272545,57.61592921,1812.231315,2229.998754,3448.332888,11313.34721,1492.498856,196.7262571,71.11817601,425.0614483,38.28653048,44.5090016,308.8781657,19080.51749,82.0761393,250.083523,79.07492042,183.8697686,33.83160391,22.78218299,698.9541648,32.75427003,457.0104919,112.1715567,396.7155234,195.0240781,1863.185385,181.6441121,59.08733655,96.39004191,824.730184,155.8215162,11.85510661,870.8679502,425.3133045,854.7296474,254.3108892,664.3320107,56.26120752,378.244016,2069.431495,3121.0901,844.4337594,746.3853675,1851.469633,431.7060232,333.325481,22.23970102,662.3816888,117.7590057,570.4412829,1127.035306,246.2686183,1467.568867,34.89187112,237.5761693,349.4503967,229.3362849,934.6926561,162.9254408,58.28497172,12803.04726,15.94904189,959.9543402,5853.878979,537.3974253,75.30572883,718.6597521,633.8214438,363.0338076,95.8476266,80.3178653,286.7121763,6367.453408,321.567711,21.51838022,599.4712958,246.7007073,13863.78181,214.7342597,234.3212952,958.916179,165.2521385)
+dat <- data.frame(claims = dat)
+```
 
-```{r FittedExpGamma, tut = FALSE, fig.cap= 'The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1.', echo = FALSE, warning= FALSE}
+
+```{r FittedExpGamma, tut = FALSE, fig.cap= 'Histogram of claim sizes with fitted exponential and gamma distributions.', echo = TRUE, warning= FALSE}
 
 library(stats)
 library(MASS)
 library(ggplot2)
-dat <- c(31.08942156,915.0259362,32.02379562,885.875451,9314.100797,707.1738866,2114.362486,601.5827866,435.3788135,49.80179619,1802.38382,211.636439,153.5984719,60.05966992,48.17157697,948.7234626,132.4273109,151.710815,2967.961036,735.4149332,304.5807587,50.53311069,224.7665546,356.1809438,475.7668441,3044.149513,13.50664894,67.98274449,304.1439966,238.000105,399.0798263,149.28078,128.2848379,21.42027718,73.31426732,49.46882791,667.5327275,44.67360185,14894.07839,660.7614307,100.7628628,632.2812391,42.90884777,66.17693135,50.69454132,186.8781667,168.5408615,151.739978,2419.532354,434.4564032,69.03460232,162.6698593,226.6110395,33.61503495,233.027996,3244.945893,354.2534813,78.61052744,231.566614,283.0206491,457.6785426,134.2933058,61.34265063,38.25691912,1578.909048,441.6199826,761.4177777,275.6978588,521.0355916,2189.62783,117.2667885,240.3403153,672.4512938,753.8958019,84.98883079,3665.417976,60.35977515,4.01933309,14.95951366,196.7146403,153.7133165,98.31875053,104.4486324,358.9205878,2.254986331,2059.603959,37.63898608,56.48944035,1143.082948,410.7585516,12.65402986,19.83322514,1305.134797,2019.360735,1286.98479,8892.182131,5.814518749,296.1551295,86.75308161,486.7851405,7.491389798,180.3255281,1414.297748,524.4628208,1042.690334,1291.481474,115.4950998,360.6310737,3233.716838,149.5191039,8.845837473,83.87296324,42.99614517,623.9704853,45.74990074,144.2449793,368.575642,866.9272545,57.61592921,1812.231315,2229.998754,3448.332888,11313.34721,1492.498856,196.7262571,71.11817601,425.0614483,38.28653048,44.5090016,308.8781657,19080.51749,82.0761393,250.083523,79.07492042,183.8697686,33.83160391,22.78218299,698.9541648,32.75427003,457.0104919,112.1715567,396.7155234,195.0240781,1863.185385,181.6441121,59.08733655,96.39004191,824.730184,155.8215162,11.85510661,870.8679502,425.3133045,854.7296474,254.3108892,664.3320107,56.26120752,378.244016,2069.431495,3121.0901,844.4337594,746.3853675,1851.469633,431.7060232,333.325481,22.23970102,662.3816888,117.7590057,570.4412829,1127.035306,246.2686183,1467.568867,34.89187112,237.5761693,349.4503967,229.3362849,934.6926561,162.9254408,58.28497172,12803.04726,15.94904189,959.9543402,5853.878979,537.3974253,75.30572883,718.6597521,633.8214438,363.0338076,95.8476266,80.3178653,286.7121763,6367.453408,321.567711,21.51838022,599.4712958,246.7007073,13863.78181,214.7342597,234.3212952,958.916179,165.2521385)
-dat <- data.frame(claims = dat)
 
 xbar <- mean(dat$claims)
 s <- sd(dat$claims)
 
+# MME of alpha and lambda for Gamma distribution
 alpha_tilde <- (xbar/s)^2
 lambda_tilde <- alpha_tilde/xbar
 
-ggplot(dat) + geom_histogram(aes(x = claims, y = ..density..), bins = 90 , fill = "grey", color = "black") + stat_function(fun=dexp, geom ="line", args = (rate = 1/mean(dat$claims)), aes(colour = "Exp")) + 
-stat_function(fun=dgamma, geom ="line", args = list(shape = alpha_tilde ,rate = lambda_tilde), aes(colour = "Gamma")) + ylim(0, 0.0015) + scale_color_discrete(name="Fitted Distributions")
+ggplot(dat) + geom_histogram(aes(x = claims, y = ..density..), bins = 90 , fill = "grey", color = "black") + 
+  stat_function(fun=dexp, geom ="line", args = (rate = 1/mean(dat$claims)), aes(colour = "Exponential")) + 
+  stat_function(fun=dgamma, geom ="line", args = list(shape = alpha_tilde ,rate = lambda_tilde), aes(colour = "Gamma")) + ylim(0, 0.0015) + scale_color_discrete(name="Fitted Distributions")
 ```
+
+```{r FittedLognormalPareto, tut = FALSE, fig.cap= 'Histogram of claim sizes with fitted lognormal and pareto distributions.', echo = TRUE, warning= FALSE}
+library(actuar)
+# MME of mu and sigma for lognormal distribution
+
+sigma_tilda <- sqrt(log(  var(dat$claims)/mean(dat$claims)^2 +1  ))  # gives \tilde\sigma
+mu_tilda <- log(mean(dat$claims)) - sigma_tilda^2/2      # gives \tilde\mu
+
+# MME of alpha and lambda for Pareto distribution
+alpha_tilda <- 2*var(dat$claims)/mean(dat$claims)^2 * 1/(var(dat$claims)/mean(dat$claims)^2 - 1) #/tilde/alpha
+lambda_tilda <- mean(dat$claims)*(alpha_tilda -1)
+
+
+ggplot(dat) + geom_histogram(aes(x = claims, y = ..density..), bins = 90 , fill = "grey", color = "black") + 
+  stat_function(fun=dlnorm, geom ="line", args = list(meanlog = mu_tilda, sdlog = sigma_tilda), aes(colour = "Lognormal")) + 
+  stat_function(fun=dpareto, geom ="line", args = list(shape = alpha_tilda, scale = lambda_tilda), aes(colour = "Pareto")) +
+  scale_color_discrete(name="Fitted Distributions")
+
+```
+
 
 
 Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area. Note that the data set is stored in the variable `dat`.
 
-```{r ex="prob3", type="pre-exercise-code"}
+```{r ex="prob5", type="pre-exercise-code"}
 library(stats)
 library(MASS)
 library(ggplot2)
@@ -526,20 +565,69 @@ dat <- c(31.08942156,915.0259362,32.02379562,885.875451,9314.100797,707.1738866,
 dat <- data.frame(claims = dat)
 ```
 
-```{r ex="prob3", type="sample-code"}
-# Fill your code here
-names(dat)
-
+```{r ex="prob5", type="sample-code"}
+# Note that the object "dat" is data frame. To access the claims data we use dat$claims. # Fill your code below. 
+class(dat)
 
 ```
 
-```{r ex="prob3", type="solution"}
+```{r ex="prob5", type="solution"}
 ggplot(dat) + 
   geom_histogram(aes(x = claims, y = ..density..), bins = 90 , fill = "grey", color = "black") + 
   stat_function(fun=dexp, geom ="line", args = (rate = 1/mean(dat$claims)), aes(colour = "Exp")) +
   scale_color_discrete(name="Fitted Distributions")
 ```
 
+
+
+
+
+The following code can be used to obtain the expected number of claims for the fitted exponential distribution and perform goodness-of-fit test.
+
+
+
+
+```{r ex="prob4", type="pre-exercise-code"}
+library(stats)
+library(MASS)
+library(ggplot2)
+dat <- c(31.08942156,915.0259362,32.02379562,885.875451,9314.100797,707.1738866,2114.362486,601.5827866,435.3788135,49.80179619,1802.38382,211.636439,153.5984719,60.05966992,48.17157697,948.7234626,132.4273109,151.710815,2967.961036,735.4149332,304.5807587,50.53311069,224.7665546,356.1809438,475.7668441,3044.149513,13.50664894,67.98274449,304.1439966,238.000105,399.0798263,149.28078,128.2848379,21.42027718,73.31426732,49.46882791,667.5327275,44.67360185,14894.07839,660.7614307,100.7628628,632.2812391,42.90884777,66.17693135,50.69454132,186.8781667,168.5408615,151.739978,2419.532354,434.4564032,69.03460232,162.6698593,226.6110395,33.61503495,233.027996,3244.945893,354.2534813,78.61052744,231.566614,283.0206491,457.6785426,134.2933058,61.34265063,38.25691912,1578.909048,441.6199826,761.4177777,275.6978588,521.0355916,2189.62783,117.2667885,240.3403153,672.4512938,753.8958019,84.98883079,3665.417976,60.35977515,4.01933309,14.95951366,196.7146403,153.7133165,98.31875053,104.4486324,358.9205878,2.254986331,2059.603959,37.63898608,56.48944035,1143.082948,410.7585516,12.65402986,19.83322514,1305.134797,2019.360735,1286.98479,8892.182131,5.814518749,296.1551295,86.75308161,486.7851405,7.491389798,180.3255281,1414.297748,524.4628208,1042.690334,1291.481474,115.4950998,360.6310737,3233.716838,149.5191039,8.845837473,83.87296324,42.99614517,623.9704853,45.74990074,144.2449793,368.575642,866.9272545,57.61592921,1812.231315,2229.998754,3448.332888,11313.34721,1492.498856,196.7262571,71.11817601,425.0614483,38.28653048,44.5090016,308.8781657,19080.51749,82.0761393,250.083523,79.07492042,183.8697686,33.83160391,22.78218299,698.9541648,32.75427003,457.0104919,112.1715567,396.7155234,195.0240781,1863.185385,181.6441121,59.08733655,96.39004191,824.730184,155.8215162,11.85510661,870.8679502,425.3133045,854.7296474,254.3108892,664.3320107,56.26120752,378.244016,2069.431495,3121.0901,844.4337594,746.3853675,1851.469633,431.7060232,333.325481,22.23970102,662.3816888,117.7590057,570.4412829,1127.035306,246.2686183,1467.568867,34.89187112,237.5761693,349.4503967,229.3362849,934.6926561,162.9254408,58.28497172,12803.04726,15.94904189,959.9543402,5853.878979,537.3974253,75.30572883,718.6597521,633.8214438,363.0338076,95.8476266,80.3178653,286.7121763,6367.453408,321.567711,21.51838022,599.4712958,246.7007073,13863.78181,214.7342597,234.3212952,958.916179,165.2521385)
+dat <- data.frame(claims = dat)
+```
+
+
+
+```{r ex="prob4", type="sample-code"}
+library(tidyr)
+j = 0:9
+upbd = qexp(j/10, 1/mean(dat$claims))  #1/mean(dat$claims) gives the parameter of exponential dist
+observation <- cut(dat$claims, breaks = upbd,dig.lab=10)
+table(observation)
+
+# To fix the class interval (upbd when j = 9,infinity)
+upbd[length(upbd)+1] = 1000000
+upbd
+observation <- cut(dat$claims, breaks = upbd)
+
+tabSummary <- table(observation)
+
+barplot(tabSummary,main="Claim sizes",las=2)
+
+# Obtain E(Exp), the fitted claim sizes
+eexp <- diff(200*pexp(upbd, rate = 1/mean(dat$claims)))
+
+tabSummary <- data.frame(tabSummary) 
+colnames(tabSummary) <- c("Range", "Observation")
+
+tabSummary <- data.frame(tabSummary, Exponential = eexp)
+
+#summary of exponential fit
+chisq.test(x = tabSummary$Observation,
+           p = eexp/sum(eexp))
+
+# Manually compute chi-square statistics
+sum((tabSummary$Observation - eexp)^2 /eexp)   
+```
 
 
 

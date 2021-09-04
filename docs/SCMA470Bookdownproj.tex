@@ -128,7 +128,7 @@
 
 \title{SCMA470 Risk Analysis and Credibility}
 \author{Pairote Satiracoo}
-\date{2021-09-02}
+\date{2021-09-05}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1065,7 +1065,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxuXG5uc2FtcGxlIDwtIDIwMFxu
   \[X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).\]
 \end{enumerate}
 
-We can use R to plot the probability density functions (pdf) of exponential distributions with various parameters \(\lambda\), which are shown in Figure \ref{fig:FigExp}.
+We can use R to plot the probability density functions (pdf) of exponential distributions with various parameters \(\lambda\), which are shown in Figure \ref{fig:FigExp}. Here we use \texttt{scale\_colour\_manual} to override defaults with scales package (see cheat sheet for details).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1078,7 +1078,7 @@ We can use R to plot the probability density functions (pdf) of exponential dist
   \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\DecValTok{1}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\FloatTok{1.5}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1.5"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp,}\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{mean=}\DecValTok{2}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"2"}\NormalTok{)) }\SpecialCharTok{+} 
-  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"lambda = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(lambda, }\StringTok{" = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1207,7 +1207,7 @@ The properties of the lognormal distribution are summarised.
 \end{itemize}
 
 The probability density functions (pdf) of gamma distributions with
-various shape parameters \(\alpha\) and rate parameter \(lambda = 1\) is shown in Figure \ref{fig:FigLognormal}.
+various shape parameters \(\alpha\) and rate parameter \(\lambda = 1\) is shown in Figure \ref{fig:FigLognormal}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1217,7 +1217,7 @@ various shape parameters \(\alpha\) and rate parameter \(lambda = 1\) is shown i
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dlnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \FloatTok{0.25}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"0.25"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dlnorm, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \DecValTok{1}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"1"}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"mu = 0 and sigma = "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(mu, }\StringTok{" = 0 and "}\NormalTok{, sigma, }\StringTok{"= "}\NormalTok{)), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1238,7 +1238,7 @@ is given by
 The distribution function is given by
 \[F_X(x) = 1 - \left(  \frac{\lambda}{\lambda + \alpha} \right)^\alpha, \quad x > 0.\]
 
-The properties of the gamma distribution are summarized.
+The properties of the Pareto distribution are summarized.
 
 \begin{itemize}
 \item
@@ -1255,15 +1255,17 @@ The properties of the gamma distribution are summarized.
   \[\frac{2(\alpha + 1)}{\alpha - 3} \sqrt{\frac{\alpha-2}{\alpha}} , \quad \alpha > 3.\]
 \end{itemize}
 
+\textbf{Note}
+1. The following conditional tail property for a Pareto distribution is
+useful for reinsurance calculation. Let
+\(X \sim \text{Pa}(\alpha, \lambda)\). Then the random variable
+\(X - w\) conditional on \(X > w\) has a Pareto distribution with
+parameters \(\alpha\) and \(\lambda + w\), i.e.
+\[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - w | X > w \sim \text{Pa}(\alpha,\lambda + w).\]
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\item
-  The following conditional tail property for a Pareto distribution is
-  useful for reinsurance calculation. Let
-  \(X \sim \text{Pa}(\alpha, \lambda)\). Then the random variable
-  \(X - w\) conditional on \(X > w\) has a Pareto distribution with
-  parameters \(\alpha\) and \(\lambda + w\), i.e.
-  \[X \sim \text{Pa}(\alpha, \lambda)\Rightarrow  X - w | X > w \sim \text{Pa}(\alpha,\lambda + w).\]
+\setcounter{enumi}{1}
 \item
   The lognormal and Pareto distributions, in practice, provide a
   better fit to claim amounts than exponential and gamma
@@ -1272,6 +1274,25 @@ The properties of the gamma distribution are summarized.
   Other loss distribution are useful in practice including \textbf{Burr,
   Weibull and loggamma distributions}.
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(actuar)}
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{60}\NormalTok{)), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{x)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"Probability density"}\NormalTok{, }\AttributeTok{x =} \StringTok{"x"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Pareto distribution"}\NormalTok{)  }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dpareto, }\AttributeTok{args=}\FunctionTok{list}\NormalTok{(}\AttributeTok{shape=}\DecValTok{3}\NormalTok{, }\AttributeTok{scale=}\DecValTok{20}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"alpha = 3, lambda = 20"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dpareto, }\AttributeTok{args=}\FunctionTok{list}\NormalTok{(}\AttributeTok{shape=}\DecValTok{6}\NormalTok{, }\AttributeTok{scale=}\DecValTok{50}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"alpha = 6, lambda = 50"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\StringTok{"Parameters"}\NormalTok{, }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(alpha, }\StringTok{" = 3 and "}\NormalTok{, lambda, }\StringTok{"= 20"}\NormalTok{)),  }\FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(alpha, }\StringTok{" = 6 and "}\NormalTok{, lambda, }\StringTok{"= 50"}\NormalTok{)))) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FigPareto-1.pdf}
+\caption{\label{fig:FigPareto}The probability density functions (pdf) of Pareto distributions with various shape alpha and rate parameter lambda = 1.}
+\end{figure}
 
 \begin{example}
 \protect\hypertarget{exm:exampleFittingClaimSizes}{}\label{exm:exampleFittingClaimSizes}
@@ -1417,7 +1438,7 @@ Range & Observation & Exp & Gamma & Lognormal & Pareto \\
   \end{itemize}
 \item
   The histograms for the data set with fitted distributions
-  are shown in Figures \ref{fig:FittedExpGamma}.
+  are shown in Figures \ref{fig:FittedExpGamma} and \ref{fig:FittedLognormalPareto}.
 \item
   Comments:
 
@@ -1442,15 +1463,64 @@ Range & Observation & Exp & Gamma & Lognormal & Pareto \\
   \end{enumerate}
 \end{enumerate}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stats)}
+\FunctionTok{library}\NormalTok{(MASS)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\NormalTok{xbar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}
+
+\CommentTok{\# MME of alpha and lambda for Gamma distribution}
+\NormalTok{alpha\_tilde }\OtherTok{\textless{}{-}}\NormalTok{ (xbar}\SpecialCharTok{/}\NormalTok{s)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{lambda\_tilde }\OtherTok{\textless{}{-}}\NormalTok{ alpha\_tilde}\SpecialCharTok{/}\NormalTok{xbar}
+
+\FunctionTok{ggplot}\NormalTok{(dat) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ claims, }\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{bins =} \DecValTok{90}\NormalTok{ , }\AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dexp, }\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =}\NormalTok{ (}\AttributeTok{rate =} \DecValTok{1}\SpecialCharTok{/}\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"Exponential"}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dgamma, }\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{shape =}\NormalTok{ alpha\_tilde ,}\AttributeTok{rate =}\NormalTok{ lambda\_tilde), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"Gamma"}\NormalTok{)) }\SpecialCharTok{+} \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.0015}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{scale\_color\_discrete}\NormalTok{(}\AttributeTok{name=}\StringTok{"Fitted Distributions"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
 \includegraphics{SCMA470Bookdownproj_files/figure-latex/FittedExpGamma-1.pdf}
-\caption{\label{fig:FittedExpGamma}The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1.}
+\caption{\label{fig:FittedExpGamma}Histogram of claim sizes with fitted exponential and gamma distributions.}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(actuar)}
+\CommentTok{\# MME of mu and sigma for lognormal distribution}
+
+\NormalTok{sigma\_tilda }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{log}\NormalTok{(  }\FunctionTok{var}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{/}\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+}\DecValTok{1}\NormalTok{  ))  }\CommentTok{\# gives \textbackslash{}tilde\textbackslash{}sigma}
+\NormalTok{mu\_tilda }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(}\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)) }\SpecialCharTok{{-}}\NormalTok{ sigma\_tilda}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\DecValTok{2}      \CommentTok{\# gives \textbackslash{}tilde\textbackslash{}mu}
+
+\CommentTok{\# MME of alpha and lambda for Pareto distribution}
+\NormalTok{alpha\_tilda }\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{var}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{/}\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{var}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{/}\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\CommentTok{\#/tilde/alpha}
+\NormalTok{lambda\_tilda }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{claims)}\SpecialCharTok{*}\NormalTok{(alpha\_tilda }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+
+
+\FunctionTok{ggplot}\NormalTok{(dat) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ claims, }\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{bins =} \DecValTok{90}\NormalTok{ , }\AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dlnorm, }\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{meanlog =}\NormalTok{ mu\_tilda, }\AttributeTok{sdlog =}\NormalTok{ sigma\_tilda), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"Lognormal"}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_function}\NormalTok{(}\AttributeTok{fun=}\NormalTok{dpareto, }\AttributeTok{geom =}\StringTok{"line"}\NormalTok{, }\AttributeTok{args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{shape =}\NormalTok{ alpha\_tilda, }\AttributeTok{scale =}\NormalTok{ lambda\_tilda), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =} \StringTok{"Pareto"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_discrete}\NormalTok{(}\AttributeTok{name=}\StringTok{"Fitted Distributions"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/FittedLognormalPareto-1.pdf}
+\caption{\label{fig:FittedLognormalPareto}Histogram of claim sizes with fitted lognormal and pareto distributions.}
 \end{figure}
 
 Let us plot the histogram of claim sizes with fitted exponential and gamma distributions in this interaction area. Note that the data set is stored in the variable \texttt{dat}.
 
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
+
+The following code can be used to obtain the expected number of claims for the fitted exponential distribution and perform goodness-of-fit test.
+
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoibGlicmFyeSh0aWR5cilcbmogPSAwOjlcbnVwYmQgPSBxZXhwKGovMTAsIDEvbWVhbihkYXQkY2xhaW1zKSkgICMxL21lYW4oZGF0JGNsYWltcykgZ2l2ZXMgdGhlIHBhcmFtZXRlciBvZiBleHBvbmVudGlhbCBkaXN0XG5vYnNlcnZhdGlvbiA8LSBjdXQoZGF0JGNsYWltcywgYnJlYWtzID0gdXBiZCxkaWcubGFiPTEwKVxudGFibGUob2JzZXJ2YXRpb24pXG5cbiMgVG8gZml4IHRoZSBjbGFzcyBpbnRlcnZhbCAodXBiZCB3aGVuIGogPSA5LGluZmluaXR5KVxudXBiZFtsZW5ndGgodXBiZCkrMV0gPSAxMDAwMDAwXG51cGJkXG5vYnNlcnZhdGlvbiA8LSBjdXQoZGF0JGNsYWltcywgYnJlYWtzID0gdXBiZClcblxudGFiU3VtbWFyeSA8LSB0YWJsZShvYnNlcnZhdGlvbilcblxuYmFycGxvdCh0YWJTdW1tYXJ5LG1haW49XCJDbGFpbSBzaXplc1wiLGxhcz0yKVxuXG4jIE9idGFpbiBFKEV4cCksIHRoZSBmaXR0ZWQgY2xhaW0gc2l6ZXNcbmVleHAgPC0gZGlmZigyMDAqcGV4cCh1cGJkLCByYXRlID0gMS9tZWFuKGRhdCRjbGFpbXMpKSlcblxudGFiU3VtbWFyeSA8LSBkYXRhLmZyYW1lKHRhYlN1bW1hcnkpIFxuY29sbmFtZXModGFiU3VtbWFyeSkgPC0gYyhcIlJhbmdlXCIsIFwiT2JzZXJ2YXRpb25cIilcblxudGFiU3VtbWFyeSA8LSBkYXRhLmZyYW1lKHRhYlN1bW1hcnksIEV4cG9uZW50aWFsID0gZWV4cClcblxuI3N1bW1hcnkgb2YgZXhwb25lbnRpYWwgZml0XG5jaGlzcS50ZXN0KHggPSB0YWJTdW1tYXJ5JE9ic2VydmF0aW9uLFxuICAgICAgICAgICBwID0gZWV4cC9zdW0oZWV4cCkpXG5cbiMgTWFudWFsbHkgY29tcHV0ZSBjaGktc3F1YXJlIHN0YXRpc3RpY3NcbnN1bSgodGFiU3VtbWFyeSRPYnNlcnZhdGlvbiAtIGVleHApXjIgL2VleHApICAgIn0=
 
 \hypertarget{deductibles-and-reinsurance}{%
 \chapter{Deductibles and reinsurance}\label{deductibles-and-reinsurance}}
