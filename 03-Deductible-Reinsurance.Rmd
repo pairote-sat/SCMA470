@@ -116,8 +116,8 @@ expressed as $$Y = \min(X,M), \quad Z = \max(0,X-M).$$
 d = 1000 M = 10000 X = \[3000, 800, 25000, 5000, 20000\]
 
 ::: {.example #examplePayouts}
-Suppose a policy has a deductible of and the
-insurer arrange excess of loss reinsurance with retention level of . A
+Suppose a policy has a deductible of 1000 and the
+insurer arrange excess of loss reinsurance with retention level of 10000. A
 sample of loss amounts in one year consists of the following values, in
 unit of Thai baht: $$3000, 800, 25000, 5000, 20000 .$$ Calculate the
 total amount paid by:*
