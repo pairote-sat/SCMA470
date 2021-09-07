@@ -41,9 +41,9 @@ Given a financial loss of $X$ and a deductible of $d$,
 -   the insurer will pay the remaining of $X - d$ if the loss $X$
     exceeds $d$.
 
-For example, suppose a policy has a deductible of , and you incur a loss
-of in a car accident. You pay the deductible of and the car insurance
-company pays the remaining of .
+For example, suppose a policy has a deductible of 1000, and you incur a loss
+of 3000 in a car accident. You pay the deductible of 1000 and the car insurance
+company pays the remaining of 2000.
 
 Let $X$ be the claim amount, $V$ and $Y$ the amounts of the claim paid
 by the policyholder, the (direct) insurer, respectively, i.e.
