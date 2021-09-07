@@ -113,7 +113,7 @@ $$\begin{aligned}
     \end{cases}\end{aligned}$$ The amounts $Y$ and $Z$ can also be
 expressed as $$Y = \min(X,M), \quad Z = \max(0,X-M).$$
 
-d = 1000 M = 10000 X = \[3000, 800, 25000, 5000, 20000\]
+
 
 ::: {.example #examplePayouts}
 Suppose a policy has a deductible of 1000 and the
