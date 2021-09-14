@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Special compound distributions | SCMA470 Risk Analysis and Credibility</title>
+  <meta name="description" content="Chapter 7 Special compound distributions | SCMA470 Risk Analysis and Credibility" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Special compound distributions | SCMA470 Risk Analysis and Credibility" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Special compound distributions | SCMA470 Risk Analysis and Credibility" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-09-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sectionCompoundDistribution.html"/>
+<link rel="next" href="the-effect-of-reinsurance.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>3</b> Deductibles and reinsurance</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#deductibles"><i class="fa fa-check"></i><b>3.2</b> Deductibles</a></li>
+<li class="chapter" data-level="3.3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#reinsurance"><i class="fa fa-check"></i><b>3.3</b> Reinsurance</a></li>
+<li class="chapter" data-level="3.4" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>3.4</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="3.5" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#mixed-distributions"><i class="fa fa-check"></i><b>3.5</b> Mixed distributions</a></li>
+<li class="chapter" data-level="3.6" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#the-distribution-of-reinsurance-claims"><i class="fa fa-check"></i><b>3.6</b> The distribution of reinsurance claims</a></li>
+<li class="chapter" data-level="3.7" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#proportional-reinsurance"><i class="fa fa-check"></i><b>3.7</b> Proportional reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="collective-risk-model.html"><a href="collective-risk-model.html"><i class="fa fa-check"></i><b>4</b> Collective Risk Model</a></li>
+<li class="chapter" data-level="5" data-path="conditional-expectation-and-variance-formulas.html"><a href="conditional-expectation-and-variance-formulas.html"><i class="fa fa-check"></i><b>5</b> Conditional expectation and variance formulas</a></li>
+<li class="chapter" data-level="6" data-path="sectionCompoundDistribution.html"><a href="sectionCompoundDistribution.html"><i class="fa fa-check"></i><b>6</b> The moments of a compound distribution <span class="math inline">\(S\)</span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sectionCompoundDistribution.html"><a href="sectionCompoundDistribution.html#the-mean-of-s"><i class="fa fa-check"></i><b>6.1</b> The mean of <span class="math inline">\(S\)</span></a></li>
+<li class="chapter" data-level="6.2" data-path="sectionCompoundDistribution.html"><a href="sectionCompoundDistribution.html#the-variance-of-s"><i class="fa fa-check"></i><b>6.2</b> The variance of <span class="math inline">\(S\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="special-compound-distributions.html"><a href="special-compound-distributions.html"><i class="fa fa-check"></i><b>7</b> Special compound distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="special-compound-distributions.html"><a href="special-compound-distributions.html#compound-poisson-distributions"><i class="fa fa-check"></i><b>7.1</b> Compound Poisson distributions</a></li>
+<li class="chapter" data-level="7.2" data-path="special-compound-distributions.html"><a href="special-compound-distributions.html#compound-negative-binomial-distributions"><i class="fa fa-check"></i><b>7.2</b> Compound negative binomial distributions</a></li>
+<li class="chapter" data-level="7.3" data-path="special-compound-distributions.html"><a href="special-compound-distributions.html#compound-binomial-distributions"><i class="fa fa-check"></i><b>7.3</b> Compound binomial distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="the-effect-of-reinsurance.html"><a href="the-effect-of-reinsurance.html"><i class="fa fa-check"></i><b>8</b> The effect of reinsurance</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="the-effect-of-reinsurance.html"><a href="the-effect-of-reinsurance.html#proportional-reinsurance-1"><i class="fa fa-check"></i><b>8.1</b> Proportional reinsurance</a></li>
+<li class="chapter" data-level="8.2" data-path="the-effect-of-reinsurance.html"><a href="the-effect-of-reinsurance.html#excess-of-loss-reinsurance-1"><i class="fa fa-check"></i><b>8.2</b> Excess of loss reinsurance</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="the-effect-of-reinsurance.html"><a href="the-effect-of-reinsurance.html#compound-poisson-distributions-under-excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>8.2.1</b> Compound Poisson distributions under excess of loss reinsurance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="approximation-of-the-collective-risk-model.html"><a href="approximation-of-the-collective-risk-model.html"><i class="fa fa-check"></i><b>9</b> Approximation of the collective risk model</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="approximation-of-the-collective-risk-model.html"><a href="approximation-of-the-collective-risk-model.html#the-normal-approximation"><i class="fa fa-check"></i><b>9.1</b> The normal approximation</a></li>
+<li class="chapter" data-level="9.2" data-path="approximation-of-the-collective-risk-model.html"><a href="approximation-of-the-collective-risk-model.html#the-translated-gamma-approximation"><i class="fa fa-check"></i><b>9.2</b> The translated gamma approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="recursive-calculation-of-the-collective-risk-model.html"><a href="recursive-calculation-of-the-collective-risk-model.html"><i class="fa fa-check"></i><b>10</b> Recursive calculation of the collective risk model</a></li>
+<li class="chapter" data-level="11" data-path="premium-calculation.html"><a href="premium-calculation.html"><i class="fa fa-check"></i><b>11</b> Premium calculation</a></li>
+<li class="chapter" data-level="12" data-path="tutorials.html"><a href="tutorials.html"><i class="fa fa-check"></i><b>12</b> Tutorials</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tutorials.html"><a href="tutorials.html#tutorial-1"><i class="fa fa-check"></i><b>12.1</b> Tutorial 1</a></li>
+<li class="chapter" data-level="12.2" data-path="tutorials.html"><a href="tutorials.html#tutorial-2"><i class="fa fa-check"></i><b>12.2</b> Tutorial 2</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>13</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>13.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SCMA470 Risk Analysis and Credibility</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="special-compound-distributions" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Special compound distributions</h1>
+<div id="compound-poisson-distributions" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Compound Poisson distributions</h2>
+<p>Let <span class="math inline">\(N\)</span> be a Poisson distribution with the parameter <span class="math inline">\(\lambda\)</span>, i.e.
+<span class="math inline">\(N \sim \dpoisson\)</span> and <span class="math inline">\(\{X_i \}_{i=1}^\infty\)</span> are independent and
+identically distributed with distribution function <span class="math inline">\(F_X\)</span>. Then
+<span class="math inline">\(S = X_1 + \ldots + X_N\)</span> is said to have a compound Poisson distribution
+and denote by <span class="math inline">\(\mathcal{CP}(\lambda,F_X)\)</span>.</p>
+<p><strong>Note</strong> The same terminology can be defined similarly for other
+distributions, for e.g. if <span class="math inline">\(N\)</span> has a negative binomial distribution,
+then <span class="math inline">\(S\)</span> is said to have a compound negative binomial distribution.</p>
+<p>Let <span class="math inline">\(S \sim \mathcal{CP}(\lambda,F_X)\)</span>. Show that</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\E[S] = \lambda m_1\)</span>,</p></li>
+<li><p><span class="math inline">\(\Var[S] = \lambda m_2\)</span>,</p></li>
+<li><p><span class="math inline">\(M_S(t) = \exp{(\lambda(M_X(t) - 1))}.\)</span></p></li>
+<li><p>The third central moment <span class="math inline">\(\E[(S- \E[S])^3] = \lambda m_3\)</span>, and hence
+<span class="math display">\[\Sk[S] = \frac{\lambda m_3}{(\lambda m_2)^{3/2}},\]</span></p></li>
+</ol>
+<p>where <span class="math inline">\(m_k\)</span> be the <span class="math inline">\(k\)</span>th moment of <span class="math inline">\(X_1\)</span></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\E[S] = \E[N] \cdot \E[X] = \lambda m_1\)</span>,</p></li>
+<li><p><span class="math inline">\(\Var[S] = \E[ N ] (m_2 - m_1^2) + \Var[ N ] m_1 ^2 =  \lambda(m_2 - m_1^2) + \lambda m_1^2 = \lambda m_2\)</span>,</p></li>
+<li><p>From <span class="math display">\[\begin{aligned}
+        M_S(t) &amp;=  M_N(\log(M_X(t))) \\
+            &amp;= \exp\left( \lambda  \left( e^{\log(M_X(t))} - 1   \right)  \right), \text{ since } M_N(t) = \exp(\lambda(e^t - 1))  \\
+            &amp;= \exp{(\lambda(M_X(t) - 1))}.
+    \end{aligned}\]</span></p></li>
+<li><p>The third central moment <span class="math inline">\(\E[(S- \E[S])^3] = \lambda m_3\)</span>, and hence
+<span class="math display">\[\Sk[S] = \frac{\lambda m_3}{(\lambda m_2)^{3/2}}.\]</span> In particular,
+we have <span class="math display">\[\begin{aligned}
+    \E[(N- \E[N])^3] &amp;= \E\left [  N^3 - 3 N^2  \cdot \E[N] + 3 N \cdot  (\E[N])^2 - (\E[N])^3       \right]  \\
+        &amp;= E[N^3] - 3 \E[N^2]  \cdot \E[N] + 2 (\E[N])^3 \\
+        &amp;= M_N&#39;&#39;&#39;(0) - 3  M_N&#39;&#39;(0) \cdot  M_N&#39;(0) + 2 (M_N&#39;(0))^3\end{aligned}\]</span></p>
+<p>For <span class="math inline">\(N \sim \dpoisson\)</span>, <span class="math inline">\(M_N(t) = \exp(\lambda(e^t - 1)).\)</span> By
+differentiating <span class="math inline">\(M_N(t)\)</span> and evaluating at <span class="math inline">\(t = 0\)</span>, we can show that
+<span class="math display">\[M&#39;(0) = \lambda, \quad  M&#39;&#39;(0) = \lambda (1 + \lambda), \quad M&#39;&#39;&#39;(0) = \lambda (1 + 3\lambda + \lambda^2).\]</span>
+Hence, <span class="math inline">\(\E[(N- \E[N])^3] = \lambda.\)</span></p>
+<p>Similarly, <span class="math display">\[\begin{aligned}
+    \E[(S- \E[S])^3] &amp;=  E[S^3] - 3 \E[S^2]  \cdot \E[S] + 2 (\E[S])^3 \\
+        %&amp;= M_N&#39;&#39;&#39;(0) - 3  M_N&#39;&#39;(0) \cdot  M_N&#39;(0) + 2 (M_N&#39;(0))^3\end{aligned}\]</span>
+In addition, <span class="math inline">\(M_S(t) = \exp{(\lambda(M_X(t) - 1))}.\)</span> By
+differentiating <span class="math inline">\(M_S(t)\)</span> we can show that <span class="math display">\[\begin{aligned}
+    M&#39;&#39;&#39;_S(t) &amp;= \lambda M&#39;&#39;&#39;_X(t) M_S(t)   + 2 \lambda M&#39;&#39;_X(t) M&#39;_S(t)  + \lambda M&#39;_X(t) M&#39;&#39;_S(t).\\\end{aligned}\]</span>
+Evaluating <span class="math inline">\(M&#39;&#39;&#39;_S(t)\)</span> at <span class="math inline">\(t = 0\)</span> results in <span class="math display">\[\begin{aligned}
+    M&#39;&#39;&#39;_S(0) &amp;= \E[S^3] = \lambda m_3 + 3 \E[S] \cdot \E[S^2] - 2( \E[S])^3,\end{aligned}\]</span>
+which gives <span class="math display">\[\begin{aligned}
+    \E[(S- \E[S])^3] &amp;=  E[S^3] - 3 \E[S^2]  \cdot \E[S] + 2 (\E[S])^3 \\
+        &amp;= \lambda m_3.\end{aligned}\]</span></p></li>
+</ol>
+<p>lambdaN = 10 alpha = 4 beta = 1</p>
+<p>m1 = beta/(alpha-1) m2 = (alpha*(alpha + 1))/beta**2 m3 =
+(alpha*(alpha + 1)*(alpha + 2))/beta**3</p>
+<p>ES = lambdaN*m1 VS = lambdaN*m2 Sk = (lambdaN * m3)/(lambdaN *
+m2)**(3/2)</p>
+<p>Let <span class="math inline">\(S\)</span> be the aggregate annual claims for a risk where
+<span class="math inline">\(S \sim \mathcal{CP}(10,F_X)\)</span> and the individual claim amounts have a
+<span class="math inline">\(\vpareto{4,1}\)</span> distribution. Calculate <span class="math inline">\(\E[S], \Var[S]\)</span> and <span class="math inline">\(\Sk[S]\)</span>.</p>
+<p>Since <span class="math inline">\(X \sim \vpareto{4,1}\)</span> with <span class="math inline">\(\alpha = 4\)</span> and <span class="math inline">\(\lambda = 1\)</span>, we
+have <span class="math display">\[\begin{aligned}
+\E[X^r] &amp;= \frac{\Gamma(\alpha - r) \cdot \Gamma(1 + r) \cdot \lambda^r  }{\Gamma(\alpha)}\\
+\E[X] &amp;= \frac{\lambda}{\alpha - 1} = \frac{1}{4-1} = \frac{1}{3}\\
+\E[X^2] &amp;=  \frac{\Gamma(2) \cdot \Gamma(3) \cdot \lambda^2  }{\Gamma(4)} = \frac{1}{3}\\ 
+\E[X^3] &amp;=  \frac{\Gamma(1) \cdot \Gamma(4) \cdot \lambda^3  }{\Gamma(4)} = 1.\\ \end{aligned}\]</span>
+We have <span class="math display">\[\begin{aligned}
+\E[S]  &amp;= \lambda \E[X] = \frac{10}{3} \\
+\Var[S] &amp;= \lambda \E[X^2] = \frac{10}{3} \\
+\Sk[S] &amp;= \frac{\lambda \E[X^3]}{\left(\lambda \E[X^2]\right)^{3/2}} = \frac{10}{(10/3)^{3/2}} = 1.6432.\\\end{aligned}\]</span></p>
+<p>An important property of independent, but not necessarily identically
+distributed, compound Poisson random variables is that the sum of a
+fixed number of them is also a compound Poisson random variable.</p>
+<p><span id="Additivity" label="Additivity"><span class="math display">\[Additivity\]</span></span> Let <span class="math inline">\(S_1, \ldots, S_n\)</span>
+be independent compound Poisson random variables, with parameters
+<span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(F_i\)</span>. Then <span class="math inline">\(S = \sum_{i=1}^n S_i\)</span> has a compound
+distribution with parameter <span class="math display">\[\lambda =  \sum_{i=1}^n \lambda_i,\]</span> and
+<span class="math display">\[F = \frac{1}{\lambda}\sum_{i=1}^n \lambda_i F_i.\]</span></p>
+<p>Exercise.</p>
+<p><strong>Note</strong> The compound Poisson distribution is the most often used in
+practice. It possesses the additivity of independent compound Poisson
+distributions (as shown in
+Example <a href="special-compound-distributions.html#Additivity" reference-type="ref" reference="Additivity"><span class="math display">\[Additivity\]</span></a>), and the expressions of the first three moments
+are very simple.</p>
+</div>
+<div id="compound-negative-binomial-distributions" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Compound negative binomial distributions</h2>
+<p>A useful discrete random variable that can be used for modelling the
+distributions of claim numbers is a negative binomial distribution. A
+random variable <span class="math inline">\(N\)</span> has a negative distribution with parameters <span class="math inline">\(k\)</span> and
+<span class="math inline">\(p\)</span>, denoted by <span class="math inline">\(N \sim \dnb\)</span> if its probability mass function is given
+by
+<span class="math display">\[f_N(n) = \Pr(N = n) = \frac{\Gamma(k+n)}{\Gamma(n+1)\Gamma(k)} p^k (1- p)^n \quad n = 0,1,2,\ldots.\]</span>
+It can be interpreted as the probability of getting <span class="math inline">\(n\)</span> failures before
+the <span class="math inline">\(k\)</span>th success occurs in a sequence of independent Bernoulli trials
+with probability of success <span class="math inline">\(p\)</span>.</p>
+<p>Let <span class="math inline">\(N \sim \dnb\)</span>. Show that the mean, variance and moment generating
+function of the compound negative binomial distribution, denoted by
+<span class="math inline">\(\mathcal{CNB}(k,p,F_X)\)</span>, are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\E[S] = \frac{k q}{p} m_1\)</span>,</p></li>
+<li><p><span class="math inline">\(\Var[S] = \frac{k q}{p^2} (p m_2 + q m_1^2)\)</span>,</p></li>
+<li><p><span class="math inline">\(M_S(t) = \left( \frac{ p }{ 1 - q M_X(t) } \right)^k,\)</span></p></li>
+</ol>
+<p>where <span class="math inline">\(m_k\)</span> be the <span class="math inline">\(k\)</span>th moment of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(q = 1-p\)</span>.</p>
+<p>The results follows from the properties of the negative binomial
+distribution <span class="math inline">\(N \sim \dnb\)</span>:
+<span class="math display">\[\E[N] = \frac{kq}{p}, \quad \Var[N] = \frac{kq}{p^2},\]</span> and the
+moments of a compound distribution <span class="math inline">\(S\)</span> derived in Section
+<a href="sectionCompoundDistribution.html#sectionCompoundDistribution" reference-type="ref" reference="sectionCompoundDistribution">2</a>.</p>
+<p><strong>Note</strong> The compound negative binomial distribution is an appropriate
+to model the heterogeneity of the numbers of claims occurring for
+different risks. In particular, suppose that for each policy, the number
+of claims in a year has a Poisson distribution
+<span class="math inline">\(N | \lambda \sim \dpoisson\)</span>, and that the variation in <span class="math inline">\(\lambda\)</span> across
+the portfolio can be modelled using a Gamma distribution <span class="math inline">\(\dgamma\)</span>. Then
+the number of claims in the year for a policy chosen at random from the
+portfolio has a negative binomial distribution.</p>
+</div>
+<div id="compound-binomial-distributions" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Compound binomial distributions</h2>
+<p>A compound binomial distribution can be used to model a portfolio of
+policies, each of which can give rise to at most one claim.</p>
+<p>Consider a portfolio of <span class="math inline">\(n\)</span> independent and identical policies where
+there is at most one claim on each policy in a year (for e.g. life
+insurance). Let <span class="math inline">\(p\)</span> be the probability that a claim occurs. Explain that
+the aggregate sum <span class="math inline">\(S\)</span> in this portfolio has a compound binomial
+distribution, denoted by <span class="math inline">\(\mathcal{CB}(n,p,F_X)\)</span>. Derive the mean,
+variance and moment generating function of <span class="math inline">\(S\)</span>.</p>
+<p>Since <span class="math inline">\(n\)</span> policies (lives) are independent with the probability <span class="math inline">\(p\)</span> that
+a claim occurs, the number <span class="math inline">\(N\)</span> of claims on the portfolio in one year
+has a binomial distribution i.e. <span class="math inline">\(N \sim \text{bi}(n,p)\)</span>. If the sizes
+of the claims are i.i.d. random variables, independent of <span class="math inline">\(N\)</span>, then the
+total amount <span class="math inline">\(S\)</span> claimed on this policy in one year has a compound
+binomial distribution.</p>
+<p>The mean, variance and the moment generating function of <span class="math inline">\(S\)</span> are as
+follows: <span class="math display">\[\begin{aligned}
+\E[S] &amp;= n p m_1, \\
+\Var[S] &amp;= np m_2 - n p^2 m_1^2, \\
+M_S(t) &amp;= \left( q + p  M_X(t)      \right)^n,\end{aligned}\]</span> where
+<span class="math inline">\(m_k\)</span> be the <span class="math inline">\(k\)</span>th moment of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(q = 1-p\)</span>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sectionCompoundDistribution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-effect-of-reinsurance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/04-Collective-Risk-Models.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/04-Collective-Risk-Models.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

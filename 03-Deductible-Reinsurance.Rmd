@@ -264,7 +264,7 @@ The distribution of $Z$ can be derived as follows:
 -   For $x =0$, $$F_Z(0) = \Pr(Z = 0) = \Pr(X \le M) = F_X(M).$$
 
 -   For $x > 0$, $$\begin{aligned}
-        F_Z(0) &= \Pr(Z \le x) = \Pr(\max(0,X-M) \le x) \\
+        F_Z(x) &= \Pr(Z \le x) = \Pr(\max(0,X-M) \le x) \\
         &= \Pr(X- M \le x) = \Pr(X \le x + M) = F_X(x + M).\end{aligned}$$
 
 ::: {.example}
