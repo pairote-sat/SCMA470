@@ -5,24 +5,99 @@
 1.  Using the method of moments, calculate the parameter values for the
     gamma, lognormal and Pareto distributions for which
     $$\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2.$$
+**Answer:** 
+
+a. gamma: $\tilde{\alpha} = 25$, $\tilde{\lambda} = 0.05.$
+
+b. lognormal: $\tilde{\mu} = 6.194998$, $\tilde{\sigma} = 0.1980422.$ 
+
+c. the MME cannot apply for the Pareto distribution.
 
 2.  Show that if $X \sim \text{Exp}(\lambda)$, then the random variable
     $X-w$ conditional on $X > w$ has the same distribution as $X$, i.e.
     $$X \sim \text{Exp}(\lambda)\Rightarrow  X - w | X > w \sim \text{Exp}(\lambda).$$
 
+**Solution:**
+Let $W = Z|Z>0$ be a random variable representing the amount of a
+non-zero payment by the reinsurer on a reinsurance claim. The
+distribution and density of $W$ can be calculated as follows: for
+$x > 0$, $$\begin{aligned}
+     \Pr[W \le x ] &= \Pr[Z \le x | Z >0] \\
+            &= \Pr[X - M \le x | X > M] \\
+            &= \frac{\Pr[M < X \le x + M]}{\Pr[X > M]}\\
+            &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.\end{aligned}$$
+
+Given $X \sim \textrm{Exp}(\lambda)$, $F_X(x) = 1 - e^{-\lambda x}.$ Moreover,
+
+$$\begin{aligned}
+\Pr[W \le x ]  &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}  \\
+&= \frac{  e^{-\lambda (M)} - e^{-\lambda (x+M)}}{e^{-\lambda (M)}} \\
+&=  1 - e^{-\lambda x}.
+\end{aligned}
+$$
+Hence, $W \sim \textrm{Exp}(\lambda)$.
+
 3.  Derive an expression for the variance of the
     $\text{Pa}(\alpha, \lambda)$ distribution. (Hint: using the pdf)
+
+**Solution:**
+Recall that that for $X \sim \mathcal{Pa}(\alpha,\lambda)$, its density function is
+$$ f_X(x) = \frac{\alpha \lambda^\alpha}{ (x + \lambda)^{\alpha + 1}}.$$
+$$
+\begin{aligned}
+\mathrm{E}[X] &= \int_0^\infty x \frac{\alpha \lambda^\alpha}{ (x + \lambda)^{\alpha + 1}}\, dx  \quad \text{(using integration by part:} \quad u = x \text{ and } (\lambda + x)^{-(\alpha + 1)}dx =  dv)  \\
+&= -\alpha \lambda^\alpha \left( \frac{x}{\alpha} (\lambda + x)^{-\alpha} \right)\bigg|_0^\infty + (\alpha \lambda^\alpha)(\frac{1}{\alpha})\int_0^\infty \frac{1}{(\lambda + x)^\alpha} \, dx
+\end{aligned}
+$$
+Using the fact that for $X \sim \mathcal{Pa}(\alpha,\lambda)$, $\textrm{E}[X]$ exists when $\alpha > 1$, which will be assumed on the first term above. This assumption simplifies the above results as follows:
+
+$$
+\begin{aligned}
+\mathrm{E}[X] &= 
+ 0 + \int_0^\infty \frac{\lambda^\alpha}{(\lambda + x)^\alpha} \, dx \\
+ &= 
+ \frac{\lambda}{\alpha - 1} \int_0^\infty \frac{(\alpha - 1)\lambda^{\alpha - 1}}{(\lambda + x)^\alpha} \, dx \\ 
+ &= 
+ \frac{\lambda}{\alpha - 1} \cdot 1.
+\end{aligned}
+$$
+Note that the last integral integrate to 1 because the integrand is the density function of a Pareto distribution.
+
+One can also show that 
+$$ \mathrm{E}[X^2]  = \frac{2 \lambda^2}{(\alpha - 1)(\alpha - 2)}.$$ Therefore,
+$$ \mathrm{Var}[X] = \mathrm{E}[X^2] - (\mathrm{E}[X])^2 = \frac{\alpha \lambda^2}{(\alpha - 1)^2(\alpha - 2)}.$$
 
 4.  Show that the MLE (the maximum likelihood estimation) of $\lambda$
     for an $\text{Exp}(\lambda)$ distribution is the reciprocal of the
     sample mean, i.e. $\hat\lambda = 1/ \bar x$.
+**Solution:**
+Suppose we have a random sample $x = (x_1, x_2, \ldots, x_n)$ of $X \sim \text{Exp}(\lambda).$ We have
+$$
+\begin{aligned}
+  L(\lambda) &= \Pi_{i=1}^n f(x_i, \lambda) = \Pi_{i=1}^n  \lambda e^{-\lambda x_i} = \lambda^n e^{-\lambda \sum x_i}. \\
+  l(\lambda) &= \log( L(\lambda)) = n \log(\lambda) - \lambda \sum x_i
+\end{aligned}
+$$
+The MLE can be obtained by maximise $l(\lambda)$ with respect to $\lambda$.
+$$ \frac{d\, l(\lambda)}{d \lambda }  = \frac{n}{\lambda} - \sum x_i = 0. $$
+Therefore, the MLE of $\lambda$ is $\hat{\lambda} = 1/\bar{x}.$
 
 5.  Claims last year on a portfolio of policies of a risk had a
     lognormal distribution with parameter $\mu = 5$ and
     $\sigma^2 = 0.4$. It is estimated that all claims will increase by
     15% next year. Find the probability that a claim next year will
     exceed 1000.
-
+**Solution:**
+From $X \sim \mathcal{LN}(5,0.4)$, $\log X \sim \mathcal{N}(5,0.4)$. Claims in next year will increase by 15\%. We define $Y = (1+15\%) X = 1.15 X$. We also have
+$$
+\begin{aligned}
+\Pr(Y > 1000) &=\Pr(1.15 X > 1000)  \\
+&=\Pr(\log X > \log (1000/1.15)) \\
+&=\Pr\left(Z > \frac{\log (1000/1.15)) - 5 }{\sqrt{0.4}}\right) \\
+&=\Pr\left(Z > 2.7954\right) \\
+&= 0.00164. \\
+\end{aligned}
+$$
 
 
 ## Tutorial 2
@@ -80,3 +155,483 @@
         another insurance company to reduce the mean amount it pays on a
         claim to 160. Calculate the retention limit needed to achieve
         this.
+
+
+---
+title: " **SCMA 470 : Risk Analysis and Credibility** **Tutorial 3**"
+---
+
+## Tutorial 3
+
+
+1.  The aggregate claims $S$ have a compound Poisson random variable
+    with Poisson parameter $\lambda = 20$ and claim amounts have a
+    $\mathcal{G}(2,1)$ distribution. Find the coefficient of skewness of the
+    aggregate claim amount $Sk[S]$.
+
+2.  Suppose that $S_1$ and $S_2$ are independent compound Poisson random
+    variables with Poisson parameters $\lambda_1 = 10$ and
+    $\lambda_2 = 30$ and the claim sizes for $S_i$ are exponentially
+    distributed with mean $\mu_i$ where $\mu_1 = 1$ and $\mu_2 = 2$,
+    respectively. Find the distribution of the random sum
+    $S = S_1 + S_2$.
+
+3.  The number of claims in one time period has a negative binomial
+    distribution $\mathcal{NB}(k, p)$ with $k = 1$ and claim sizes have an
+    exponential distribution with mean $\mu$.
+
+    1.  Use the moment generating formula to obtain the distribution of
+        the aggregate claim amount $S$.
+
+    2.  Find the mean and variance of the aggregate claims for this time
+        period.
+
+4.  A portfolio consists of 100 car insurance policies. 60% of the
+    policies have a deductible of 10 and the remaining have a deductible
+    of 0. The insurance policy pays the amount of damage in excess of
+    the deductible subject to a maximum of 125 per accident. Assume that
+
+    1.  The number of accident per year **per policy** has a Poisson
+        distribution with mean 0.02; and
+
+    2.  The amount of damage has the distribution:
+        $$Pr(X = 50) = 1/3, Pr(X = 150) = 1/3, Pr(X = 200) = 1/3.$$
+
+    Find the expected insurer's payout.
+
+5.  The number of claims $N$ per a fixed time period has the following
+    distribution:
+    $$Pr(N = 0) = 0.5, Pr(N = 1) = 0.3, Pr(N = 2) = 0.1, \text{ and } Pr(N = 3) = 0.1.$$
+    The loss distribution is uniformly distributed on the interval
+    $(0,100)$. Assume that the number of claims and the amount of losses
+    are mutually independent.
+
+    1.  Find the mean and variance of the aggregate claims for this
+        fixed time period.
+
+    2.  Suppose that a policy deductible of 20 is in place. Find the
+        expected insurer's payout.
+
+## Tutorial 4
+
+1.  Given $X \sim \mathcal{G}(\alpha, \lambda)$, find the distribution of $Y = kX$
+    for some positive $k$. Repeat the same question if
+
+    1.  $X \sim \mathcal{G}(\alpha, \lambda)$, and
+
+    2.  $X \sim \mathcal{LN}(\mu, \sigma^2)$.
+
+2.  Aggregate claims from a risk in a given time have a compound Poisson
+    distribution with Poisson parameter $\lambda =  200$ and an
+    individual claim amount distribution that is an exponential
+    distribution with mean 500. The insurer has effected proportional
+    reinsurance with proportion retained $\alpha = 0.8$.
+
+    1.  Find the distribution of $S_I$ and $S_R$ and their means and
+        variances.
+
+    2.  Compare the variances $Var[S_I] +Var[S_R]$ and $Var[S]$. Comment
+        on the results obtained.
+
+3.  Show that if $N \sim \mathcal{NB}(k,p)$ represents the distribution of claim
+    numbers, then the number of non-zero claims for the reinsurer is
+    $$N_R \sim \mathcal{NB}(k,p^*),$$ where $p^* =  p/(p + (1-p)\pi_M$) and
+    $\pi_M = Pr(X > M)$ for the claim size random variable $X$.
+
+4.  The number of claims $N$ per a fixed time period has the following
+    distribution:
+    $$Pr(N = 0) = 0.5, Pr(N = 1) = 0.3, Pr(N = 2) = 0.1, \text{ and } Pr(N = 3) = 0.1.$$
+    The loss distribution has Pareto distribution $Pa(4,1)$. Assume that
+    the number of claims and the amount of losses are mutually
+    independent. Find the mean and variance of the aggregate claims for
+    this fixed time period.
+
+## Tutorial 5
+
+1.  Aggregate claims from a risk in a given time have a compound Poisson
+    distribution with Poisson parameter $10$ and an individual claim
+    amount distribution that is a Pareto distribution $Pa(3,2000)$. The
+    insurer sets a premium using the expected value principle with
+    relative security loading of 0.15. The insurer is considering
+    effecting excess of loss reinsurance with retention limit $1200$.
+    The reinsurance premium would be calculated using the same principle
+    with relative security loading of 0.2.
+
+    1.  Calculate the insurer's expected profit before reinsurance.
+
+    2.  Under excess of loss reinsurance, the insurer's profit is
+        defined to be the premium charged by the insurer, less the
+        reinsurance premium and less the claim paid by the insurer (also
+        called net of reinsurance). Calculate the insurer's expected
+        profit after effecting excess of loss reinsurance.
+
+    3.  Comments on these results.
+
+2.  Aggregate claims from a risk in a given time have a compound Poisson
+    distribution with Poisson parameter $80$ and an individual claim
+    amount distribution that is an exponential distribution with
+    mean 10. The insurer has effected excess of loss reinsurance with
+    retention level $M = 20$.
+
+    1.  Find the distribution of $S_I$ and $S_R$ and their means and
+        variances.
+
+    2.  Compare the variances $Var[S_I] +Var[S_R]$ and $Var[S]$. Comment
+        on the results obtained.
+
+3.  Aggregate claims $S$ have a compound Poisson distribution
+    $\mathcal{CP}(\lambda,F_X)$ where $\lambda = 0.5$ and an individual
+    claim amounts $X$ are either 1, 2 or 3 with probability 1/2, 1/4 and
+    1/4 respectively. Calculate $g_r$ for $r = 0,1,\ldots, 10$.
+
+4.  (Required the use of Excel or R)
+
+    Suppose $\{ S(t) \}_{t \ge 0}$ is a compound Poisson process with
+    Poisson parameter 1 and individual claim distribution that is an
+    exponential distribution $Exp(1)$ so that for each fixed $t$,
+    $S(t) \sim \mathcal{CP}(t, F_X)$ where $F_X(x) = 1 - e^{-x}$, for
+    $x > 0$.
+
+    1.  Calculate the mean, variance and coefficient of skewness of
+        $S(1)$.
+
+    2.  Use (a) the normal approximation and (b) the translated Gamma
+        approximation to approximate the values of $Pr(S(10) > 20)$.
+
+    3.  Use (a) the normal approximation and (b) the translated Gamma
+        approximation to approximate the values of $Pr(S(100) > 120)$.
+
+## Tutorial 6
+
+1.  Suppose $S \sim \mathcal{CP}(\lambda, F_X)$ where individual claim
+    amounts are distributed on the positive integers and
+    $\lambda = 0.5$. An individual claim amounts $X$ are either 1 or 2
+    with probability 2/3 and 1/3 respectively.
+
+    1.  [\[QuestionPanjer\]]{#QuestionPanjer label="QuestionPanjer"}
+        Write down an expression for $E[S]$ in terms of $\lambda$ and
+        the mean of $X$.
+
+    2.  Use Panjer's recursion to show that
+        $$g_r = \frac{1}{3r} (g_{r-1} + g_{r-2}), \quad r = 2,3,\ldots.$$
+
+    3.  Calculate $g_r$ for $r = 0,1,2, 3, 4$.
+
+    4.  Verify that $\sum_{r=0}^4 g_r > 0.995$.
+
+    5.  Compare $\sum_{r=0}^4 r g_r$ with the exact mean of $S$ computed
+        by using
+        [\[QuestionPanjer\]](#QuestionPanjer){reference-type="ref"
+        reference="QuestionPanjer"}.
+
+    6.  Comment on the results.
+
+2.  Consider a portfolio of 1000 life insurance policies over a one-year
+    time period. For each policy at most one claim can occur in the
+    year. The probability that a claim occurs is 0.04. Claim amounts are
+    distributed $X \sim Exp(1/2)$.
+
+    1.  Calculate the mean and variance of the aggregate claims.
+
+    2.  Calculate the relative security loading $\theta_1$ such that the
+        probability of a profit on this portfolio is 0.95.
+
+    3.  Suppose that the insurer imposes a deductible of 1. Calculate
+        the mean and the variance of the aggregate claim paid by the
+        insurer. Also calculate the relative security loading $\theta_2$
+        such that the probability of a profit on this portfolio is 0.95.
+
+    4.  Comment on the difference between $\theta_1$ and $\theta_2$.
+
+3.  A portfolio of 5000 life insurance policies for one year term with
+    the benefit amount as shown in the table
+
+      Benefit amount         1      2
+      -------------------- ------ ------
+      Number of policies    4000   1000
+
+    The policyholders can be assumed to be independent and the
+    probability that a claim occurs is 0.03.
+
+    1.  Calculate the mean and variance of the aggregate claims.
+
+    2.  Use the normal approximation to compute $Pr(S > 200)$
+
+    3.  The insurer aims to reduce the size of $Pr(S > 200)$. The
+        insurer arranges excess loss reinsurance with retention 1.5. The
+        reinsurer calculates the reinsurance premium $P_R$ by using the
+        relative security loading of 20%. Calculate the reinsurPrance
+        premium.
+
+    4.  After reinsurance, calculate the mean and variance of the
+        aggregate claims paid out by the insurer, i.e. $E[S_I]$ and
+        $E[S_I]$.
+
+    5.  Calculate $Pr(S_I + P_R > 200)$.
+
+    6.  Comment on the results.
+
+4.  An insurance company issues travel insurance policies. There are two
+    types of claims with a maximum of one claim per policy.
+
+    Type I claims for delay : Claim amounts follow an Exponential
+    distribution with parameter $\lambda = 0.002$.
+
+    Type II claims for a flight cancellation: Claim amounts follow a
+    Uniform distribution $U(20,000, 50,000)$.
+
+    Suppose that 10% of policies result in a claim, 80% of which are
+    Type I and the remaining are type II.
+
+    Calculate the premium charged for each policy.
+
+## Tutorial 7
+
+1.  1.  An insurer has initial surplus $u$ of 5.5 (in suitable units)
+        and receives premium payments at a rate of 3 per year. Suppose
+        claims from a portfolio of insurance over the first two years
+        are as follows:
+
+          Time (years)    0.3   0.8   1.5
+          -------------- ----- ----- -----
+          Amount           4     6     2
+
+        Plot a surplus process and determine whether ruin occurs within
+        the first two years in each of the following cases:
+
+        1.  Ruin was checked continuously.
+
+        2.  Ruin was checked only at the end of each year.
+
+    2.  Suppose that the insurer has arranged excess loss reinsurance
+        with retention limit 3.5. The reinsurance premium is 1 per year
+        to be paid continuously. Plot a surplus process and determine
+        whether ruin occurs within the first two years n each of the
+        following cases:
+
+        1.  Ruin was checked continuously.
+
+        2.  Ruin was checked only at the end of each year.
+
+    3.  Comment on the results.
+
+2.  The aggregate claims process for a risk is compound Poisson with
+    Poisson parameter 0.1 per year. Individual claim amounts $X$ have
+    the following distribution:
+
+           $x$       50     75    120
+      ------------- ----- ------ ------
+       $Pr(X = x)$   0.7   0.25   0.05
+
+    The insurer's initial surplus is 100 (in suitable units) and the
+    insurer calculate the premium using a relative security loading of
+    10% on the expected amount of annual aggregate claim at the
+    beginning of each year. Calculate the probability that the insurer's
+    surplus at time 2 will be negative.
+
+3.  The aggregate claims process for a risk is compound Poisson with
+    Poisson parameter 0.1 per year. Individual claim amounts $X$ have
+    the following distribution:
+
+           $x$        1     2
+      ------------- ----- -----
+       $Pr(X = x)$   0.7   0.3
+
+    The insurer's initial surplus is 0.3 (in suitable units) and the
+    premium rate is 0.4 per year, received continuously. Calculate the
+    following probabilities of ruin.
+
+    1.  $\psi(0.3,1).$
+
+    2.  $\psi(0.3,2).$
+
+## Tutorial 8
+
+1.  The table below gives the payments (in 000s THB) in cumulative form
+    in successive development years in respect of a motor insurance
+    portfolio. All claims are assumed to be fully settled by the end of
+    development year 4. Use the chain ladder method to estimate the
+    amount the insurer will pay in the calendar years
+    $2018, 2019, 2020 ,2021$.
+
+      ---------- ------ ------------------ ------ ------ ------ ------
+                        Development year                        
+                        0                  1      2      3      4
+                  2013  750                768    844    929    1072
+       Accident   2014  820                876    946    1041   
+         Year     2015  960                997    1096          
+                  2016  1040               1087                 
+                  2017  1180                                    
+      ---------- ------ ------------------ ------ ------ ------ ------
+
+2.  The table below shows the claims payments (in 000s THB) in
+    cumulative form for a portfolio of insurance policies. All claims
+    are assumed to be fully settled by the end of development year 4 and
+    the payments are made at the middle of each calendar year. The past
+    rates of inflation over the 12 months up to the middle of the given
+    year are as follows:
+
+      ------ ----
+       2014   5%
+       2015   6%
+       2016   7%
+       2017   5%
+      ------ ----
+
+    The future rate of inflation from mid-2017 is assumed to be 10% per
+    year.
+
+      ---------- ------ ------------------ ------ ------ ------ ------
+                        Development year                        
+                        0                  1      2      3      4
+                  2013  880                988    1046   1065   1262
+       Accident   2014  940                1034   1091   1095   
+         Year     2015  1060               1161   1229          
+                  2016  1120               1221                 
+                  2017  1240                                    
+      ---------- ------ ------------------ ------ ------ ------ ------
+
+    1.  Use the inflation-adjusted chain ladder method to calculate the
+        outstanding claims payments in future years.
+
+    2.  Using an interest rate of 7% per year, calculate the outstanding
+        claims reserve the insurer should have hold on 1 January 2018.
+
+3.  The table below shows the cumulative claims payments and the
+    cumulative number of claims (amounts appear above claim numbers) for
+    a portfolio of insurance policies. All claims are assumed to be
+    fully settled by the end of development year 5 and that the effects
+    of claims-cost inflation have been removed from these data. Use the
+    average cost per claim method to estimate the outstanding claims
+    reserve which should be held at the end of 2017.
+
+      ---------- ------ ------------------ ------ ------ ------ ------ ------
+                        Development year                               
+                        0                  1      2      3      4      5
+                  2012  2800               2954   3005   3275   3624   3895
+                        420                440    453    493    551    591
+                  2013  3200               3379   3449   3760   4184   
+                        460                478    490    533    591    
+       Accident   2014  3800               4004   4078   4454          
+         Year           500                525    531    580           
+                  2015  4520               4749   4842                 
+                        520                549    558                  
+                  2016  5340               5587                        
+                        560                589                         
+                  2017  5840                                           
+                        570                                            
+      ---------- ------ ------------------ ------ ------ ------ ------ ------
+
+4.  The table below shows the cumulative claims payments and the premium
+    income $P$ for a portfolio of insurance policies. All claims are
+    assumed to be fully settled by the end of development year 4 and
+    that the effects of claims-cost inflation have been removed from
+    these data. Use the Bornhuetter-Ferguson method to estimate the
+    total reserve required to meet the outstanding claims. You may
+    assume that the ultimate loss ratio for accident years 2014-2017
+    will be 95%.
+
+      ---------- ------ ------------------ ------ ------ ------ ------ ------
+                        Development year                               
+                        0                  1      2      3      4      $P$
+                  2013  3597               4226   4547   4807   4989   5937
+       Accident   2014  4174               4697   5317   5497          6122
+         Year     2015  4578               5082   5753                 6221
+                  2016  4634               5343                        6365
+                  2017  5203                                           6510
+      ---------- ------ ------------------ ------ ------ ------ ------ ------
+
+## Tutorial 9
+
+
+1.  (Taken from Gray and Pitts) Suppose the number of claims which arise
+    in a year on a group of policies is modelled as
+    $X|\lambda \sim Poisson(\lambda)$ and that we observe a total of 14
+    claims over a six year period. Suppose also we adopt a $\mathcal{G}(6, 3)$
+    distribution as a prior distribution for $\lambda$.
+
+    1.  State the maximum likelihood estimate of $\lambda$ and the prior
+        mean.
+
+    2.  State the posterior distribution of $\lambda$, find the mode of
+        this distribution, and hence state the Bayesian estimate of
+        $\lambda$ under all or nothing loss.
+
+    3.  Note that if $Y \sim \mathcal{G}(\alpha,\beta)$ and $2\alpha$ is an
+        integer, then $2\beta Y \sim \mathcal{G}(\alpha,1/2)$; that is
+        $2\beta Y  \sim \chi^2$ with $2 \alpha$ degrees of freedom.
+
+        1.  Using this fact, find the Bayesian estimate of $\lambda$
+            under absolute error loss.
+
+        2.  Find an equal-tailed 95% Bayesian interval estimate of
+            $\lambda$, that is an interval $(\lambda_L, \lambda_U)$,
+            such that
+            $Pr( \lambda > \lambda_U | \underline{x}) = Pr( \lambda < \lambda_L | \underline{x}) = 0.025$.
+
+    4.  Find the credibility estimate (the Bayesian estimate under
+        squared-error loss) of $\lambda$.
+
+2.  Recall that the data $x_1, x_2, \ldots, x_n$ are available on
+    $X | \lambda$. Suppose we observe $\sum x_i = 13$ when $n = 50$.
+    Based on the Poisson$-$Gamma model, the number of claims which arise
+    in a year on a group of policies is modelled as
+    $X|\lambda \sim Poisson(\lambda)$ and the prior distribution on the
+    claim rate $\lambda$ is a $\mathcal{G}(\alpha,\beta)$ distribution.
+
+    1.  Calculate the value of the maximum likelihood estimate of
+        $\lambda$
+
+    2.  Calculate the values of prior means and the prior variance in
+        two cases (i) the prior is $\mathcal{G}(6,30)$ and (ii) the prior is
+        $\mathcal{G}(2,10)$. Comment on the results.
+
+    3.  For those two prior distributions, calculate the posterior mean
+        of $\lambda$ given such data.
+
+3.  Suppose the annual claims which arise under a risk, $X$, in units of
+    1000THB, as $X | \theta \sim \mathcal{N}(\theta,0.36)$. From experience with
+    other business, an insurer adopt a $\mathcal{N}(2, 0.04)$ prior for $\theta$.
+    The insurer observe claim amounts for the past seven years :
+    $2369, 2341, 2284, 2347, 2332, 2300, 2267$ THB. Using the
+    normal$-$normal model:
+
+    1.  Find the credibility factor and the credibility premium for the
+        risk.
+
+    2.  Find an equal-tailed 95% Bayesian interval estimate of $\theta$.
+
+4.  Consider a collective of five separate risks from portfolios of
+    general insurance policies, each of which has been in existence for
+    at least ten years. The mean and variance of the aggregate claims
+    adjusted for inflation over the past ten years are given in the
+    table. Use EBCT Model 1 to calculate the credibility premiums for
+    all five risks.
+
+       Risk   Within risk mean   Within risk variance
+      ------ ------------------ ----------------------
+        1           138                  259
+        2            98                  179
+        3           120                  239
+        4           104                  168
+        5           119                  185
+
+5.  Consider the aggregate claims in five successive years from
+    comparable insurance policies (in units of 1000 THB).
+
+    [\[TableRisks\]]{#TableRisks label="TableRisks"}
+
+      ---------- --- ---------- ---- ---- ---- ----
+                      Year $j$                 
+                         1       2    3    4    5
+       Risk $i$   1      68      65   77   76   74
+                  2      54      59   56   50   62
+                  3      81      95   83   82   89
+                  4      64      70   77   66   73
+      ---------- --- ---------- ---- ---- ---- ----
+
+    1.  Use the EBCT Model 1 to calculate the credibility premium for
+        each risk $i$.
+
+    2.  Explain why the credibility premiums depend almost entirely on
+        the means for the individual risks.

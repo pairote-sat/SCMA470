@@ -80,8 +80,8 @@ both terms gives the required result.
 
 ::: {.example}
 In three coloured boxes - Red, Green and Blue, each box has two bags.
-The bags of Red box contain and respectively, those of Green box contain
-and , and those of Blue contain and . A box is chosen at random in such
+The bags of Red box contain 1 and 2 (in units of THB) respectively, those of Green box contain
+1 and 5, and those of Blue contain 1 and 10 . A box is chosen at random in such
 a way that
 $\Pr(\text{Red}) = \Pr(\text{Green}) = \Pr(\text{Blue}) = 1/3$. A fair
 coin is tossed to determined which bag to be chosen from the chosen box.
@@ -249,6 +249,39 @@ E[S]  &= \lambda E[X] = \frac{10}{3} \\
 Var[S] &= \lambda E[X^2] = \frac{10}{3} \\
 Sk[S] &= \frac{\lambda E[X^3]}{\left(\lambda E[X^2]\right)^{3/2}} = \frac{10}{(10/3)^{3/2}} = 1.6432.\\ \end{aligned}$$
 \
+
+
+In what follows, we will use R to simulate $n$ observations from a compound Poisson distribution, where the Poisson parameter is $\lambda$ and where the claims are exponentially distributed with mean $\mu$, i.e. 
+$CP(\lambda, Exp(1/\mu))$
+
+
+```{r simulationCP, tut = FALSE, echo = TRUE}
+# Simulation n observations from a  CP(lambda,FX) distribution
+# Assumptions:
+# N ~ Poisson(lambad)
+# X ~ Pa(alpha,beta)
+library(actuar)
+
+n <- 10000
+lambda <-  10
+alpha <- 4
+beta <- 1
+
+totalClaims <- rep(0,n)
+numclaims <- rpois(n,lambda)
+for (i in 1:n)
+  totalClaims[i] <- sum(rpareto(numclaims[i], shape =alpha, scale = beta))
+hist(totalClaims)
+
+mean(totalClaims)
+var(totalClaims)
+library(moments)
+skewness(totalClaims)
+```
+
+
+
+**Note**
 An important property of independent, but not necessarily identically
 distributed, compound Poisson random variables is that the sum of a
 fixed number of them is also a compound Poisson random variable.
@@ -300,8 +333,7 @@ The results follows from the properties of the negative binomial
 distribution $N \sim NB(k,p)$:
 $$E[N] = \frac{kq}{p}, \quad Var[N] = \frac{kq}{p^2},$$ and the
 moments of a compound distribution $S$ derived in Section
-[2](#sectionCompoundDistribution){reference-type="ref"
-reference="sectionCompoundDistribution"}.
+\@ref(sectionCompoundDistribution).
 
 **Note** The compound negative binomial distribution is an appropriate
 to model the heterogeneity of the numbers of claims occurring for
@@ -452,11 +484,13 @@ $N_R$ be the number of insurance (non-zero) claims for the reinsurer and
 $W_i$ be the amount of the $i$th non-zero payment by the reinsurer. The
 aggregate claim amount paid by the reinsurer can be written as
 $$S_R   =  \sum_{i= 1}^{N_R} W_i.$$
-:::{.example}
+
+::: {.example}
 By using the probability generating function, show that if
 $N \sim Poisson(\lambda)$, then the distribution
 $N_R \sim Poisson(\lambda \pi_M)$ where $\pi_M = \Pr(X_j > M)$.
 :::
+
 **Solution:**
 Define the indicator random variable $\{I_j\}_{j=1}^\infty$, where
 $$\begin{aligned}
@@ -521,6 +555,63 @@ retention level $M = 4$.
 4.  Find the mean and variance of the aggregate claim amount for both
     insurer and reinsurer.
 :::
+**Solution:**
+
+1. Recall that $S_I = \sum_{i=1}^N \min\{X_i,4\}.$ The number of claim remains the same, and hence $N \sim Poisson(10)$. The distribution of claim amount paid by the insurer, $F_Y(x)$ is given by
+
+  $x$            1     2     4     
+  -------------- ----- ----- ----- 
+  $\Pr(Y = x)$   0.4   0.3   0.3   
+
+Therefore, $S_I \sim \mathcal{CP}(10,F_Y)$ and
+
+$$\begin{aligned}
+  \mathrm{E}[S_I] &= 10 E[Y] = 10(1(0.4) + 2(0.3) + 4(0.3)) = 22, \\
+  \mathrm{Var}[S_I] &= 10 E[Y] = 10(1^2(0.4) + 2^2(0.3) + 4^2(0.3)) = 64. 
+\end{aligned}$$
+
+2. We have $S_R = \sum_{i=1}^N \max\{0, X_i - 4\}.$ When zero claims are included, $N_R = N \sim Poisson(10)$. The distribution of claim amount paid by the reinsurer, $F_Z(x)$ is given by
+
+  $x$            0     1     6     
+  -------------- ----- ----- ----- 
+  $\Pr(Z = x)$   0.7   0.2   0.1   
+
+Therefore, $S_R \sim \mathcal{CP}(10,F_Z)$ and
+
+$$\begin{aligned}
+  \mathrm{E}[S_R] &= 10 E[Z] = 0, \\
+  \mathrm{Var}[S_R] &= 10 E[Z^2] = 38. 
+\end{aligned}$$
+
+**Notes** 
+
+  a. $\mathrm{E}[S] = 10 \mathrm{E}[X] = 30$ and 
+$\mathrm{Var}[S]= 10 \mathrm{E}[X^2] = 166.$
+
+  b. $\mathrm{E}[S_I + S_R] = \mathrm{E}[S]$, and
+$$\mathrm{Var}[S_I + S_R] = 64 + 38 < 166 = \mathrm{Var}[S].$$  
+
+3. Consider the reinsurer's position when zero claims are excluded. We define
+  $$ W = Z | Z >0 = X - 4 | X > 4.$$ 
+We first compute $\pi_M$, the proportion of claims which involve the reinsurer, from
+  $$ \pi_M = \mathrm{Pr}(X>4) = \mathrm{Pr}(X = 5) + \mathrm{Pr}(X = 10) = 0.3.$$
+Recall that $S_R = \sum_{i=1}^{N_R} W_i.$ We have $S_R \sim \mathcal{CP}(0.3 \times 10, F_W)$ and the distribution of $W, F_W(x)$ is given by
+
+$$
+\begin{aligned}
+\mathrm{Pr}(W = 1) &= \mathrm{Pr}(X = 5 | X > 4) = \frac{ \mathrm{Pr}(X = 5 , X > 4)  }{\mathrm{Pr}(X > 4)} = \frac{ \mathrm{Pr}(X = 5)  }{\mathrm{Pr}(X > 4)} = \frac{2}{3} \\
+\mathrm{Pr}(W = 6) &= 1- \mathrm{Pr}(W = 1) = \frac{1}{3}.
+\end{aligned}
+$$
+Hence, 
+$$
+\begin{aligned}
+  \mathrm{E}[S_R] &= (10 \times 0.3)(1(2/3) + 6(1/3)) = 8, \\
+  \mathrm{Var}[S_R] &= (10 \times 0.3)(1^2(2/3) + 6^2(1/3)) = 38. 
+\end{aligned}
+$$
+
+
 
 ::: {.example}
 Suppose that $S$ has a compound Poisson distribution with Poisson
@@ -529,6 +620,205 @@ $Pa(3,4)$. The insurer has an excess of loss reinsurance contract
 in place with retention level $M = 2$. Find the mean and variance of the
 aggregate claim amount for both insurer and reinsurer.
 :::
+**Solution:**
+1. **Zero claims included**. Recall that that for $X \sim \mathcal{Pa}(\alpha,\lambda)$, its density function is
+$$ f_X(x) = \frac{\alpha \lambda^\alpha}{ (x + \lambda)^{\alpha + 1}}.$$
+We know that $S_R \sim \mathcal{CP}(40,F_Z)$. Moreover,
+
+$$
+\begin{aligned}
+\mathrm{E}[Z] &= 0 F_Z(0) + \int_0^\infty x f_Z(x)\, dx \\
+&= \int_0^\infty x f_X(x + M)\, dx \\
+&= \int_0^\infty \frac{x \cdot 3 \cdot 4^3}{(x + 2 + 4)^{3+1}} \, dx\\
+&= \frac{4^3}{6^3} \int_0^\infty \frac{x \cdot 3 \cdot 6^3}{(x + 6)^{3+1}} \, dx \\
+&= \frac{4^3}{6^3} \frac{6}{3-1} = 0.88\ldots .\\
+\end{aligned}
+$$
+Note that the last integral above is the mean of $\mathcal{Pa}(3,6)$, which is equal to $6/(3-1)$.
+
+For $\mathrm{E}[Z^2]$, we proceed as follows:
+$$
+\begin{aligned}
+\mathrm{E}[Z^2] &= 0^2 F_Z(0) + \int_0^\infty x^2 f_Z(x)\, dx \\
+&= \int_0^\infty x^2 f_X(x + M)\, dx \\
+&= \int_0^\infty \frac{x^2 \cdot 3 \cdot 4^3}{(x + 2 + 4)^{3+1}} \, dx\\
+&= \frac{4^3}{6^3} \int_0^\infty \frac{x^2 \cdot 3 \cdot 6^3}{(x + 6)^{3+1}} \, dx \\
+&= \frac{4^3}{6^3} 6^2 = 10.66\ldots .\\
+\end{aligned}
+$$
+Note that the last integral above is the second moment about the origin of $\mathcal{Pa}(3,6)$, which is equal to $[6^2 \cdot\Gamma(3-2)\Gamma(1+2)] /\Gamma(3) = 6^2$.
+
+Therefore, 
+$$\begin{aligned}
+  \mathrm{E}[S_R] &= \lambda E[Z] = 320/9, \\
+  \mathrm{Var}[S_R] &= \lambda E[Z^2] = 1280/3. 
+\end{aligned}$$
+
+2. **Zero claims excluded** We define
+  $$ W = Z | Z >0 = X - M | X > M.$$ 
+
+$$
+\begin{aligned}
+\mathrm{E}[W] &=   \int_0^\infty x f_W(x)\, dx \\
+&= \int_0^\infty \frac{x f_X(x + 2)}{(1 - F_X(2))} \, dx \\
+&= \frac{1}{(1 - F_X(2))} \int_0^\infty x f_X(x + 2) \, dx \\
+&= \frac{1}{(1 - F_X(2))}\cdot \mathrm{E}[Z].
+\end{aligned}
+$$
+It follows that
+  $$ \mathrm{E}[S_R] = \lambda\cdot \mathrm{Pr}(X > M) \cdot \mathrm{E}[W] = 40 ( 1 - F_X(2)) \mathrm{E}[W] = 40\mathrm{E}[Z] = 320/9.$$
+Similarly, one can show that
+$$
+\begin{aligned}
+\mathrm{E}[W^2] &=   \int_0^\infty x^2 f_W(x)\, dx \\
+&= \frac{1}{(1 - F_X(2))}\cdot \mathrm{E}[Z^2].
+\end{aligned}
+$$
+This results in
+$$\mathrm{Var}[S_R] = \lambda \cdot \mathrm{Pr}(X > M) \cdot \mathrm{E}[W^2] = 40 ( 1 - F_X(2)) \mathrm{E}[W^2] = 40\mathrm{E}[Z^2] = 1280/3.$$
+
+3. Note that $S = S_I + S_R$ and 
+  $$ \mathrm{E}[S] = \lambda \mathrm{E}[X] = 40 \frac{4}{3-1} = 80. $$
+  Therefore,  
+  $$ \mathrm{E}[S_I] =  80 - \frac{320}{9} = \frac{400}{9}. $$
 
 
+## Approximation of the collective risk model
+
+### The normal approximation
+
+According to the Central Limit Theorem, if the mean number of claims is
+large, then the distribution of aggregate claims $S$ can be approximated
+by a normal distribution, i.e. $S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])$.
+
+**Notes**
+  
+  1.  The normal approximation may not provide a good approximation to the
+distribution of $S$ because the true distribution of $S$ is skew.
+However, the normal approximation is symmetric.
+
+2.  The normal approximation is likely to underestimate tail
+probabilities which are the most interest quantities of insurers.
+
+::: {.example #approximation}
+Aggregate claims from a risk in a given
+time have a compound Poisson distribution with Poisson parameter
+$\lambda$ and an individual claim amount distribution that is a
+lognormal distribution with mean 1 and variance 2.5.
+:::
+
+
+1.  Approximate the distribution of $S$ using the normal distribution
+when (a) $\lambda = 10$ and (b) $\lambda = 100$.
+
+2.  Find $x$ such that $\Pr(S \le x) = 0.95$ in both cases.
+
+3.  Comment on the obtained results.
+
+### The translated gamma approximation
+
+The translated gamma approximation makes use of the first three moments
+of $S$ and provides an improvement of the approximation over the normal
+approximation. We assume that $S$ can be approximated by $Y + k$ where
+$Y \sim G(\alpha, \lambda)$ and $k$ is a constant. This distribution $Y + k$ is
+said to have a translated gamma distribution. By matching the moments of
+the two distribution, the parameters $\alpha, \lambda$ and $k$ can be
+found from $$\begin{aligned}
+Sk[S] &= \frac{2}{\sqrt{\alpha}},  \\
+Var[S] &= \frac{\alpha}{\lambda^2},\\
+E[S] &= \frac{\alpha}{\lambda} + k.\end{aligned}$$
+  
+  Show that the parameters $\alpha, \lambda$ and $k$ satisfy
+$$\begin{aligned}
+\alpha &=  \frac{4}{Sk[S]^2}, \\
+\lambda &= \sqrt{\frac{\alpha}{Var[S]}} \\
+k &= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}$$
+  
+  The aggregate claims $S$ have the compound Poisson distribution as given
+in Example \@ref(exm:approximation).
+
+1.  Use the translated gamma approximation to find $x$ such that
+$\Pr(S \le x) = 0.95$ when (a) $\lambda = 10$ and (b)
+$\lambda = 100$.
+
+2.  Comment on the obtained results.
+
+## Recursive calculation of the collective risk model
+
+The Panjer recursion formula provides recursive calculation of the
+collective risk model. The algorithm can be numerically computed on a
+computer provided that distribution of claim numbers $N$ satisfy
+Panjer's recursion formula,
+$$p_n = \left( a + \frac{b}{n} \right) p_{n-1}, \quad n = 1,2, \ldots,$$
+where $a$ and $b$ are constants.
+
+
+::: {.example}
+Show that a Poisson distribution $N \sim Poisson(\lambda)$ satisfies Panjer's
+recursion formula, i.e. find the constants $a$ and $b$.
+:::
+
+
+Assume that the claim size variable $X$ takes only **positive integers**
+  and the distribution of claim numbers satisfies the Panjer's recursion
+formula. We define
+
+-   $f_k = \Pr(X = k),  \quad k = 1,2, \ldots,$
+
+-   $g_r = \Pr(S = r),  \quad r = 0,1,2, \ldots.$
+
+Then the unknown $g_r$ can be recursively calculated by
+
+1.  $g_0 = p_0$,
+
+2.  $g_r = \sum_{j=1}^r \left( a + \frac{bj}{r} \right) f_j g_{r-j}, \quad r = 1,2 \ldots.$
+
+**Note** If $X$ is not a discrete random variable, then we first
+approximate it by a discrete distribution and then apply the Panjer's
+recursion algorithm.
+
+
+::: {.example}
+Aggregate claims $S$ have a compound Poisson distribution
+$\mathcal{CP}(\lambda,F_X)$ where $\lambda = 1$ and an individual claim
+amount $X$ is either 1 or 2 with probability 3/4 and 1/4, respectively.
+Calculate $g_r$ for $r = 0,1,2,3,4,5$.
+:::
+
+## Premium calculation
+
+
+In this section, rules for setting premium to be charged to cover a risk
+$S$ (aggregate claims) are presented. The expected (mean) risk $E[S]$
+  is referred to as the **pure premium**. In practice, the premium must be
+set to cover the expected risk, i.e. $P > E[S]$. Some premium
+calculation rules are as follows:
+  
+  1.  **The expected value principle (EVP)** The premium is given by a
+simple formula: $$P = E[S] + \theta\, E[S] = ( 1 + \theta)E[S],$$
+  for some $\theta > 0$, which is called the **relative security
+loading** on the pure premium $E[S]$. The premium is increased by a
+percentage of the mean of the risk.
+
+2.  **The standard deviation principle (SVP)** The premium is increased
+by a percentage of the standard deviation of the risk.
+$$P = E[S] + \theta\, \text{SD}[S].$$
+  
+  3.  **The variance principle (VP)** The premium is increased by a
+percentage of the variance of the risk.
+$$P = E[S] + \theta\, Var[S].$$
+  
+
+
+::: {.example}
+Suppose that $S$ has a compound Poisson distribution with Poisson
+parameters $\lambda = 10$ and the claim sizes have a Pareto distribution
+$Pa(4,3)$.
+:::
+
+1.  Use the normal approximation and the translated gamma approximation
+    to calculate the relative security loading such that the probability
+    of a profit in the year is 0.95.
+
+2.  Repeat the same question as above assumed that the SVP is applied.
 
