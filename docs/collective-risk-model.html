@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-09-15" />
+<meta name="date" content="2021-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -527,21 +527,62 @@ distribution <span class="math inline">\(N \sim NB(k,p)\)</span>:
 <span class="math display">\[E[N] = \frac{kq}{p}, \quad Var[N] = \frac{kq}{p^2},\]</span> and the
 moments of a compound distribution <span class="math inline">\(S\)</span> derived in Section
 <a href="collective-risk-model.html#sectionCompoundDistribution">4.2</a>.</p>
-<p><strong>Note</strong> The compound negative binomial distribution is an appropriate
-to model the heterogeneity of the numbers of claims occurring for
+<p><strong>Notes</strong>
+1. The negative binomial distribution is an alternative to the Poisson distribution for <span class="math inline">\(N\)</span>, in the sense that it allows for any value of <span class="math inline">\(N = 0, 1, 2, \ldots\)</span>, unlike the binomial
+distribution which has an upper limit.</p>
+<p>One advantage that the negative binomial distribution has over the Poisson distribution is that its variance exceeds its mean. These two quantities are equal for the Poisson distribution.</p>
+<p>Thus, the negative binomial distribution may give a better fit to a data set which has a sample variance in excess of the sample mean.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>The compound negative binomial distribution is an appropriate to model the heterogeneity of the numbers of claims occurring for
 different risks. In particular, suppose that for each policy, the number
 of claims in a year has a Poisson distribution
 <span class="math inline">\(N | \lambda \sim Poisson(\lambda)\)</span>, and that the variation in <span class="math inline">\(\lambda\)</span> across
-the portfolio can be modelled using a Gamma distribution <span class="math inline">\(G(\alpha, \lambda)\)</span>. Then
+the portfolio can be modelled using a Gamma distribution <span class="math inline">\(\mathcal{G}(\alpha, \lambda)\)</span>. Then
 the number of claims in the year for a policy chosen at random from the
-portfolio has a negative binomial distribution.</p>
+portfolio has a negative binomial distribution.</li>
+</ol>
+<div id="misture-distributions" class="section level4" number="4.3.2.1">
+<h4><span class="header-section-number">4.3.2.1</span> Misture distributions</h4>
+<p>Suppose we model a policyholder’s claim number <span class="math inline">\(N\)</span> using a conditional distribution <span class="math inline">\(N | \lambda\)</span>, where <span class="math inline">\(\lambda\)</span> can be thought of as a “risk parameter” for that policyholder.</p>
+<p>Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various <span class="math inline">\(\lambda\)</span>s as being independent realisations of a random variable with known probability distribution. This gives the joint density, which we can write as
+<span class="math inline">\(f_{N,\lambda}(k, \lambda) = f_\lambda(\lambda) f_{N|\lambda}(k | \lambda)\)</span>.</p>
+<p>This enables us to allow for variability in the risks across a portfolio; that is, to model the heterogeneity of the numbers of claims occurring for different risks.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 4.8  </strong></span>A portfolio consists of a large number of individual policies. For each policy, the number of claims in a year has a poisson distribution <span class="math inline">\(N | \lambda \sim Poisson(\lambda)\)</span>. Let us suppose that the variation in <span class="math inline">\(\lambda\)</span> across the portfolio of risks can be modelled using a gamma <span class="math inline">\(\mathcal{G}(\alpha,\beta)\)</span> distribution with known parameters, and let us use this to average across the risks.</p>
+<p>We are considering a <strong>mixture</strong> of Poissons where the mixing distribution if gamma. This is also known as a mixture <strong>distribution</strong>. Derive the probability mass function of the mixture distribution.</p>
+</div>
+<p><strong>Solution:</strong></p>
+<p>For <span class="math inline">\(k = 0,1,2,\ldots\)</span>, we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr(N = k) &amp;= \int f_\lambda(\lambda) \Pr(N = k | \lambda) \, d\lambda \\
+&amp;= \int_{0}^\infty \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{\beta \lambda} e^{-\lambda} \frac{\lambda^k}{k!} \, d\lambda \\
+&amp;= \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \frac{\beta^\alpha}{(\beta+1)^{\alpha+k}} \times \int_0^\infty h(\lambda) \, d\lambda 
+\end{aligned}
+\]</span>
+where <span class="math inline">\(h(\lambda)\)</span> is the probability density function of <span class="math inline">\(\lambda \sim \mathcal{G}(\alpha + k, \beta + 1)\)</span>.</p>
+<p>Hence,</p>
+<p><span class="math display">\[ \Pr(N =k) = \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \left(\frac{\beta}{\beta+1}\right)^\alpha \left(\frac{1}{\beta+1}\right)^k, k = 0,1,2,\ldots,\]</span></p>
+<p>which is the probability mass function of a <span class="math inline">\(\mathcal{NB}(\alpha, \beta/(\beta + 1))\)</span> distribution.</p>
+<p>This provides an illuminating view of the negative binomial distribution – it arises as a mixture of Poissons where the mixing distribution is gamma.</p>
+</div>
+<div id="an-example-in-r" class="section level4" number="4.3.2.2">
+<h4><span class="header-section-number">4.3.2.2</span> an Example in R</h4>
+<p>This R Markdown introduces the concept of mixture distributions which applies to models for claim numbers.</p>
+<p>Suppose we model a policyholder’s claim numbers <span class="math inline">\(N\)</span> using a conditional distribution <span class="math inline">\(N | \lambda\)</span>, where <span class="math inline">\(\lambda\)</span> can be thought of as a <strong>risk parameter</strong> for that policyholder. Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various <span class="math inline">\(\lambda\)</span>s as being independent realisations of a random variable with known probability distribution.</p>
+<p>The following R code produces the required <span class="math inline">\(n\)</span> simulated values from this mixture distribution, where <span class="math inline">\(N | \lambda \sim Poisson(\lambda)\)</span> with mixing distribution <span class="math inline">\(\mathcal{G}(\alpha, \beta)\)</span>, i.e. <span class="math inline">\(\lambda \sim \mathcal{G}(\alpha, \beta)\)</span>.</p>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxubiA8LSA1MDAwXG5hbHBoYSA8LSA0XG5iZXRhIDwtIDEvM1xubGFtYmRhIDwtIHJnYW1tYShuLCBzaGFwZSA9IGFscGhhLCByYXRlID0gYmV0YSlcbm51bWNsYWltcyA8LSBzYXBwbHkobGFtYmRhLHJwb2lzLG4gPTEpXG5oaXN0KG51bWNsYWltcylcbnByaW50KG1lYW4obnVtY2xhaW1zKSlcbnByaW50KHZhcihudW1jbGFpbXMpKVxuXG4jTWl4dHVyZSB+IG5iKGFscGhhLGJldGEvKGJldGErMSkpXG5hbHBoYU1peHR1cmUgPC0gYWxwaGFcbmJldGFNaXh0dXJlIDwtIGJldGEvKGJldGErMSlcbm1lYW5NaXh0dXJlIDwtIGFscGhhTWl4dHVyZSooMS1iZXRhTWl4dHVyZSkvYmV0YU1peHR1cmVcbnZhck1peHR1cmUgPC0gbWVhbk1peHR1cmUvYmV0YU1peHR1cmUifQ==
+</div>
+</div>
 </div>
 <div id="compound-binomial-distributions" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Compound binomial distributions</h3>
 <p>A compound binomial distribution can be used to model a portfolio of
 policies, each of which can give rise to at most one claim.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 4.8  </strong></span>Consider a portfolio of <span class="math inline">\(n\)</span> independent and identical policies where
+<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 4.9  </strong></span>Consider a portfolio of <span class="math inline">\(n\)</span> independent and identical policies where
 there is at most one claim on each policy in a year (for e.g. life
 insurance). Let <span class="math inline">\(p\)</span> be the probability that a claim occurs. Explain that
 the aggregate sum <span class="math inline">\(S\)</span> in this portfolio has a compound binomial
@@ -586,7 +627,7 @@ claim.</p></li>
 arranged.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 4.9  </strong></span>Aggregate claims from a risk in a given time have a compound Poisson
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 4.10  </strong></span>Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter <span class="math inline">\(\lambda = 10\)</span> and an individual
 claim amount distribution that is a Pareto distribution,
 <span class="math inline">\(Pa(4,1)\)</span>. The insurer has effected proportional reinsurance with
@@ -664,7 +705,7 @@ counting only non-zero claims, we can rewrite <span class="math inline">\(S_R\)<
 aggregate claim amount paid by the reinsurer can be written as
 <span class="math display">\[S_R   =  \sum_{i= 1}^{N_R} W_i.\]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 4.10  </strong></span>By using the probability generating function, show that if
+<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 4.11  </strong></span>By using the probability generating function, show that if
 <span class="math inline">\(N \sim Poisson(\lambda)\)</span>, then the distribution
 <span class="math inline">\(N_R \sim Poisson(\lambda \pi_M)\)</span> where <span class="math inline">\(\pi_M = \Pr(X_j &gt; M)\)</span>.</p>
 </div>
@@ -705,7 +746,7 @@ from <a href="collective-risk-model.html#eq:eqnSI">(4.2)</a> and
 <p>where <span class="math inline">\(f_W(x) = \displaystyle{\frac{f_X(x+M)}{1- F_X(M)}}, x &gt; 0\)</span>.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 4.11  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
+<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 4.12  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
 parameters <span class="math inline">\(\lambda = 10\)</span> and the claim sizes have the following
 distribution</p>
 <table>
@@ -820,7 +861,7 @@ Hence,
 \end{aligned}
 \]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 4.12  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
+<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 4.13  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
 parameters <span class="math inline">\(\lambda = 40\)</span> and the claim sizes have a Pareto distribution
 <span class="math inline">\(Pa(3,4)\)</span>. The insurer has an excess of loss reinsurance contract
 in place with retention level <span class="math inline">\(M = 2\)</span>. Find the mean and variance of the
@@ -903,7 +944,7 @@ However, the normal approximation is symmetric.</p></li>
 probabilities which are the most interest quantities of insurers.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:approximation" class="example"><strong>Example 4.13  </strong></span>Aggregate claims from a risk in a given
+<p><span id="exm:approximation" class="example"><strong>Example 4.14  </strong></span>Aggregate claims from a risk in a given
 time have a compound Poisson distribution with Poisson parameter
 <span class="math inline">\(\lambda\)</span> and an individual claim amount distribution that is a
 lognormal distribution with mean 1 and variance 2.5.</p>
@@ -920,7 +961,7 @@ when (a) <span class="math inline">\(\lambda = 10\)</span> and (b) <span class="
 <p>The translated gamma approximation makes use of the first three moments
 of <span class="math inline">\(S\)</span> and provides an improvement of the approximation over the normal
 approximation. We assume that <span class="math inline">\(S\)</span> can be approximated by <span class="math inline">\(Y + k\)</span> where
-<span class="math inline">\(Y \sim G(\alpha, \lambda)\)</span> and <span class="math inline">\(k\)</span> is a constant. This distribution <span class="math inline">\(Y + k\)</span> is
+<span class="math inline">\(Y \sim \mathcal{G}(\alpha, \lambda)\)</span> and <span class="math inline">\(k\)</span> is a constant. This distribution <span class="math inline">\(Y + k\)</span> is
 said to have a translated gamma distribution. By matching the moments of
 the two distribution, the parameters <span class="math inline">\(\alpha, \lambda\)</span> and <span class="math inline">\(k\)</span> can be
 found from <span class="math display">\[\begin{aligned}
@@ -933,7 +974,7 @@ E[S] &amp;= \frac{\alpha}{\lambda} + k.\end{aligned}\]</span></p>
 \lambda &amp;= \sqrt{\frac{\alpha}{Var[S]}} \\
 k &amp;= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}\]</span></p>
 <p>The aggregate claims <span class="math inline">\(S\)</span> have the compound Poisson distribution as given
-in Example <a href="collective-risk-model.html#exm:approximation">4.13</a>.</p>
+in Example <a href="collective-risk-model.html#exm:approximation">4.14</a>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use the translated gamma approximation to find <span class="math inline">\(x\)</span> such that
 <span class="math inline">\(\Pr(S \le x) = 0.95\)</span> when (a) <span class="math inline">\(\lambda = 10\)</span> and (b)
@@ -951,7 +992,7 @@ Panjer’s recursion formula,
 <span class="math display">\[p_n = \left( a + \frac{b}{n} \right) p_{n-1}, \quad n = 1,2, \ldots,\]</span>
 where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 4.14  </strong></span>Show that a Poisson distribution <span class="math inline">\(N \sim Poisson(\lambda)\)</span> satisfies Panjer’s
+<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 4.15  </strong></span>Show that a Poisson distribution <span class="math inline">\(N \sim Poisson(\lambda)\)</span> satisfies Panjer’s
 recursion formula, i.e. find the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
 </div>
 <p>Assume that the claim size variable <span class="math inline">\(X\)</span> takes only <strong>positive integers</strong>
@@ -970,7 +1011,7 @@ formula. We define</p>
 approximate it by a discrete distribution and then apply the Panjer’s
 recursion algorithm.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 4.15  </strong></span>Aggregate claims <span class="math inline">\(S\)</span> have a compound Poisson distribution
+<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 4.16  </strong></span>Aggregate claims <span class="math inline">\(S\)</span> have a compound Poisson distribution
 <span class="math inline">\(\mathcal{CP}(\lambda,F_X)\)</span> where <span class="math inline">\(\lambda = 1\)</span> and an individual claim
 amount <span class="math inline">\(X\)</span> is either 1 or 2 with probability 3/4 and 1/4, respectively.
 Calculate <span class="math inline">\(g_r\)</span> for <span class="math inline">\(r = 0,1,2,3,4,5\)</span>.</p>
@@ -997,7 +1038,7 @@ percentage of the variance of the risk.
 <span class="math display">\[P = E[S] + \theta\, Var[S].\]</span></p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 4.16  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
+<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 4.17  </strong></span>Suppose that <span class="math inline">\(S\)</span> has a compound Poisson distribution with Poisson
 parameters <span class="math inline">\(\lambda = 10\)</span> and the claim sizes have a Pareto distribution
 <span class="math inline">\(Pa(4,3)\)</span>.</p>
 </div>

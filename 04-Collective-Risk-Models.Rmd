@@ -335,14 +335,97 @@ $$E[N] = \frac{kq}{p}, \quad Var[N] = \frac{kq}{p^2},$$ and the
 moments of a compound distribution $S$ derived in Section
 \@ref(sectionCompoundDistribution).
 
-**Note** The compound negative binomial distribution is an appropriate
-to model the heterogeneity of the numbers of claims occurring for
+**Notes** 
+1. The negative binomial distribution is an alternative to the Poisson distribution for $N$, in the sense that it allows for any value of $N = 0, 1, 2, \ldots$, unlike the binomial
+distribution which has an upper limit. 
+
+One advantage that the negative binomial distribution has over the Poisson distribution is that its variance exceeds its mean. These two quantities are equal for the Poisson distribution. 
+
+Thus, the negative binomial distribution may give a better fit to a data set which has a sample variance in excess of the sample mean. 
+
+2. The compound negative binomial distribution is an appropriate to model the heterogeneity of the numbers of claims occurring for
 different risks. In particular, suppose that for each policy, the number
 of claims in a year has a Poisson distribution
 $N | \lambda \sim Poisson(\lambda)$, and that the variation in $\lambda$ across
-the portfolio can be modelled using a Gamma distribution $G(\alpha, \lambda)$. Then
+the portfolio can be modelled using a Gamma distribution $\mathcal{G}(\alpha, \lambda)$. Then
 the number of claims in the year for a policy chosen at random from the
 portfolio has a negative binomial distribution.
+
+
+#### Misture distributions
+
+Suppose we model a policyholder’s claim number $N$ using a conditional distribution $N | \lambda$, where $\lambda$ can be thought of as a “risk parameter” for that policyholder. 
+
+Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various $\lambda$s as being independent realisations of a random variable with known probability distribution. This gives the joint density, which we can write as
+$f_{N,\lambda}(k, \lambda) = f_\lambda(\lambda) f_{N|\lambda}(k | \lambda)$.
+
+This enables us to allow for variability in the risks across a portfolio; that is, to model the heterogeneity of the numbers of claims occurring for different risks. 
+
+::: {.example}
+A portfolio consists of a large number of individual policies. For each policy, the number of claims in  a year has a poisson distribution $N | \lambda \sim Poisson(\lambda)$. Let us suppose that the variation in $\lambda$ across the portfolio of risks can be modelled using a gamma $\mathcal{G}(\alpha,\beta)$ distribution with known parameters, and let us use this to average across the risks. 
+
+We are considering a **mixture** of Poissons where the mixing distribution if gamma. This is also known as a mixture **distribution**. Derive the probability mass function of the mixture distribution.
+:::
+**Solution:**
+
+For $k = 0,1,2,\ldots$, we have
+
+$$
+\begin{aligned}
+\Pr(N = k) &= \int f_\lambda(\lambda) \Pr(N = k | \lambda) \, d\lambda \\
+&= \int_{0}^\infty \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{\beta \lambda} e^{-\lambda} \frac{\lambda^k}{k!} \, d\lambda \\
+&= \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \frac{\beta^\alpha}{(\beta+1)^{\alpha+k}} \times \int_0^\infty h(\lambda) \, d\lambda 
+\end{aligned}
+$$
+where $h(\lambda)$ is the probability density function of $\lambda \sim \mathcal{G}(\alpha + k, \beta + 1)$.
+
+Hence, 
+
+$$ \Pr(N =k) = \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \left(\frac{\beta}{\beta+1}\right)^\alpha \left(\frac{1}{\beta+1}\right)^k, k = 0,1,2,\ldots,$$
+
+which is the probability mass function of a $\mathcal{NB}(\alpha, \beta/(\beta + 1))$ distribution. 
+
+This provides an illuminating view of the negative binomial distribution – it arises as a mixture of Poissons where the mixing distribution is gamma. 
+
+
+#### an Example in R
+
+
+This R Markdown introduces the concept of mixture distributions which applies to models for claim numbers.
+
+Suppose we model a policyholder’s claim numbers $N$ using a conditional distribution $N | \lambda$, where $\lambda$ can be thought of as a **risk parameter** for that policyholder. Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various $\lambda$s as being independent realisations of a random variable with known probability distribution. 
+
+
+The following R code produces the required $n$ simulated values from this mixture distribution, where $N | \lambda \sim Poisson(\lambda)$ with mixing distribution $\mathcal{G}(\alpha, \beta)$, i.e. $\lambda \sim \mathcal{G}(\alpha, \beta)$. 
+
+
+
+```{r, include=FALSE}
+tutorial::go_interactive()
+```
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+```{r mixture}
+set.seed(5353)
+n <- 5000
+alpha <- 4
+beta <- 1/3
+lambda <- rgamma(n, shape = alpha, rate = beta)
+numclaims <- sapply(lambda,rpois,n =1)
+hist(numclaims)
+print(mean(numclaims))
+print(var(numclaims))
+
+#Mixture ~ nb(alpha,beta/(beta+1))
+alphaMixture <- alpha
+betaMixture <- beta/(beta+1)
+meanMixture <- alphaMixture*(1-betaMixture)/betaMixture
+varMixture <- meanMixture/betaMixture
+```
+
+
+
 
 ### Compound binomial distributions
 
@@ -720,7 +803,7 @@ when (a) $\lambda = 10$ and (b) $\lambda = 100$.
 The translated gamma approximation makes use of the first three moments
 of $S$ and provides an improvement of the approximation over the normal
 approximation. We assume that $S$ can be approximated by $Y + k$ where
-$Y \sim G(\alpha, \lambda)$ and $k$ is a constant. This distribution $Y + k$ is
+$Y \sim \mathcal{G}(\alpha, \lambda)$ and $k$ is a constant. This distribution $Y + k$ is
 said to have a translated gamma distribution. By matching the moments of
 the two distribution, the parameters $\alpha, \lambda$ and $k$ can be
 found from $$\begin{aligned}
