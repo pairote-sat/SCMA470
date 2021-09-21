@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-09-15}
+\date{2021-09-21}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2372,14 +2372,78 @@ distribution \(N \sim NB(k,p)\):
 moments of a compound distribution \(S\) derived in Section
 \ref{sectionCompoundDistribution}.
 
-\textbf{Note} The compound negative binomial distribution is an appropriate
-to model the heterogeneity of the numbers of claims occurring for
-different risks. In particular, suppose that for each policy, the number
-of claims in a year has a Poisson distribution
-\(N | \lambda \sim Poisson(\lambda)\), and that the variation in \(\lambda\) across
-the portfolio can be modelled using a Gamma distribution \(G(\alpha, \lambda)\). Then
-the number of claims in the year for a policy chosen at random from the
-portfolio has a negative binomial distribution.
+\textbf{Notes}
+1. The negative binomial distribution is an alternative to the Poisson distribution for \(N\), in the sense that it allows for any value of \(N = 0, 1, 2, \ldots\), unlike the binomial
+distribution which has an upper limit.
+
+One advantage that the negative binomial distribution has over the Poisson distribution is that its variance exceeds its mean. These two quantities are equal for the Poisson distribution.
+
+Thus, the negative binomial distribution may give a better fit to a data set which has a sample variance in excess of the sample mean.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The compound negative binomial distribution is an appropriate to model the heterogeneity of the numbers of claims occurring for
+  different risks. In particular, suppose that for each policy, the number
+  of claims in a year has a Poisson distribution
+  \(N | \lambda \sim Poisson(\lambda)\), and that the variation in \(\lambda\) across
+  the portfolio can be modelled using a Gamma distribution \(\mathcal{G}(\alpha, \lambda)\). Then
+  the number of claims in the year for a policy chosen at random from the
+  portfolio has a negative binomial distribution.
+\end{enumerate}
+
+\hypertarget{misture-distributions}{%
+\subsubsection{Misture distributions}\label{misture-distributions}}
+
+Suppose we model a policyholder's claim number \(N\) using a conditional distribution \(N | \lambda\), where \(\lambda\) can be thought of as a ``risk parameter'' for that policyholder.
+
+Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various \(\lambda\)s as being independent realisations of a random variable with known probability distribution. This gives the joint density, which we can write as
+\(f_{N,\lambda}(k, \lambda) = f_\lambda(\lambda) f_{N|\lambda}(k | \lambda)\).
+
+This enables us to allow for variability in the risks across a portfolio; that is, to model the heterogeneity of the numbers of claims occurring for different risks.
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-45}{}\label{exm:unlabeled-div-45}
+
+A portfolio consists of a large number of individual policies. For each policy, the number of claims in a year has a poisson distribution \(N | \lambda \sim Poisson(\lambda)\). Let us suppose that the variation in \(\lambda\) across the portfolio of risks can be modelled using a gamma \(\mathcal{G}(\alpha,\beta)\) distribution with known parameters, and let us use this to average across the risks.
+
+We are considering a \textbf{mixture} of Poissons where the mixing distribution if gamma. This is also known as a mixture \textbf{distribution}. Derive the probability mass function of the mixture distribution.
+
+\end{example}
+
+\textbf{Solution:}
+
+For \(k = 0,1,2,\ldots\), we have
+
+\[
+\begin{aligned}
+\Pr(N = k) &= \int f_\lambda(\lambda) \Pr(N = k | \lambda) \, d\lambda \\
+&= \int_{0}^\infty \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{\beta \lambda} e^{-\lambda} \frac{\lambda^k}{k!} \, d\lambda \\
+&= \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \frac{\beta^\alpha}{(\beta+1)^{\alpha+k}} \times \int_0^\infty h(\lambda) \, d\lambda 
+\end{aligned}
+\]
+where \(h(\lambda)\) is the probability density function of \(\lambda \sim \mathcal{G}(\alpha + k, \beta + 1)\).
+
+Hence,
+
+\[ \Pr(N =k) = \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \left(\frac{\beta}{\beta+1}\right)^\alpha \left(\frac{1}{\beta+1}\right)^k, k = 0,1,2,\ldots,\]
+
+which is the probability mass function of a \(\mathcal{NB}(\alpha, \beta/(\beta + 1))\) distribution.
+
+This provides an illuminating view of the negative binomial distribution -- it arises as a mixture of Poissons where the mixing distribution is gamma.
+
+\hypertarget{an-example-in-r}{%
+\subsubsection{an Example in R}\label{an-example-in-r}}
+
+This R Markdown introduces the concept of mixture distributions which applies to models for claim numbers.
+
+Suppose we model a policyholder's claim numbers \(N\) using a conditional distribution \(N | \lambda\), where \(\lambda\) can be thought of as a \textbf{risk parameter} for that policyholder. Policyholders represent a variety of risks and have different risk parameters, and we model the variation across policyholders by regarding the various \(\lambda\)s as being independent realisations of a random variable with known probability distribution.
+
+The following R code produces the required \(n\) simulated values from this mixture distribution, where \(N | \lambda \sim Poisson(\lambda)\) with mixing distribution \(\mathcal{G}(\alpha, \beta)\), i.e.~\(\lambda \sim \mathcal{G}(\alpha, \beta)\).
+
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxubiA8LSA1MDAwXG5hbHBoYSA8LSA0XG5iZXRhIDwtIDEvM1xubGFtYmRhIDwtIHJnYW1tYShuLCBzaGFwZSA9IGFscGhhLCByYXRlID0gYmV0YSlcbm51bWNsYWltcyA8LSBzYXBwbHkobGFtYmRhLHJwb2lzLG4gPTEpXG5oaXN0KG51bWNsYWltcylcbnByaW50KG1lYW4obnVtY2xhaW1zKSlcbnByaW50KHZhcihudW1jbGFpbXMpKVxuXG4jTWl4dHVyZSB+IG5iKGFscGhhLGJldGEvKGJldGErMSkpXG5hbHBoYU1peHR1cmUgPC0gYWxwaGFcbmJldGFNaXh0dXJlIDwtIGJldGEvKGJldGErMSlcbm1lYW5NaXh0dXJlIDwtIGFscGhhTWl4dHVyZSooMS1iZXRhTWl4dHVyZSkvYmV0YU1peHR1cmVcbnZhck1peHR1cmUgPC0gbWVhbk1peHR1cmUvYmV0YU1peHR1cmUifQ==
 
 \hypertarget{compound-binomial-distributions}{%
 \subsection{Compound binomial distributions}\label{compound-binomial-distributions}}
@@ -2388,7 +2452,7 @@ A compound binomial distribution can be used to model a portfolio of
 policies, each of which can give rise to at most one claim.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-45}{}\label{exm:unlabeled-div-45}
+\protect\hypertarget{exm:unlabeled-div-46}{}\label{exm:unlabeled-div-46}
 
 Consider a portfolio of \(n\) independent and identical policies where
 there is at most one claim on each policy in a year (for e.g.~life
@@ -2446,7 +2510,7 @@ the amount of the \(i\)th claim.
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-46}{}\label{exm:unlabeled-div-46}
+\protect\hypertarget{exm:unlabeled-div-47}{}\label{exm:unlabeled-div-47}
 
 Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter \(\lambda = 10\) and an individual
@@ -2542,7 +2606,7 @@ aggregate claim amount paid by the reinsurer can be written as
 \[S_R   =  \sum_{i= 1}^{N_R} W_i.\]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-47}{}\label{exm:unlabeled-div-47}
+\protect\hypertarget{exm:unlabeled-div-48}{}\label{exm:unlabeled-div-48}
 
 By using the probability generating function, show that if
 \(N \sim Poisson(\lambda)\), then the distribution
@@ -2598,7 +2662,7 @@ from \eqref{eq:eqnSI} and
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-48}{}\label{exm:unlabeled-div-48}
+\protect\hypertarget{exm:unlabeled-div-49}{}\label{exm:unlabeled-div-49}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
 parameters \(\lambda = 10\) and the claim sizes have the following
@@ -2720,7 +2784,7 @@ Hence,
 \]
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-49}{}\label{exm:unlabeled-div-49}
+\protect\hypertarget{exm:unlabeled-div-50}{}\label{exm:unlabeled-div-50}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
 parameters \(\lambda = 40\) and the claim sizes have a Pareto distribution
@@ -2854,7 +2918,7 @@ lognormal distribution with mean 1 and variance 2.5.
 The translated gamma approximation makes use of the first three moments
 of \(S\) and provides an improvement of the approximation over the normal
 approximation. We assume that \(S\) can be approximated by \(Y + k\) where
-\(Y \sim G(\alpha, \lambda)\) and \(k\) is a constant. This distribution \(Y + k\) is
+\(Y \sim \mathcal{G}(\alpha, \lambda)\) and \(k\) is a constant. This distribution \(Y + k\) is
 said to have a translated gamma distribution. By matching the moments of
 the two distribution, the parameters \(\alpha, \lambda\) and \(k\) can be
 found from \[\begin{aligned}
@@ -2892,7 +2956,7 @@ Panjer's recursion formula,
 where \(a\) and \(b\) are constants.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-50}{}\label{exm:unlabeled-div-50}
+\protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
 
 Show that a Poisson distribution \(N \sim Poisson(\lambda)\) satisfies Panjer's
 recursion formula, i.e.~find the constants \(a\) and \(b\).
@@ -2925,7 +2989,7 @@ approximate it by a discrete distribution and then apply the Panjer's
 recursion algorithm.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
+\protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
 
 Aggregate claims \(S\) have a compound Poisson distribution
 \(\mathcal{CP}(\lambda,F_X)\) where \(\lambda = 1\) and an individual claim
@@ -2962,7 +3026,7 @@ calculation rules are as follows:
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
+\protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
 parameters \(\lambda = 10\) and the claim sizes have a Pareto distribution
