@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-09-21}
+\date{2021-09-23}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2926,11 +2926,19 @@ Sk[S] &= \frac{2}{\sqrt{\alpha}},  \\
 Var[S] &= \frac{\alpha}{\lambda^2},\\
 E[S] &= \frac{\alpha}{\lambda} + k.\end{aligned}\]
 
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
+
 Show that the parameters \(\alpha, \lambda\) and \(k\) satisfy
 \[\begin{aligned}
 \alpha &=  \frac{4}{Sk[S]^2}, \\
 \lambda &= \sqrt{\frac{\alpha}{Var[S]}} \\
 k &= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}\]
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
 
 The aggregate claims \(S\) have the compound Poisson distribution as given
 in Example \ref{exm:approximation}.
@@ -2945,6 +2953,8 @@ in Example \ref{exm:approximation}.
   Comment on the obtained results.
 \end{enumerate}
 
+\end{example}
+
 \hypertarget{recursive-calculation-of-the-collective-risk-model}{%
 \section{Recursive calculation of the collective risk model}\label{recursive-calculation-of-the-collective-risk-model}}
 
@@ -2956,7 +2966,7 @@ Panjer's recursion formula,
 where \(a\) and \(b\) are constants.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
+\protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
 
 Show that a Poisson distribution \(N \sim Poisson(\lambda)\) satisfies Panjer's
 recursion formula, i.e.~find the constants \(a\) and \(b\).
@@ -2989,7 +2999,7 @@ approximate it by a discrete distribution and then apply the Panjer's
 recursion algorithm.
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
+\protect\hypertarget{exm:unlabeled-div-54}{}\label{exm:unlabeled-div-54}
 
 Aggregate claims \(S\) have a compound Poisson distribution
 \(\mathcal{CP}(\lambda,F_X)\) where \(\lambda = 1\) and an individual claim
@@ -3026,7 +3036,7 @@ calculation rules are as follows:
 \end{enumerate}
 
 \begin{example}
-\protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
+\protect\hypertarget{exm:unlabeled-div-55}{}\label{exm:unlabeled-div-55}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
 parameters \(\lambda = 10\) and the claim sizes have a Pareto distribution

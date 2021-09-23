@@ -810,13 +810,16 @@ found from $$\begin{aligned}
 Sk[S] &= \frac{2}{\sqrt{\alpha}},  \\
 Var[S] &= \frac{\alpha}{\lambda^2},\\
 E[S] &= \frac{\alpha}{\lambda} + k.\end{aligned}$$
-  
+ 
+::: {.example}
   Show that the parameters $\alpha, \lambda$ and $k$ satisfy
 $$\begin{aligned}
 \alpha &=  \frac{4}{Sk[S]^2}, \\
 \lambda &= \sqrt{\frac{\alpha}{Var[S]}} \\
 k &= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}$$
-  
+:::
+
+::: {.example}
   The aggregate claims $S$ have the compound Poisson distribution as given
 in Example \@ref(exm:approximation).
 
@@ -825,6 +828,7 @@ $\Pr(S \le x) = 0.95$ when (a) $\lambda = 10$ and (b)
 $\lambda = 100$.
 
 2.  Comment on the obtained results.
+:::
 
 ## Recursive calculation of the collective risk model
 
