@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-09-23}
+\date{2021-09-24}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3250,6 +3250,173 @@ One can also show that
     this.
   \end{enumerate}
 \end{enumerate}
+
+\hypertarget{solutions-to-tutorial-2}{%
+\section{Solutions to Tutorial 2}\label{solutions-to-tutorial-2}}
+
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    \[\begin{aligned}
+    \Pr(X > 1000) &= \Pr(X > 1000 | A) \Pr(A) + \Pr(X > 1000 | B) \Pr(B) \\
+    &= \left(  \frac{ 400 }{ 1000 + 400} \right)^{3} (0.9) +  \left(  \frac{ 1000 }{ 1000 + 1000} \right)^{4} (0.1) \\
+    &= 0.0272413.
+    \end{aligned}\]
+  \item
+    Using the conditional expectation and conditional variance formulas, we have
+  \end{enumerate}
+\end{enumerate}
+
+\[\begin{aligned} 
+\mathrm{E}[X|A] &= \frac{400 }{3 - 1} = 200, \\
+\mathrm{E}[X|B] &= \frac{1000 }{4 - 1} = 333.3333333.
+\end{aligned} \]
+Hence,
+\[\begin{aligned} 
+\mathrm{E}[X] &= \mathrm{E}[\mathrm{E}[X|\text{type}]] \\
+&=  \Pr(A) \, \mathrm{E}[X|A]   + \Pr(B) \, \mathrm{E}[X|B]   \\
+&= (0.9)(200) + (0.1)(333.3333333) \\
+&= 213.3333333.
+\end{aligned}
+\]
+
+\begin{verbatim}
+We also have
+\end{verbatim}
+
+\[\begin{aligned} 
+\mathrm{E}[X^2|A] &= \mathrm{Var}[X|A] + (\mathrm{E}[X|A])^2 = \frac{(3) (400)^2}{(3 - 1)^2 (3 - 2)} + (200)^2   =   \ensuremath{1.6\times 10^{5}},\\
+\mathrm{E}[X^2|B] &= \mathrm{Var}[X|B] + (\mathrm{E}[X|B])^2 = \frac{(4) (1000)^2}{(4 - 1)^2 (4 - 2)} + (333.3333333)^2   =   \ensuremath{3.3333333\times 10^{5}}. 
+\end{aligned}
+\]
+Therefore,
+\(\mathrm{E}[X^2] = (0.9)(\ensuremath{1.6\times 10^{5}}) + (0.1)(\ensuremath{3.3333333\times 10^{5}}) = \ensuremath{1.7733333\times 10^{5}}\),
+and
+\(\mathrm{Var}[X] = \ensuremath{1.3182222\times 10^{5}}\), \quad 
+\(\mathrm{SD}[X] = 363.0733014\).
+
+\begin{verbatim}
+3. Using moment matching estimation, we have
+\end{verbatim}
+
+\(\tilde{\alpha} = 3.0545829\) and \(\tilde{\beta} = 438.3110196\). Therefore, \(\Pr[Y > 1000] = 0.0265228 < 0.0272413\).
+
+\begin{verbatim}
+4. Failure to separate two types of claims leads to an underestimation of tail probability. This affects the determination of premiums, reinsurance, and security.  
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    From \(X = Y + Z\), where \(Y = \min(X,M)\) and \(Z = \max(0,X -M)\).
+    \[\begin{aligned}
+    \mathrm{Cov}(Y,Z) &= \mathrm{E}[YZ] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+    &= \int_0^\infty \min(X,M) \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+    &= M \int_M^\infty \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+    &= M \mathrm{E}[Z] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+    &= \mathrm{E}[Z](M  - \mathrm{E}[Y])  \ge 0. \\
+    \end{aligned}\]
+  \end{enumerate}
+\end{enumerate}
+
+Therefore,
+
+\[\mathrm{Var}[X] = \mathrm{Var}[Y + Z] = \mathrm{Var}[Y] + \mathrm{Var}[Z] + 2Cov(X,Y)   \ge \mathrm{Var}[Y] + \mathrm{Var}[Z].\]
+
+Consequently, there is a reduction in the variability of the amount paid out by the direct insurer on claims.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  By the method of moments, the MMEs of the parameter \(\mu\) and \(\sigma\) can be found by matching \(\mathrm{E}[X]\) to the sample mean and \(\mathrm{Var}[X]\) to the sample variance:
+\end{enumerate}
+
+\[\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) = 200 \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1) = 2916.\]
+We find that \(\tilde{\mu} = 5.2631347\) and \(\tilde{\sigma} = 0.2652645\). Moreover,
+\[ \Pr(X > 250) = P( Z > \frac{\ln(250) - \tilde{\mu}}{\tilde{\sigma}}) = 0.1650671,\]
+where \(Z \sim \mathcal{N}(0,1)\). We find that the reinsurer is involved in about 16.51\% of claims.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Given \(X \sim \mathcal{Pa}(\alpha,\lambda)\), define \(W = X- d | X > d\).\\
+  \[\begin{aligned}
+    \Pr[W \le x ] &= \Pr[Z \le x | Z >0] \\
+           &= \Pr[X - d \le x | X > d] \\
+           &= \frac{\Pr[d < X \le x + d]}{\Pr[X > d]}\\
+           &= \frac{F_X(x+d) - F_X(d)}{1-F_X(d)} \\
+           &= 1 - \left(  \frac{\lambda + d}{\lambda + x +  d} \right)^\alpha. \end{aligned}\]
+\end{enumerate}
+
+Hence, \(W \sim \mathcal{Pa}(\alpha, \lambda + d).\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Let \(X\) be the cost of repair and \(Y\) be the cost of claims. Suppose that \(X \sim \mathcal{Pa}(\alpha, \lambda)\). It follows that
+    \[ Y = X - d | X > d, \]
+    where \(d = 100\). Moreover, \(Y \sim \mathcal{Pa}(\alpha, \lambda + d).\) It should be emphasised that the given information implies that
+    \[ \mathrm{E}[Y] = 200, \quad \mathrm{Var}[Y] = 250^2.\]
+    Letting \(\lambda + d = \phi\) results in \(Y \sim \mathcal{Pa}(\alpha, \phi).\)
+  \end{enumerate}
+\end{enumerate}
+
+By the mothod of moments, the MMEs of \(\alpha\) and \(\phi\) (and hence \(\lambda\)) are
+\(\tilde{\alpha} = 5.5555556\), \(\tilde{\phi} = 911.1111111\) and
+\(\tilde{\lambda} = \tilde{\phi} - d = 811.1111111\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The proportion of accidents that do not result in a claim being made is
+\end{enumerate}
+
+\[\Pr(X < d) = 1 - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + d}\right)^\alpha = 0.4392931.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  We know that claims before excess of loss reinsurance is \(Y \sim \mathcal{Pa}(\alpha, \phi).\) With excess of loss reinsurance contract, the expected value of the amount paid out by the insurer is \(\mathrm{E}[\min(Y,M)],\) which can be calculated as follows:
+\end{enumerate}
+
+\[\begin{aligned}
+    \mathrm{E}[Y_I] &= \mathrm{E}[\min(Y,M)] \\
+    &=  \mathrm{E}[Y] - \int_0^\infty y \cdot f_Y(y+M) \, dy  \\
+    &=  \mathrm{E}[Y] - \int_0^\infty y \cdot \frac{\alpha \phi^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy \\
+    &=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha\int_0^\infty y \cdot \frac{\alpha (\phi + M)^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy.
+\end{aligned}\]
+
+The last integral defines the mean of the Pareto random variable with parameters \(\alpha\) and \(\phi + M\) and so equals to \(\frac{\phi + M}{\alpha - 1}\). After simplifying, we have
+\[\begin{aligned}
+    \mathrm{E}[Y_I] 
+    &=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha \left(\frac{\phi + M}{\alpha - 1}\right) = \left(\frac{\lambda + d}{\alpha - 1} \right)\left(1 - \left( \frac{\lambda + d}{\lambda + d + M} \right)^{\alpha - 1}  \right).
+\end{aligned}\]
+
+Substituting all the parameter values and \(\mathrm{E}[Y_I] = 160\), we solve for \(M\) which results in
+\[M = \frac{\tilde{\lambda} + d}{\left(1- \frac{(\tilde{\alpha} -1)\mathrm{E}[Y_I]}{(\tilde{\lambda} + d)}  \right)^{ \frac{1}{\tilde{\alpha} - 1}   }} - (\tilde{\lambda} + d )  =  386.0795.\]
 
 \hypertarget{tutorial-3}{%
 \section{Tutorial 3}\label{tutorial-3}}

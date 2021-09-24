@@ -157,6 +157,197 @@ $$
         this.
 
 
+## Solutions to Tutorial 2
+
+
+     
+
+```{r tutorial2-1, echo = FALSE, }
+# discrete random variable
+x <- c(1,2) #1 = type A, 2 = type B
+px <- c(0.9,0.1)
+
+alpha <- c(3,4)
+beta <- c(400,1000)
+
+claim <- 1000
+
+pclaim <- ppareto(claim, shape = alpha, scale = beta, lower.tail = FALSE)
+
+ans1 <- px %*% pclaim 
+
+EXtype <-  beta/(alpha - 1)
+
+EX2type <- alpha*beta^2/((alpha-1)^2 * (alpha-2)   ) + EXtype^2
+
+EX <- px %*% EXtype
+
+EX2 <- px %*% EX2type
+
+
+VX <- EX2 - (EX)^2 
+SX <- sqrt(VX)
+
+alpha_tilde <- 2*VX/EX^2 * 1/(VX/EX^2 - 1) #/tilde/alpha
+beta_tilde <- EX*(alpha_tilde -1)
+
+pYclaim <- ppareto(claim, shape = alpha_tilde, scale = beta_tilde, lower.tail = FALSE)
+
+
+```        
+        
+**Solution:**
+
+1. 
+    1. $$\begin{aligned}
+\Pr(X > `r claim`) &= \Pr(X > `r claim` | A) \Pr(A) + \Pr(X > `r claim` | B) \Pr(B) \\
+&= \left(  \frac{ `r beta[1]` }{ `r claim` + `r beta[1]`} \right)^{`r alpha[1]`} (`r px[1]`) +  \left(  \frac{ `r beta[2]` }{ `r claim` + `r beta[2]`} \right)^{`r alpha[2]`} (`r px[2]`) \\
+&= `r ans1`.
+\end{aligned}$$
+    
+    2. Using the conditional expectation and conditional variance formulas, we have
+    
+
+$$\begin{aligned} 
+\mathrm{E}[X|A] &= \frac{`r beta[1]` }{`r alpha[1]` - 1} = `r beta[1]/(alpha[1] - 1)`, \\
+\mathrm{E}[X|B] &= \frac{`r beta[2]` }{`r alpha[2]` - 1} = `r beta[2]/(alpha[2] - 1)`.
+\end{aligned} $$
+    Hence, 
+$$\begin{aligned} 
+\mathrm{E}[X] &= \mathrm{E}[\mathrm{E}[X|\text{type}]] \\
+&=  \Pr(A) \, \mathrm{E}[X|A]   + \Pr(B) \, \mathrm{E}[X|B]   \\
+&= (`r px[1]`)(`r beta[1]/(alpha[1] - 1)`) + (`r px[2]`)(`r beta[2]/(alpha[2] - 1)`) \\
+&= `r px[1] * beta[1]/(alpha[1] - 1)  +  px[2] * beta[2]/(alpha[2] - 1)`.
+\end{aligned}
+$$
+  
+    We also have
+  $$\begin{aligned} 
+\mathrm{E}[X^2|A] &= \mathrm{Var}[X|A] + (\mathrm{E}[X|A])^2 = \frac{(`r alpha[1]`) (`r beta[1]`)^2}{(`r alpha[1]` - 1)^2 (`r alpha[1]` - 2)} + (`r  beta[1]/(alpha[1] - 1)`)^2   =   `r EX2type[1]`,\\
+\mathrm{E}[X^2|B] &= \mathrm{Var}[X|B] + (\mathrm{E}[X|B])^2 = \frac{(`r alpha[2]`) (`r beta[2]`)^2}{(`r alpha[2]` - 1)^2 (`r alpha[2]` - 2)} + (`r  beta[2]/(alpha[2] - 1)`)^2   =   `r EX2type[2]`. 
+\end{aligned}
+$$
+    Therefore, 
+$\mathrm{E}[X^2] = (`r px[1]`)(`r EX2type[1]`) + (`r px[2]`)(`r EX2type[2]`) = `r EX2`$,
+and 
+$\mathrm{Var}[X] = `r VX`$, \quad 
+$\mathrm{SD}[X] = `r SX`$. 
+
+    3. Using moment matching estimation, we have
+$\tilde{\alpha} = `r alpha_tilde`$ and $\tilde{\beta} = `r beta_tilde`$. Therefore, $\Pr[Y > `r claim`] = `r pYclaim` < `r ans1`$.
+
+    4. Failure to separate two types of claims leads to an underestimation of tail probability. This affects the determination of premiums, reinsurance, and security.  
+    
+2.  1. From $X = Y + Z$, where $Y = \min(X,M)$ and $Z = \max(0,X -M)$.
+$$\begin{aligned}
+\mathrm{Cov}(Y,Z) &= \mathrm{E}[YZ] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&= \int_0^\infty \min(X,M) \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&= M \int_M^\infty \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&= M \mathrm{E}[Z] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&= \mathrm{E}[Z](M  - \mathrm{E}[Y])  \ge 0. \\
+\end{aligned}$$
+
+Therefore, 
+
+$$\mathrm{Var}[X] = \mathrm{Var}[Y + Z] = \mathrm{Var}[Y] + \mathrm{Var}[Z] + 2Cov(X,Y)   \ge \mathrm{Var}[Y] + \mathrm{Var}[Z].$$
+
+Consequently, there is a reduction in the variability of the amount paid out by the direct insurer on claims.  
+  
+  
+```{r tutorial3, echo = FALSE, }
+EX <- 200
+VX <- 2916
+
+sigma_tilda <- sqrt(log(  VX/EX^2 +1  ))  # gives \tilde\sigma
+mu_tilda <- log(EX) - sigma_tilda^2/2      # gives \tilde\mu
+
+x <- 250
+
+probx <- pnorm(log(x), mean = mu_tilda, sd = sigma_tilda, lower.tail = FALSE )
+```
+  
+  
+3. By the method of moments, the MMEs of the parameter $\mu$ and $\sigma$ can be found by matching $\mathrm{E}[X]$ to the sample mean and $\mathrm{Var}[X]$ to the sample variance:
+
+$$\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) = `r EX` \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1) = `r VX`.$$
+We find that $\tilde{\mu} = `r mu_tilda`$  and $\tilde{\sigma} = `r sigma_tilda`$. Moreover,
+$$ \Pr(X > `r x`) = P( Z > \frac{\ln(`r x`) - \tilde{\mu}}{\tilde{\sigma}}) = `r probx`,$$
+where $Z \sim \mathcal{N}(0,1)$. We find that the reinsurer is involved in about `r round(100*probx,2)`\% of claims.
+  
+  
+4. Given $X \sim \mathcal{Pa}(\alpha,\lambda)$, define $W = X- d | X > d$.  
+$$\begin{aligned}
+     \Pr[W \le x ] &= \Pr[Z \le x | Z >0] \\
+            &= \Pr[X - d \le x | X > d] \\
+            &= \frac{\Pr[d < X \le x + d]}{\Pr[X > d]}\\
+            &= \frac{F_X(x+d) - F_X(d)}{1-F_X(d)} \\
+            &= 1 - \left(  \frac{\lambda + d}{\lambda + x +  d} \right)^\alpha. \end{aligned}$$
+
+Hence, $W \sim \mathcal{Pa}(\alpha, \lambda + d).$  
+  
+  
+
+```{r tutorial5, echo = FALSE, }
+
+
+EY <- 200
+VY <- 250^2
+
+d<-100
+
+alpha_tilde <- 2*VY/EY^2 * 1/(VY/EY^2 - 1) #/tilde/alpha
+beta_tilde <- EY*(alpha_tilde -1)
+
+lambda_tilde <- beta_tilde - d
+
+ans2  <- ppareto(d,shape=alpha_tilde,scale=beta_tilde)
+
+pYclaim <- ppareto(claim, shape = alpha_tilde, scale = beta_tilde, lower.tail = FALSE)
+
+
+EYI <- 160
+M <- (lambda_tilde + d)/(1 - (alpha_tilde - 1)*EYI/(lambda_tilde + d))^{1/(alpha_tilde - 1)} - (lambda_tilde + d)
+
+```         
+  
+
+5.      
+    1. Let $X$ be the cost of repair and $Y$ be the cost of claims. Suppose that $X \sim \mathcal{Pa}(\alpha, \lambda)$. It follows that 
+$$ Y = X - d | X > d, $$
+where $d = 100$. Moreover, $Y \sim \mathcal{Pa}(\alpha, \lambda + d).$ It should be emphasised that the given information implies that
+  $$ \mathrm{E}[Y] = 200, \quad \mathrm{Var}[Y] = 250^2.$$ 
+Letting $\lambda + d  = \phi$ results in $Y \sim \mathcal{Pa}(\alpha,  \phi).$
+  
+By the mothod of moments, the MMEs of $\alpha$ and $\phi$ (and hence $\lambda$) are 
+$\tilde{\alpha} = `r alpha_tilde`$, $\tilde{\phi} = `r beta_tilde`$ and 
+$\tilde{\lambda} = \tilde{\phi} - d = `r lambda_tilde`$.
+  
+
+
+2. The proportion of accidents that do not result in a claim being made is 
+
+$$\Pr(X < d) = 1 - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + d}\right)^\alpha = `r ans2`.$$
+
+3. We know that claims before excess of loss reinsurance is  $Y \sim \mathcal{Pa}(\alpha,  \phi).$ With excess of loss reinsurance contract, the expected value of the amount paid out by the insurer is $\mathrm{E}[\min(Y,M)],$ which can be calculated as follows: 
+  
+  
+$$\begin{aligned}
+    \mathrm{E}[Y_I] &= \mathrm{E}[\min(Y,M)] \\
+    &=  \mathrm{E}[Y] - \int_0^\infty y \cdot f_Y(y+M) \, dy  \\
+    &=  \mathrm{E}[Y] - \int_0^\infty y \cdot \frac{\alpha \phi^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy \\
+    &=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha\int_0^\infty y \cdot \frac{\alpha (\phi + M)^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy.
+\end{aligned}$$  
+
+The last integral defines the mean of the Pareto random variable with parameters $\alpha$ and $\phi + M$ and so equals to $\frac{\phi + M}{\alpha - 1}$. After simplifying, we have 
+$$\begin{aligned}
+    \mathrm{E}[Y_I] 
+    &=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha \left(\frac{\phi + M}{\alpha - 1}\right) = \left(\frac{\lambda + d}{\alpha - 1} \right)\left(1 - \left( \frac{\lambda + d}{\lambda + d + M} \right)^{\alpha - 1}  \right).
+\end{aligned}$$    
+  
+Substituting all the parameter values and $\mathrm{E}[Y_I] = 160$, we solve for $M$ which results in 
+$$M = \frac{\tilde{\lambda} + d}{\left(1- \frac{(\tilde{\alpha} -1)\mathrm{E}[Y_I]}{(\tilde{\lambda} + d)}  \right)^{ \frac{1}{\tilde{\alpha} - 1}   }} - (\tilde{\lambda} + d )  =  `r round(M,4)`.$$
+
+
 ---
 title: " **SCMA 470 : Risk Analysis and Credibility** **Tutorial 3**"
 ---

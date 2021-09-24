@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-09-23" />
+<meta name="date" content="2021-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,13 +208,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="tutorials.html"><a href="tutorials.html#tutorial-1"><i class="fa fa-check"></i><b>5.1</b> Tutorial 1</a></li>
 <li class="chapter" data-level="5.2" data-path="tutorials.html"><a href="tutorials.html#tutorial-2"><i class="fa fa-check"></i><b>5.2</b> Tutorial 2</a></li>
-<li class="chapter" data-level="5.3" data-path="tutorials.html"><a href="tutorials.html#tutorial-3"><i class="fa fa-check"></i><b>5.3</b> Tutorial 3</a></li>
-<li class="chapter" data-level="5.4" data-path="tutorials.html"><a href="tutorials.html#tutorial-4"><i class="fa fa-check"></i><b>5.4</b> Tutorial 4</a></li>
-<li class="chapter" data-level="5.5" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>5.5</b> Tutorial 5</a></li>
-<li class="chapter" data-level="5.6" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>5.6</b> Tutorial 6</a></li>
-<li class="chapter" data-level="5.7" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>5.7</b> Tutorial 7</a></li>
-<li class="chapter" data-level="5.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>5.8</b> Tutorial 8</a></li>
-<li class="chapter" data-level="5.9" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>5.9</b> Tutorial 9</a></li>
+<li class="chapter" data-level="5.3" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-2"><i class="fa fa-check"></i><b>5.3</b> Solutions to Tutorial 2</a></li>
+<li class="chapter" data-level="5.4" data-path="tutorials.html"><a href="tutorials.html#tutorial-3"><i class="fa fa-check"></i><b>5.4</b> Tutorial 3</a></li>
+<li class="chapter" data-level="5.5" data-path="tutorials.html"><a href="tutorials.html#tutorial-4"><i class="fa fa-check"></i><b>5.5</b> Tutorial 4</a></li>
+<li class="chapter" data-level="5.6" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>5.6</b> Tutorial 5</a></li>
+<li class="chapter" data-level="5.7" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>5.7</b> Tutorial 6</a></li>
+<li class="chapter" data-level="5.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>5.8</b> Tutorial 7</a></li>
+<li class="chapter" data-level="5.9" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>5.9</b> Tutorial 8</a></li>
+<li class="chapter" data-level="5.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>5.10</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>6</b> Interactive Lecture</a>
 <ul>
@@ -387,8 +388,112 @@ this.</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-3" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Tutorial 3</h2>
+<div id="solutions-to-tutorial-2" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Solutions to Tutorial 2</h2>
+<p><strong>Solution:</strong></p>
+<ol style="list-style-type: decimal">
+<li><ol style="list-style-type: decimal">
+<li><p><span class="math display">\[\begin{aligned}
+\Pr(X &gt; 1000) &amp;= \Pr(X &gt; 1000 | A) \Pr(A) + \Pr(X &gt; 1000 | B) \Pr(B) \\
+&amp;= \left(  \frac{ 400 }{ 1000 + 400} \right)^{3} (0.9) +  \left(  \frac{ 1000 }{ 1000 + 1000} \right)^{4} (0.1) \\
+&amp;= 0.0272413.
+\end{aligned}\]</span></p></li>
+<li><p>Using the conditional expectation and conditional variance formulas, we have</p></li>
+</ol></li>
+</ol>
+<p><span class="math display">\[\begin{aligned} 
+\mathrm{E}[X|A] &amp;= \frac{400 }{3 - 1} = 200, \\
+\mathrm{E}[X|B] &amp;= \frac{1000 }{4 - 1} = 333.3333333.
+\end{aligned} \]</span>
+Hence,
+<span class="math display">\[\begin{aligned} 
+\mathrm{E}[X] &amp;= \mathrm{E}[\mathrm{E}[X|\text{type}]] \\
+&amp;=  \Pr(A) \, \mathrm{E}[X|A]   + \Pr(B) \, \mathrm{E}[X|B]   \\
+&amp;= (0.9)(200) + (0.1)(333.3333333) \\
+&amp;= 213.3333333.
+\end{aligned}
+\]</span></p>
+<pre><code>We also have</code></pre>
+<p><span class="math display">\[\begin{aligned} 
+\mathrm{E}[X^2|A] &amp;= \mathrm{Var}[X|A] + (\mathrm{E}[X|A])^2 = \frac{(3) (400)^2}{(3 - 1)^2 (3 - 2)} + (200)^2   =   1.6\times 10^{5},\\
+\mathrm{E}[X^2|B] &amp;= \mathrm{Var}[X|B] + (\mathrm{E}[X|B])^2 = \frac{(4) (1000)^2}{(4 - 1)^2 (4 - 2)} + (333.3333333)^2   =   3.3333333\times 10^{5}. 
+\end{aligned}
+\]</span>
+Therefore,
+<span class="math inline">\(\mathrm{E}[X^2] = (0.9)(1.6\times 10^{5}) + (0.1)(3.3333333\times 10^{5}) = 1.7733333\times 10^{5}\)</span>,
+and
+<span class="math inline">\(\mathrm{Var}[X] = 1.3182222\times 10^{5}\)</span>, 
+<span class="math inline">\(\mathrm{SD}[X] = 363.0733014\)</span>.</p>
+<pre><code>3. Using moment matching estimation, we have</code></pre>
+<p><span class="math inline">\(\tilde{\alpha} = 3.0545829\)</span> and <span class="math inline">\(\tilde{\beta} = 438.3110196\)</span>. Therefore, <span class="math inline">\(\Pr[Y &gt; 1000] = 0.0265228 &lt; 0.0272413\)</span>.</p>
+<pre><code>4. Failure to separate two types of claims leads to an underestimation of tail probability. This affects the determination of premiums, reinsurance, and security.  </code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><ol style="list-style-type: decimal">
+<li>From <span class="math inline">\(X = Y + Z\)</span>, where <span class="math inline">\(Y = \min(X,M)\)</span> and <span class="math inline">\(Z = \max(0,X -M)\)</span>.
+<span class="math display">\[\begin{aligned}
+\mathrm{Cov}(Y,Z) &amp;= \mathrm{E}[YZ] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&amp;= \int_0^\infty \min(X,M) \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&amp;= M \int_M^\infty \max(0,X -M) f_X(x) \, dx - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&amp;= M \mathrm{E}[Z] - \mathrm{E}[Y]\mathrm{E}[Z] \\
+&amp;= \mathrm{E}[Z](M  - \mathrm{E}[Y])  \ge 0. \\
+\end{aligned}\]</span></li>
+</ol></li>
+</ol>
+<p>Therefore,</p>
+<p><span class="math display">\[\mathrm{Var}[X] = \mathrm{Var}[Y + Z] = \mathrm{Var}[Y] + \mathrm{Var}[Z] + 2Cov(X,Y)   \ge \mathrm{Var}[Y] + \mathrm{Var}[Z].\]</span></p>
+<p>Consequently, there is a reduction in the variability of the amount paid out by the direct insurer on claims.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>By the method of moments, the MMEs of the parameter <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> can be found by matching <span class="math inline">\(\mathrm{E}[X]\)</span> to the sample mean and <span class="math inline">\(\mathrm{Var}[X]\)</span> to the sample variance:</li>
+</ol>
+<p><span class="math display">\[\mathrm{E}[X] = \exp\left(\mu + \frac{1}{2} \sigma^2 \right) = 200 \text{ and } \mathrm{Var}[X] =\exp\left(2\mu +  \sigma^2 \right) (\exp(\sigma^2) - 1) = 2916.\]</span>
+We find that <span class="math inline">\(\tilde{\mu} = 5.2631347\)</span> and <span class="math inline">\(\tilde{\sigma} = 0.2652645\)</span>. Moreover,
+<span class="math display">\[ \Pr(X &gt; 250) = P( Z &gt; \frac{\ln(250) - \tilde{\mu}}{\tilde{\sigma}}) = 0.1650671,\]</span>
+where <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>. We find that the reinsurer is involved in about 16.51% of claims.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Given <span class="math inline">\(X \sim \mathcal{Pa}(\alpha,\lambda)\)</span>, define <span class="math inline">\(W = X- d | X &gt; d\)</span>.<br />
+<span class="math display">\[\begin{aligned}
+  \Pr[W \le x ] &amp;= \Pr[Z \le x | Z &gt;0] \\
+         &amp;= \Pr[X - d \le x | X &gt; d] \\
+         &amp;= \frac{\Pr[d &lt; X \le x + d]}{\Pr[X &gt; d]}\\
+         &amp;= \frac{F_X(x+d) - F_X(d)}{1-F_X(d)} \\
+         &amp;= 1 - \left(  \frac{\lambda + d}{\lambda + x +  d} \right)^\alpha. \end{aligned}\]</span></li>
+</ol>
+<p>Hence, <span class="math inline">\(W \sim \mathcal{Pa}(\alpha, \lambda + d).\)</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X\)</span> be the cost of repair and <span class="math inline">\(Y\)</span> be the cost of claims. Suppose that <span class="math inline">\(X \sim \mathcal{Pa}(\alpha, \lambda)\)</span>. It follows that
+<span class="math display">\[ Y = X - d | X &gt; d, \]</span>
+where <span class="math inline">\(d = 100\)</span>. Moreover, <span class="math inline">\(Y \sim \mathcal{Pa}(\alpha, \lambda + d).\)</span> It should be emphasised that the given information implies that
+<span class="math display">\[ \mathrm{E}[Y] = 200, \quad \mathrm{Var}[Y] = 250^2.\]</span>
+Letting <span class="math inline">\(\lambda + d = \phi\)</span> results in <span class="math inline">\(Y \sim \mathcal{Pa}(\alpha, \phi).\)</span></li>
+</ol></li>
+</ol>
+<p>By the mothod of moments, the MMEs of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\phi\)</span> (and hence <span class="math inline">\(\lambda\)</span>) are
+<span class="math inline">\(\tilde{\alpha} = 5.5555556\)</span>, <span class="math inline">\(\tilde{\phi} = 911.1111111\)</span> and
+<span class="math inline">\(\tilde{\lambda} = \tilde{\phi} - d = 811.1111111\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>The proportion of accidents that do not result in a claim being made is</li>
+</ol>
+<p><span class="math display">\[\Pr(X &lt; d) = 1 - \left(\frac{\tilde{\lambda}}{\tilde{\lambda} + d}\right)^\alpha = 0.4392931.\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>We know that claims before excess of loss reinsurance is <span class="math inline">\(Y \sim \mathcal{Pa}(\alpha, \phi).\)</span> With excess of loss reinsurance contract, the expected value of the amount paid out by the insurer is <span class="math inline">\(\mathrm{E}[\min(Y,M)],\)</span> which can be calculated as follows:</li>
+</ol>
+<p><span class="math display">\[\begin{aligned}
+    \mathrm{E}[Y_I] &amp;= \mathrm{E}[\min(Y,M)] \\
+    &amp;=  \mathrm{E}[Y] - \int_0^\infty y \cdot f_Y(y+M) \, dy  \\
+    &amp;=  \mathrm{E}[Y] - \int_0^\infty y \cdot \frac{\alpha \phi^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy \\
+    &amp;=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha\int_0^\infty y \cdot \frac{\alpha (\phi + M)^\alpha}{(\phi + y + M)^{\alpha + 1}} \, dy.
+\end{aligned}\]</span></p>
+<p>The last integral defines the mean of the Pareto random variable with parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\phi + M\)</span> and so equals to <span class="math inline">\(\frac{\phi + M}{\alpha - 1}\)</span>. After simplifying, we have
+<span class="math display">\[\begin{aligned}
+    \mathrm{E}[Y_I] 
+    &amp;=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha \left(\frac{\phi + M}{\alpha - 1}\right) = \left(\frac{\lambda + d}{\alpha - 1} \right)\left(1 - \left( \frac{\lambda + d}{\lambda + d + M} \right)^{\alpha - 1}  \right).
+\end{aligned}\]</span></p>
+<p>Substituting all the parameter values and <span class="math inline">\(\mathrm{E}[Y_I] = 160\)</span>, we solve for <span class="math inline">\(M\)</span> which results in
+<span class="math display">\[M = \frac{\tilde{\lambda} + d}{\left(1- \frac{(\tilde{\alpha} -1)\mathrm{E}[Y_I]}{(\tilde{\lambda} + d)}  \right)^{ \frac{1}{\tilde{\alpha} - 1}   }} - (\tilde{\lambda} + d )  =  386.0795.\]</span></p>
+</div>
+<div id="tutorial-3" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Tutorial 3</h2>
 <ol style="list-style-type: decimal">
 <li><p>The aggregate claims <span class="math inline">\(S\)</span> have a compound Poisson random variable
 with Poisson parameter <span class="math inline">\(\lambda = 20\)</span> and claim amounts have a
@@ -434,8 +539,8 @@ expected insurer’s payout.</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-4" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Tutorial 4</h2>
+<div id="tutorial-4" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Tutorial 4</h2>
 <ol style="list-style-type: decimal">
 <li><p>Given <span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span>, find the distribution of <span class="math inline">\(Y = kX\)</span>
 for some positive <span class="math inline">\(k\)</span>. Repeat the same question if</p>
@@ -467,8 +572,8 @@ independent. Find the mean and variance of the aggregate claims for
 this fixed time period.</p></li>
 </ol>
 </div>
-<div id="tutorial-5" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Tutorial 5</h2>
+<div id="tutorial-5" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Tutorial 5</h2>
 <ol style="list-style-type: decimal">
 <li><p>Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter <span class="math inline">\(10\)</span> and an individual claim
@@ -518,8 +623,8 @@ approximation to approximate the values of <span class="math inline">\(Pr(S(100)
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-6" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Tutorial 6</h2>
+<div id="tutorial-6" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Tutorial 6</h2>
 <ol style="list-style-type: decimal">
 <li><p>Suppose <span class="math inline">\(S \sim \mathcal{CP}(\lambda, F_X)\)</span> where individual claim
 amounts are distributed on the positive integers and
@@ -597,8 +702,8 @@ Type I and the remaining are type II.</p>
 <p>Calculate the premium charged for each policy.</p></li>
 </ol>
 </div>
-<div id="tutorial-7" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Tutorial 7</h2>
+<div id="tutorial-7" class="section level2" number="5.8">
+<h2><span class="header-section-number">5.8</span> Tutorial 7</h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li><p>An insurer has initial surplus <span class="math inline">\(u\)</span> of 5.5 (in suitable units)
@@ -694,8 +799,8 @@ following probabilities of ruin.</p>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-8" class="section level2" number="5.8">
-<h2><span class="header-section-number">5.8</span> Tutorial 8</h2>
+<div id="tutorial-8" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> Tutorial 8</h2>
 <ol style="list-style-type: decimal">
 <li><p>The table below gives the payments (in 000s THB) in cumulative form
 in successive development years in respect of a motor insurance
@@ -1106,8 +1211,8 @@ will be 95%.</p>
 </table></li>
 </ol>
 </div>
-<div id="tutorial-9" class="section level2" number="5.9">
-<h2><span class="header-section-number">5.9</span> Tutorial 9</h2>
+<div id="tutorial-9" class="section level2" number="5.10">
+<h2><span class="header-section-number">5.10</span> Tutorial 9</h2>
 <ol style="list-style-type: decimal">
 <li><p>(Taken from Gray and Pitts) Suppose the number of claims which arise
 in a year on a group of policies is modelled as
