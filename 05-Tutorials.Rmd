@@ -403,6 +403,178 @@ title: " **SCMA 470 : Risk Analysis and Credibility** **Tutorial 3**"
     2.  Suppose that a policy deductible of 20 is in place. Find the
         expected insurer's payout.
 
+
+
+
+
+## Solutions to Tutorial 3
+
+
+```{r tutorial3-1, echo = FALSE, }
+# Compound Poisson Distribution
+# CP(lambda,FX)
+# N ~ Poisson(lambad) = Poisson(10)
+# X ~ Ga(alpha,beta)= Pa(2,1)
+
+lambda <-20
+alpha <- 2
+beta <- 1
+
+
+r <- c(1,2,3)
+mr <- (1/beta^r)*(gamma(alpha + r)/gamma(alpha))
+
+
+ES <- lambda*mr[1]
+VS <- lambda*mr[2]
+Sk <- (lambda * mr[3])/(lambda * mr[2])^(3/2)   
+```
+
+1. 
+    1. The aggregate claims $S$ have a compound Poisson random variable, $S \sim \mathcal{CP}(\lambda, F_X)$ with $\lambda = 20$ and $X \sim \mathcal{G}(\alpha,\beta) = \mathcal{G}(2,1)$ distribution.
+From $\mathrm{Sk}[S] = \frac{\lambda m_3}{(\lambda m_2)^{3/2}}$ with $m_r = \mathrm{E}[X^r]$, we also have
+
+$$\mathrm{E}[X^r] = \frac{1}{\beta^r} \frac{\Gamma(\alpha + r)}{\Gamma(\alpha )}, \quad r > 0.$$
+
+  Note that if $\alpha$ is an integer, then $\Gamma(\alpha) = (\alpha-1)!$.
+
+  Substituting all the parameter values, we have
+$\mathrm{E}[X^2] = `r mr[2]`$, $\mathrm{E}[X^3] = `r mr[3]`$ and $\mathrm{Sk}[S] = `r Sk`$.
+
+
+2. $S_1 \sim \mathcal{CP}(\lambda, F_1)$ and $S_2 \sim \mathcal{CP}(\lambda, F_2)$ are independent compound Poisson random variables with claim sizes exponential distributions for $S_i$, $\text{Exp}(1/\mu_i)$ where $\mu_1 = 1$ and $\mu_2 = 2$.
+
+    By the additivity of independent compound Poisson
+distributions, the distribution of $S = S_1 + S_2$ is $\mathcal{CP}(\lambda, F_X)$, where
+$$ F_X(x) = \frac{10}{40} F_1(x) + \frac{30}{40} F_2(x) = \frac{1}{4}(1 - e^{-x}) + \frac{3}{4} (1 - e^{-x/2}).$$
+    It is the mixture of exponential distribution with mean 1 and 2.
+  
+
+  
+3. 
+    1. From $N \sim \mathcal{NB}(1, p)$ and $X \sim \text{Exp}(\mu)$, the moment generating functions of 
+$N$ and $X$ are 
+$$ M_N(t) = \frac{p}{1-q e^t}, \quad M_X(t) = \frac{1}{1 - \mu t},$$
+    where $q = 1- p$.
+
+    Therefore,
+$$\begin{aligned}
+M_S(t) &= M_N(\log(M_X(t))) \\
+&=  \frac{p}{1-q M_X(t)} \\
+&= p + q\frac{1}{1- \frac{\mu}{p}t}
+\end{aligned}.$$
+
+    This distribution can be regarded as a mixture of a distribution with moment generating function 1 and a mixture of a distribution with moment generating function $(1- \frac{\mu}{p}t)^{-1}$, i.e. the moment generating function of an exponential random variable with mean $\mu/p$.
+
+    2.  Applying the properties of the moment generating function, $M_S^{(k)}(0) = \mathrm{E}[X^k]$.
+
+    It follows that
+$$ \frac{d}{dt} M_S(t) = \frac{p q \mu}{(p - \mu t)^2}, \quad \mathrm{E}[S] = \frac{q \mu}{p}$$
+    and
+$$ \frac{d^2}{dt^2} M_S(t) = \frac{2 p q \mu^2}{(p - \mu t)^3}, \quad \mathrm{E}[S^2] = \frac{2 q \mu^2}{p^2}.$$
+    Therefore, $$\mathrm{Var}[S] = \mathrm{E}[S^2] - (\mathrm{E}[S])^2 = \frac{2 q \mu^2}{p^2} - \left(\frac{q \mu}{p}\right)^2  = \frac{q(2-q)\mu^2}{p^2}.$$
+
+    Alternatively, the mean and variance of the aggregate claims for this time period can be calculated from the properties of a compound negative distribution (with k = 1),
+$$\mathrm{E}[S] = \frac{q}{p} \mathrm{E}[X] = \frac{q \mu}{p},$$
+    and 
+$$\mathrm{Var}[S] = \frac{q}{p^2}(p \mathrm{E}[X^2] + q (\mathrm{E}[X])^2)  = \frac{q}{p^2} (p (2\mu^2) + q \mu^2) = \frac{q(2-q)\mu^2}{p^2}.$$
+
+
+```{r tutorial3-4, echo = FALSE, }
+policyLimit <- 125
+lambda <- 0.02
+
+n <- c(60,40)
+
+lambda <- lambda*n
+deductible <- c(10,0)
+
+# First group of policies
+x <- c(50,150,200)
+px <- c(1/3,1/3,1/3)
+
+x1 <- sapply(x-deductible[1], function(i){min(i, policyLimit)})
+x1 <- unique(x1)
+x2 <- sapply(x-deductible[2], function(i){min(i, policyLimit)})
+x2 <- unique(x2)
+
+# Hard coding
+px1 <- c(1/3,2/3)
+px2 <- c(1/3,2/3)
+
+EX1 <- px1 %*% x1
+EX2 <- px2 %*% x2
+
+ES1 <- lambda[1]*EX1
+ES2 <- lambda[2]*EX2
+```
+
+4. Let $Y$ be the aggregate claims paid by the insurer of 60 policies with a deductible of 10 and policy limit of 125. Then, $Y \sim \mathcal{CP}(60 \times 0.02, F_X)$, where $X$ is the individual claim amount paid by the insurer. The distribution of $X$ is
+
+x | 40 | 125 
+:-: | :-: | :-:
+$\Pr(X = x)$ | 1/3 | 2/3
+
+Hence, $\mathrm{E}[X] = 290/3$ and  $\mathrm{E}[Y] = 116$.
+
+Let $U$ be the aggregate claims paid by the insurer of 40 policies with a deductible of 0 and policy limit of 125. Then, $U \sim \mathcal{CP}(40 \times 0.02, F_{X'})$, where $X'$ is the individual claim amount paid by the insurer. The distribution of $X'$ is
+
+x | 50 | 125 
+:-: | :-: | :-:
+$\Pr(X' = x)$ | 1/3 | 2/3
+
+Hence, $\mathrm{E}[X] = 100$ and  $\mathrm{E}[U] = 80$. The total expected total claim payout of the insurer is $116 + 80 = 196$.
+
+
+```{r tutorial3-5, echo = FALSE, }
+N <- c(0,1,2,3)
+PN <- c(0.5,0.3,0.1,0.1)
+
+EN <- N %*% PN
+EN2 <- N^2 %*% PN
+VN <- EN2 - (EN)^2
+
+# X ~ uniform U(a,b)
+a <- 0
+b <- 100
+
+EX <- 1/2*(a + b)
+EX2 <- 1/3*(a^2 +a*b +  b^2)
+
+ES <- EN*EX
+VS <- EN*(EX2 - EX^2) + VN*EX^2
+```
+
+5. 
+    1. The number of claims $N$ per a fixed time period has the following
+    distribution:
+    $$\Pr(N = `r N[1]`) = `r PN[1]`, \Pr(N = `r N[2]`) = `r PN[2]`, \Pr(N = `r N[3]`) = `r PN[3]`, \text{ and } \Pr(N = `r N[4]`) = `r PN[4]`.$$
+Then, $\mathrm{E}[N] = `r EN`$ and $\mathrm{Var}[N] = `r VN`$.    
+    
+The loss distribution is uniformly distributed $X \sim \mathcal{U}(0,100)$. Then,
+Then, $\mathrm{E}[X] = `r EX`$ and $\mathrm{E}[X^2] = `r EX2`$.  
+
+
+The mean and variance of the aggregate claims for this fixed time period.
+$$ \mathrm{E}[S] =  \mathrm{E}[N] \mathrm{E}[X] = `r ES` $$
+and
+$$ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \mathrm{Var}[N] (\mathrm{E}[X])^2  = `r VS` .$$
+
+
+
+    2.  Suppose that a policy deductible of 20 is in place. Then
+$$\begin{aligned}
+\mathrm{E}[\max(0, X - 20)] &= \int_{20}^{100} (x - 20) \frac{1}{100} \, dx\\
+&= 32.
+\end{aligned}$$
+
+Therefore, the expected insurer's payout is
+$$ \mathrm{E}[N]\mathrm{E}[\max(0, X - 20)] = (0.8)(32) = 25.6. $$
+
+
+
+
+
 ## Tutorial 4
 
 1.  Given $X \sim \mathcal{G}(\alpha, \lambda)$, find the distribution of $Y = kX$
