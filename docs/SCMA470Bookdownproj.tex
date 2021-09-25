@@ -3633,6 +3633,8 @@ Therefore, the expected insurer's payout is
     \(X \sim \mathcal{G}(\alpha, \lambda)\), and
   \item
     \(X \sim \mathcal{LN}(\mu, \sigma^2)\).
+  \item
+    \(X \sim \mathcal{Pa}(\alpha, \lambda)\).
   \end{enumerate}
 \item
   Aggregate claims from a risk in a given time have a compound Poisson
@@ -3664,6 +3666,154 @@ Therefore, the expected insurer's payout is
   independent. Find the mean and variance of the aggregate claims for
   this fixed time period.
 \end{enumerate}
+
+\hypertarget{solutions-to-tutorial-4}{%
+\section{Solutions to Tutorial 4}\label{solutions-to-tutorial-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Given \(X \sim \mathcal{G}(\alpha, \lambda)\), the distribution of \(Y = kX\) can be founded by using the moment generating function.
+  \end{enumerate}
+\end{enumerate}
+
+\[\begin{aligned}
+M_Y(t) &= M_{kX}(t) = \mathrm{E}[e^{(tk)X}] = M_X(kt) \\
+&= \left(\frac{\lambda}{\lambda - kt}\right)^\alpha \\
+&= \left(\frac{\lambda/k}{\lambda/k - t}\right)^\alpha
+\end{aligned}.
+\]
+
+Therefore, \(Y \sim \mathcal{G}(\alpha, \lambda/k)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Note that for \(X \sim \mathcal{LN}(\mu, \sigma^2)\),
+  \[F_X(x) = \Pr(X \le x) = \Pr(\ln(X) \le \ln(x)) = \Pr(Z \le \frac{\ln(X) - \mu}{\sigma}),\]
+\end{enumerate}
+
+where \(Z \sim N(0,1)\).
+
+Consider
+\[\begin{aligned}
+F_Y(x) &= \Pr(Y \le x) = \Pr(kX \le x) \\
+&= \Pr(\ln(X) \le \ln(x/k)) \\
+&= \Pr(\frac{\ln(X) - \mu}{\sigma} \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ) \\
+&= \Pr(Z \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ). 
+\end{aligned}
+\]
+
+It follows that \(Y = kX \sim \mathcal{LN}(\mu + \ln(k), \sigma^2)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Given \(X \sim \mathcal{Pa}(\alpha, \lambda)\),
+  \(F_X(x) = 1 - \left(\frac{\lambda}{\lambda + x}\right)^\alpha\).
+\end{enumerate}
+
+Therefore,
+
+\[\begin{aligned}
+F_Y(x) &= \Pr(Y \le x) = \Pr(kX \le x) = \Pr(X \le x/k) \\
+&= 1 - \left(\frac{\lambda}{\lambda + (x/k)}\right)^\alpha \\
+&= 1 - \left(\frac{\lambda k}{\lambda k + x}\right)^\alpha. 
+\end{aligned}\]
+
+Therefore, \(Y = kX \sim \mathcal{Pa}(\alpha, k\lambda)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Given \(X \sim \text{Exp}(\beta)\), \(kX \sim \text{Exp}(\beta/k)\), for \(k > 0\).
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    From \(X \sim \text{Exp}(1/500)\), the aggregate claim amount paid by the direct insurer \(S_I\) is
+    \[S_I \sim \mathcal{CP}(200,F_Y), \quad Y= \alpha X \sim \text{Exp}(\frac{1}{ (0.8) (500)  })\] and the aggregate claim amount paid by the direct insurer \(S_R\) is
+    \[S_R \sim \mathcal{CP}(200,F_Z), \quad Z= (1-\alpha) X \sim \text{Exp}(\frac{1}{ (0.2) (500)  })\]
+  \end{enumerate}
+\end{enumerate}
+
+Moreover,
+\[ \mathrm{E}[Y] = 400, \quad \mathrm{E}[Y^2] = \ensuremath{3.2\times 10^{5}}, \]
+\[ \mathrm{E}[Z] = 100, \quad \mathrm{E}[Z^2] = \ensuremath{2\times 10^{4}}. \]
+
+The total expected total claim payout of the insurer and its variance are
+\[ \mathrm{E}[S_I] = \ensuremath{8\times 10^{4}}, \quad \mathrm{Var}[S_I] = \ensuremath{6.4\times 10^{7}}.\]
+The total expected total claim payout of the reinsurer and its variance are
+\[ \mathrm{E}[S_R] = \ensuremath{2\times 10^{4}}, \quad \mathrm{Var}[S_R] = \ensuremath{4\times 10^{6}}.\]
+
+Alternatively, we know that
+\[ \mathrm{E}[S] = (200)\mathrm{E}[X] =  \ensuremath{10^{5}}, \quad \mathrm{Var}[S] = (200)\mathrm{E}[X^2]  = \ensuremath{10^{8}}.\]
+Hence,
+\[ \mathrm{E}[S_I] =  \mathrm{E}[\alpha S] =  (0.8)\mathrm{E}[S]  =  \ensuremath{8\times 10^{4}}, \quad \mathrm{Var}[S_I] = \mathrm{Var}[\alpha S] =  (0.8)^2\mathrm{Var}[S] = \ensuremath{6.4\times 10^{7}}.\]
+\[ \mathrm{E}[S_R] =  \mathrm{E}[(1-\alpha) S] =  (0.2)\mathrm{E}[S]  =  \ensuremath{2\times 10^{4}}, \quad \mathrm{Var}[S_R] = \mathrm{Var}[(1-\alpha) S] =  (0.2)^2\mathrm{Var}[S] = \ensuremath{4\times 10^{6}}.\]
+
+\begin{verbatim}
+2. It follows that 
+\end{verbatim}
+
+\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = \ensuremath{6.8\times 10^{7}} < \ensuremath{10^{8}} = \mathrm{Var}[S]\).
+
+\begin{verbatim}
+After effecting proportional reinsurance proportion, there is a reduction in the variability of the amount paid out by the insurer on claims.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Given \(N \sim \mathcal{NB}(k,p)\), the probability generating function of \(N\) is
+  \[P_N(r) = \left(\frac{p}{1- qr}\right)^k,\]
+  where \(q = 1 - p\).
+\end{enumerate}
+
+Define the indicator random variable \(\{I_j\}_{j=1}^\infty\), where
+\[\begin{aligned}
+        I_j = 
+    \begin{cases}
+        1 &\text{if }  X_j > M\\   
+        0 &\text{if }  X_j \le M.
+    \end{cases}\end{aligned}\] Therefore, the number of non-zero claims for the reinsurer is \[N_R = \sum_{j= 1}^{N} I_j.\]
+The variable \(N_R\) has a compound distribution with its probability
+generating function \[P_{N_R}(r) = P_N[P_I(r)],\] where \(P_I\) is the probability generating function of the indicator random variable. It can
+be shown that \[P_I(r) = 1 - \pi_M + \pi_M r,\] where
+\(\pi_M = \Pr(I_j = 1) = \Pr(X_j > M) = 1 - F(M)\). Therefore,
+\[P_{N_R}(r) = P_N[P_I(r)] = \left(\frac{p}{1- q(1 - \pi_M + \pi_M r)}\right)^k.\]
+Let \(p* = \frac{p}{p + q \pi_M}\). By dividing both the numerator and the denominator above by \(p + q \pi_M\), we have
+\[P_{N_R}(r) = \left(\frac{p^*}{1 - q^* r}\right)^k,\] and \(N_R \sim \mathcal{NB}(k,p^*).\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  The number of claims \(N\) per a fixed time period has the following
+  distribution:
+  \[\Pr(N = 0) = 0.5, \Pr(N = 1) = 0.3, \Pr(N = 2) = 0.1, \text{ and } \Pr(N = 3) = 0.1.\]
+  Then, \(\mathrm{E}[N] = 0.8\) and \(\mathrm{Var}[N] = 0.96\).
+\end{enumerate}
+
+The loss distribution has Pareto distribution \(X \sim Pa(4,1)\). Therefore, \(\mathrm{E}[X] = 0.3333333\) and \(\mathrm{E}[X^2] = 0.3333333\).
+
+Therefore, the mean and variance of the aggregate claim amount for this fixed time period.
+\[ \mathrm{E}[S] =  \mathrm{E}[N] \mathrm{E}[X] = 0.2666667 \]
+and
+\[ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \mathrm{Var}[N] (\mathrm{E}[X])^2  = 0.2844444 .\]
 
 \hypertarget{tutorial-5}{%
 \section{Tutorial 5}\label{tutorial-5}}

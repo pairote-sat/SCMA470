@@ -212,11 +212,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="tutorials.html"><a href="tutorials.html#tutorial-3"><i class="fa fa-check"></i><b>5.4</b> Tutorial 3</a></li>
 <li class="chapter" data-level="5.5" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-3"><i class="fa fa-check"></i><b>5.5</b> Solutions to Tutorial 3</a></li>
 <li class="chapter" data-level="5.6" data-path="tutorials.html"><a href="tutorials.html#tutorial-4"><i class="fa fa-check"></i><b>5.6</b> Tutorial 4</a></li>
-<li class="chapter" data-level="5.7" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>5.7</b> Tutorial 5</a></li>
-<li class="chapter" data-level="5.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>5.8</b> Tutorial 6</a></li>
-<li class="chapter" data-level="5.9" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>5.9</b> Tutorial 7</a></li>
-<li class="chapter" data-level="5.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>5.10</b> Tutorial 8</a></li>
-<li class="chapter" data-level="5.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>5.11</b> Tutorial 9</a></li>
+<li class="chapter" data-level="5.7" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-4"><i class="fa fa-check"></i><b>5.7</b> Solutions to Tutorial 4</a></li>
+<li class="chapter" data-level="5.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>5.8</b> Tutorial 5</a></li>
+<li class="chapter" data-level="5.9" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>5.9</b> Tutorial 6</a></li>
+<li class="chapter" data-level="5.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>5.10</b> Tutorial 7</a></li>
+<li class="chapter" data-level="5.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>5.11</b> Tutorial 8</a></li>
+<li class="chapter" data-level="5.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>5.12</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>6</b> Interactive Lecture</a>
 <ul>
@@ -650,6 +651,7 @@ for some positive <span class="math inline">\(k\)</span>. Repeat the same questi
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span>, and</p></li>
 <li><p><span class="math inline">\(X \sim \mathcal{LN}(\mu, \sigma^2)\)</span>.</p></li>
+<li><p><span class="math inline">\(X \sim \mathcal{Pa}(\alpha, \lambda)\)</span>.</p></li>
 </ol></li>
 <li><p>Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter <span class="math inline">\(\lambda = 200\)</span> and an
@@ -675,8 +677,101 @@ independent. Find the mean and variance of the aggregate claims for
 this fixed time period.</p></li>
 </ol>
 </div>
-<div id="tutorial-5" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Tutorial 5</h2>
+<div id="solutions-to-tutorial-4" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Solutions to Tutorial 4</h2>
+<ol style="list-style-type: decimal">
+<li><ol style="list-style-type: decimal">
+<li>Given <span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span>, the distribution of <span class="math inline">\(Y = kX\)</span> can be founded by using the moment generating function.</li>
+</ol></li>
+</ol>
+<p><span class="math display">\[\begin{aligned}
+M_Y(t) &amp;= M_{kX}(t) = \mathrm{E}[e^{(tk)X}] = M_X(kt) \\
+&amp;= \left(\frac{\lambda}{\lambda - kt}\right)^\alpha \\
+&amp;= \left(\frac{\lambda/k}{\lambda/k - t}\right)^\alpha
+\end{aligned}.
+\]</span></p>
+<p>Therefore, <span class="math inline">\(Y \sim \mathcal{G}(\alpha, \lambda/k)\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Note that for <span class="math inline">\(X \sim \mathcal{LN}(\mu, \sigma^2)\)</span>,
+<span class="math display">\[F_X(x) = \Pr(X \le x) = \Pr(\ln(X) \le \ln(x)) = \Pr(Z \le \frac{\ln(X) - \mu}{\sigma}),\]</span></li>
+</ol>
+<p>where <span class="math inline">\(Z \sim N(0,1)\)</span>.</p>
+<p>Consider
+<span class="math display">\[\begin{aligned}
+F_Y(x) &amp;= \Pr(Y \le x) = \Pr(kX \le x) \\
+&amp;= \Pr(\ln(X) \le \ln(x/k)) \\
+&amp;= \Pr(\frac{\ln(X) - \mu}{\sigma} \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ) \\
+&amp;= \Pr(Z \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ). 
+\end{aligned}
+\]</span></p>
+<p>It follows that <span class="math inline">\(Y = kX \sim \mathcal{LN}(\mu + \ln(k), \sigma^2)\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Given <span class="math inline">\(X \sim \mathcal{Pa}(\alpha, \lambda)\)</span>,
+<span class="math inline">\(F_X(x) = 1 - \left(\frac{\lambda}{\lambda + x}\right)^\alpha\)</span>.</li>
+</ol>
+<p>Therefore,</p>
+<p><span class="math display">\[\begin{aligned}
+F_Y(x) &amp;= \Pr(Y \le x) = \Pr(kX \le x) = \Pr(X \le x/k) \\
+&amp;= 1 - \left(\frac{\lambda}{\lambda + (x/k)}\right)^\alpha \\
+&amp;= 1 - \left(\frac{\lambda k}{\lambda k + x}\right)^\alpha. 
+\end{aligned}\]</span></p>
+<p>Therefore, <span class="math inline">\(Y = kX \sim \mathcal{Pa}(\alpha, k\lambda)\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Given <span class="math inline">\(X \sim \text{Exp}(\beta)\)</span>, <span class="math inline">\(kX \sim \text{Exp}(\beta/k)\)</span>, for <span class="math inline">\(k &gt; 0\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>From <span class="math inline">\(X \sim \text{Exp}(1/500)\)</span>, the aggregate claim amount paid by the direct insurer <span class="math inline">\(S_I\)</span> is
+<span class="math display">\[S_I \sim \mathcal{CP}(200,F_Y), \quad Y= \alpha X \sim \text{Exp}(\frac{1}{ (0.8) (500)  })\]</span> and the aggregate claim amount paid by the direct insurer <span class="math inline">\(S_R\)</span> is
+<span class="math display">\[S_R \sim \mathcal{CP}(200,F_Z), \quad Z= (1-\alpha) X \sim \text{Exp}(\frac{1}{ (0.2) (500)  })\]</span></li>
+</ol></li>
+</ol>
+<p>Moreover,
+<span class="math display">\[ \mathrm{E}[Y] = 400, \quad \mathrm{E}[Y^2] = 3.2\times 10^{5}, \]</span>
+<span class="math display">\[ \mathrm{E}[Z] = 100, \quad \mathrm{E}[Z^2] = 2\times 10^{4}. \]</span></p>
+<p>The total expected total claim payout of the insurer and its variance are
+<span class="math display">\[ \mathrm{E}[S_I] = 8\times 10^{4}, \quad \mathrm{Var}[S_I] = 6.4\times 10^{7}.\]</span>
+The total expected total claim payout of the reinsurer and its variance are
+<span class="math display">\[ \mathrm{E}[S_R] = 2\times 10^{4}, \quad \mathrm{Var}[S_R] = 4\times 10^{6}.\]</span></p>
+<p>Alternatively, we know that
+<span class="math display">\[ \mathrm{E}[S] = (200)\mathrm{E}[X] =  10^{5}, \quad \mathrm{Var}[S] = (200)\mathrm{E}[X^2]  = 10^{8}.\]</span>
+Hence,
+<span class="math display">\[ \mathrm{E}[S_I] =  \mathrm{E}[\alpha S] =  (0.8)\mathrm{E}[S]  =  8\times 10^{4}, \quad \mathrm{Var}[S_I] = \mathrm{Var}[\alpha S] =  (0.8)^2\mathrm{Var}[S] = 6.4\times 10^{7}.\]</span>
+<span class="math display">\[ \mathrm{E}[S_R] =  \mathrm{E}[(1-\alpha) S] =  (0.2)\mathrm{E}[S]  =  2\times 10^{4}, \quad \mathrm{Var}[S_R] = \mathrm{Var}[(1-\alpha) S] =  (0.2)^2\mathrm{Var}[S] = 4\times 10^{6}.\]</span></p>
+<pre><code>2. It follows that </code></pre>
+<p><span class="math inline">\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = 6.8\times 10^{7} &lt; 10^{8} = \mathrm{Var}[S]\)</span>.</p>
+<pre><code>After effecting proportional reinsurance proportion, there is a reduction in the variability of the amount paid out by the insurer on claims.</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Given <span class="math inline">\(N \sim \mathcal{NB}(k,p)\)</span>, the probability generating function of <span class="math inline">\(N\)</span> is
+<span class="math display">\[P_N(r) = \left(\frac{p}{1- qr}\right)^k,\]</span>
+where <span class="math inline">\(q = 1 - p\)</span>.</li>
+</ol>
+<p>Define the indicator random variable <span class="math inline">\(\{I_j\}_{j=1}^\infty\)</span>, where
+<span class="math display">\[\begin{aligned}
+        I_j = 
+    \begin{cases}
+        1 &amp;\text{if }  X_j &gt; M\\   
+        0 &amp;\text{if }  X_j \le M.
+    \end{cases}\end{aligned}\]</span> Therefore, the number of non-zero claims for the reinsurer is <span class="math display">\[N_R = \sum_{j= 1}^{N} I_j.\]</span>
+The variable <span class="math inline">\(N_R\)</span> has a compound distribution with its probability
+generating function <span class="math display">\[P_{N_R}(r) = P_N[P_I(r)],\]</span> where <span class="math inline">\(P_I\)</span> is the probability generating function of the indicator random variable. It can
+be shown that <span class="math display">\[P_I(r) = 1 - \pi_M + \pi_M r,\]</span> where
+<span class="math inline">\(\pi_M = \Pr(I_j = 1) = \Pr(X_j &gt; M) = 1 - F(M)\)</span>. Therefore,
+<span class="math display">\[P_{N_R}(r) = P_N[P_I(r)] = \left(\frac{p}{1- q(1 - \pi_M + \pi_M r)}\right)^k.\]</span>
+Let <span class="math inline">\(p* = \frac{p}{p + q \pi_M}\)</span>. By dividing both the numerator and the denominator above by <span class="math inline">\(p + q \pi_M\)</span>, we have
+<span class="math display">\[P_{N_R}(r) = \left(\frac{p^*}{1 - q^* r}\right)^k,\]</span> and <span class="math inline">\(N_R \sim \mathcal{NB}(k,p^*).\)</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>The number of claims <span class="math inline">\(N\)</span> per a fixed time period has the following
+distribution:
+<span class="math display">\[\Pr(N = 0) = 0.5, \Pr(N = 1) = 0.3, \Pr(N = 2) = 0.1, \text{ and } \Pr(N = 3) = 0.1.\]</span>
+Then, <span class="math inline">\(\mathrm{E}[N] = 0.8\)</span> and <span class="math inline">\(\mathrm{Var}[N] = 0.96\)</span>.</li>
+</ol>
+<p>The loss distribution has Pareto distribution <span class="math inline">\(X \sim Pa(4,1)\)</span>. Therefore, <span class="math inline">\(\mathrm{E}[X] = 0.3333333\)</span> and <span class="math inline">\(\mathrm{E}[X^2] = 0.3333333\)</span>.</p>
+<p>Therefore, the mean and variance of the aggregate claim amount for this fixed time period.
+<span class="math display">\[ \mathrm{E}[S] =  \mathrm{E}[N] \mathrm{E}[X] = 0.2666667 \]</span>
+and
+<span class="math display">\[ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \mathrm{Var}[N] (\mathrm{E}[X])^2  = 0.2844444 .\]</span></p>
+</div>
+<div id="tutorial-5" class="section level2" number="5.8">
+<h2><span class="header-section-number">5.8</span> Tutorial 5</h2>
 <ol style="list-style-type: decimal">
 <li><p>Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter <span class="math inline">\(10\)</span> and an individual claim
@@ -726,8 +821,8 @@ approximation to approximate the values of <span class="math inline">\(Pr(S(100)
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-6" class="section level2" number="5.8">
-<h2><span class="header-section-number">5.8</span> Tutorial 6</h2>
+<div id="tutorial-6" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> Tutorial 6</h2>
 <ol style="list-style-type: decimal">
 <li><p>Suppose <span class="math inline">\(S \sim \mathcal{CP}(\lambda, F_X)\)</span> where individual claim
 amounts are distributed on the positive integers and
@@ -805,8 +900,8 @@ Type I and the remaining are type II.</p>
 <p>Calculate the premium charged for each policy.</p></li>
 </ol>
 </div>
-<div id="tutorial-7" class="section level2" number="5.9">
-<h2><span class="header-section-number">5.9</span> Tutorial 7</h2>
+<div id="tutorial-7" class="section level2" number="5.10">
+<h2><span class="header-section-number">5.10</span> Tutorial 7</h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li><p>An insurer has initial surplus <span class="math inline">\(u\)</span> of 5.5 (in suitable units)
@@ -902,8 +997,8 @@ following probabilities of ruin.</p>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-8" class="section level2" number="5.10">
-<h2><span class="header-section-number">5.10</span> Tutorial 8</h2>
+<div id="tutorial-8" class="section level2" number="5.11">
+<h2><span class="header-section-number">5.11</span> Tutorial 8</h2>
 <ol style="list-style-type: decimal">
 <li><p>The table below gives the payments (in 000s THB) in cumulative form
 in successive development years in respect of a motor insurance
@@ -1314,8 +1409,8 @@ will be 95%.</p>
 </table></li>
 </ol>
 </div>
-<div id="tutorial-9" class="section level2" number="5.11">
-<h2><span class="header-section-number">5.11</span> Tutorial 9</h2>
+<div id="tutorial-9" class="section level2" number="5.12">
+<h2><span class="header-section-number">5.12</span> Tutorial 9</h2>
 <ol style="list-style-type: decimal">
 <li><p>(Taken from Gray and Pitts) Suppose the number of claims which arise
 in a year on a group of policies is modelled as

@@ -583,6 +583,8 @@ $$ \mathrm{E}[N]\mathrm{E}[\max(0, X - 20)] = (0.8)(32) = 25.6. $$
     1.  $X \sim \mathcal{G}(\alpha, \lambda)$, and
 
     2.  $X \sim \mathcal{LN}(\mu, \sigma^2)$.
+    
+    3.  $X \sim \mathcal{Pa}(\alpha, \lambda)$.
 
 2.  Aggregate claims from a risk in a given time have a compound Poisson
     distribution with Poisson parameter $\lambda =  200$ and an
@@ -608,6 +610,165 @@ $$ \mathrm{E}[N]\mathrm{E}[\max(0, X - 20)] = (0.8)(32) = 25.6. $$
     the number of claims and the amount of losses are mutually
     independent. Find the mean and variance of the aggregate claims for
     this fixed time period.
+
+
+## Solutions to Tutorial 4
+
+1.
+    1. Given $X \sim \mathcal{G}(\alpha, \lambda)$, the distribution of $Y = kX$ can be founded by using the moment generating function.
+
+$$\begin{aligned}
+M_Y(t) &= M_{kX}(t) = \mathrm{E}[e^{(tk)X}] = M_X(kt) \\
+&= \left(\frac{\lambda}{\lambda - kt}\right)^\alpha \\
+&= \left(\frac{\lambda/k}{\lambda/k - t}\right)^\alpha
+\end{aligned}.
+$$
+
+Therefore, $Y \sim \mathcal{G}(\alpha, \lambda/k)$.
+
+2. Note that for $X \sim \mathcal{LN}(\mu, \sigma^2)$, 
+$$F_X(x) = \Pr(X \le x) = \Pr(\ln(X) \le \ln(x)) = \Pr(Z \le \frac{\ln(X) - \mu}{\sigma}),$$
+
+where $Z \sim N(0,1)$.
+
+Consider
+$$\begin{aligned}
+F_Y(x) &= \Pr(Y \le x) = \Pr(kX \le x) \\
+&= \Pr(\ln(X) \le \ln(x/k)) \\
+&= \Pr(\frac{\ln(X) - \mu}{\sigma} \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ) \\
+&= \Pr(Z \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ). 
+\end{aligned}
+$$
+
+It follows that $Y = kX \sim \mathcal{LN}(\mu + \ln(k), \sigma^2)$.
+
+3. Given $X \sim \mathcal{Pa}(\alpha, \lambda)$,
+$F_X(x) = 1 - \left(\frac{\lambda}{\lambda + x}\right)^\alpha$.
+
+Therefore,
+
+$$\begin{aligned}
+F_Y(x) &= \Pr(Y \le x) = \Pr(kX \le x) = \Pr(X \le x/k) \\
+&= 1 - \left(\frac{\lambda}{\lambda + (x/k)}\right)^\alpha \\
+&= 1 - \left(\frac{\lambda k}{\lambda k + x}\right)^\alpha. 
+\end{aligned}$$
+
+Therefore, $Y = kX \sim \mathcal{Pa}(\alpha, k\lambda)$.
+
+
+
+
+```{r tutorial4-2, echo = FALSE, }
+# Compound Poisson Distribution
+# CP(lambda,FX)
+# N ~ Poisson(lambda) = Poisson(200)
+# X ~ Exp(1/mu)
+
+lambda <-200
+muInit <- 500
+
+#Proportional factor
+alpha <- c(0.8,0.2)
+
+r <- c(1,2)
+# for insurer after proportional reinsurance
+mu <- muInit*alpha
+
+mrX <- gamma(r+1)*(muInit[1])^r
+mrY <- gamma(r+1)*(mu[1])^r  #mrI[1] and mrI[2] (for insurer)
+mrZ <- gamma(r+1)*(mu[2])^r
+
+ES <- lambda*mrX[1]
+VS <- lambda*mrX[2]
+
+
+ESI <- lambda*mrY[1]
+VSI <- lambda*mrY[2]
+
+ESR <- lambda*mrZ[1]
+VSR <- lambda*mrZ[2]
+```
+
+2. Given $X \sim \text{Exp}(\beta)$,  $kX \sim \text{Exp}(\beta/k)$, for $k > 0$.
+
+    1. From $X \sim \text{Exp}(1/`r muInit`)$, the aggregate claim amount paid by the direct insurer $S_I$ is
+$$S_I \sim \mathcal{CP}(`r lambda`,F_Y), \quad Y= \alpha X \sim \text{Exp}(\frac{1}{ (`r alpha[1]`) (`r muInit`)  })$$ and the aggregate claim amount paid by the direct insurer $S_R$ is
+$$S_R \sim \mathcal{CP}(`r lambda`,F_Z), \quad Z= (1-\alpha) X \sim \text{Exp}(\frac{1}{ (`r alpha[2]`) (`r muInit`)  })$$
+
+Moreover,
+$$ \mathrm{E}[Y] = `r mrY[1]`, \quad \mathrm{E}[Y^2] = `r mrY[2]`, $$
+$$ \mathrm{E}[Z] = `r mrZ[1]`, \quad \mathrm{E}[Z^2] = `r mrZ[2]`. $$
+
+The total expected total claim payout of the insurer and its variance are
+$$ \mathrm{E}[S_I] = `r ESI`, \quad \mathrm{Var}[S_I] = `r VSI`.$$
+The total expected total claim payout of the reinsurer and its variance are
+$$ \mathrm{E}[S_R] = `r ESR`, \quad \mathrm{Var}[S_R] = `r VSR`.$$
+
+Alternatively, we know that
+$$ \mathrm{E}[S] = (`r lambda`)\mathrm{E}[X] =  `r ES`, \quad \mathrm{Var}[S] = (`r lambda`)\mathrm{E}[X^2]  = `r VS`.$$
+Hence, 
+$$ \mathrm{E}[S_I] =  \mathrm{E}[\alpha S] =  (`r alpha[1]`)\mathrm{E}[S]  =  `r ESI`, \quad \mathrm{Var}[S_I] = \mathrm{Var}[\alpha S] =  (`r alpha[1]`)^2\mathrm{Var}[S] = `r VSI`.$$
+$$ \mathrm{E}[S_R] =  \mathrm{E}[(1-\alpha) S] =  (`r alpha[2]`)\mathrm{E}[S]  =  `r ESR`, \quad \mathrm{Var}[S_R] = \mathrm{Var}[(1-\alpha) S] =  (`r 1 -  alpha[1]`)^2\mathrm{Var}[S] = `r VSR`.$$
+
+    2. It follows that 
+$\mathrm{Var}[S_I]  + \mathrm{Var}[S_R] = `r VSI + VSR` < `r VS` = \mathrm{Var}[S]$.   
+
+    After effecting proportional reinsurance proportion, there is a reduction in the variability of the amount paid out by the insurer on claims.
+    
+3. Given $N \sim \mathcal{NB}(k,p)$, the probability generating function of $N$ is
+$$P_N(r) = \left(\frac{p}{1- qr}\right)^k,$$
+where $q = 1 - p$. 
+
+Define the indicator random variable $\{I_j\}_{j=1}^\infty$, where
+$$\begin{aligned}
+        I_j = 
+    \begin{cases}
+        1 &\text{if }  X_j > M\\   
+        0 &\text{if }  X_j \le M.
+    \end{cases}\end{aligned}$$ Therefore, the number of non-zero claims for the reinsurer is $$N_R = \sum_{j= 1}^{N} I_j.$$
+The variable $N_R$ has a compound distribution with its probability
+generating function $$P_{N_R}(r) = P_N[P_I(r)],$$ where $P_I$ is the probability generating function of the indicator random variable. It can
+be shown that $$P_I(r) = 1 - \pi_M + \pi_M r,$$ where
+$\pi_M = \Pr(I_j = 1) = \Pr(X_j > M) = 1 - F(M)$. Therefore,
+$$P_{N_R}(r) = P_N[P_I(r)] = \left(\frac{p}{1- q(1 - \pi_M + \pi_M r)}\right)^k.$$
+Let $p* = \frac{p}{p + q \pi_M}$. By dividing both the numerator and the denominator above by $p + q \pi_M$, we have
+$$P_{N_R}(r) = \left(\frac{p^*}{1 - q^* r}\right)^k,$$ and $N_R \sim \mathcal{NB}(k,p^*).$
+
+```{r tutorial4-4, echo = FALSE, }
+
+N <- c(0,1,2,3)
+PN <- c(0.5,0.3,0.1,0.1)
+
+EN <- N %*% PN
+EN2 <- N^2 %*% PN
+VN <- EN2 - (EN)^2
+
+# X ~ Pareto U(a,b)
+alpha <- 4
+beta <- 1
+
+m1 <- beta/(alpha-1)
+m2 <- (2*beta^2)/ ((alpha - 1) * (alpha -2))
+m3 <- (6*beta^3)/ ((alpha - 1) * (alpha -2) * (alpha -3))
+
+ES <- EN*m1
+VS <- EN*(m2 - m1^2) + VN*m1^2
+Sk <- (lambda * m3)/(lambda * m2)^(3/2)
+```
+
+4. The number of claims $N$ per a fixed time period has the following
+    distribution:
+    $$\Pr(N = `r N[1]`) = `r PN[1]`, \Pr(N = `r N[2]`) = `r PN[2]`, \Pr(N = `r N[3]`) = `r PN[3]`, \text{ and } \Pr(N = `r N[4]`) = `r PN[4]`.$$
+Then, $\mathrm{E}[N] = `r EN`$ and $\mathrm{Var}[N] = `r VN`$. 
+
+The loss distribution has Pareto distribution $X \sim Pa(4,1)$. Therefore, $\mathrm{E}[X] = `r m1`$ and $\mathrm{E}[X^2] = `r m2`$.
+
+Therefore, the mean and variance of the aggregate claim amount for this fixed time period.
+$$ \mathrm{E}[S] =  \mathrm{E}[N] \mathrm{E}[X] = `r ES` $$
+and
+$$ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \mathrm{Var}[N] (\mathrm{E}[X])^2  = `r VS` .$$
+
+
 
 ## Tutorial 5
 
