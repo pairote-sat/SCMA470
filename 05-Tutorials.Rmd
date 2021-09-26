@@ -825,6 +825,235 @@ $$ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \m
     3.  Use (a) the normal approximation and (b) the translated Gamma
         approximation to approximate the values of $Pr(S(100) > 120)$.
 
+
+
+ 
+```{r tutorial5-1, echo = FALSE, }
+# Compound Poisson Distribution
+# CP(lambda,FX)
+# N ~ Poisson(lambad) = Poisson(10)
+# X ~ \mathcal{Pa}(alpha,beta)= \mathcal{Pa}(2,1)
+
+lambda <-10
+alpha <- 3
+beta <- 2000
+
+
+r <- c(1,2)
+mr <- (beta^r)*(gamma(alpha - r)*gamma(1 + r))/gamma(alpha)
+
+
+ES <- lambda*mr[1]
+VS <- lambda*mr[2]
+Sk <- (lambda * mr[3])/(lambda * mr[2])^(3/2)   
+
+# Excess of loss reinsurance
+M <- 1200
+piM <- ppareto(M,shape = alpha, scale = beta, lower.tail = FALSE)
+
+# Define W = X - M | X > M ~ \mathcal{Pa}(alpha,beta+M)
+# Calculate E[W], E[W^2]
+r <- c(1,2)
+mrR <- ((beta+M)^r)*(gamma(alpha - r)*gamma(1 + r))/gamma(alpha)
+
+
+lambdaR <- lambda*piM
+ESR <- lambdaR*mrR[1]
+VSR <- lambdaR*mrR[2]
+
+theta  <- 0.15
+thetaR <- 0.2
+
+# Expected profit before reinsurance
+EProfitBR <- theta*ES
+
+# Expected profit after excess of loss reinsurance
+EProfitAR <- theta*ES - thetaR*ESR
+
+# the percentage reduction in the expected profit
+reductionExpProfit <- 100*(EProfitBR - EProfitAR)/EProfitBR
+
+
+### From X = Y + Z, now we will calculate E[Y^2] (see the formula from Gray p254)
+
+eta <- beta/(beta + M)
+EY2 <- (2*beta)*(beta*(1 - eta^(alpha - 2)) - (alpha -2)*M*eta^(alpha-1) )/((alpha-1)*(alpha-2))
+
+ESI <- ES - ESR
+VSI <- lambda*EY2
+
+# the percentage reduction in the SD of  profit
+reductionVarProfit <- 100*(sqrt(VS) - sqrt(VSI))/sqrt(VS)
+
+
+```
+
+
+## Solutions to Tutorial 5
+
+1. 
+    1. Aggregate claims $S$ from a risk in a given time have a compound Poisson
+    distribution $S \sim \mathcal{CP}(10,F_X)$ where $X \sim \mathcal{Pa}(\alpha,\beta) = \mathcal{Pa}(3,2000)$. Using the expected value principle, the insurer sets a premium before reinsurance $P = (1 + \theta)\mathrm{E}[S]$ with relative security loading of $\theta = 0.15$. The insurer's expected profit before reinsurance can be obtained from
+$$\begin{aligned} 
+\mathrm{E}[\text{Profit}] &=  \mathrm{E}[P-S] \\
+&= P-  \mathrm{E}[S]  \\
+&= (1 + \theta)\mathrm{E}[S] - \mathrm{E}[S] \\
+&= \theta\mathrm{E}[S]
+\end{aligned}$$    
+
+Note that $\mathrm{E}[S] = \lambda \mathrm{E}[X] = (`r lambda`)(`r mr[1]`)  = `r ES`$. Hence $\mathrm{E}[\text{Profit}]  = `r EProfitBR`$.
+
+    
+    2. The insurer is considering effecting excess of loss reinsurance with retention limit $M = 1200$.
+The reinsurance premium would be calculated using the same principle with relative security loading of $\theta_R = 0.2$. The insurer's expected profit after reinsurance can be obtained from (in terms of $\mathrm{E}[S]$ and $\mathrm{E}[S_R]$) 
+$$\begin{aligned} 
+\mathrm{E}[\text{Profit (after reinsurance)}] &=  \mathrm{E}[P- P_R - S_I] \\
+&= P- P_R - \mathrm{E}[S_I]  \\
+&= P- P_R - \mathrm{E}[S - S_R]  \\
+&= (1 + \theta)\mathrm{E}[S] - (1 + \theta_R)\mathrm{E}[S_R] - \mathrm{E}[S] +  \mathrm{E}[S_R]\\
+&= \theta\mathrm{E}[S] - \theta_R\mathrm{E}[S_R]
+\end{aligned},$$  
+where $P_R$ is the reinsurer premium. 
+
+The total claim amount paid by reinsurer $S_R \sim \mathcal{CP}(10 \pi_M,F_W)$, where $\pi_M = \Pr(X > M)$ is the proportion of claims involved the reinsurer, $W \sim X - M|X > M$ and $F_W \sim \mathcal{Pa}(\alpha,\beta + M) =  \mathcal{Pa}(3,3200)$. It follows that
+$$\mathrm{E}[S_R] = (`r lambda`)(`r piM`)\mathrm{E}[W] =  (`r lambda`)(`r piM`)(`r mrR[1]`) = `r ESR`.$$
+Substituting this into the above equation yields
+$$ \mathrm{E}[\text{Profit (after reinsurance)}] = `r EProfitAR`.$$
+
+3. Consider the variance of the profit, firstly without reinsurance. The insurer’s profit is equal to premiums charged less claims paid. Since only the claims are random, the variance of the profit (before reinsurance) is the same as the variance of the total claims.
+$$ \mathrm{Var}[\text{Profit (without reinsurance)}] = `r VS`.$$
+With reinsurance, the insurer’s profit is equal to premiums charged less the reinsurance premium less the net claims paid. So if the insurer’s aggregate net claims paid are $S_I$ , then the variance of the profit is equal to the variance of $S_I$.
+
+$$ \mathrm{Var}[\text{Profit (with reinsurance)}] = `r VSI`.$$
+
++ The percentage reduction in the expected profit is `r round(reductionExpProfit ,2)`$\%$.
+
++ The percentage reduction in the standard deviation of the profit is `r round(reductionVarProfit ,2)`$\%$.
+
+Note that here the reinsurance has a greater effect on the variability of the claim size than on the average, ie the standard deviation is reduced by a greater percentage than the mean. This is very often the case for excess-of-loss reinsurance.
+
+```{r tutorial5-2, echo = FALSE }
+# Compound Poisson Distribution
+# CP(lambda,FX)
+# N ~ Poisson(lambda) = Poisson(80)
+# X ~ Exp(beta)
+
+lambda <-80
+beta <- 1/10
+
+#retention level M = 20
+M <- 20
+
+mu <- 1/beta
+
+#The proportion of claims which involve the reinsurer 
+p <- exp(-M/mu)
+
+EZ <- p*mu
+EZ2 <- 2*p*mu^2
+VZ <- EZ2 - EZ^2
+covZ <- sqrt(VZ)/EZ
+
+
+EX <- 1/beta
+EX2 <- 2/beta^2
+
+EY <- (1- exp(-beta*M))*EX
+
+VY <- (1/beta^2)*(2 - exp(-beta*M)*( (beta*M)^2 + 2*(beta*M) + 2 )  ) + M^2*(exp(-beta*M)) - (EY)^2
+
+EY2 <- 2*mu* (  mu*(1 - exp(-M/mu)) - M*exp(-M/mu)   )
+VY <- EY2 - (EY)^2  
+covY <- sqrt(VY)/EY
+
+
+EZ <- exp(-M*beta)*EX
+EZ2 <- 2*mu^2*exp(-M/mu)
+VZ <- EZ2 - (EZ)^2  
+covZ <- sqrt(VZ)/EZ
+####
+
+
+ES <- lambda*EX
+VS <- lambda*EX2
+
+
+ESI <- lambda*EY
+VSI <- lambda*EY2
+
+ESR <- lambda*EZ
+VSR <- lambda*EZ2
+```
+
+
+2. Given $X \sim \text{Exp}(\beta)$ with $\beta = 1/10$,
+
+    1. The aggregate claim amount paid by the direct insurer $S_I$ is
+$$S_I \sim \mathcal{CP}(`r lambda`,F_Y), \quad Y= \min(X,M)$$ 
+The distribution and its first two moments of $Y$ can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.
+
+From $X \sim \mathrm{Exp}(\beta) = \mathrm{Exp}(1/\mu)$ (Note that $\mu$ is the expected value of $X$),
+$$ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),$$
+where $p = \Pr(X > M) = e^{-\lambda M} = e^{-\lambda/\mu}$ is the proportion of claims which involve the reinsurer (see the [link](https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1) for more helps)
+
+It follows that
+$$\begin{aligned}
+\mathrm{E}[Y] &= M_Y'(0) = (1 - p)\mu = `r EY` \\
+\mathrm{E}[Y^2] &= M_Y''(0) = -2 \mu (M p + (-1 + p) \mu) = `r EY2`. 
+\end{aligned}
+$$
+
+The total expected total claim payout of the insurer and its variance are
+$$ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = `r ESI`, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  `r VSI`.$$
+
+
+
+The aggregate claim amount paid by the reinsurer $S_R$ is
+$$S_R \sim \mathcal{CP}(`r lambda`,F_Z), \quad Z= \max(0,X-M)$$
+
+It follows that
+$$\begin{aligned}
+\mathrm{E}[Z] &= p\mu = `r EZ` \\
+\mathrm{E}[Z^2] &= 2 \mu^2 p = `r EZ2`. 
+\end{aligned}
+$$
+
+The total expected total claim payout of the insurer and its variance are
+$$ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = `r ESR`, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  `r VSR`.$$
+
+    2. It follows that 
+$\mathrm{Var}[S_I]  + \mathrm{Var}[S_R] = `r VSI + VSR` < `r VS` = \mathrm{Var}[S]$.   
+
+    After excess of loss reinsurance arrangement, there is a reduction in the variability of the amount paid out by the insurer on claims.
+    
+    
+
+```{r tutorial5-3, echo = FALSE, }
+fx <- c(0,1/2,1/4,1/4)
+lambda <- 0.5
+Fs <- aggregateDist("recursive", model.freq = "poisson",
+                    model.sev = fx, lambda = lambda)
+
+gr <- round(c(Fs(0), diff(Fs(0:11))),6)  # probability mass function
+#plot(c(Fs(0), diff(Fs(0:11))) )     
+```
+
+3. From Panjer's recursion formula,
+$$ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.$$
+Therefore,
+$$\begin{aligned}
+g_0 &= e^{-\lambda} = `r gr[1]` \\
+g_1 &= \lambda f_1 g_0  = `r gr[2]` \\
+g_2 &= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = `r gr[3]` \\
+g_3 &= (\lambda/3)(f_1 g_2 + 2 f_2 g_1 + 3 f_3 g_0)  = `r gr[4]` \\
+g_4 &= (\lambda/4)(f_1 g_3 + 2 f_2 g_2 + 3 f_3 g_1)  = `r gr[5]` \\
+    &\vdots \\
+g_r &=  (\lambda/r)(f_1 g_{r-1} + 2 f_2 g_{r-2} + 3 f_3 g_{r-3}).
+\end{aligned}
+$$
+Also $g_5 - g_{10} = `r gr[6:11]`$, respectively.
+
+
 ## Tutorial 6
 
 1.  Suppose $S \sim \mathcal{CP}(\lambda, F_X)$ where individual claim

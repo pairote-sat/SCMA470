@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-09-25}
+\date{2021-09-26}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3885,6 +3885,143 @@ and
     Use (a) the normal approximation and (b) the translated Gamma
     approximation to approximate the values of \(Pr(S(100) > 120)\).
   \end{enumerate}
+\end{enumerate}
+
+\hypertarget{solutions-to-tutorial-5}{%
+\section{Solutions to Tutorial 5}\label{solutions-to-tutorial-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Aggregate claims \(S\) from a risk in a given time have a compound Poisson
+    distribution \(S \sim \mathcal{CP}(10,F_X)\) where \(X \sim \mathcal{Pa}(\alpha,\beta) = \mathcal{Pa}(3,2000)\). Using the expected value principle, the insurer sets a premium before reinsurance \(P = (1 + \theta)\mathrm{E}[S]\) with relative security loading of \(\theta = 0.15\). The insurer's expected profit before reinsurance can be obtained from
+    \[\begin{aligned} 
+    \mathrm{E}[\text{Profit}] &=  \mathrm{E}[P-S] \\
+    &= P-  \mathrm{E}[S]  \\
+    &= (1 + \theta)\mathrm{E}[S] - \mathrm{E}[S] \\
+    &= \theta\mathrm{E}[S]
+    \end{aligned}\]
+  \end{enumerate}
+\end{enumerate}
+
+Note that \(\mathrm{E}[S] = \lambda \mathrm{E}[X] = (10)(1000) = \ensuremath{10^{4}}\). Hence \(\mathrm{E}[\text{Profit}] = 1500\).
+
+\begin{verbatim}
+2. The insurer is considering effecting excess of loss reinsurance with retention limit $M = 1200$.
+\end{verbatim}
+
+The reinsurance premium would be calculated using the same principle with relative security loading of \(\theta_R = 0.2\). The insurer's expected profit after reinsurance can be obtained from (in terms of \(\mathrm{E}[S]\) and \(\mathrm{E}[S_R]\))
+\[\begin{aligned} 
+\mathrm{E}[\text{Profit (after reinsurance)}] &=  \mathrm{E}[P- P_R - S_I] \\
+&= P- P_R - \mathrm{E}[S_I]  \\
+&= P- P_R - \mathrm{E}[S - S_R]  \\
+&= (1 + \theta)\mathrm{E}[S] - (1 + \theta_R)\mathrm{E}[S_R] - \mathrm{E}[S] +  \mathrm{E}[S_R]\\
+&= \theta\mathrm{E}[S] - \theta_R\mathrm{E}[S_R]
+\end{aligned},\]\\
+where \(P_R\) is the reinsurer premium.
+
+The total claim amount paid by reinsurer \(S_R \sim \mathcal{CP}(10 \pi_M,F_W)\), where \(\pi_M = \Pr(X > M)\) is the proportion of claims involved the reinsurer, \(W \sim X - M|X > M\) and \(F_W \sim \mathcal{Pa}(\alpha,\beta + M) = \mathcal{Pa}(3,3200)\). It follows that
+\[\mathrm{E}[S_R] = (10)(0.2441406)\mathrm{E}[W] =  (10)(0.2441406)(1600) = 3906.25.\]
+Substituting this into the above equation yields
+\[ \mathrm{E}[\text{Profit (after reinsurance)}] = 718.75.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Consider the variance of the profit, firstly without reinsurance. The insurer's profit is equal to premiums charged less claims paid. Since only the claims are random, the variance of the profit (before reinsurance) is the same as the variance of the total claims.
+  \[ \mathrm{Var}[\text{Profit (without reinsurance)}] = \ensuremath{4\times 10^{7}}.\]
+  With reinsurance, the insurer's profit is equal to premiums charged less the reinsurance premium less the net claims paid. So if the insurer's aggregate net claims paid are \(S_I\) , then the variance of the profit is equal to the variance of \(S_I\).
+\end{enumerate}
+
+\[ \mathrm{Var}[\text{Profit (with reinsurance)}] = \ensuremath{5.625\times 10^{6}}.\]
+
+\begin{itemize}
+\item
+  The percentage reduction in the expected profit is 52.08\(\%\).
+\item
+  The percentage reduction in the standard deviation of the profit is 62.5\(\%\).
+\end{itemize}
+
+Note that here the reinsurance has a greater effect on the variability of the claim size than on the average, ie the standard deviation is reduced by a greater percentage than the mean. This is very often the case for excess-of-loss reinsurance.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Given \(X \sim \text{Exp}(\beta)\) with \(\beta = 1/10\),
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    The aggregate claim amount paid by the direct insurer \(S_I\) is
+    \[S_I \sim \mathcal{CP}(80,F_Y), \quad Y= \min(X,M)\]
+    The distribution and its first two moments of \(Y\) can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.
+  \end{enumerate}
+\end{enumerate}
+
+From \(X \sim \mathrm{Exp}(\beta) = \mathrm{Exp}(1/\mu)\) (Note that \(\mu\) is the expected value of \(X\)),
+\[ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),\]
+where \(p = \Pr(X > M) = e^{-\lambda M} = e^{-\lambda/\mu}\) is the proportion of claims which involve the reinsurer (see the \href{https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1}{link} for more helps)
+
+It follows that
+\[\begin{aligned}
+\mathrm{E}[Y] &= M_Y'(0) = (1 - p)\mu = 8.6466472 \\
+\mathrm{E}[Y^2] &= M_Y''(0) = -2 \mu (M p + (-1 + p) \mu) = 118.7988301. 
+\end{aligned}
+\]
+
+The total expected total claim payout of the insurer and its variance are
+\[ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = 691.7317734, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  9503.9064046.\]
+
+The aggregate claim amount paid by the reinsurer \(S_R\) is
+\[S_R \sim \mathcal{CP}(80,F_Z), \quad Z= \max(0,X-M)\]
+
+It follows that
+\[\begin{aligned}
+\mathrm{E}[Z] &= p\mu = 1.3533528 \\
+\mathrm{E}[Z^2] &= 2 \mu^2 p = 27.0670566. 
+\end{aligned}
+\]
+
+The total expected total claim payout of the insurer and its variance are
+\[ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = 108.2682266, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  2165.3645318.\]
+
+\begin{verbatim}
+2. It follows that 
+\end{verbatim}
+
+\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = \ensuremath{1.1669271\times 10^{4}} < \ensuremath{1.6\times 10^{4}} = \mathrm{Var}[S]\).
+
+\begin{verbatim}
+After excess of loss reinsurance arrangement, there is a reduction in the variability of the amount paid out by the insurer on claims.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  From Panjer's recursion formula,
+  \[ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.\]
+  Therefore,
+  \[\begin{aligned}
+  g_0 &= e^{-\lambda} = 0.606531 \\
+  g_1 &= \lambda f_1 g_0  = 0.151633 \\
+  g_2 &= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = 0.09477 \\
+  g_3 &= (\lambda/3)(f_1 g_2 + 2 f_2 g_1 + 3 f_3 g_0)  = 0.09635 \\
+  g_4 &= (\lambda/4)(f_1 g_3 + 2 f_2 g_2 + 3 f_3 g_1)  = 0.026161 \\
+   &\vdots \\
+  g_r &=  (\lambda/r)(f_1 g_{r-1} + 2 f_2 g_{r-2} + 3 f_3 g_{r-3}).
+  \end{aligned}
+  \]
+  Also \(g_5 - g_{10} = 0.013233, 0.007663, 0.002148, \ensuremath{9.27\times 10^{-4}}, \ensuremath{4.05\times 10^{-4}}, \ensuremath{1.14\times 10^{-4}}\), respectively.
 \end{enumerate}
 
 \hypertarget{tutorial-6}{%
