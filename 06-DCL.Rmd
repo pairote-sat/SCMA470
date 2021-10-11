@@ -44,3 +44,26 @@ ggplot(dat) +
   stat_function(fun=dexp, geom ="line", args = (rate = 1/mean(dat$claims)), aes(colour = "Exp")) +
   scale_color_discrete(name="Fitted Distributions")
 ```
+
+
+
+
+
+
+```{=latex}
+
+
+\begin{table}[h]	
+\begin{center}
+\caption{Comparision of Bayesian and empirical Bayesian models}
+\begin{tabular}{| l | l | l | c | }
+	\hline
+           &  Normal $-$ normal &  Poisson $-$ gamma  & EBCT\\ \hline	
+  Prior   & $\theta \sim \vnormal{\mu_0,\sigma^2_0}$ & $\lambda \sim \vgamma{\alpha,\beta}$ & none  \\
+  Conditional mean of $X_i$ & $\theta$  & $\lambda$ &  $m(\theta)$   \\
+    Conditional variance of $X_i$ & $\sigma^2$  & $\lambda$ &  $s^2(\theta)$  \\ \hline
+\end{tabular}
+\end{center}	
+\end{table}
+
+```

@@ -662,7 +662,7 @@ $$\begin{aligned}
 Therefore, $S_R \sim \mathcal{CP}(10,F_Z)$ and
 
 $$\begin{aligned}
-  \mathrm{E}[S_R] &= 10 E[Z] = 0, \\
+  \mathrm{E}[S_R] &= 10 E[Z] = 8, \\
   \mathrm{Var}[S_R] &= 10 E[Z^2] = 38. 
 \end{aligned}$$
 

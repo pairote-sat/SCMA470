@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
+  <meta name="description" content="Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="collective-risk-model.html"/>
+<link rel="next" href="interactive-lecture.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>3</b> Deductibles and reinsurance</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#deductibles"><i class="fa fa-check"></i><b>3.2</b> Deductibles</a></li>
+<li class="chapter" data-level="3.3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#reinsurance"><i class="fa fa-check"></i><b>3.3</b> Reinsurance</a></li>
+<li class="chapter" data-level="3.4" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>3.4</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="3.5" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#mixed-distributions"><i class="fa fa-check"></i><b>3.5</b> Mixed distributions</a></li>
+<li class="chapter" data-level="3.6" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#the-distribution-of-reinsurance-claims"><i class="fa fa-check"></i><b>3.6</b> The distribution of reinsurance claims</a></li>
+<li class="chapter" data-level="3.7" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#proportional-reinsurance"><i class="fa fa-check"></i><b>3.7</b> Proportional reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="collective-risk-model.html"><a href="collective-risk-model.html"><i class="fa fa-check"></i><b>4</b> Collective Risk Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#conditional-expectation-and-variance-formulas"><i class="fa fa-check"></i><b>4.1</b> Conditional expectation and variance formulas</a></li>
+<li class="chapter" data-level="4.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#sectionCompoundDistribution"><i class="fa fa-check"></i><b>4.2</b> The moments of a compound distribution <span class="math inline">\(S\)</span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-mean-of-s"><i class="fa fa-check"></i><b>4.2.1</b> The mean of <span class="math inline">\(S\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-variance-of-s"><i class="fa fa-check"></i><b>4.2.2</b> The variance of <span class="math inline">\(S\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#special-compound-distributions"><i class="fa fa-check"></i><b>4.3</b> Special compound distributions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-poisson-distributions"><i class="fa fa-check"></i><b>4.3.1</b> Compound Poisson distributions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-negative-binomial-distributions"><i class="fa fa-check"></i><b>4.3.2</b> Compound negative binomial distributions</a></li>
+<li class="chapter" data-level="4.3.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-binomial-distributions"><i class="fa fa-check"></i><b>4.3.3</b> Compound binomial distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-effect-of-reinsurance"><i class="fa fa-check"></i><b>4.4</b> The effect of reinsurance</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#proportional-reinsurance-1"><i class="fa fa-check"></i><b>4.4.1</b> Proportional reinsurance</a></li>
+<li class="chapter" data-level="4.4.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#excess-of-loss-reinsurance-1"><i class="fa fa-check"></i><b>4.4.2</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="4.4.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-poisson-distributions-under-excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>4.4.3</b> Compound Poisson distributions under excess of loss reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="collective-risk-model.html"><a href="collective-risk-model.html#approximation-of-the-collective-risk-model"><i class="fa fa-check"></i><b>4.5</b> Approximation of the collective risk model</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-normal-approximation"><i class="fa fa-check"></i><b>4.5.1</b> The normal approximation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-translated-gamma-approximation"><i class="fa fa-check"></i><b>4.5.2</b> The translated gamma approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="collective-risk-model.html"><a href="collective-risk-model.html#recursive-calculation-of-the-collective-risk-model"><i class="fa fa-check"></i><b>4.6</b> Recursive calculation of the collective risk model</a></li>
+<li class="chapter" data-level="4.7" data-path="collective-risk-model.html"><a href="collective-risk-model.html#premium-calculation"><i class="fa fa-check"></i><b>4.7</b> Premium calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ruin-theory.html"><a href="ruin-theory.html"><i class="fa fa-check"></i><b>5</b> Ruin Theory</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ruin-theory.html"><a href="ruin-theory.html#the-classical-risk-process"><i class="fa fa-check"></i><b>5.1</b> The classical risk process</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="ruin-theory.html"><a href="ruin-theory.html#classical-risk-process"><i class="fa fa-check"></i><b>5.1.1</b> Classical risk process</a></li>
+<li class="chapter" data-level="5.1.2" data-path="ruin-theory.html"><a href="ruin-theory.html#poisson-processes"><i class="fa fa-check"></i><b>5.1.2</b> Poisson processes</a></li>
+<li class="chapter" data-level="5.1.3" data-path="ruin-theory.html"><a href="ruin-theory.html#compound-poisson-processes"><i class="fa fa-check"></i><b>5.1.3</b> Compound Poisson processes</a></li>
+<li class="chapter" data-level="5.1.4" data-path="ruin-theory.html"><a href="ruin-theory.html#the-relative-safety-loading"><i class="fa fa-check"></i><b>5.1.4</b> The relative safety loading</a></li>
+<li class="chapter" data-level="5.1.5" data-path="ruin-theory.html"><a href="ruin-theory.html#ruin-probabilities"><i class="fa fa-check"></i><b>5.1.5</b> Ruin probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ruin-theory.html"><a href="ruin-theory.html#simulation-of-ruin-probabilities"><i class="fa fa-check"></i><b>5.2</b> Simulation of ruin probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>6</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>6.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tutorials.html"><a href="tutorials.html"><i class="fa fa-check"></i><b>7</b> Tutorials</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tutorials.html"><a href="tutorials.html#tutorial-1"><i class="fa fa-check"></i><b>7.1</b> Tutorial 1</a></li>
+<li class="chapter" data-level="7.2" data-path="tutorials.html"><a href="tutorials.html#tutorial-2"><i class="fa fa-check"></i><b>7.2</b> Tutorial 2</a></li>
+<li class="chapter" data-level="7.3" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-2"><i class="fa fa-check"></i><b>7.3</b> Solutions to Tutorial 2</a></li>
+<li class="chapter" data-level="7.4" data-path="tutorials.html"><a href="tutorials.html#tutorial-3"><i class="fa fa-check"></i><b>7.4</b> Tutorial 3</a></li>
+<li class="chapter" data-level="7.5" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-3"><i class="fa fa-check"></i><b>7.5</b> Solutions to Tutorial 3</a></li>
+<li class="chapter" data-level="7.6" data-path="tutorials.html"><a href="tutorials.html#tutorial-4"><i class="fa fa-check"></i><b>7.6</b> Tutorial 4</a></li>
+<li class="chapter" data-level="7.7" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-4"><i class="fa fa-check"></i><b>7.7</b> Solutions to Tutorial 4</a></li>
+<li class="chapter" data-level="7.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>7.8</b> Tutorial 5</a></li>
+<li class="chapter" data-level="7.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>7.9</b> Solutions to Tutorial 5</a></li>
+<li class="chapter" data-level="7.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>7.10</b> Tutorial 6</a></li>
+<li class="chapter" data-level="7.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>7.11</b> Tutorial 7</a></li>
+<li class="chapter" data-level="7.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>7.12</b> Tutorial 8</a></li>
+<li class="chapter" data-level="7.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>7.13</b> Tutorial 9</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><strong>SCMA 470 : Risk Analysis and Credibility</strong> <strong>Tutorial 3</strong></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ruin-theory" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Ruin Theory</h1>
+<div id="the-classical-risk-process" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> The classical risk process</h2>
+<p>Short term risk models for a fixed time period have been studied in the
+previous sections. In this section, risk models that evolve over time
+will be presented. Suppose that an insurer</p>
+<ul>
+<li><p>begins with an initial capital <span class="math inline">\(u\)</span>, called an initial surplus,</p></li>
+<li><p>collects premiums at a constant rate <span class="math inline">\(c\)</span> per unit time,</p></li>
+<li><p>and pays claims when losses occur.</p></li>
+</ul>
+<p>The insurer is in ruin if the insurer’s capital becomes negative at some
+point in time, i.e. the insurer’s surplus falls to zero or below.</p>
+<p><strong>Note</strong> A surplus is an excess of income or assets over expenditure or
+liabilities in a given period, typically a financial year:</p>
+<div class="example">
+<p><span id="exm:ExampleSurplus" class="example"><strong>Example 5.1  </strong></span><em>An insurer has initial surplus <span class="math inline">\(u\)</span> of 1 (in suitable
+units) and receives premium payments at a rate of 1 per year. Suppose
+claims from a portfolio of insurance over the first two years are as
+follows:</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Time (years)</em></th>
+<th align="left"><em>0.4</em></th>
+<th align="left"><em>0.9</em></th>
+<th align="left"><em>1.5</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Amount</em></td>
+<td align="left"><em>0.8</em></td>
+<td align="left"><em>0.7</em></td>
+<td align="left"><em>1.2</em></td>
+</tr>
+</tbody>
+</table>
+<p><em>Plot a surplus process and determine whether ruin occurs within the
+first three years.</em></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 5.2  </strong></span><em>As given in Example
+<a href="ruin-theory.html#exm:ExampleSurplus">5.1</a>, suppose that the insurer has effected
+proportional reinsurance with retained proportion of 0.7. The
+reinsurance premium is 0.4 per year to be paid continuously. Plot a
+surplus process and determine whether ruin occurs within the first three
+years. Comment on the results.</em></p>
+</div>
+<div id="classical-risk-process" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Classical risk process</h3>
+<p>The following assumptions are assumed for the study of the evolution of
+insurer’s surplus over time.</p>
+<ol style="list-style-type: decimal">
+<li><p>The insurer’s initial capital is <span class="math inline">\(u\)</span>.</p></li>
+<li><p>The premium rate per unit of time received continuously is <span class="math inline">\(c\)</span>, i.e.
+the total amount of premiums received by time <span class="math inline">\(t\)</span> is <span class="math inline">\(ct\)</span>.</p></li>
+<li><p>The counting process <span class="math inline">\(\{N(t) \}_{t \ge 0}\)</span> for the number of claims
+occurred in the time interval <span class="math inline">\([0,t]\)</span> is a Poisson process with
+parameter <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>The claim sizes (or individual claim amounts) <span class="math inline">\(X_1, X_2, \ldots\)</span> are
+independent and identically distributed random variables.</p></li>
+<li><p>The claim sizes <span class="math inline">\(X_1, X_2, \ldots\)</span> are independent of the counting
+process <span class="math inline">\(N(t)\)</span>.</p></li>
+</ol>
+<p>The <strong>surplus process</strong> <span class="math inline">\(\{U(t) \}_{t \ge 0}\)</span> is then given by
+<span class="math display" id="eq:surplus">\[\begin{equation}
+\tag{5.1}
+U(t) = u + ct - S(t),
+\end{equation}\]</span>
+where the <strong>aggregate claim amount up to time</strong>
+<span class="math inline">\(t\)</span>, <span class="math inline">\(S(t)\)</span> is
+<span class="math display" id="eq:St">\[\begin{equation}
+\tag{5.2}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}\]</span></p>
+<p><strong>Notes</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The evolution of insurer’s surplus defined in <a href="ruin-theory.html#eq:surplus">(5.1)</a>
+is also known as the <strong>classical risk process</strong>.</p></li>
+<li><p>The only random and uncertain quantity in
+<a href="ruin-theory.html#eq:surplus">(5.1)</a>
+is the aggregate claims <span class="math inline">\(S(t)\)</span>.</p></li>
+</ol>
+</div>
+<div id="poisson-processes" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Poisson processes</h3>
+<p>A <strong>Poisson process</strong> is a special type of counting process. It can be
+represented by a continuous time stochastic process <span class="math inline">\(\{N(t)\}_{t \ge 0}\)</span>
+which takes values in the non-negative integers. It can be used to model
+the occurrence or arrival of events over a continuous time interval. The
+state space is discrete but the time set is continuous. Here <span class="math inline">\(N(t)\)</span>
+represents the number of events in the interval <span class="math inline">\((0,t]\)</span>.</p>
+<p>The following examples can also be modelled by a Poisson process:</p>
+<ol style="list-style-type: decimal">
+<li><p>Claims arrivals at an insurance company,</p></li>
+<li><p>Accidents occurring on the highway, and</p></li>
+<li><p>Telephone calls to a call centre.</p></li>
+</ol>
+<div id="counting-process" class="section level4 unnumbered">
+<h4>Counting Process</h4>
+<p>A counting process <span class="math inline">\(\{N_t \}_{t \ge 0}\)</span> is a collection of non-negative,
+integer-valued random variables such that if <span class="math inline">\(0 \le s \le t\)</span>, then
+<span class="math inline">\(N(s) \le N(t)\)</span>.</p>
+<p>The following figure illustrates a trajectory of the Poisson process.
+The sample path of a Poisson process is a right-continuous step
+function. There are jumps occurring at time <span class="math inline">\(t_1, t_2, t_3, \ldots\)</span>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="ruin-theory.html#cb28-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">17</span></span>
+<span id="cb28-2"><a href="ruin-theory.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the length of time horizon for the simulation T_length &lt;- 31</span></span>
+<span id="cb28-3"><a href="ruin-theory.html#cb28-3" aria-hidden="true" tabindex="-1"></a>last_arrival <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb28-4"><a href="ruin-theory.html#cb28-4" aria-hidden="true" tabindex="-1"></a>arrival_time <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb28-5"><a href="ruin-theory.html#cb28-5" aria-hidden="true" tabindex="-1"></a>inter_arrival <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> lambda)</span>
+<span id="cb28-6"><a href="ruin-theory.html#cb28-6" aria-hidden="true" tabindex="-1"></a>T_length <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb28-7"><a href="ruin-theory.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (inter_arrival <span class="sc">+</span> last_arrival <span class="sc">&lt;</span> T_length) { </span>
+<span id="cb28-8"><a href="ruin-theory.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  last_arrival <span class="ot">&lt;-</span> inter_arrival <span class="sc">+</span> last_arrival </span>
+<span id="cb28-9"><a href="ruin-theory.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  arrival_time <span class="ot">&lt;-</span> <span class="fu">c</span>(arrival_time,last_arrival) </span>
+<span id="cb28-10"><a href="ruin-theory.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  inter_arrival <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> lambda)</span>
+<span id="cb28-11"><a href="ruin-theory.html#cb28-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-12"><a href="ruin-theory.html#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="ruin-theory.html#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="ruin-theory.html#cb28-14" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(arrival_time)</span>
+<span id="cb28-15"><a href="ruin-theory.html#cb28-15" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb28-16"><a href="ruin-theory.html#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="ruin-theory.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(arrival_time, counts, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, n))</span>
+<span id="cb28-18"><a href="ruin-theory.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(arrival_time, <span class="fu">c</span>(<span class="dv">0</span>, counts[<span class="sc">-</span>n]))</span>
+<span id="cb28-19"><a href="ruin-theory.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(</span>
+<span id="cb28-20"><a href="ruin-theory.html#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, arrival_time[<span class="sc">-</span>n]),</span>
+<span id="cb28-21"><a href="ruin-theory.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">y0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, counts[<span class="sc">-</span>n]),</span>
+<span id="cb28-22"><a href="ruin-theory.html#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> arrival_time,</span>
+<span id="cb28-23"><a href="ruin-theory.html#cb28-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">y1 =</span> <span class="fu">c</span>(<span class="dv">0</span>, counts[<span class="sc">-</span>n])</span>
+<span id="cb28-24"><a href="ruin-theory.html#cb28-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="SCMA470Bookdownproj_files/figure-html/PlotPoissonProcess-1.png" width="672" /></p>
+<p>Recall that a stochastic process <span class="math inline">\(\{N(t) \}_{t \ge 0}\)</span> is a Poisson
+process with parameter <span class="math inline">\(\lambda\)</span> if the process satisfies the three
+properties:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(N(0) = 0\)</span>.</p></li>
+<li><p><strong>Independent increments</strong> For <span class="math inline">\(0 &lt; s &lt; t \le u &lt; v\)</span>, the increment
+<span class="math inline">\(N(t) - N(s)\)</span> is independent of the increment <span class="math inline">\(N(v) - N(u)\)</span>, i.e.
+the number of events in <span class="math inline">\((s,t]\)</span> is independent of the number of
+events in <span class="math inline">\((u,v]\)</span>.</p></li>
+<li><p><strong>Stationary increments</strong> For
+<span class="math inline">\(0 &lt; s &lt;t\)</span>, the distribution <span class="math inline">\(N(t) - N(s)\)</span> depends only on <span class="math inline">\(t -s\)</span>
+and not on the values <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>, i.e. the increments of the
+process over time has a distribution that only depend on the time
+difference <span class="math inline">\(t - s\)</span>, the lenght of the time interval.</p></li>
+<li><p><strong>Poisson distribution</strong> For
+<span class="math inline">\(t \ge 0\)</span>, the random variable <span class="math inline">\(N(t)\)</span> has a Poisson distribution
+with mean <span class="math inline">\(\lambda t\)</span>.</p></li>
+</ol>
+<p>It follows from conditions the <strong>Stationary Increments</strong> and <strong>Poisson Distribution</strong> properties that
+<span class="math display">\[\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-\lambda(t-s)} }{n!},  \quad \quad s &lt; t, \, n = 0,1,2, \ldots\]</span></p>
+<p><strong>Notes</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The sample paths of <span class="math inline">\(\{N(t) \}_{t \ge 0}\)</span> are non-decreasing step
+functions, or the process is referred to be as a counting process.</p></li>
+<li><p>A process with stationary and independent increments can be thought
+of as <strong>starting over</strong> at any point in time in a probabilistic
+sense. The ‘starting over’ property follows from the fact that</p>
+<ul>
+<li><p>the exponential distribution has the memoryless property, and</p></li>
+<li><p>the times between successive events (or interarrival times) are
+independent and identically distributed exponential random
+variables with mean <span class="math inline">\(1/\lambda\)</span>. This follows from the following
+result:</p></li>
+</ul></li>
+<li><p>For more details about Poisson processes, please refer to the
+contents of the course “SCMA 469 Actuarial Statistics”</p></li>
+</ol>
+</div>
+</div>
+<div id="compound-poisson-processes" class="section level3" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Compound Poisson processes</h3>
+<p>The aggregate claims process <span class="math inline">\(S(t)\)</span> defined in <a href="ruin-theory.html#eq:St">(5.2)</a>
+of the classical
+risk process is said to be a <strong>compound Poisson process</strong> with Poisson
+parameter <span class="math inline">\(\lambda\)</span>. The compound Poisson process has the following
+important properties:</p>
+<ol style="list-style-type: decimal">
+<li><p>For each <span class="math inline">\(t\)</span>, the random variable <span class="math inline">\(S(t)\)</span> has a compound Poisson
+distribution with parameter <span class="math inline">\(\lambda t\)</span>, i.e.
+<span class="math display">\[S(t) \sim \mathcal{CP}(\lambda t, F_X(x)).\]</span> Thus, the mean and
+variance of the compound Poisson distribution are
+<span class="math display">\[\mathrm{E}[S(t)] = \lambda t \mathrm{E}[X], \quad \mathrm{Var}[S(t)] =\lambda t \mathrm{E}[X^2].\]</span>
+The moment generating function of <span class="math inline">\(S(t)\)</span> is
+<span class="math display">\[M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).\]</span></p></li>
+<li><p>It has stationary and independent increments, i.e. for disjoint time
+intervals <span class="math inline">\(0 &lt; s &lt; t \le u &lt; v\)</span>, the random variables <span class="math inline">\(N(t) - N(s)\)</span>
+and <span class="math inline">\(N(v) - N(u)\)</span> are independent and have
+<span class="math inline">\(\mathcal{CP}(\lambda (t -s), F_X(x))\)</span> and
+<span class="math inline">\(\mathcal{CP}(\lambda (v - u), F_X(x))\)</span> distributions, respectively.</p></li>
+</ol>
+<p><strong>Notes</strong> Various properties of the aggregate claims process <span class="math inline">\(S(t)\)</span> can
+be summarised as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\)</span> is the aggregate claims in
+the first year.</p></li>
+<li><p><span class="math inline">\(S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))\)</span> is the aggregate
+claims in the <span class="math inline">\(n\)</span>th year, for <span class="math inline">\(n = 1,2, \ldots\)</span>.</p></li>
+<li><p>The process <span class="math inline">\(\{ S(n) - S(n-1) \}_{n=1}^\infty\)</span> is a sequence of
+<strong>independent and identically distributed</strong> random variables
+representing the aggregate claims in successive years.</p></li>
+</ol>
+</div>
+<div id="the-relative-safety-loading" class="section level3" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> The relative safety loading</h3>
+<p>Let <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma^2_X\)</span> denote the mean and the variance of claim
+sizes <span class="math inline">\(X_i\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 5.3  </strong></span>Consider the following questions.</p>
+<ol style="list-style-type: decimal">
+<li><p>Calculate the expected surplus and the variance surplus at time <span class="math inline">\(t\)</span>.</p></li>
+<li><p>Calculate the expected profit per unit time in <span class="math inline">\((0, t]\)</span>.</p></li>
+</ol>
+</div>
+<p>Based on the expected value premium principle, the premium rate <span class="math inline">\(c\)</span> per
+unit time can be defined by
+<span class="math display">\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]</span>
+Hence the <strong>relative safety loading</strong> (or <strong>premium loading factor</strong> or
+<strong>relative security loading</strong>) <span class="math inline">\(\theta\)</span> is given by
+<span class="math display">\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]</span></p>
+<p><strong>Notes</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The insurer can make a profit provided that <span class="math inline">\(c &gt; \lambda \mu_X\)</span> or
+the relative safety loading <span class="math inline">\(\theta\)</span> is positive. In this case, the
+surplus will drift to <span class="math inline">\(\infty\)</span>, but ruin could still occur. The rate
+at which premium income comes in is greather than the rate at which
+claims are paid out.</p></li>
+<li><p>On the other hand, if <span class="math inline">\(c &lt; \lambda \mu_X\)</span>, then the surplus will
+drift to <span class="math inline">\(-\infty\)</span>, but ruin is certain.</p></li>
+</ol>
+</div>
+<div id="ruin-probabilities" class="section level3" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Ruin probabilities</h3>
+<p>Various definitions of ruin probabilities are given.</p>
+<ol style="list-style-type: decimal">
+<li><p>The <strong>probability of ruin in infinite time</strong> (or the <strong>ultimate ruin
+probability</strong>) is defined by
+<span class="math display">\[\psi(u) = \Pr(U(t) &lt; 0 \quad \text{ for some } t &gt; 0).\]</span></p></li>
+<li><p>The <strong>finite-time ruin probability</strong> (or the <strong>probability of ruin
+by time <span class="math inline">\(t\)</span></strong>) is defined by
+<span class="math display">\[\psi(u,t) = \Pr(U(s) &lt; 0 \quad \text{ for some } s \in (0,t]).\]</span></p></li>
+<li><p>The <strong>discrete time ultimate ruin probability</strong> is defined by
+<span class="math display">\[\psi_h(u) = \Pr(U(t) &lt; 0 \quad \text{ for some } t \in \{h, 2h, 3h, \ldots \}).\]</span></p></li>
+<li><p>The <strong>discrete time ruin probability in finite time</strong> is defined by
+<span class="math display">\[\psi_h(u,t) = \Pr(U(s) &lt; 0 \quad \text{ for some } s \in \{h, 2h, 3h, \ldots, t\}).\]</span></p></li>
+</ol>
+<p><strong>Notes</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>For <span class="math inline">\(0 \le u_1 \le u_2\)</span>, <span class="math display">\[\psi(u_1) \ge \psi(u_2),\]</span> i.e. the
+ultimate ruin probability is non-increasing in <span class="math inline">\(u\)</span>.</p></li>
+<li><p>If ruin occurs under the discrete time, it must occur under the
+continuous time, i.e. <span class="math display">\[\psi_h(u) &lt; \psi(u).\]</span> Similarly,
+<span class="math display">\[\psi_h(u,t) &lt; \psi(u,t).\]</span></p></li>
+<li><p>The discrete time ultimate ruin probability <span class="math inline">\(\psi_h(u)\)</span> could be
+used as an approximation of <span class="math inline">\(\psi(u)\)</span> provided <span class="math inline">\(h\)</span> is sufficiently
+small.</p></li>
+<li><p>The discrete time ruin probability in finite time <span class="math inline">\(\psi_h(u,t)\)</span>
+could be used as an approximation of <span class="math inline">\(\psi(u,t)\)</span> provided <span class="math inline">\(h\)</span> is
+sufficiently small.</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-58" class="example"><strong>Example 5.4  </strong></span><em>Suppose the annual aggregate claims for a portfolio of
+policies is approximately normal.</em></p>
+<ul>
+<li><p><em>The insurer’s initial surplus is 1000 (in suitable units) and the
+premium rate is 1500 per year.</em></p></li>
+<li><p><em>The number of claims per year has a Poisson distribution with
+parameter 50.</em></p></li>
+<li><p><em>The distribution of claim sizes is lognormal with parameters
+<span class="math inline">\(\mu = 3\)</span> and <span class="math inline">\(\sigma^2 = 0.9\)</span>.</em></p></li>
+</ul>
+<p><em>Calculate the probability that the insurer’s surplus at time 2 will be
+negative.</em></p>
+</div>
+</div>
+</div>
+<div id="simulation-of-ruin-probabilities" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Simulation of ruin probabilities</h2>
+<div class="example">
+<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 5.5  </strong></span><em>Let <span class="math inline">\(F(x)\)</span> be a continuous cumulative density
+function. Let <span class="math inline">\(Y\)</span> be a random variable with a <span class="math inline">\(U(0,1)\)</span> distribution.
+Define the random variable <span class="math inline">\(X\)</span> by <span class="math display">\[X = F^{-1}(Y).\]</span> Show that the
+cumulative density function of <span class="math inline">\(X\)</span>, <span class="math inline">\(F_X(x)\)</span> is <span class="math inline">\(F(x)\)</span>.</em></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-60" class="example"><strong>Example 5.6  </strong></span><em>The aggregate claims process for a risk is compound
+Poisson with Poisson parameter <span class="math inline">\(\lambda = 100\)</span> per year. Individual
+claim amounts have <span class="math inline">\(\text{Pa}(4,3)\)</span>. The premium income per year is
+<span class="math inline">\(c = 110\)</span> (in suitable units), received continuously.</em></p>
+<p><em>Using either Excel or R to simulate 1000 values of aggregate claims
+<span class="math inline">\(S\)</span>, assuming that <span class="math inline">\(S\)</span> is approximated by a translated gamma
+approximation,</em></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Estimate
+<span class="math inline">\(\hat{\psi}_1(50, 5)\)</span>, an estimate of <span class="math inline">\(\psi_1(50,5)\)</span>.</em></p></li>
+<li><p><em>Estimate the standard error of <span class="math inline">\(\hat{\psi}_1(50, 5)\)</span>.</em></p></li>
+<li><p><em>Calculate a 95% confidence interval for your estimate in 1.</em></p></li>
+<li><p><em>Estimate <span class="math inline">\(\psi_{0.5}(50, 5)\)</span>.</em></p></li>
+</ol>
+</div>
+<!-- ![image](RuinSimulation.pdf){width="90%"} -->
+<!-- ![image](RuinSimulation2.pdf){width="90%"} -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="collective-risk-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/05-Ruin-Theory.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/05-Ruin-Theory.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

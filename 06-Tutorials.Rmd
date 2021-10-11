@@ -11,7 +11,20 @@ a. gamma: $\tilde{\alpha} = 25$, $\tilde{\lambda} = 0.05.$
 
 b. lognormal: $\tilde{\mu} = 6.194998$, $\tilde{\sigma} = 0.1980422.$ 
 
-c. the MME cannot apply for the Pareto distribution.
+c. the MME cannot apply for the Pareto distribution. For the given values of $$\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2$$, the obtained values of $\tilde{\alpha}$ and  $\tilde{\lambda}$ from the method of moments are negative. Note that if we fix $s = 100^2$ and vary $\bar{x}$ within the interval $[90,110]$, the plot of $\bar{x}$ against $\tilde{\alpha}$ is shown below. Notice that when $\bar{x} = 100$, $\tilde{\alpha}$ tends to infinity.
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+```{r , tut = FALSE, echo = TRUE}
+xbar <-90:110
+s <- 100
+# MME
+alpha_tilde <- 2*s^2/xbar^2 * 1/(s^2/xbar^2 - 1)
+lambda_tilde <- xbar*(alpha_tilde -1)
+plot(xbar,alpha_tilde, xlab = expression(bar(x)), ylab = expression(alpha))
+
+```
+
 
 2.  Show that if $X \sim \text{Exp}(\lambda)$, then the random variable
     $X-w$ conditional on $X > w$ has the same distribution as $X$, i.e.
@@ -95,10 +108,11 @@ $$
 &=\Pr(\log X > \log (1000/1.15)) \\
 &=\Pr\left(Z > \frac{\log (1000/1.15)) - 5 }{\sqrt{0.4}}\right) \\
 &=\Pr\left(Z > 2.7954\right) \\
-&= 0.00164. \\
+&=1 - \Pr\left(Z \le 2.7954\right) \\
+&= 1 -  0.9974082 = 0.002591777. \\
 \end{aligned}
 $$
-
+I used `R` to obtain the required probability.
 
 ## Tutorial 2
 

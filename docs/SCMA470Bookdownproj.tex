@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-09-26}
+\date{2021-10-11}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2741,7 +2741,7 @@ Therefore, \(S_I \sim \mathcal{CP}(10,F_Y)\) and
 Therefore, \(S_R \sim \mathcal{CP}(10,F_Z)\) and
 
 \[\begin{aligned}
-  \mathrm{E}[S_R] &= 10 E[Z] = 0, \\
+  \mathrm{E}[S_R] &= 10 E[Z] = 8, \\
   \mathrm{Var}[S_R] &= 10 E[Z^2] = 38. 
 \end{aligned}\]
 
@@ -3054,6 +3054,455 @@ parameters \(\lambda = 10\) and the claim sizes have a Pareto distribution
   Repeat the same question as above assumed that the SVP is applied.
 \end{enumerate}
 
+\hypertarget{ruin-theory}{%
+\chapter{Ruin Theory}\label{ruin-theory}}
+
+\hypertarget{the-classical-risk-process}{%
+\section{The classical risk process}\label{the-classical-risk-process}}
+
+Short term risk models for a fixed time period have been studied in the
+previous sections. In this section, risk models that evolve over time
+will be presented. Suppose that an insurer
+
+\begin{itemize}
+\item
+  begins with an initial capital \(u\), called an initial surplus,
+\item
+  collects premiums at a constant rate \(c\) per unit time,
+\item
+  and pays claims when losses occur.
+\end{itemize}
+
+The insurer is in ruin if the insurer's capital becomes negative at some
+point in time, i.e.~the insurer's surplus falls to zero or below.
+
+\textbf{Note} A surplus is an excess of income or assets over expenditure or
+liabilities in a given period, typically a financial year:
+
+\begin{example}
+\protect\hypertarget{exm:ExampleSurplus}{}\label{exm:ExampleSurplus}
+
+\emph{An insurer has initial surplus \(u\) of 1 (in suitable
+units) and receives premium payments at a rate of 1 per year. Suppose
+claims from a portfolio of insurance over the first two years are as
+follows:}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\emph{Time (years)} & \emph{0.4} & \emph{0.9} & \emph{1.5} \\
+\midrule
+\endhead
+\emph{Amount} & \emph{0.8} & \emph{0.7} & \emph{1.2} \\
+\bottomrule
+\end{longtable}
+
+\emph{Plot a surplus process and determine whether ruin occurs within the
+first three years.}
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-56}{}\label{exm:unlabeled-div-56}
+
+\emph{As given in Example
+\ref{exm:ExampleSurplus}, suppose that the insurer has effected
+proportional reinsurance with retained proportion of 0.7. The
+reinsurance premium is 0.4 per year to be paid continuously. Plot a
+surplus process and determine whether ruin occurs within the first three
+years. Comment on the results.}
+
+\end{example}
+
+\hypertarget{classical-risk-process}{%
+\subsection{Classical risk process}\label{classical-risk-process}}
+
+The following assumptions are assumed for the study of the evolution of
+insurer's surplus over time.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer's initial capital is \(u\).
+\item
+  The premium rate per unit of time received continuously is \(c\), i.e.
+  the total amount of premiums received by time \(t\) is \(ct\).
+\item
+  The counting process \(\{N(t) \}_{t \ge 0}\) for the number of claims
+  occurred in the time interval \([0,t]\) is a Poisson process with
+  parameter \(\lambda\).
+\item
+  The claim sizes (or individual claim amounts) \(X_1, X_2, \ldots\) are
+  independent and identically distributed random variables.
+\item
+  The claim sizes \(X_1, X_2, \ldots\) are independent of the counting
+  process \(N(t)\).
+\end{enumerate}
+
+The \textbf{surplus process} \(\{U(t) \}_{t \ge 0}\) is then given by
+\begin{equation}
+\label{eq:surplus}
+U(t) = u + ct - S(t),
+\end{equation}
+where the \textbf{aggregate claim amount up to time}
+\(t\), \(S(t)\) is
+\begin{equation}
+\label{eq:St}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The evolution of insurer's surplus defined in \eqref{eq:surplus}
+  is also known as the \textbf{classical risk process}.
+\item
+  The only random and uncertain quantity in
+  \eqref{eq:surplus}
+  is the aggregate claims \(S(t)\).
+\end{enumerate}
+
+\hypertarget{poisson-processes}{%
+\subsection{Poisson processes}\label{poisson-processes}}
+
+A \textbf{Poisson process} is a special type of counting process. It can be
+represented by a continuous time stochastic process \(\{N(t)\}_{t \ge 0}\)
+which takes values in the non-negative integers. It can be used to model
+the occurrence or arrival of events over a continuous time interval. The
+state space is discrete but the time set is continuous. Here \(N(t)\)
+represents the number of events in the interval \((0,t]\).
+
+The following examples can also be modelled by a Poisson process:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Claims arrivals at an insurance company,
+\item
+  Accidents occurring on the highway, and
+\item
+  Telephone calls to a call centre.
+\end{enumerate}
+
+\hypertarget{counting-process}{%
+\subsubsection*{Counting Process}\label{counting-process}}
+\addcontentsline{toc}{subsubsection}{Counting Process}
+
+A counting process \(\{N_t \}_{t \ge 0}\) is a collection of non-negative,
+integer-valued random variables such that if \(0 \le s \le t\), then
+\(N(s) \le N(t)\).
+
+The following figure illustrates a trajectory of the Poisson process.
+The sample path of a Poisson process is a right-continuous step
+function. There are jumps occurring at time \(t_1, t_2, t_3, \ldots\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \DecValTok{17}
+\CommentTok{\# the length of time horizon for the simulation T\_length \textless{}{-} 31}
+\NormalTok{last\_arrival }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{T\_length }\OtherTok{\textless{}{-}} \DecValTok{1}
+\ControlFlowTok{while}\NormalTok{ (inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }\SpecialCharTok{\textless{}}\NormalTok{ T\_length) \{ }
+\NormalTok{  last\_arrival }\OtherTok{\textless{}{-}}\NormalTok{ inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }
+\NormalTok{  arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(arrival\_time,last\_arrival) }
+\NormalTok{  inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{\}}
+
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(arrival\_time)}
+\NormalTok{counts }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n}
+
+\FunctionTok{plot}\NormalTok{(arrival\_time, counts, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, n))}
+\FunctionTok{points}\NormalTok{(arrival\_time, }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]))}
+\FunctionTok{segments}\NormalTok{(}
+  \AttributeTok{x0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, arrival\_time[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{y0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{x1 =}\NormalTok{ arrival\_time,}
+  \AttributeTok{y1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/PlotPoissonProcess-1.pdf}
+
+Recall that a stochastic process \(\{N(t) \}_{t \ge 0}\) is a Poisson
+process with parameter \(\lambda\) if the process satisfies the three
+properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(N(0) = 0\).
+\item
+  \textbf{Independent increments} For \(0 < s < t \le u < v\), the increment
+  \(N(t) - N(s)\) is independent of the increment \(N(v) - N(u)\), i.e.
+  the number of events in \((s,t]\) is independent of the number of
+  events in \((u,v]\).
+\item
+  \textbf{Stationary increments} For
+  \(0 < s <t\), the distribution \(N(t) - N(s)\) depends only on \(t -s\)
+  and not on the values \(s\) and \(t\), i.e.~the increments of the
+  process over time has a distribution that only depend on the time
+  difference \(t - s\), the lenght of the time interval.
+\item
+  \textbf{Poisson distribution} For
+  \(t \ge 0\), the random variable \(N(t)\) has a Poisson distribution
+  with mean \(\lambda t\).
+\end{enumerate}
+
+It follows from conditions the \textbf{Stationary Increments} and \textbf{Poisson Distribution} properties that
+\[\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-\lambda(t-s)} }{n!},  \quad \quad s < t, \, n = 0,1,2, \ldots\]
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The sample paths of \(\{N(t) \}_{t \ge 0}\) are non-decreasing step
+  functions, or the process is referred to be as a counting process.
+\item
+  A process with stationary and independent increments can be thought
+  of as \textbf{starting over} at any point in time in a probabilistic
+  sense. The `starting over' property follows from the fact that
+
+  \begin{itemize}
+  \item
+    the exponential distribution has the memoryless property, and
+  \item
+    the times between successive events (or interarrival times) are
+    independent and identically distributed exponential random
+    variables with mean \(1/\lambda\). This follows from the following
+    result:
+  \end{itemize}
+\item
+  For more details about Poisson processes, please refer to the
+  contents of the course ``SCMA 469 Actuarial Statistics''
+\end{enumerate}
+
+\hypertarget{compound-poisson-processes}{%
+\subsection{Compound Poisson processes}\label{compound-poisson-processes}}
+
+The aggregate claims process \(S(t)\) defined in \eqref{eq:St}
+of the classical
+risk process is said to be a \textbf{compound Poisson process} with Poisson
+parameter \(\lambda\). The compound Poisson process has the following
+important properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For each \(t\), the random variable \(S(t)\) has a compound Poisson
+  distribution with parameter \(\lambda t\), i.e.
+  \[S(t) \sim \mathcal{CP}(\lambda t, F_X(x)).\] Thus, the mean and
+  variance of the compound Poisson distribution are
+  \[\mathrm{E}[S(t)] = \lambda t \mathrm{E}[X], \quad \mathrm{Var}[S(t)] =\lambda t \mathrm{E}[X^2].\]
+  The moment generating function of \(S(t)\) is
+  \[M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).\]
+\item
+  It has stationary and independent increments, i.e.~for disjoint time
+  intervals \(0 < s < t \le u < v\), the random variables \(N(t) - N(s)\)
+  and \(N(v) - N(u)\) are independent and have
+  \(\mathcal{CP}(\lambda (t -s), F_X(x))\) and
+  \(\mathcal{CP}(\lambda (v - u), F_X(x))\) distributions, respectively.
+\end{enumerate}
+
+\textbf{Notes} Various properties of the aggregate claims process \(S(t)\) can
+be summarised as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate claims in
+  the first year.
+\item
+  \(S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate
+  claims in the \(n\)th year, for \(n = 1,2, \ldots\).
+\item
+  The process \(\{ S(n) - S(n-1) \}_{n=1}^\infty\) is a sequence of
+  \textbf{independent and identically distributed} random variables
+  representing the aggregate claims in successive years.
+\end{enumerate}
+
+\hypertarget{the-relative-safety-loading}{%
+\subsection{The relative safety loading}\label{the-relative-safety-loading}}
+
+Let \(\mu_X\) and \(\sigma^2_X\) denote the mean and the variance of claim
+sizes \(X_i\).
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-57}{}\label{exm:unlabeled-div-57}
+
+Consider the following questions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calculate the expected surplus and the variance surplus at time \(t\).
+\item
+  Calculate the expected profit per unit time in \((0, t]\).
+\end{enumerate}
+
+\end{example}
+
+Based on the expected value premium principle, the premium rate \(c\) per
+unit time can be defined by
+\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]
+Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} or
+\textbf{relative security loading}) \(\theta\) is given by
+\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer can make a profit provided that \(c > \lambda \mu_X\) or
+  the relative safety loading \(\theta\) is positive. In this case, the
+  surplus will drift to \(\infty\), but ruin could still occur. The rate
+  at which premium income comes in is greather than the rate at which
+  claims are paid out.
+\item
+  On the other hand, if \(c < \lambda \mu_X\), then the surplus will
+  drift to \(-\infty\), but ruin is certain.
+\end{enumerate}
+
+\hypertarget{ruin-probabilities}{%
+\subsection{Ruin probabilities}\label{ruin-probabilities}}
+
+Various definitions of ruin probabilities are given.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \textbf{probability of ruin in infinite time} (or the \textbf{ultimate ruin
+  probability}) is defined by
+  \[\psi(u) = \Pr(U(t) < 0 \quad \text{ for some } t > 0).\]
+\item
+  The \textbf{finite-time ruin probability} (or the \textbf{probability of ruin
+  by time \(t\)}) is defined by
+  \[\psi(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in (0,t]).\]
+\item
+  The \textbf{discrete time ultimate ruin probability} is defined by
+  \[\psi_h(u) = \Pr(U(t) < 0 \quad \text{ for some } t \in \{h, 2h, 3h, \ldots \}).\]
+\item
+  The \textbf{discrete time ruin probability in finite time} is defined by
+  \[\psi_h(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in \{h, 2h, 3h, \ldots, t\}).\]
+\end{enumerate}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For \(0 \le u_1 \le u_2\), \[\psi(u_1) \ge \psi(u_2),\] i.e.~the
+  ultimate ruin probability is non-increasing in \(u\).
+\item
+  If ruin occurs under the discrete time, it must occur under the
+  continuous time, i.e.~\[\psi_h(u) < \psi(u).\] Similarly,
+  \[\psi_h(u,t) < \psi(u,t).\]
+\item
+  The discrete time ultimate ruin probability \(\psi_h(u)\) could be
+  used as an approximation of \(\psi(u)\) provided \(h\) is sufficiently
+  small.
+\item
+  The discrete time ruin probability in finite time \(\psi_h(u,t)\)
+  could be used as an approximation of \(\psi(u,t)\) provided \(h\) is
+  sufficiently small.
+\end{enumerate}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-58}{}\label{exm:unlabeled-div-58}
+
+\emph{Suppose the annual aggregate claims for a portfolio of
+policies is approximately normal.}
+
+\begin{itemize}
+\item
+  \emph{The insurer's initial surplus is 1000 (in suitable units) and the
+  premium rate is 1500 per year.}
+\item
+  \emph{The number of claims per year has a Poisson distribution with
+  parameter 50.}
+\item
+  \emph{The distribution of claim sizes is lognormal with parameters
+  \(\mu = 3\) and \(\sigma^2 = 0.9\).}
+\end{itemize}
+
+\emph{Calculate the probability that the insurer's surplus at time 2 will be
+negative.}
+
+\end{example}
+
+\hypertarget{simulation-of-ruin-probabilities}{%
+\section{Simulation of ruin probabilities}\label{simulation-of-ruin-probabilities}}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-59}{}\label{exm:unlabeled-div-59}
+
+\emph{Let \(F(x)\) be a continuous cumulative density
+function. Let \(Y\) be a random variable with a \(U(0,1)\) distribution.
+Define the random variable \(X\) by \[X = F^{-1}(Y).\] Show that the
+cumulative density function of \(X\), \(F_X(x)\) is \(F(x)\).}
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:unlabeled-div-60}{}\label{exm:unlabeled-div-60}
+
+\emph{The aggregate claims process for a risk is compound
+Poisson with Poisson parameter \(\lambda = 100\) per year. Individual
+claim amounts have \(\text{Pa}(4,3)\). The premium income per year is
+\(c = 110\) (in suitable units), received continuously.}
+
+\emph{Using either Excel or R to simulate 1000 values of aggregate claims
+\(S\), assuming that \(S\) is approximated by a translated gamma
+approximation,}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Estimate
+  \(\hat{\psi}_1(50, 5)\), an estimate of \(\psi_1(50,5)\).}
+\item
+  \emph{Estimate the standard error of \(\hat{\psi}_1(50, 5)\).}
+\item
+  \emph{Calculate a 95\% confidence interval for your estimate in 1.}
+\item
+  \emph{Estimate \(\psi_{0.5}(50, 5)\).}
+\end{enumerate}
+
+\end{example}
+
+\hypertarget{interactive-lecture}{%
+\chapter{Interactive Lecture}\label{interactive-lecture}}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{datacamp-light}{%
+\section{DataCamp Light}\label{datacamp-light}}
+
+By default, \texttt{tutorial} will convert all R chunks.
+
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhIDwtIDJcbmIgPC0gM1xuYSArIGIifQ==
+
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
+
+\begin{table}[h]    
+\begin{center}
+\caption{Comparision of Bayesian and empirical Bayesian models}
+\begin{tabular}{| l | l | l | c | }
+    \hline
+           &  Normal $-$ normal &  Poisson $-$ gamma  & EBCT\\ \hline   
+  Prior   & $\theta \sim \vnormal{\mu_0,\sigma^2_0}$ & $\lambda \sim \vgamma{\alpha,\beta}$ & none  \\
+  Conditional mean of $X_i$ & $\theta$  & $\lambda$ &  $m(\theta)$   \\
+    Conditional variance of $X_i$ & $\sigma^2$  & $\lambda$ &  $s^2(\theta)$  \\ \hline
+\end{tabular}
+\end{center}    
+\end{table}
+
 \hypertarget{tutorials}{%
 \chapter{Tutorials}\label{tutorials}}
 
@@ -3077,8 +3526,21 @@ parameters \(\lambda = 10\) and the claim sizes have a Pareto distribution
 \item
   lognormal: \(\tilde{\mu} = 6.194998\), \(\tilde{\sigma} = 0.1980422.\)
 \item
-  the MME cannot apply for the Pareto distribution.
+  the MME cannot apply for the Pareto distribution. For the given values of \[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2\], the obtained values of \(\tilde{\alpha}\) and \(\tilde{\lambda}\) from the method of moments are negative. Note that if we fix \(s = 100^2\) and vary \(\bar{x}\) within the interval \([90,110]\), the plot of \(\bar{x}\) against \(\tilde{\alpha}\) is shown below. Notice that when \(\bar{x} = 100\), \(\tilde{\alpha}\) tends to infinity.
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xbar }\OtherTok{\textless{}{-}}\DecValTok{90}\SpecialCharTok{:}\DecValTok{110}
+\NormalTok{s }\OtherTok{\textless{}{-}} \DecValTok{100}
+\CommentTok{\# MME}
+\NormalTok{alpha\_tilde }\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\NormalTok{s}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\NormalTok{xbar}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(s}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\NormalTok{xbar}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{lambda\_tilde }\OtherTok{\textless{}{-}}\NormalTok{ xbar}\SpecialCharTok{*}\NormalTok{(alpha\_tilde }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(xbar,alpha\_tilde, }\AttributeTok{xlab =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{bar}\NormalTok{(x)), }\AttributeTok{ylab =} \FunctionTok{expression}\NormalTok{(alpha))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SCMA470Bookdownproj_files/figure-latex/unnamed-chunk-23-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3178,9 +3640,11 @@ One can also show that
   &=\Pr(\log X > \log (1000/1.15)) \\
   &=\Pr\left(Z > \frac{\log (1000/1.15)) - 5 }{\sqrt{0.4}}\right) \\
   &=\Pr\left(Z > 2.7954\right) \\
-  &= 0.00164. \\
+  &=1 - \Pr\left(Z \le 2.7954\right) \\
+  &= 1 -  0.9974082 = 0.002591777. \\
   \end{aligned}
   \]
+  I used \texttt{R} to obtain the required probability.
 \end{enumerate}
 
 \hypertarget{tutorial-2}{%
@@ -4471,20 +4935,6 @@ After excess of loss reinsurance arrangement, there is a reduction in the variab
     the means for the individual risks.
   \end{enumerate}
 \end{enumerate}
-
-\hypertarget{interactive-lecture}{%
-\chapter{Interactive Lecture}\label{interactive-lecture}}
-
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\hypertarget{datacamp-light}{%
-\section{DataCamp Light}\label{datacamp-light}}
-
-By default, \texttt{tutorial} will convert all R chunks.
-
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhIDwtIDJcbmIgPC0gM1xuYSArIGIifQ==
-
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5KE1BU1MpXG5saWJyYXJ5KGdncGxvdDIpXG5kYXQgPC0gYygzMS4wODk0MjE1Niw5MTUuMDI1OTM2MiwzMi4wMjM3OTU2Miw4ODUuODc1NDUxLDkzMTQuMTAwNzk3LDcwNy4xNzM4ODY2LDIxMTQuMzYyNDg2LDYwMS41ODI3ODY2LDQzNS4zNzg4MTM1LDQ5LjgwMTc5NjE5LDE4MDIuMzgzODIsMjExLjYzNjQzOSwxNTMuNTk4NDcxOSw2MC4wNTk2Njk5Miw0OC4xNzE1NzY5Nyw5NDguNzIzNDYyNiwxMzIuNDI3MzEwOSwxNTEuNzEwODE1LDI5NjcuOTYxMDM2LDczNS40MTQ5MzMyLDMwNC41ODA3NTg3LDUwLjUzMzExMDY5LDIyNC43NjY1NTQ2LDM1Ni4xODA5NDM4LDQ3NS43NjY4NDQxLDMwNDQuMTQ5NTEzLDEzLjUwNjY0ODk0LDY3Ljk4Mjc0NDQ5LDMwNC4xNDM5OTY2LDIzOC4wMDAxMDUsMzk5LjA3OTgyNjMsMTQ5LjI4MDc4LDEyOC4yODQ4Mzc5LDIxLjQyMDI3NzE4LDczLjMxNDI2NzMyLDQ5LjQ2ODgyNzkxLDY2Ny41MzI3Mjc1LDQ0LjY3MzYwMTg1LDE0ODk0LjA3ODM5LDY2MC43NjE0MzA3LDEwMC43NjI4NjI4LDYzMi4yODEyMzkxLDQyLjkwODg0Nzc3LDY2LjE3NjkzMTM1LDUwLjY5NDU0MTMyLDE4Ni44NzgxNjY3LDE2OC41NDA4NjE1LDE1MS43Mzk5NzgsMjQxOS41MzIzNTQsNDM0LjQ1NjQwMzIsNjkuMDM0NjAyMzIsMTYyLjY2OTg1OTMsMjI2LjYxMTAzOTUsMzMuNjE1MDM0OTUsMjMzLjAyNzk5NiwzMjQ0Ljk0NTg5MywzNTQuMjUzNDgxMyw3OC42MTA1Mjc0NCwyMzEuNTY2NjE0LDI4My4wMjA2NDkxLDQ1Ny42Nzg1NDI2LDEzNC4yOTMzMDU4LDYxLjM0MjY1MDYzLDM4LjI1NjkxOTEyLDE1NzguOTA5MDQ4LDQ0MS42MTk5ODI2LDc2MS40MTc3Nzc3LDI3NS42OTc4NTg4LDUyMS4wMzU1OTE2LDIxODkuNjI3ODMsMTE3LjI2Njc4ODUsMjQwLjM0MDMxNTMsNjcyLjQ1MTI5MzgsNzUzLjg5NTgwMTksODQuOTg4ODMwNzksMzY2NS40MTc5NzYsNjAuMzU5Nzc1MTUsNC4wMTkzMzMwOSwxNC45NTk1MTM2NiwxOTYuNzE0NjQwMywxNTMuNzEzMzE2NSw5OC4zMTg3NTA1MywxMDQuNDQ4NjMyNCwzNTguOTIwNTg3OCwyLjI1NDk4NjMzMSwyMDU5LjYwMzk1OSwzNy42Mzg5ODYwOCw1Ni40ODk0NDAzNSwxMTQzLjA4Mjk0OCw0MTAuNzU4NTUxNiwxMi42NTQwMjk4NiwxOS44MzMyMjUxNCwxMzA1LjEzNDc5NywyMDE5LjM2MDczNSwxMjg2Ljk4NDc5LDg4OTIuMTgyMTMxLDUuODE0NTE4NzQ5LDI5Ni4xNTUxMjk1LDg2Ljc1MzA4MTYxLDQ4Ni43ODUxNDA1LDcuNDkxMzg5Nzk4LDE4MC4zMjU1MjgxLDE0MTQuMjk3NzQ4LDUyNC40NjI4MjA4LDEwNDIuNjkwMzM0LDEyOTEuNDgxNDc0LDExNS40OTUwOTk4LDM2MC42MzEwNzM3LDMyMzMuNzE2ODM4LDE0OS41MTkxMDM5LDguODQ1ODM3NDczLDgzLjg3Mjk2MzI0LDQyLjk5NjE0NTE3LDYyMy45NzA0ODUzLDQ1Ljc0OTkwMDc0LDE0NC4yNDQ5NzkzLDM2OC41NzU2NDIsODY2LjkyNzI1NDUsNTcuNjE1OTI5MjEsMTgxMi4yMzEzMTUsMjIyOS45OTg3NTQsMzQ0OC4zMzI4ODgsMTEzMTMuMzQ3MjEsMTQ5Mi40OTg4NTYsMTk2LjcyNjI1NzEsNzEuMTE4MTc2MDEsNDI1LjA2MTQ0ODMsMzguMjg2NTMwNDgsNDQuNTA5MDAxNiwzMDguODc4MTY1NywxOTA4MC41MTc0OSw4Mi4wNzYxMzkzLDI1MC4wODM1MjMsNzkuMDc0OTIwNDIsMTgzLjg2OTc2ODYsMzMuODMxNjAzOTEsMjIuNzgyMTgyOTksNjk4Ljk1NDE2NDgsMzIuNzU0MjcwMDMsNDU3LjAxMDQ5MTksMTEyLjE3MTU1NjcsMzk2LjcxNTUyMzQsMTk1LjAyNDA3ODEsMTg2My4xODUzODUsMTgxLjY0NDExMjEsNTkuMDg3MzM2NTUsOTYuMzkwMDQxOTEsODI0LjczMDE4NCwxNTUuODIxNTE2MiwxMS44NTUxMDY2MSw4NzAuODY3OTUwMiw0MjUuMzEzMzA0NSw4NTQuNzI5NjQ3NCwyNTQuMzEwODg5Miw2NjQuMzMyMDEwNyw1Ni4yNjEyMDc1MiwzNzguMjQ0MDE2LDIwNjkuNDMxNDk1LDMxMjEuMDkwMSw4NDQuNDMzNzU5NCw3NDYuMzg1MzY3NSwxODUxLjQ2OTYzMyw0MzEuNzA2MDIzMiwzMzMuMzI1NDgxLDIyLjIzOTcwMTAyLDY2Mi4zODE2ODg4LDExNy43NTkwMDU3LDU3MC40NDEyODI5LDExMjcuMDM1MzA2LDI0Ni4yNjg2MTgzLDE0NjcuNTY4ODY3LDM0Ljg5MTg3MTEyLDIzNy41NzYxNjkzLDM0OS40NTAzOTY3LDIyOS4zMzYyODQ5LDkzNC42OTI2NTYxLDE2Mi45MjU0NDA4LDU4LjI4NDk3MTcyLDEyODAzLjA0NzI2LDE1Ljk0OTA0MTg5LDk1OS45NTQzNDAyLDU4NTMuODc4OTc5LDUzNy4zOTc0MjUzLDc1LjMwNTcyODgzLDcxOC42NTk3NTIxLDYzMy44MjE0NDM4LDM2My4wMzM4MDc2LDk1Ljg0NzYyNjYsODAuMzE3ODY1MywyODYuNzEyMTc2Myw2MzY3LjQ1MzQwOCwzMjEuNTY3NzExLDIxLjUxODM4MDIyLDU5OS40NzEyOTU4LDI0Ni43MDA3MDczLDEzODYzLjc4MTgxLDIxNC43MzQyNTk3LDIzNC4zMjEyOTUyLDk1OC45MTYxNzksMTY1LjI1MjEzODUpXG5kYXQgPC0gZGF0YS5mcmFtZShjbGFpbXMgPSBkYXQpIiwic2FtcGxlIjoiIyBGaWxsIHlvdXIgY29kZSBoZXJlXG5uYW1lcyhkYXQpIiwic29sdXRpb24iOiJnZ3Bsb3QoZGF0KSArIFxuICBnZW9tX2hpc3RvZ3JhbShhZXMoeCA9IGNsYWltcywgeSA9IC4uZGVuc2l0eS4uKSwgYmlucyA9IDkwICwgZmlsbCA9IFwiZ3JleVwiLCBjb2xvciA9IFwiYmxhY2tcIikgKyBcbiAgc3RhdF9mdW5jdGlvbihmdW49ZGV4cCwgZ2VvbSA9XCJsaW5lXCIsIGFyZ3MgPSAocmF0ZSA9IDEvbWVhbihkYXQkY2xhaW1zKSksIGFlcyhjb2xvdXIgPSBcIkV4cFwiKSkgK1xuICBzY2FsZV9jb2xvcl9kaXNjcmV0ZShuYW1lPVwiRml0dGVkIERpc3RyaWJ1dGlvbnNcIikifQ==
 
   \bibliography{book.bib,packages.bib}
 

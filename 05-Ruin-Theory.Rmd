@@ -1,0 +1,337 @@
+Ruin Theory
+===========
+
+The classical risk process
+--------------------------
+
+Short term risk models for a fixed time period have been studied in the
+previous sections. In this section, risk models that evolve over time
+will be presented. Suppose that an insurer
+
+-   begins with an initial capital $u$, called an initial surplus,
+
+-   collects premiums at a constant rate $c$ per unit time,
+
+-   and pays claims when losses occur.
+
+The insurer is in ruin if the insurer's capital becomes negative at some
+point in time, i.e. the insurer's surplus falls to zero or below.
+
+**Note** A surplus is an excess of income or assets over expenditure or
+liabilities in a given period, typically a financial year:
+
+::: {#ExampleSurplus .example}
+*An insurer has initial surplus $u$ of 1 (in suitable
+units) and receives premium payments at a rate of 1 per year. Suppose
+claims from a portfolio of insurance over the first two years are as
+follows:*
+
+  *Time (years)*   *0.4*   *0.9*   *1.5*
+  ---------------- ------- ------- -------
+  *Amount*         *0.8*   *0.7*   *1.2*
+
+*Plot a surplus process and determine whether ruin occurs within the
+first three years.*
+:::
+
+::: {.example}
+*As given in Example
+\@ref(exm:ExampleSurplus), suppose that the insurer has effected
+proportional reinsurance with retained proportion of 0.7. The
+reinsurance premium is 0.4 per year to be paid continuously. Plot a
+surplus process and determine whether ruin occurs within the first three
+years. Comment on the results.*
+:::
+
+### Classical risk process
+
+The following assumptions are assumed for the study of the evolution of
+insurer's surplus over time.
+
+1.  The insurer's initial capital is $u$.
+
+2.  The premium rate per unit of time received continuously is $c$, i.e.
+    the total amount of premiums received by time $t$ is $ct$.
+
+3.  The counting process $\{N(t) \}_{t \ge 0}$ for the number of claims
+    occurred in the time interval $[0,t]$ is a Poisson process with
+    parameter $\lambda$.
+
+4.  The claim sizes (or individual claim amounts) $X_1, X_2, \ldots$ are
+    independent and identically distributed random variables.
+
+5.  The claim sizes $X_1, X_2, \ldots$ are independent of the counting
+    process $N(t)$.
+
+The **surplus process** $\{U(t) \}_{t \ge 0}$ is then given by
+\begin{equation}
+(\#eq:surplus)
+U(t) = u + ct - S(t),
+\end{equation} 
+where the **aggregate claim amount up to time**
+$t$, $S(t)$ is 
+\begin{equation}
+(\#eq:St)
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+**Notes**
+
+1.  The evolution of insurer's surplus defined in \@ref(eq:surplus)
+    is also known as the **classical risk process**.
+
+2.  The only random and uncertain quantity in
+    \@ref(eq:surplus)
+    is the aggregate claims $S(t)$.
+
+### Poisson processes
+
+A **Poisson process** is a special type of counting process. It can be
+represented by a continuous time stochastic process $\{N(t)\}_{t \ge 0}$
+which takes values in the non-negative integers. It can be used to model
+the occurrence or arrival of events over a continuous time interval. The
+state space is discrete but the time set is continuous. Here $N(t)$
+represents the number of events in the interval $(0,t]$.
+
+The following examples can also be modelled by a Poisson process:
+
+1.  Claims arrivals at an insurance company,
+
+2.  Accidents occurring on the highway, and
+
+3.  Telephone calls to a call centre.
+
+#### Counting Process {#counting-process .unnumbered}
+
+A counting process $\{N_t \}_{t \ge 0}$ is a collection of non-negative,
+integer-valued random variables such that if $0 \le s \le t$, then
+$N(s) \le N(t)$.
+
+The following figure illustrates a trajectory of the Poisson process.
+The sample path of a Poisson process is a right-continuous step
+function. There are jumps occurring at time $t_1, t_2, t_3, \ldots$.
+
+
+```{r PlotPoissonProcess, tut = FALSE, echo = TRUE}
+
+lambda <- 17
+# the length of time horizon for the simulation T_length <- 31
+last_arrival <- 0
+arrival_time <- c()
+inter_arrival <- rexp(1, rate = lambda)
+T_length <- 1
+while (inter_arrival + last_arrival < T_length) { 
+  last_arrival <- inter_arrival + last_arrival 
+  arrival_time <- c(arrival_time,last_arrival) 
+  inter_arrival <- rexp(1, rate = lambda)
+}
+
+
+n <- length(arrival_time)
+counts <- 1:n
+
+plot(arrival_time, counts, pch=16, ylim=c(0, n))
+points(arrival_time, c(0, counts[-n]))
+segments(
+  x0 = c(0, arrival_time[-n]),
+  y0 = c(0, counts[-n]),
+  x1 = arrival_time,
+  y1 = c(0, counts[-n])
+)
+```
+
+Recall that a stochastic process $\{N(t) \}_{t \ge 0}$ is a Poisson
+process with parameter $\lambda$ if the process satisfies the three
+properties:
+
+1.  $N(0) = 0$.
+
+2.  **Independent increments** For $0 < s < t  \le u < v$, the increment
+    $N(t) - N(s)$ is independent of the increment $N(v) - N(u)$, i.e.
+    the number of events in $(s,t]$ is independent of the number of
+    events in $(u,v]$.
+
+3.  **Stationary increments** For
+    $0 < s <t$, the distribution $N(t) - N(s)$ depends only on $t -s$
+    and not on the values $s$ and $t$, i.e. the increments of the
+    process over time has a distribution that only depend on the time
+    difference $t - s$, the lenght of the time interval.
+
+4.  **Poisson distribution**  For
+    $t \ge 0$, the random variable $N(t)$ has a Poisson distribution
+    with mean $\lambda t$.
+
+It follows from conditions the **Stationary Increments** and **Poisson Distribution** properties that
+$$\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-\lambda(t-s)} }{n!},  \quad \quad s < t, \, n = 0,1,2, \ldots$$
+
+**Notes**
+
+1.  The sample paths of $\{N(t) \}_{t \ge 0}$ are non-decreasing step
+    functions, or the process is referred to be as a counting process.
+
+2.  A process with stationary and independent increments can be thought
+    of as **starting over** at any point in time in a probabilistic
+    sense. The 'starting over' property follows from the fact that
+
+    -   the exponential distribution has the memoryless property, and
+
+    -   the times between successive events (or interarrival times) are
+        independent and identically distributed exponential random
+        variables with mean $1/\lambda$. This follows from the following
+        result:
+
+3.  For more details about Poisson processes, please refer to the
+    contents of the course "SCMA 469 Actuarial Statistics"
+
+### Compound Poisson processes
+
+The aggregate claims process $S(t)$ defined in \@ref(eq:St)
+of the classical
+risk process is said to be a **compound Poisson process** with Poisson
+parameter $\lambda$. The compound Poisson process has the following
+important properties:
+
+1.  For each $t$, the random variable $S(t)$ has a compound Poisson
+    distribution with parameter $\lambda t$, i.e.
+    $$S(t) \sim \mathcal{CP}(\lambda t, F_X(x)).$$ Thus, the mean and
+    variance of the compound Poisson distribution are
+    $$\mathrm{E}[S(t)] = \lambda t \mathrm{E}[X], \quad \mathrm{Var}[S(t)] =\lambda t \mathrm{E}[X^2].$$
+    The moment generating function of $S(t)$ is
+    $$M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).$$
+
+2.  It has stationary and independent increments, i.e. for disjoint time
+    intervals $0 < s < t  \le u < v$, the random variables $N(t) - N(s)$
+    and $N(v) - N(u)$ are independent and have
+    $\mathcal{CP}(\lambda (t -s), F_X(x))$ and
+    $\mathcal{CP}(\lambda (v - u), F_X(x))$ distributions, respectively.
+
+**Notes** Various properties of the aggregate claims process $S(t)$ can
+be summarised as follows:
+
+1.  $S(1) \sim \mathcal{CP}(\lambda, F_X(x))$ is the aggregate claims in
+    the first year.
+
+2.  $S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))$ is the aggregate
+    claims in the $n$th year, for $n = 1,2, \ldots$.
+
+3.  The process $\{ S(n) - S(n-1) \}_{n=1}^\infty$ is a sequence of
+    **independent and identically distributed** random variables
+    representing the aggregate claims in successive years.
+
+### The relative safety loading
+
+Let $\mu_X$ and $\sigma^2_X$ denote the mean and the variance of claim
+sizes $X_i$.
+
+::: {.example} 
+Consider the following questions.
+
+1. Calculate the expected surplus and the variance surplus at time $t$.
+
+2. Calculate the expected profit per unit time in $(0, t]$.
+:::
+
+
+Based on the expected value premium principle, the premium rate $c$ per
+unit time can be defined by
+$$c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.$$
+Hence the **relative safety loading** (or **premium loading factor** or
+**relative security loading**) $\theta$ is given by
+$$\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.$$
+
+**Notes**
+
+1.  The insurer can make a profit provided that $c > \lambda \mu_X$ or
+    the relative safety loading $\theta$ is positive. In this case, the
+    surplus will drift to $\infty$, but ruin could still occur. The rate
+    at which premium income comes in is greather than the rate at which
+    claims are paid out.
+
+2.  On the other hand, if $c < \lambda \mu_X$, then the surplus will
+    drift to $-\infty$, but ruin is certain.
+
+### Ruin probabilities
+
+Various definitions of ruin probabilities are given.
+
+1.  The **probability of ruin in infinite time** (or the **ultimate ruin
+    probability**) is defined by
+    $$\psi(u) = \Pr(U(t) < 0 \quad \text{ for some } t > 0).$$
+
+2.  The **finite-time ruin probability** (or the **probability of ruin
+    by time $t$**) is defined by
+    $$\psi(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in (0,t]).$$
+
+3.  The **discrete time ultimate ruin probability** is defined by
+    $$\psi_h(u) = \Pr(U(t) < 0 \quad \text{ for some } t \in \{h, 2h, 3h, \ldots \}).$$
+
+4.  The **discrete time ruin probability in finite time** is defined by
+    $$\psi_h(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in \{h, 2h, 3h, \ldots, t\}).$$
+
+**Notes**
+
+1.  For $0 \le u_1 \le u_2$, $$\psi(u_1) \ge \psi(u_2),$$ i.e. the
+    ultimate ruin probability is non-increasing in $u$.
+
+2.  If ruin occurs under the discrete time, it must occur under the
+    continuous time, i.e. $$\psi_h(u) < \psi(u).$$ Similarly,
+    $$\psi_h(u,t) < \psi(u,t).$$
+
+3.  The discrete time ultimate ruin probability $\psi_h(u)$ could be
+    used as an approximation of $\psi(u)$ provided $h$ is sufficiently
+    small.
+
+4.  The discrete time ruin probability in finite time $\psi_h(u,t)$
+    could be used as an approximation of $\psi(u,t)$ provided $h$ is
+    sufficiently small.
+
+::: {.example}
+*Suppose the annual aggregate claims for a portfolio of
+policies is approximately normal.*
+
+-   *The insurer's initial surplus is 1000 (in suitable units) and the
+    premium rate is 1500 per year.*
+
+-   *The number of claims per year has a Poisson distribution with
+    parameter 50.*
+
+-   *The distribution of claim sizes is lognormal with parameters
+    $\mu = 3$ and $\sigma^2 = 0.9$.*
+
+*Calculate the probability that the insurer's surplus at time 2 will be
+negative.*
+:::
+
+Simulation of ruin probabilities
+--------------------------------
+
+::: {.example}
+*Let $F(x)$ be a continuous cumulative density
+function. Let $Y$ be a random variable with a $U(0,1)$ distribution.
+Define the random variable $X$ by $$X = F^{-1}(Y).$$ Show that the
+cumulative density function of $X$, $F_X(x)$ is $F(x)$.*
+:::
+
+::: {.example}
+*The aggregate claims process for a risk is compound
+Poisson with Poisson parameter $\lambda = 100$ per year. Individual
+claim amounts have $\text{Pa}(4,3)$. The premium income per year is
+$c = 110$ (in suitable units), received continuously.*
+
+*Using either Excel or R to simulate 1000 values of aggregate claims
+$S$, assuming that $S$ is approximated by a translated gamma
+approximation,*
+
+1.  *Estimate
+    $\hat{\psi}_1(50, 5)$, an estimate of $\psi_1(50,5)$.*
+
+2.  *Estimate the standard error of $\hat{\psi}_1(50, 5)$.*
+
+3.  *Calculate a 95% confidence interval for your estimate in 1.*
+
+4.  *Estimate $\psi_{0.5}(50, 5)$.*
+:::
+
+<!-- ![image](RuinSimulation.pdf){width="90%"} -->
+
+<!-- ![image](RuinSimulation2.pdf){width="90%"} -->
