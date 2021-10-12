@@ -150,6 +150,7 @@
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
 \begin{document}
+\setcounter{chapter}{3}
 \maketitle
 
 
@@ -218,7 +219,7 @@ The conditional variance formula is
     Var[X] = E[ Var[X|Y ]] + Var[E[X|Y ]].
 \end{equation}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-39}{}\label{exm:unlabeled-div-39}
 
 Show that \[Var[X] = E[ Var[X|Y ]] + Var[E[X|Y ]].\]
@@ -240,7 +241,7 @@ Consider the terms on the right-hand side of \eqref{eq:exampleVariance}. We have
                 \end{aligned}\] Adding
 both terms gives the required result.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-40}{}\label{exm:unlabeled-div-40}
 
 In three coloured boxes - Red, Green and Blue, each box has two bags.
@@ -317,7 +318,7 @@ and \(Var[S | N] = N (m_2 - m_1^2).\) It follows that \[\begin{aligned}
            &= E[ N (m_2 - m_1^2) ] + Var[ N m_1 ] \\
            &= E[ N ]  (m_2 - m_1^2)  +  Var[ N ] m_1  ^2. \end{aligned}\]
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-41}{}\label{exm:unlabeled-div-41}
 
 Show that \(M_S(t) = M_N(\log(M_X(t)))\).
@@ -355,7 +356,7 @@ and denote by \(\mathcal{CP}(\lambda,F_X)\).
 distributions, for e.g.~if \(N\) has a negative binomial distribution,
 then \(S\) is said to have a compound negative binomial distribution.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-42}{}\label{exm:unlabeled-div-42}
 
 Let \(S \sim \mathcal{CP}(\lambda,F_X)\). Show that
@@ -419,7 +420,7 @@ where \(m_k\) be the \(k\)th moment of \(X_1\)
           &= \lambda m_3.\end{aligned}\]
 \end{enumerate}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-43}{}\label{exm:unlabeled-div-43}
 
 Let \(S\) be the aggregate annual claims for a risk where
@@ -502,7 +503,7 @@ An important property of independent, but not necessarily identically
 distributed, compound Poisson random variables is that the sum of a
 fixed number of them is also a compound Poisson random variable.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:Additivity}{}\label{exm:Additivity}
 
 Let \(S_1, \ldots, S_n\)
@@ -535,7 +536,7 @@ It can be interpreted as the probability of getting \(n\) failures before
 the \(k\)th success occurs in a sequence of independent Bernoulli trials
 with probability of success \(p\).
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-44}{}\label{exm:unlabeled-div-44}
 
 Let \(N \sim NB(k,p)\). Show that the mean, variance and moment generating
@@ -595,7 +596,7 @@ Policyholders represent a variety of risks and have different risk parameters, a
 
 This enables us to allow for variability in the risks across a portfolio; that is, to model the heterogeneity of the numbers of claims occurring for different risks.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-45}{}\label{exm:unlabeled-div-45}
 
 A portfolio consists of a large number of individual policies. For each policy, the number of claims in a year has a poisson distribution \(N | \lambda \sim Poisson(\lambda)\). Let us suppose that the variation in \(\lambda\) across the portfolio of risks can be modelled using a gamma \(\mathcal{G}(\alpha,\beta)\) distribution with known parameters, and let us use this to average across the risks.
@@ -642,7 +643,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxubiA8LSA1MDAwXG5hbHBoYSA8
 A compound binomial distribution can be used to model a portfolio of
 policies, each of which can give rise to at most one claim.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-46}{}\label{exm:unlabeled-div-46}
 
 Consider a portfolio of \(n\) independent and identical policies where
@@ -700,7 +701,7 @@ the amount of the \(i\)th claim.
   arranged.
 \end{enumerate}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-47}{}\label{exm:unlabeled-div-47}
 
 Aggregate claims from a risk in a given time have a compound Poisson
@@ -796,7 +797,7 @@ counting only non-zero claims, we can rewrite \(S_R\) as follows. Let
 aggregate claim amount paid by the reinsurer can be written as
 \[S_R   =  \sum_{i= 1}^{N_R} W_i.\]
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-48}{}\label{exm:unlabeled-div-48}
 
 By using the probability generating function, show that if
@@ -852,7 +853,7 @@ from \eqref{eq:eqnSI} and
   where \(f_W(x) = \displaystyle{\frac{f_X(x+M)}{1- F_X(M)}}, x > 0\).
 \end{enumerate}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-49}{}\label{exm:unlabeled-div-49}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -974,7 +975,7 @@ Hence,
 \end{aligned}
 \]
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-50}{}\label{exm:unlabeled-div-50}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -1082,7 +1083,7 @@ by a normal distribution, i.e.~\(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[
   probabilities which are the most interest quantities of insurers.
 \end{enumerate}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:approximation}{}\label{exm:approximation}
 
 Aggregate claims from a risk in a given
@@ -1117,7 +1118,7 @@ Sk[S] &= \frac{2}{\sqrt{\alpha}},  \\
 Var[S] &= \frac{\alpha}{\lambda^2},\\
 E[S] &= \frac{\alpha}{\lambda} + k.\end{aligned}\]
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
 
 Show that the parameters \(\alpha, \lambda\) and \(k\) satisfy
@@ -1128,7 +1129,7 @@ k &= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}\]
 
 \end{example}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
 
 The aggregate claims \(S\) have the compound Poisson distribution as given
@@ -1156,7 +1157,7 @@ Panjer's recursion formula,
 \[p_n = \left( a + \frac{b}{n} \right) p_{n-1}, \quad n = 1,2, \ldots,\]
 where \(a\) and \(b\) are constants.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
 
 Show that a Poisson distribution \(N \sim Poisson(\lambda)\) satisfies Panjer's
@@ -1189,7 +1190,7 @@ Then the unknown \(g_r\) can be recursively calculated by
 approximate it by a discrete distribution and then apply the Panjer's
 recursion algorithm.
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-54}{}\label{exm:unlabeled-div-54}
 
 Aggregate claims \(S\) have a compound Poisson distribution
@@ -1226,7 +1227,7 @@ calculation rules are as follows:
   \[P = E[S] + \theta\, Var[S].\]
 \end{enumerate}
 
-\begin{example}
+\newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-55}{}\label{exm:unlabeled-div-55}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -1244,5 +1245,488 @@ parameters \(\lambda = 10\) and the claim sizes have a Pareto distribution
 \item
   Repeat the same question as above assumed that the SVP is applied.
 \end{enumerate}
+
+
+\textbf{Solution:}
+
+The loss distribution has Pareto distribution \(X \sim Pa(4,3)\). Therefore, \(\mathrm{E}[X] = 1\) and \(\mathrm{E}[X^2] = 3\).
+
+The mean and variance of the aggregate claim amounts are \(\mathrm{E}[S] = \lambda \mathrm{E}[X] = 10\)
+and \(\mathrm{Var}[S] = \lambda \mathrm{E}[X^2] = 30\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use the normal approximation \(S \sim \mathcal{N}(10, 30)\).
+  Let \(P\) denote the premium charged. We need to find the security loading \(\theta\) such that
+  \[\Pr( P - S > 0) = 0.95.\]
+  Assume that the premium charged to cover the risk follows the expected value principle (EVP). So we set
+  \[P = E[S] + \theta\, E[S] = ( 1 + \theta)E[S] = ( 1 + \theta)(10).\]
+  \begin{align}
+  0.95 &= \Pr( P - S > 0)  \\
+  &= \Pr( ( 1 + \theta)(10) - S > 0)  \\
+  &= \Pr( S < ( 1 + \theta)(10) ) \\
+  &= \Pr( Z < \frac{( 1 + \theta)(10) - 10 }{\sqrt{30}} ) \\
+  &= \Pr( Z < \frac{( \theta)(10) }{\sqrt{30}} ).
+  \end{align}
+  This gives \(\frac{( \theta)(10) }{\sqrt{30}} = 1.6448536\) and
+  \[\theta = 0.9009234, \quad  P = 19.009.\]
+  Instead of using the normal approximation to aggregate claims \(S\), we now assume that \(S\) is approximated by \(Y + k\) where
+  \(Y \sim \mathcal{G}(1.4814815, 0.2222222)\) and \(k = 3.3333333\) is a constant. It follows that
+  \begin{align}
+  0.95 &= \Pr( P - S > 0)  \\
+  &= \Pr( ( 1 + \theta)(10) - S > 0)  \\
+  &= \Pr( S < ( 1 + \theta)(10) ) \\
+  &= \Pr( Y < ( 1 + \theta)(10) - 3.3333333 ) \\
+  \end{align}
+\end{enumerate}
+
+Therefore, \((1 + \theta)\)(10) - 3.3333333 = qgamma(0.95,shape = 1.481481, rate = 0.222222) = 17.43845, which results in
+\[\theta = 1.0771784, \quad  P = 20.772.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Using the standard deviation principle (SVP), we set
+  \[P = E[S] + \theta\, \text{SD}[S] = 10 + \theta \cdot sqrt{30}\]
+  For the normal approximation of the aggregate claims, we obtain
+  \begin{align}
+  0.95 &= \Pr( P - S > 0)  \\
+  &= \Pr( 10 + \theta \cdot sqrt{30} - S > 0)  \\
+  &= \Pr( S < 10 + \theta \cdot sqrt{30} ) \\
+  &= \Pr( Z < \frac{10 + \theta \cdot sqrt{30} - 10 }{\sqrt{30}} ) \\
+  &= \Pr( Z < \theta).
+  \end{align}
+\end{enumerate}
+
+Hence, \(\theta = 1.644854\) and \(P = 19.009\).
+
+\textbf{Comment} The loading factors (for normal approximation) in both two cases are different because they are applied to different quantities (i.e.~\(\mathrm{E}[S]\) and \(\mathrm{Var}[S]\)). But they give the same premium.
+
+\hypertarget{ruin-theory}{%
+\chapter{Ruin Theory}\label{ruin-theory}}
+
+\hypertarget{the-classical-risk-process}{%
+\section{The classical risk process}\label{the-classical-risk-process}}
+
+Short term risk models for a fixed time period have been studied in the
+previous sections. In this section, risk models that evolve over time
+will be presented. Suppose that an insurer
+
+\begin{itemize}
+\item
+  begins with an initial capital \(u\), called an initial surplus,
+\item
+  collects premiums at a constant rate \(c\) per unit time,
+\item
+  and pays claims when losses occur.
+\end{itemize}
+
+The insurer is in ruin if the insurer's capital becomes negative at some
+point in time, i.e.~the insurer's surplus falls to zero or below.
+
+\textbf{Note} A surplus is an excess of income or assets over expenditure or
+liabilities in a given period, typically a financial year:
+
+\newpage \begin{example}
+\protect\hypertarget{exm:ExampleSurplus}{}\label{exm:ExampleSurplus}
+
+\emph{An insurer has initial surplus \(u\) of 1 (in suitable
+units) and receives premium payments at a rate of 1 per year. Suppose
+claims from a portfolio of insurance over the first two years are as
+follows:}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\emph{Time (years)} & \emph{0.4} & \emph{0.9} & \emph{1.5} \\
+\midrule
+\endhead
+\emph{Amount} & \emph{0.8} & \emph{0.7} & \emph{1.2} \\
+\bottomrule
+\end{longtable}
+
+\emph{Plot a surplus process and determine whether ruin occurs within the
+first three years.}
+
+\end{example}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-56}{}\label{exm:unlabeled-div-56}
+
+\emph{As given in Example
+\ref{exm:ExampleSurplus}, suppose that the insurer has effected
+proportional reinsurance with retained proportion of 0.7. The
+reinsurance premium is 0.4 per year to be paid continuously. Plot a
+surplus process and determine whether ruin occurs within the first three
+years. Comment on the results.}
+
+\end{example}
+
+\hypertarget{classical-risk-process}{%
+\subsection{Classical risk process}\label{classical-risk-process}}
+
+The following assumptions are assumed for the study of the evolution of
+insurer's surplus over time.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer's initial capital is \(u\).
+\item
+  The premium rate per unit of time received continuously is \(c\), i.e.
+  the total amount of premiums received by time \(t\) is \(ct\).
+\item
+  The counting process \(\{N(t) \}_{t \ge 0}\) for the number of claims
+  occurred in the time interval \([0,t]\) is a Poisson process with
+  parameter \(\lambda\).
+\item
+  The claim sizes (or individual claim amounts) \(X_1, X_2, \ldots\) are
+  independent and identically distributed random variables.
+\item
+  The claim sizes \(X_1, X_2, \ldots\) are independent of the counting
+  process \(N(t)\).
+\end{enumerate}
+
+The \textbf{surplus process} \(\{U(t) \}_{t \ge 0}\) is then given by
+\begin{equation}
+\label{eq:surplus}
+U(t) = u + ct - S(t),
+\end{equation}
+where the \textbf{aggregate claim amount up to time}
+\(t\), \(S(t)\) is
+\begin{equation}
+\label{eq:St}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The evolution of insurer's surplus defined in \eqref{eq:surplus}
+  is also known as the \textbf{classical risk process}.
+\item
+  The only random and uncertain quantity in
+  \eqref{eq:surplus}
+  is the aggregate claims \(S(t)\).
+\end{enumerate}
+
+\hypertarget{poisson-processes}{%
+\subsection{Poisson processes}\label{poisson-processes}}
+
+A \textbf{Poisson process} is a special type of counting process. It can be
+represented by a continuous time stochastic process \(\{N(t)\}_{t \ge 0}\)
+which takes values in the non-negative integers. It can be used to model
+the occurrence or arrival of events over a continuous time interval. The
+state space is discrete but the time set is continuous. Here \(N(t)\)
+represents the number of events in the interval \((0,t]\).
+
+The following examples can also be modelled by a Poisson process:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Claims arrivals at an insurance company,
+\item
+  Accidents occurring on the highway, and
+\item
+  Telephone calls to a call centre.
+\end{enumerate}
+
+\hypertarget{counting-process}{%
+\subsubsection*{Counting Process}\label{counting-process}}
+\addcontentsline{toc}{subsubsection}{Counting Process}
+
+A counting process \(\{N_t \}_{t \ge 0}\) is a collection of non-negative,
+integer-valued random variables such that if \(0 \le s \le t\), then
+\(N(s) \le N(t)\).
+
+The following figure illustrates a trajectory of the Poisson process.
+The sample path of a Poisson process is a right-continuous step
+function. There are jumps occurring at time \(t_1, t_2, t_3, \ldots\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \DecValTok{17}
+\CommentTok{\# the length of time horizon for the simulation T\_length \textless{}{-} 31}
+\NormalTok{last\_arrival }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{T\_length }\OtherTok{\textless{}{-}} \DecValTok{1}
+\ControlFlowTok{while}\NormalTok{ (inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }\SpecialCharTok{\textless{}}\NormalTok{ T\_length) \{ }
+\NormalTok{  last\_arrival }\OtherTok{\textless{}{-}}\NormalTok{ inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }
+\NormalTok{  arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(arrival\_time,last\_arrival) }
+\NormalTok{  inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{\}}
+
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(arrival\_time)}
+\NormalTok{counts }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n}
+
+\FunctionTok{plot}\NormalTok{(arrival\_time, counts, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, n))}
+\FunctionTok{points}\NormalTok{(arrival\_time, }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]))}
+\FunctionTok{segments}\NormalTok{(}
+  \AttributeTok{x0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, arrival\_time[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{y0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{x1 =}\NormalTok{ arrival\_time,}
+  \AttributeTok{y1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PlotPoissonProcess-1.pdf}
+
+Recall that a stochastic process \(\{N(t) \}_{t \ge 0}\) is a Poisson
+process with parameter \(\lambda\) if the process satisfies the three
+properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(N(0) = 0\).
+\item
+  \textbf{Independent increments} For \(0 < s < t \le u < v\), the increment
+  \(N(t) - N(s)\) is independent of the increment \(N(v) - N(u)\), i.e.
+  the number of events in \((s,t]\) is independent of the number of
+  events in \((u,v]\).
+\item
+  \textbf{Stationary increments} For
+  \(0 < s <t\), the distribution \(N(t) - N(s)\) depends only on \(t -s\)
+  and not on the values \(s\) and \(t\), i.e.~the increments of the
+  process over time has a distribution that only depend on the time
+  difference \(t - s\), the lenght of the time interval.
+\item
+  \textbf{Poisson distribution} For
+  \(t \ge 0\), the random variable \(N(t)\) has a Poisson distribution
+  with mean \(\lambda t\).
+\end{enumerate}
+
+It follows from conditions the \textbf{Stationary Increments} and \textbf{Poisson Distribution} properties that
+\[\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-\lambda(t-s)} }{n!},  \quad \quad s < t, \, n = 0,1,2, \ldots\]
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The sample paths of \(\{N(t) \}_{t \ge 0}\) are non-decreasing step
+  functions, or the process is referred to be as a counting process.
+\item
+  A process with stationary and independent increments can be thought
+  of as \textbf{starting over} at any point in time in a probabilistic
+  sense. The `starting over' property follows from the fact that
+
+  \begin{itemize}
+  \item
+    the exponential distribution has the memoryless property, and
+  \item
+    the times between successive events (or interarrival times) are
+    independent and identically distributed exponential random
+    variables with mean \(1/\lambda\). This follows from the following
+    result:
+  \end{itemize}
+\item
+  For more details about Poisson processes, please refer to the
+  contents of the course ``SCMA 469 Actuarial Statistics''
+\end{enumerate}
+
+\hypertarget{compound-poisson-processes}{%
+\subsection{Compound Poisson processes}\label{compound-poisson-processes}}
+
+The aggregate claims process \(S(t)\) defined in \eqref{eq:St}
+of the classical
+risk process is said to be a \textbf{compound Poisson process} with Poisson
+parameter \(\lambda\). The compound Poisson process has the following
+important properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For each \(t\), the random variable \(S(t)\) has a compound Poisson
+  distribution with parameter \(\lambda t\), i.e.
+  \[S(t) \sim \mathcal{CP}(\lambda t, F_X(x)).\] Thus, the mean and
+  variance of the compound Poisson distribution are
+  \[\mathrm{E}[S(t)] = \lambda t \mathrm{E}[X], \quad \mathrm{Var}[S(t)] =\lambda t \mathrm{E}[X^2].\]
+  The moment generating function of \(S(t)\) is
+  \[M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).\]
+\item
+  It has stationary and independent increments, i.e.~for disjoint time
+  intervals \(0 < s < t \le u < v\), the random variables \(N(t) - N(s)\)
+  and \(N(v) - N(u)\) are independent and have
+  \(\mathcal{CP}(\lambda (t -s), F_X(x))\) and
+  \(\mathcal{CP}(\lambda (v - u), F_X(x))\) distributions, respectively.
+\end{enumerate}
+
+\textbf{Notes} Various properties of the aggregate claims process \(S(t)\) can
+be summarised as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate claims in
+  the first year.
+\item
+  \(S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate
+  claims in the \(n\)th year, for \(n = 1,2, \ldots\).
+\item
+  The process \(\{ S(n) - S(n-1) \}_{n=1}^\infty\) is a sequence of
+  \textbf{independent and identically distributed} random variables
+  representing the aggregate claims in successive years.
+\end{enumerate}
+
+\hypertarget{the-relative-safety-loading}{%
+\subsection{The relative safety loading}\label{the-relative-safety-loading}}
+
+Let \(\mu_X\) and \(\sigma^2_X\) denote the mean and the variance of claim
+sizes \(X_i\).
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-57}{}\label{exm:unlabeled-div-57}
+
+Consider the following questions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calculate the expected surplus and the variance surplus at time \(t\).
+\item
+  Calculate the expected profit per unit time in \((0, t]\).
+\end{enumerate}
+
+\end{example}
+
+Based on the expected value premium principle, the premium rate \(c\) per
+unit time can be defined by
+\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]
+Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} or
+\textbf{relative security loading}) \(\theta\) is given by
+\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer can make a profit provided that \(c > \lambda \mu_X\) or
+  the relative safety loading \(\theta\) is positive. In this case, the
+  surplus will drift to \(\infty\), but ruin could still occur. The rate
+  at which premium income comes in is greather than the rate at which
+  claims are paid out.
+\item
+  On the other hand, if \(c < \lambda \mu_X\), then the surplus will
+  drift to \(-\infty\), but ruin is certain.
+\end{enumerate}
+
+\hypertarget{ruin-probabilities}{%
+\subsection{Ruin probabilities}\label{ruin-probabilities}}
+
+Various definitions of ruin probabilities are given.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \textbf{probability of ruin in infinite time} (or the \textbf{ultimate ruin
+  probability}) is defined by
+  \[\psi(u) = \Pr(U(t) < 0 \quad \text{ for some } t > 0).\]
+\item
+  The \textbf{finite-time ruin probability} (or the \textbf{probability of ruin
+  by time \(t\)}) is defined by
+  \[\psi(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in (0,t]).\]
+\item
+  The \textbf{discrete time ultimate ruin probability} is defined by
+  \[\psi_h(u) = \Pr(U(t) < 0 \quad \text{ for some } t \in \{h, 2h, 3h, \ldots \}).\]
+\item
+  The \textbf{discrete time ruin probability in finite time} is defined by
+  \[\psi_h(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in \{h, 2h, 3h, \ldots, t\}).\]
+\end{enumerate}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For \(0 \le u_1 \le u_2\), \[\psi(u_1) \ge \psi(u_2),\] i.e.~the
+  ultimate ruin probability is non-increasing in \(u\).
+\item
+  If ruin occurs under the discrete time, it must occur under the
+  continuous time, i.e.~\[\psi_h(u) < \psi(u).\] Similarly,
+  \[\psi_h(u,t) < \psi(u,t).\]
+\item
+  The discrete time ultimate ruin probability \(\psi_h(u)\) could be
+  used as an approximation of \(\psi(u)\) provided \(h\) is sufficiently
+  small.
+\item
+  The discrete time ruin probability in finite time \(\psi_h(u,t)\)
+  could be used as an approximation of \(\psi(u,t)\) provided \(h\) is
+  sufficiently small.
+\end{enumerate}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-58}{}\label{exm:unlabeled-div-58}
+
+\emph{Suppose the annual aggregate claims for a portfolio of
+policies is approximately normal.}
+
+\begin{itemize}
+\item
+  \emph{The insurer's initial surplus is 1000 (in suitable units) and the
+  premium rate is 1500 per year.}
+\item
+  \emph{The number of claims per year has a Poisson distribution with
+  parameter 50.}
+\item
+  \emph{The distribution of claim sizes is lognormal with parameters
+  \(\mu = 3\) and \(\sigma^2 = 0.9\).}
+\end{itemize}
+
+\emph{Calculate the probability that the insurer's surplus at time 2 will be
+negative.}
+
+\end{example}
+
+\hypertarget{simulation-of-ruin-probabilities}{%
+\section{Simulation of ruin probabilities}\label{simulation-of-ruin-probabilities}}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-59}{}\label{exm:unlabeled-div-59}
+
+\emph{Let \(F(x)\) be a continuous cumulative density
+function. Let \(Y\) be a random variable with a \(U(0,1)\) distribution.
+Define the random variable \(X\) by \[X = F^{-1}(Y).\] Show that the
+cumulative density function of \(X\), \(F_X(x)\) is \(F(x)\).}
+
+\end{example}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-60}{}\label{exm:unlabeled-div-60}
+
+\emph{The aggregate claims process for a risk is compound
+Poisson with Poisson parameter \(\lambda = 100\) per year. Individual
+claim amounts have \(\text{Pa}(4,3)\). The premium income per year is
+\(c = 110\) (in suitable units), received continuously.}
+
+\emph{Using either Excel or R to simulate 1000 values of aggregate claims
+\(S\), assuming that \(S\) is approximated by a translated gamma
+approximation,}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Estimate
+  \(\hat{\psi}_1(50, 5)\), an estimate of \(\psi_1(50,5)\).}
+\item
+  \emph{Estimate the standard error of \(\hat{\psi}_1(50, 5)\).}
+\item
+  \emph{Calculate a 95\% confidence interval for your estimate in 1.}
+\item
+  \emph{Estimate \(\psi_{0.5}(50, 5)\).}
+\end{enumerate}
+
+\end{example}
+
 
 \end{document}

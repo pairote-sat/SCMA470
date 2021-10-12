@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-10-11" />
+<meta name="date" content="2021-10-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1068,6 +1068,50 @@ to calculate the relative security loading such that the probability
 of a profit in the year is 0.95.</p></li>
 <li><p>Repeat the same question as above assumed that the SVP is applied.</p></li>
 </ol>
+<p><strong>Solution:</strong></p>
+<p>The loss distribution has Pareto distribution <span class="math inline">\(X \sim Pa(4,3)\)</span>. Therefore, <span class="math inline">\(\mathrm{E}[X] = 1\)</span> and <span class="math inline">\(\mathrm{E}[X^2] = 3\)</span>.</p>
+<p>The mean and variance of the aggregate claim amounts are <span class="math inline">\(\mathrm{E}[S] = \lambda \mathrm{E}[X] = 10\)</span>
+and <span class="math inline">\(\mathrm{Var}[S] = \lambda \mathrm{E}[X^2] = 30\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Use the normal approximation <span class="math inline">\(S \sim \mathcal{N}(10, 30)\)</span>.
+Let <span class="math inline">\(P\)</span> denote the premium charged. We need to find the security loading <span class="math inline">\(\theta\)</span> such that
+<span class="math display">\[\Pr( P - S &gt; 0) = 0.95.\]</span>
+Assume that the premium charged to cover the risk follows the expected value principle (EVP). So we set
+<span class="math display">\[P = E[S] + \theta\, E[S] = ( 1 + \theta)E[S] = ( 1 + \theta)(10).\]</span>
+<span class="math display">\[\begin{align}
+0.95 &amp;= \Pr( P - S &gt; 0)  \\
+&amp;= \Pr( ( 1 + \theta)(10) - S &gt; 0)  \\
+&amp;= \Pr( S &lt; ( 1 + \theta)(10) ) \\
+&amp;= \Pr( Z &lt; \frac{( 1 + \theta)(10) - 10 }{\sqrt{30}} ) \\
+&amp;= \Pr( Z &lt; \frac{( \theta)(10) }{\sqrt{30}} ).
+\end{align}\]</span>
+This gives <span class="math inline">\(\frac{( \theta)(10) }{\sqrt{30}} = 1.6448536\)</span> and
+<span class="math display">\[\theta = 0.9009234, \quad  P = 19.009.\]</span>
+Instead of using the normal approximation to aggregate claims <span class="math inline">\(S\)</span>, we now assume that <span class="math inline">\(S\)</span> is approximated by <span class="math inline">\(Y + k\)</span> where
+<span class="math inline">\(Y \sim \mathcal{G}(1.4814815, 0.2222222)\)</span> and <span class="math inline">\(k = 3.3333333\)</span> is a constant. It follows that
+<span class="math display">\[\begin{align}
+0.95 &amp;= \Pr( P - S &gt; 0)  \\
+&amp;= \Pr( ( 1 + \theta)(10) - S &gt; 0)  \\
+&amp;= \Pr( S &lt; ( 1 + \theta)(10) ) \\
+&amp;= \Pr( Y &lt; ( 1 + \theta)(10) - 3.3333333 ) \\
+\end{align}\]</span></li>
+</ol>
+<p>Therefore, <span class="math inline">\((1 + \theta)\)</span>(10) - 3.3333333 = qgamma(0.95,shape = 1.481481, rate = 0.222222) = 17.43845, which results in
+<span class="math display">\[\theta = 1.0771784, \quad  P = 20.772.\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using the standard deviation principle (SVP), we set
+<span class="math display">\[P = E[S] + \theta\, \text{SD}[S] = 10 + \theta \cdot sqrt{30}\]</span>
+For the normal approximation of the aggregate claims, we obtain
+<span class="math display">\[\begin{align}
+0.95 &amp;= \Pr( P - S &gt; 0)  \\
+&amp;= \Pr( 10 + \theta \cdot sqrt{30} - S &gt; 0)  \\
+&amp;= \Pr( S &lt; 10 + \theta \cdot sqrt{30} ) \\
+&amp;= \Pr( Z &lt; \frac{10 + \theta \cdot sqrt{30} - 10 }{\sqrt{30}} ) \\
+&amp;= \Pr( Z &lt; \theta).
+\end{align}\]</span></li>
+</ol>
+<p>Hence, <span class="math inline">\(\theta = 1.644854\)</span> and <span class="math inline">\(P = 19.009\)</span>.</p>
+<p><strong>Comment</strong> The loading factors (for normal approximation) in both two cases are different because they are applied to different quantities (i.e. <span class="math inline">\(\mathrm{E}[S]\)</span> and <span class="math inline">\(\mathrm{Var}[S]\)</span>). But they give the same premium.</p>
 
 </div>
 </div>

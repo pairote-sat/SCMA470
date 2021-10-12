@@ -909,3 +909,88 @@ $Pa(4,3)$.
 
 2.  Repeat the same question as above assumed that the SVP is applied.
 
+**Solution:** 
+
+```{r EVP, echo = FALSE, }
+
+# X ~ Pareto U(a,b)
+alpha <- 4
+beta <- 3
+
+lambda <- 10 
+
+m1 <- beta/(alpha-1)
+m2 <- (2*beta^2)/ ((alpha - 1) * (alpha -2))
+m3 <- (6*beta^3)/ ((alpha - 1) * (alpha -2) * (alpha -3))
+
+ES <- lambda*m1
+VS <- lambda*m2
+SKS <- (lambda * m3)/(lambda * m2)^(3/2)
+
+theta <- qnorm(0.95)*sqrt(VS)/ES
+P <- (1+theta)*ES
+
+SKS <- 10*27/30^(3/2)
+
+alphaTG <- 4/SKS^2
+
+betaTG <- sqrt(alphaTG/VS)
+
+kTG <- ES - alphaTG/betaTG 
+
+qGamma <- qgamma(0.95,shape = alphaTG, rate = betaTG)
+
+thetaTG <- (qGamma + kTG)/ES - 1
+PTG <- (1+thetaTG)*ES
+
+theta2 <- qnorm(0.95)
+P2 <- ES + theta2*sqrt(VS)
+```
+
+
+The loss distribution has Pareto distribution $X \sim Pa(4,3)$. Therefore, $\mathrm{E}[X] = `r m1`$ and $\mathrm{E}[X^2] = `r m2`$.
+
+The mean and variance of the aggregate claim amounts are $\mathrm{E}[S] = \lambda \mathrm{E}[X] = `r ES`$
+and $\mathrm{Var}[S] = \lambda \mathrm{E}[X^2] = `r VS`$.
+
+1. Use the normal approximation $S \sim \mathcal{N}(`r ES`, `r VS`)$.
+Let $P$ denote the premium charged. We need to find the security loading $\theta$ such that
+  $$\Pr( P - S > 0) = 0.95.$$ 
+Assume that the premium charged to cover the risk follows the expected value principle (EVP). So we set 
+$$P = E[S] + \theta\, E[S] = ( 1 + \theta)E[S] = ( 1 + \theta)(`r ES`).$$
+\begin{align}
+0.95 &= \Pr( P - S > 0)  \\
+&= \Pr( ( 1 + \theta)(`r ES`) - S > 0)  \\
+&= \Pr( S < ( 1 + \theta)(`r ES`) ) \\
+&= \Pr( Z < \frac{( 1 + \theta)(`r ES`) - `r ES` }{\sqrt{`r VS`}} ) \\
+&= \Pr( Z < \frac{( \theta)(`r ES`) }{\sqrt{`r VS`}} ).
+\end{align}
+This gives $\frac{( \theta)(`r ES`) }{\sqrt{`r VS`}} = `r qnorm(0.95)`$ and 
+$$\theta = `r theta`, \quad  P = `r round(P,3)`.$$ 
+Instead of using the normal approximation to aggregate claims $S$, we now assume that $S$ is approximated by $Y + k$ where
+$Y \sim \mathcal{G}(`r alphaTG`, `r betaTG`)$ and $k = `r kTG`$ is a constant. It follows that
+\begin{align}
+0.95 &= \Pr( P - S > 0)  \\
+&= \Pr( ( 1 + \theta)(`r ES`) - S > 0)  \\
+&= \Pr( S < ( 1 + \theta)(`r ES`) ) \\
+&= \Pr( Y < ( 1 + \theta)(`r ES`) - `r kTG` ) \\
+\end{align}
+
+Therefore, $(1 + \theta)$(`r ES`) - `r kTG` =  qgamma(0.95,shape = `r round(alphaTG,6)`, rate = `r round(betaTG,6)`) = `r round(qGamma,6)`, which results in
+$$\theta = `r thetaTG`, \quad  P = `r round(PTG,3)`.$$ 
+
+
+2. Using the standard deviation principle (SVP), we set 
+$$P = E[S] + \theta\, \text{SD}[S] = `r ES` + \theta \cdot sqrt{`r VS`}$$
+For the normal approximation of the aggregate claims, we obtain
+\begin{align}
+0.95 &= \Pr( P - S > 0)  \\
+&= \Pr( `r ES` + \theta \cdot sqrt{`r VS`} - S > 0)  \\
+&= \Pr( S < `r ES` + \theta \cdot sqrt{`r VS`} ) \\
+&= \Pr( Z < \frac{`r ES` + \theta \cdot sqrt{`r VS`} - `r ES` }{\sqrt{`r VS`}} ) \\
+&= \Pr( Z < \theta).
+\end{align}
+
+Hence, $\theta = `r round(theta2,6)`$ and $P = `r round(P2,3)`$.
+
+**Comment** The loading factors (for normal approximation) in both two cases are different because they are applied to different quantities (i.e. $\mathrm{E}[S]$ and $\mathrm{Var}[S]$). But they give the same premium.
