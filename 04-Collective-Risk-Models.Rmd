@@ -981,13 +981,13 @@ $$\theta = `r thetaTG`, \quad  P = `r round(PTG,3)`.$$
 
 
 2. Using the standard deviation principle (SVP), we set 
-$$P = E[S] + \theta\, \text{SD}[S] = `r ES` + \theta \cdot sqrt{`r VS`}$$
+$$P = E[S] + \theta\, \text{SD}[S] = `r ES` + \theta \cdot \sqrt{`r VS`}$$
 For the normal approximation of the aggregate claims, we obtain
 \begin{align}
 0.95 &= \Pr( P - S > 0)  \\
-&= \Pr( `r ES` + \theta \cdot sqrt{`r VS`} - S > 0)  \\
-&= \Pr( S < `r ES` + \theta \cdot sqrt{`r VS`} ) \\
-&= \Pr( Z < \frac{`r ES` + \theta \cdot sqrt{`r VS`} - `r ES` }{\sqrt{`r VS`}} ) \\
+&= \Pr( `r ES` + \theta \cdot \sqrt{`r VS`} - S > 0)  \\
+&= \Pr( S < `r ES` + \theta \cdot \sqrt{`r VS`} ) \\
+&= \Pr( Z < \frac{`r ES` + \theta \cdot \sqrt{`r VS`} - `r ES` }{\sqrt{`r VS`}} ) \\
 &= \Pr( Z < \theta).
 \end{align}
 

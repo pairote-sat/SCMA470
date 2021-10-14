@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-10-12" />
+<meta name="date" content="2021-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -298,6 +298,57 @@ follows:</em></p>
 <p><em>Plot a surplus process and determine whether ruin occurs within the
 first three years.</em></p>
 </div>
+<p><strong>Solution:</strong>
+The insurer’s surplus (or cash flow) at any future time <span class="math inline">\(t\)</span> (&gt; 0) is a random variable, since its value depends on the claims experience up to time <span class="math inline">\(t\)</span>. The insurer’s surplus at time <span class="math inline">\(t\)</span> is a random variable. The insurer’s surplus at time <span class="math inline">\(t\)</span> is denoted <span class="math inline">\(U(t)\)</span>. The following formula for <span class="math inline">\(U(t)\)</span> can be written as</p>
+<p><span class="math display">\[\begin{equation}
+U(t) = u + ct - S(t),
+\end{equation}\]</span>
+where the <strong>aggregate claim amount up to time</strong>
+<span class="math inline">\(t\)</span>, <span class="math inline">\(S(t)\)</span> is
+<span class="math display">\[\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}\]</span></p>
+<p>The following table summarises the values of the surplus function at the time when claims occurs.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Time</th>
+<th align="center">Surplus (before claim)</th>
+<th align="center">Surplus (after claim)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">0.4</td>
+<td align="center">1.4</td>
+<td align="center">0.6</td>
+</tr>
+<tr class="odd">
+<td align="center">0.9</td>
+<td align="center">1.1</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">1</td>
+<td align="center">-0.2</td>
+</tr>
+</tbody>
+</table>
+<p>The surplus function increases at a constant rate <span class="math inline">\(c\)</span> until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate <span class="math inline">\(c\)</span> and drops are repeated when claims occur. In this example,
+ruin occurs at time 1.5.
+The plot of the surplus process is given in the following figure.</p>
+<div class="figure"><span id="fig:unnamed-chunk-19"></span>
+<img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-19-1.png" alt="The surplus process befor reinsurance arrangment." width="672" />
+<p class="caption">
+Figure 5.1: The surplus process befor reinsurance arrangment.
+</p>
+</div>
 <div class="example">
 <p><span id="exm:unlabeled-div-56" class="example"><strong>Example 5.2  </strong></span><em>As given in Example
 <a href="ruin-theory.html#exm:ExampleSurplus">5.1</a>, suppose that the insurer has effected
@@ -306,6 +357,51 @@ reinsurance premium is 0.4 per year to be paid continuously. Plot a
 surplus process and determine whether ruin occurs within the first three
 years. Comment on the results.</em></p>
 </div>
+<p><strong>Solution:</strong>
+The insurer’s net premium income is 0.6 per year. The insurer’s cash flow or surplus process is now given by
+<span class="math display">\[\begin{equation}
+U_I(t) = u + (c - c_r)t - \alpha \cdot S(t),
+\end{equation}\]</span>
+where <span class="math inline">\(c_r\)</span> is the reinsurance premium rate and <span class="math inline">\(\alpha\)</span> is the retained proportion.</p>
+<p>The following table summarises the values of the surplus function at the time when claims occurs.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Time</th>
+<th align="center">Surplus (before claim)</th>
+<th align="center">Surplus (after claim)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">0.4</td>
+<td align="center">1.24</td>
+<td align="center">0.68</td>
+</tr>
+<tr class="odd">
+<td align="center">0.9</td>
+<td align="center">0.98</td>
+<td align="center">0.49</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">0.85</td>
+<td align="center">0.01</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:unnamed-chunk-21"></span>
+<img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-21-1.png" alt="The surplus process under a proportional reinsurance arrangement." width="672" />
+<p class="caption">
+Figure 5.2: The surplus process under a proportional reinsurance arrangement.
+</p>
+</div>
+<p>It should be emphasised that under this proportional reinsurance arrangement, ruin does not occur within 2 years.</p>
 <div id="classical-risk-process" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Classical risk process</h3>
 <p>The following assumptions are assumed for the study of the evolution of
@@ -333,13 +429,19 @@ where the <strong>aggregate claim amount up to time</strong>
 \tag{5.2}
 S(t) = \sum_{i = 1}^{N(t)} X_i .
 \end{equation}\]</span></p>
-<p><strong>Notes</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>The evolution of insurer’s surplus defined in <a href="ruin-theory.html#eq:surplus">(5.1)</a>
-is also known as the <strong>classical risk process</strong>.</p></li>
-<li><p>The only random and uncertain quantity in
+<p>The evolution of insurer’s surplus defined in <a href="ruin-theory.html#eq:surplus">(5.1)</a>
+is also known as the <strong>classical risk process</strong>.
+The only random and uncertain quantity in
 <a href="ruin-theory.html#eq:surplus">(5.1)</a>
-is the aggregate claims <span class="math inline">\(S(t)\)</span>.</p></li>
+is the aggregate claims <span class="math inline">\(S(t)\)</span>.</p>
+<p><strong>Notes</strong> The classical risk model contains many simplification.</p>
+<ol style="list-style-type: decimal">
+<li><p>The claim-arrival rate <span class="math inline">\(\lambda\)</span> remains constant over time.</p></li>
+<li><p>No interest is pain on the surplus.</p></li>
+<li><p>There is no inflation.</p></li>
+<li><p>The premium income is received continuously in time.</p></li>
+<li><p>Claims are paid out <strong>immediately</strong>.</p></li>
+<li><p>there are assumptions of independence.</p></li>
 </ol>
 </div>
 <div id="poisson-processes" class="section level3" number="5.1.2">
@@ -420,8 +522,7 @@ sense. The ‘starting over’ property follows from the fact that</p>
 <li><p>the exponential distribution has the memoryless property, and</p></li>
 <li><p>the times between successive events (or interarrival times) are
 independent and identically distributed exponential random
-variables with mean <span class="math inline">\(1/\lambda\)</span>. This follows from the following
-result:</p></li>
+variables with mean <span class="math inline">\(1/\lambda\)</span>.</p></li>
 </ul></li>
 <li><p>For more details about Poisson processes, please refer to the
 contents of the course “SCMA 469 Actuarial Statistics”</p></li>
@@ -445,7 +546,8 @@ The moment generating function of <span class="math inline">\(S(t)\)</span> is
 <span class="math display">\[M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).\]</span></p></li>
 <li><p>It has stationary and independent increments, i.e. for disjoint time
 intervals <span class="math inline">\(0 &lt; s &lt; t \le u &lt; v\)</span>, the random variables <span class="math inline">\(N(t) - N(s)\)</span>
-and <span class="math inline">\(N(v) - N(u)\)</span> are independent and have
+and <span class="math inline">\(N(v) - N(u)\)</span> are independent and <span class="math inline">\(N(t) - N(s)\)</span> depends only on <span class="math inline">\(t -s\)</span> and not on the values <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Hence, the random variables <span class="math inline">\(S(t) - S(s)\)</span> and <span class="math inline">\(S(v) - S(u)\)</span>
+are <strong>independent</strong> and have
 <span class="math inline">\(\mathcal{CP}(\lambda (t -s), F_X(x))\)</span> and
 <span class="math inline">\(\mathcal{CP}(\lambda (v - u), F_X(x))\)</span> distributions, respectively.</p></li>
 </ol>
@@ -463,8 +565,14 @@ representing the aggregate claims in successive years.</p></li>
 </div>
 <div id="the-relative-safety-loading" class="section level3" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> The relative safety loading</h3>
-<p>Let <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma^2_X\)</span> denote the mean and the variance of claim
-sizes <span class="math inline">\(X_i\)</span>.</p>
+<p>According to the expected value principle, the premium rate <span class="math inline">\(c\)</span> per
+unit time is defined by
+<span class="math display">\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]</span>
+Hence the <strong>relative safety loading</strong> (or <strong>premium loading factor</strong> or
+<strong>relative security loading</strong>) <span class="math inline">\(\theta\)</span> is given by
+<span class="math display">\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]</span>
+In addition, the insurer should load the premium for profit so that <span class="math inline">\(c &gt; \lambda \mu_X\)</span>. This finding follows from the following example.</p>
+<p>Let <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma^2_X\)</span> denote the mean and the variance of claim sizes <span class="math inline">\(X_i\)</span> (in one period).</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-57" class="example"><strong>Example 5.3  </strong></span>Consider the following questions.</p>
 <ol style="list-style-type: decimal">
@@ -472,21 +580,38 @@ sizes <span class="math inline">\(X_i\)</span>.</p>
 <li><p>Calculate the expected profit per unit time in <span class="math inline">\((0, t]\)</span>.</p></li>
 </ol>
 </div>
-<p>Based on the expected value premium principle, the premium rate <span class="math inline">\(c\)</span> per
-unit time can be defined by
-<span class="math display">\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]</span>
-Hence the <strong>relative safety loading</strong> (or <strong>premium loading factor</strong> or
-<strong>relative security loading</strong>) <span class="math inline">\(\theta\)</span> is given by
-<span class="math display">\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]</span></p>
+<p><strong>Solution:</strong></p>
+<ol style="list-style-type: decimal">
+<li>From <span class="math inline">\(U(t) = u + ct - S(t),\)</span> the expected surplus at time <span class="math inline">\(t\)</span> is
+<span class="math display">\[\begin{align}
+\mathrm{E}[U(t)] &amp;= u + ct - \mathrm{E}[S(t)] \\
+&amp;= u + ct - (\lambda t)\mathrm{E}[X] \\
+&amp;= u + ct - (\lambda t)\mu_X \\
+&amp;= u + (c - \lambda \mu_X)\cdot t, 
+\end{align}\]</span>
+and <span class="math display">\[ \mathrm{Var}[U(t)] = \mathrm{Var}[S(t)] = (\lambda t)\mathrm{E}[X^2].\]</span></li>
+</ol>
+<!-- It should be noted that (without proof) the following statements holds: -->
+<!-- * If $c > \lambda \mu_X$, the surplus will drift to $+\infty$, but ruin could still occur. -->
+<!-- * If $c < \lambda \mu_X$, the surplus will drift to $-\infty$, but ruin is certain (eventually). -->
+<!-- * If $c = \lambda \mu_X$, the surplus will drift to $\infty$ and $-\infty$, but ruin is certain (eventually). -->
+<ol start="2" style="list-style-type: decimal">
+<li>The expected profit per unit time in <span class="math inline">\((0, t]\)</span> can be calculated from
+<span class="math display">\[\frac{\mathrm{E}[U(t) - U(0)]}{t} = c - \lambda \mu_X.\]</span>
+This motivates the <strong>net profit condition</strong>:
+<span class="math display">\[c &gt; \lambda \mu_X.  \]</span>
+Given <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu_X\)</span>, we aim to set the premium rate <span class="math inline">\(c\)</span> that satisfies the net profit condition.</li>
+</ol>
 <p><strong>Notes</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>The insurer can make a profit provided that <span class="math inline">\(c &gt; \lambda \mu_X\)</span> or
 the relative safety loading <span class="math inline">\(\theta\)</span> is positive. In this case, the
 surplus will drift to <span class="math inline">\(\infty\)</span>, but ruin could still occur. The rate
-at which premium income comes in is greather than the rate at which
+at which premium income comes in is greater than the rate at which
 claims are paid out.</p></li>
 <li><p>On the other hand, if <span class="math inline">\(c &lt; \lambda \mu_X\)</span>, then the surplus will
 drift to <span class="math inline">\(-\infty\)</span>, but ruin is certain.</p></li>
+<li><p>If <span class="math inline">\(c = \lambda \mu_X\)</span>, the surplus will drift to <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span>, but ruin is certain (eventually).</p></li>
 </ol>
 </div>
 <div id="ruin-probabilities" class="section level3" number="5.1.5">
@@ -506,11 +631,19 @@ by time <span class="math inline">\(t\)</span></strong>) is defined by
 </ol>
 <p><strong>Notes</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>For <span class="math inline">\(0 \le u_1 \le u_2\)</span>, <span class="math display">\[\psi(u_1) \ge \psi(u_2),\]</span> i.e. the
-ultimate ruin probability is non-increasing in <span class="math inline">\(u\)</span>.</p></li>
+<li><p>For <span class="math inline">\(0 \le u_1 \le u_2\)</span>, <span class="math display">\[\psi(u_1) \ge \psi(u_2),\]</span> and
+<span class="math display">\[\psi(u_1,t) \ge \psi(u_2,t),\]</span>
+i.e. the
+ultimate ruin probability and finite-time ruin probability are non-increasing in <span class="math inline">\(u\)</span>.
+Intuitively, the larger the initial surplus, the less likely it is that ruin will occur either in a finite time period or an unlimited time
+period.</p></li>
 <li><p>If ruin occurs under the discrete time, it must occur under the
 continuous time, i.e. <span class="math display">\[\psi_h(u) &lt; \psi(u).\]</span> Similarly,
 <span class="math display">\[\psi_h(u,t) &lt; \psi(u,t).\]</span></p></li>
+<li><p>For a given initial surplus <span class="math inline">\(u\)</span> and <span class="math inline">\(0 &lt; t_1 &lt; t_2\)</span>,
+<span class="math display">\[\psi(u,t_1) &lt; \psi(u,t_2).\]</span>
+Intuitively, the longer the period considered when checking for ruin, the more likely it is that ruin will
+occur.</p></li>
 <li><p>The discrete time ultimate ruin probability <span class="math inline">\(\psi_h(u)\)</span> could be
 used as an approximation of <span class="math inline">\(\psi(u)\)</span> provided <span class="math inline">\(h\)</span> is sufficiently
 small.</p></li>
@@ -532,16 +665,46 @@ parameter 50.</em></p></li>
 <p><em>Calculate the probability that the insurer’s surplus at time 2 will be
 negative.</em></p>
 </div>
+<p><strong>Solution:</strong> Using the normal approximation, the total claims <span class="math inline">\(S\)</span> can be approximated by <span class="math inline">\(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])\)</span>. We have
+<span class="math display">\[\begin{align}
+\mathrm{E}[X] &amp;= e^{\mu + \sigma^2/2} = 31.500392 \\
+\mathrm{E}[X^2] &amp;= e^{2\mu + 2\sigma^2} = 2440.601978. 
+\end{align}\]</span></p>
+<p>Therefore,
+<span class="math display">\[\begin{align}
+\mathrm{E}[S(2)] &amp;= 2(50)\mathrm{E}[X] = 3150.039231 \\
+\mathrm{Var}[S(2)] &amp;= 2(50)\mathrm{E}[X2] = 2.440602\times 10^{5} . 
+\end{align}\]</span></p>
+<p>Hence, ruin will occur if <span class="math inline">\(S(2)\)</span> is greater than the initial surplus plus premiums received. Therefore, the probability of ruin is
+<span class="math display">\[\begin{align}
+\Pr(S(2) &gt; u + 2c) &amp;= \Pr(S(2) &gt; 1000 + 2(1500)) \\
+&amp;= \Pr(Z &gt; \frac{1000 + 2(1500)  - 3150.0392309}{\sqrt{2.440602\times 10^{5}}}) \\
+&amp;= \Pr(Z &gt; 1.720483)  = 0.04267.
+\end{align}\]</span>
+the probability of ruin is approximately 4.267%.</p>
 </div>
 </div>
 <div id="simulation-of-ruin-probabilities" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Simulation of ruin probabilities</h2>
+<p>In this section, we will use simulation to numerically estimate the probability of ruin. First, we introduce the <strong>inverse transform method</strong>, which is a method for generating random numbers from any probability distribution by using its inverse cumulative distribution.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-59" class="example"><strong>Example 5.5  </strong></span><em>Let <span class="math inline">\(F(x)\)</span> be a continuous cumulative density
 function. Let <span class="math inline">\(Y\)</span> be a random variable with a <span class="math inline">\(U(0,1)\)</span> distribution.
 Define the random variable <span class="math inline">\(X\)</span> by <span class="math display">\[X = F^{-1}(Y).\]</span> Show that the
 cumulative density function of <span class="math inline">\(X\)</span>, <span class="math inline">\(F_X(x)\)</span> is <span class="math inline">\(F(x)\)</span>.</em></p>
 </div>
+<p><strong>Solution:</strong>
+We need to show that <span class="math inline">\(Pr(X \le x) = F(x)\)</span> for all <span class="math inline">\(x\)</span>, i.e. <span class="math inline">\(F_X(x)= F(x)\)</span> as defined above.</p>
+<p>It follows from the monotonicity of <span class="math inline">\(F\)</span> and the definition</p>
+<p><span class="math display">\[\begin{align}
+F_X(x) &amp;= \Pr(X \le x)\\ 
+&amp;= \Pr(F^{-1}(Y) \le x)\\
+&amp;= \Pr(F(F^{-1}(Y)) \le F(x)\\
+&amp;= \Pr(Y \le F(x))\\
+\end{align}\]</span></p>
+<p>Since <span class="math inline">\(Y \sim U(0,1)\)</span>, we have <span class="math inline">\(\Pr(Y \le t) = t\)</span> for any $t . Therefore,
+<span class="math display">\[ F_X(x) = \Pr(Y \le F(x)) = F(x).\]</span>
+<strong>Note</strong> We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate <span class="math inline">\(X_1, X_2, X_3, \ldots, X_n\)</span> from <span class="math inline">\(\mathcal{G}(\alpha,\lambda)\)</span> (or any other distributions) in Excel, we use <code>GAMMAINV(RAND(), alpha, 1/lambda)</code>. However, in R, we can simply use <code>rgamma(n, alpha, lambda)</code> to generate <span class="math inline">\(n\)</span> random numbers from the <span class="math inline">\(\mathcal{G}(\alpha,\lambda)\)</span> distribution.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-60" class="example"><strong>Example 5.6  </strong></span><em>The aggregate claims process for a risk is compound
 Poisson with Poisson parameter <span class="math inline">\(\lambda = 100\)</span> per year. Individual
@@ -560,6 +723,63 @@ approximation,</em></p>
 </div>
 <!-- ![image](RuinSimulation.pdf){width="90%"} -->
 <!-- ![image](RuinSimulation2.pdf){width="90%"} -->
+<p><strong>Solution:</strong></p>
+<ol style="list-style-type: decimal">
+<li>An estimate of <span class="math inline">\(\psi_1(u,5)\)</span> with <span class="math inline">\(u = 50\)</span> and <span class="math inline">\(c =110\)</span> can be obtained as follows:</li>
+</ol>
+<p>From the properties of <span class="math inline">\(S(t)\)</span>,</p>
+<ul>
+<li><p>The aggregate claims in
+the first year have <span class="math inline">\(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\)</span> distribution with <span class="math inline">\(\lambda = 100\)</span> and <span class="math inline">\(X \sim \text{Pa}(4,3)\)</span></p></li>
+<li><p>The aggregate
+claims in the <span class="math inline">\(j\)</span>th year, for <span class="math inline">\(j = 1,2, \ldots, 5\)</span> have <span class="math inline">\(S(j) - S(j-1) \sim \mathcal{CP}(\lambda, F_X(x))\)</span> distribution.</p></li>
+</ul>
+<p>It follows that
+<span class="math display">\[\begin{align}
+\psi_1(u,5) &amp;= \Pr(U(j) &lt; 0 \quad \text{ for at least one of } j \in \{1,2, \ldots, 5\}) \\
+&amp;= \Pr(u + cj - S(j) &lt; 0 ), \text{ for at least one of } j = 1,2, \ldots, 5.
+\end{align}\]</span>
+When</p>
+<ul>
+<li><p><span class="math inline">\(j = 1, U(1) = 50 + 110 - S(1)\)</span></p></li>
+<li><p><span class="math inline">\(j = 2, U(2) = 50 + 2 - S(2) = U(1) + c - (S(2) - S(1))\)</span></p></li>
+<li><p><span class="math inline">\(j = 3, U(3) = 50 + 3 - S(3) = U(2) + c - (S(3) - S(2))\)</span></p></li>
+<li><p><span class="math inline">\(j = 4, U(4) = 50 + 4 - S(4) = U(3) + c - (S(4) - S(3))\)</span></p></li>
+<li><p><span class="math inline">\(j = 5, U(5) = 50 + 5 - S(5) = U(4) + c - (S(5) - S(4))\)</span></p></li>
+</ul>
+<p>The algorithm to estimate the finite time ruin in discrete time can be described as follows:</p>
+<p>Step 1. Simulate values of <span class="math inline">\(S(1), S(2) - S(1), \ldots, , S(5) - S(4)\)</span> from <span class="math inline">\(\mathcal{CP}(\lambda, F_X(x))\)</span> distribution. Then compute <span class="math inline">\(U(1), U(2), \ldots U(5)\)</span>.</p>
+<p>Step 2. Check if one of <span class="math inline">\(U(1), U(2), \ldots U(5)\)</span> are negative.</p>
+<p>Step 3. Repeat the simulations (1 and 2) 1000 times.</p>
+<p>Step 4. Le <span class="math inline">\(M\)</span> be the number of simulations out of 1000 where ruin occurs. Then <span class="math inline">\(\hat{\psi}_1(50, 5) = \frac{M}{1000}.\)</span></p>
+<p>From the results, there are <span class="math inline">\(M = 21\)</span> simulations that ruin occurs, and hence
+<span class="math display">\[\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>The estimation of the standard error of <span class="math inline">\(\hat{\psi}_1(50, 5)\)</span> can be obtained as follows. We know that <span class="math inline">\(M \sim \mathcal{B}(1000,p)\)</span> where <span class="math inline">\(p = \hat{\psi}_1(50, 5)\)</span>. Then,
+<span class="math display">\[\textrm{Var}\left[\frac{M}{1000}\right] = \frac{1}{1000^2}\textrm{Var}[M] = \frac{1000 (p) (1-p)}{1000^2}\]</span> and
+<span class="math display">\[ \textrm{SD}[\hat{\psi}_1(50, 5)] = \frac{1000 (0.021) (1-0.021)}{1000^2} = 0.004534 \]</span></p></li>
+<li><p>The 95% confidence interval of the estimate is
+<span class="math display">\[ (\hat{\psi}_1(50, 5) - z_{\alpha/2}\textrm{SD}[\hat{\psi}_1(50, 5)], \hat{\psi}_1(50, 5) + z_{\alpha/2} \textrm{SD}[\hat{\psi}_1(50, 5)]) = (0.012113,0.029887).\]</span></p></li>
+<li><p>For the estimation of discrete time probability of ruin where the surplus process is checked at time intervals of length 0.5, we proceed as follows. First we note that</p></li>
+</ol>
+<p><span class="math inline">\(S(1/2), S(1) - S(1/2), S(3/2) - S(1), \ldots, S(5) - S(9/2) \sim \mathcal{CP}((1/2)\lambda, F_X(x))\)</span> distribution.</p>
+<p>In addition,</p>
+<ul>
+<li><p>U(1/2) = U(0) + c (1/2) - S(1/2)$</p></li>
+<li><p>U(1) = U(1/2) + c (1/2) - ( S(1) - S(1/2) )$</p></li>
+<li><p>U(3/2) = U(1) + c (1/2) - (S(3/2) - S(1))$ , <span class="math inline">\(\ldots\)</span>,</p></li>
+<li><p>U(5) = U(9/2) + `c (1/2) - ( S(5) - S(9/2) )$.</p></li>
+</ul>
+<p>It follows that</p>
+<p><span class="math display">\[\begin{align}
+\mathrm{E}[S(1/2)] &amp;= (1/2)(100)\mathrm{E}[X] = (1/2)\mathrm{E}[S(1)] = 50 \\
+\mathrm{Var}[S(1/2)] &amp;= (1/2)(100)\mathrm{E}[X^2] =  (1/2)\mathrm{Var}[S(1)]  = 150 \\
+\mathrm{Sk}[S(1/2)] &amp;= \sqrt{2} \mathrm{Sk}[S(1)] = 0.734847 . 
+\end{align}\]</span></p>
+<p>Now we assume that <span class="math inline">\(S(j) - S(j-1)\)</span> for <span class="math inline">\(j = 1/2, 1, 3/2, \ldots, 5\)</span> can be approximated by <span class="math inline">\(Y + k\)</span> where
+<span class="math inline">\(Y \sim \mathcal{G}(\alpha, \lambda)\)</span> and <span class="math inline">\(k\)</span> is a constant. It follows that
+<span class="math display">\[ \hat{\alpha} = 7.407407, \quad \hat{\beta} = 0.222222, \quad \hat{k} = 16.666667.  \]</span>
+The simulations can be obtained in the same way.</p>
 
 </div>
 </div>
@@ -612,7 +832,7 @@ gitbook.start({
 "link": "https://github.com/pairote-sat/SCMA470/blob/master/05-Ruin-Theory.Rmd",
 "text": null
 },
-"download": ["SCMA470Bookdownproj.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

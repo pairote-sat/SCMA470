@@ -34,6 +34,61 @@ follows:*
 first three years.*
 :::
 
+
+**Solution:**
+The insurer's surplus (or cash flow) at any future time $t$ (> 0) is a random variable, since its value depends on the claims experience up to time $t$. The insurer's surplus at time $t$ is a random variable. The insurer's surplus at time $t$ is denoted $U(t)$. The following formula for $U(t)$ can be written as
+
+\begin{equation}
+U(t) = u + ct - S(t),
+\end{equation} 
+where the **aggregate claim amount up to time**
+$t$, $S(t)$ is 
+\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+
+The following table summarises the values of the surplus function at the time when claims occurs. 
+
+
+```{r echo = FALSE}
+St <- c(0.8,0.7,1.2)
+ti <- c(0.4,0.9,1.5)
+cumSt <- cumsum(St)
+u <- 1
+c <- 1
+
+U <- function(t){ ifelse(( t < ti[1]) , u + c*t, 
+    ifelse( ( ti[1] <= t & t < ti[2]), u + c*t - cumSt[1],
+    ifelse( ( ti[2] <= t & t < ti[3]), u + c*t - cumSt[2],  
+    ifelse( ( ti[3] <= t), u + c*t - cumSt[3],NA))))}
+
+
+
+#plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+#abline(v = 0, h = 0)
+```
+
+
+Time | Surplus (before claim) | Surplus (after claim)
+:-: | :-: | :-: 
+0 | 1 | 1
+`r ti[1]` | `r U(ti[1]) + St[1]` | `r U(ti[1])`
+`r ti[2]` | `r U(ti[2]) + St[2]` | `r U(ti[2])`
+`r ti[3]` | `r U(ti[3]) + St[3]` | `r U(ti[3])`
+
+The surplus function increases at a constant rate $c$ until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate $c$ and drops are repeated when claims occur. In this example,
+ruin occurs at time `r ti[3]`.
+The plot of the surplus process is given in the following figure.
+
+```{r echo = FALSE, fig.cap = 'The surplus process befor reinsurance arrangment.'}
+plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+abline(v = 0, h = 0)
+```
+
+
+
+
 ::: {.example}
 *As given in Example
 \@ref(exm:ExampleSurplus), suppose that the insurer has effected
@@ -42,6 +97,52 @@ reinsurance premium is 0.4 per year to be paid continuously. Plot a
 surplus process and determine whether ruin occurs within the first three
 years. Comment on the results.*
 :::
+
+
+**Solution:**
+The insurer's net premium income is 0.6 per year. The insurer's cash flow or surplus process is now given by 
+\begin{equation}
+U_I(t) = u + (c - c_r)t - \alpha \cdot S(t),
+\end{equation} 
+where $c_r$ is the reinsurance premium rate and $\alpha$ is the retained proportion.
+```{r echo = FALSE}
+St <- c(0.8,0.7,1.2)
+ti <- c(0.4,0.9,1.5)
+cumSt <- cumsum(St)
+u <- 1
+cr <- 0.4
+c <- 1
+
+a <- 0.7
+
+
+U <- function(t){ ifelse(( t < ti[1]) , u + (c - cr)*t, 
+    ifelse( ( ti[1] <= t & t < ti[2]), u + (c - cr)*t - a*cumSt[1],
+    ifelse( ( ti[2] <= t & t < ti[3]), u + (c - cr)*t - a*cumSt[2],  
+    ifelse( ( ti[3] <= t), u + (c - cr)*t - a*cumSt[3],NA))))}
+
+
+
+#plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+#abline(v = 0, h = 0)
+```
+
+
+The following table summarises the values of the surplus function at the time when claims occurs. 
+
+Time | Surplus (before claim) | Surplus (after claim)
+:-: | :-: | :-: 
+0 | 1 | 1
+`r ti[1]` | `r U(ti[1]) + a*St[1]` | `r U(ti[1])`
+`r ti[2]` | `r U(ti[2]) + a*St[2]` | `r U(ti[2])`
+`r ti[3]` | `r U(ti[3]) + a*St[3]` | `r U(ti[3])`
+
+```{r echo = FALSE, fig.cap = 'The surplus process under a proportional reinsurance arrangement.'}
+plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+abline(v = 0, h = 0)
+```
+
+It should be emphasised that under this proportional reinsurance arrangement, ruin does not occur within 2 years.
 
 ### Classical risk process
 
@@ -75,14 +176,27 @@ $t$, $S(t)$ is
 S(t) = \sum_{i = 1}^{N(t)} X_i .
 \end{equation}
 
-**Notes**
 
-1.  The evolution of insurer's surplus defined in \@ref(eq:surplus)
+
+The evolution of insurer's surplus defined in \@ref(eq:surplus)
     is also known as the **classical risk process**.
-
-2.  The only random and uncertain quantity in
+The only random and uncertain quantity in
     \@ref(eq:surplus)
     is the aggregate claims $S(t)$.
+    
+**Notes** The classical risk model contains many simplification.
+
+1. The claim-arrival rate $\lambda$ remains constant over time.
+
+2. No interest is pain on the surplus.
+
+3. There is no inflation.
+
+4. The premium income is received continuously in time.
+
+5. Claims are paid out **immediately**.
+
+6. there are assumptions of independence.
 
 ### Poisson processes
 
@@ -177,8 +291,7 @@ $$\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-
 
     -   the times between successive events (or interarrival times) are
         independent and identically distributed exponential random
-        variables with mean $1/\lambda$. This follows from the following
-        result:
+        variables with mean $1/\lambda$. 
 
 3.  For more details about Poisson processes, please refer to the
     contents of the course "SCMA 469 Actuarial Statistics"
@@ -201,7 +314,8 @@ important properties:
 
 2.  It has stationary and independent increments, i.e. for disjoint time
     intervals $0 < s < t  \le u < v$, the random variables $N(t) - N(s)$
-    and $N(v) - N(u)$ are independent and have
+    and $N(v) - N(u)$ are independent and $N(t) - N(s)$ depends only on $t -s$ and not on the values $s$ and $t$. Hence, the random variables $S(t) - S(s)$ and $S(v) - S(u)$
+are **independent** and have
     $\mathcal{CP}(\lambda (t -s), F_X(x))$ and
     $\mathcal{CP}(\lambda (v - u), F_X(x))$ distributions, respectively.
 
@@ -220,8 +334,15 @@ be summarised as follows:
 
 ### The relative safety loading
 
-Let $\mu_X$ and $\sigma^2_X$ denote the mean and the variance of claim
-sizes $X_i$.
+According to the expected value principle, the premium rate $c$ per
+unit time is defined by
+$$c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.$$
+Hence the **relative safety loading** (or **premium loading factor** or
+**relative security loading**) $\theta$ is given by
+$$\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.$$
+In addition, the insurer should load the premium for profit so that $c > \lambda \mu_X$. This finding follows from the following example. 
+
+Let $\mu_X$ and $\sigma^2_X$ denote the mean and the variance of claim sizes $X_i$ (in one period).
 
 ::: {.example} 
 Consider the following questions.
@@ -231,24 +352,45 @@ Consider the following questions.
 2. Calculate the expected profit per unit time in $(0, t]$.
 :::
 
+**Solution:**
 
-Based on the expected value premium principle, the premium rate $c$ per
-unit time can be defined by
-$$c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.$$
-Hence the **relative safety loading** (or **premium loading factor** or
-**relative security loading**) $\theta$ is given by
-$$\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.$$
+1. From $U(t) = u + ct - S(t),$ the expected surplus at time $t$ is
+\begin{align}
+\mathrm{E}[U(t)] &= u + ct - \mathrm{E}[S(t)] \\
+&= u + ct - (\lambda t)\mathrm{E}[X] \\
+&= u + ct - (\lambda t)\mu_X \\
+&= u + (c - \lambda \mu_X)\cdot t, 
+\end{align}
+and $$ \mathrm{Var}[U(t)] = \mathrm{Var}[S(t)] = (\lambda t)\mathrm{E}[X^2].$$
+
+<!-- It should be noted that (without proof) the following statements holds: -->
+
+<!-- * If $c > \lambda \mu_X$, the surplus will drift to $+\infty$, but ruin could still occur. -->
+
+<!-- * If $c < \lambda \mu_X$, the surplus will drift to $-\infty$, but ruin is certain (eventually). -->
+
+<!-- * If $c = \lambda \mu_X$, the surplus will drift to $\infty$ and $-\infty$, but ruin is certain (eventually). -->
+
+2. The expected profit per unit time in $(0, t]$ can be calculated from
+$$\frac{\mathrm{E}[U(t) - U(0)]}{t} = c - \lambda \mu_X.$$
+This motivates the **net profit condition**:
+    $$c > \lambda \mu_X.  $$
+Given $\lambda$ and $\mu_X$, we aim to set the premium rate $c$ that satisfies the net profit condition.
+
+
 
 **Notes**
 
 1.  The insurer can make a profit provided that $c > \lambda \mu_X$ or
     the relative safety loading $\theta$ is positive. In this case, the
     surplus will drift to $\infty$, but ruin could still occur. The rate
-    at which premium income comes in is greather than the rate at which
+    at which premium income comes in is greater than the rate at which
     claims are paid out.
 
 2.  On the other hand, if $c < \lambda \mu_X$, then the surplus will
     drift to $-\infty$, but ruin is certain.
+    
+3. If $c = \lambda \mu_X$, the surplus will drift to $\infty$ and $-\infty$, but ruin is certain (eventually).    
 
 ### Ruin probabilities
 
@@ -270,18 +412,26 @@ Various definitions of ruin probabilities are given.
 
 **Notes**
 
-1.  For $0 \le u_1 \le u_2$, $$\psi(u_1) \ge \psi(u_2),$$ i.e. the
-    ultimate ruin probability is non-increasing in $u$.
+1.  For $0 \le u_1 \le u_2$, $$\psi(u_1) \ge \psi(u_2),$$ and 
+$$\psi(u_1,t) \ge \psi(u_2,t),$$
+i.e. the
+    ultimate ruin probability and finite-time ruin probability are non-increasing in $u$. 
+Intuitively, the larger the initial surplus, the less likely it is that ruin will occur either in a finite time period or an unlimited time
+period.
 
 2.  If ruin occurs under the discrete time, it must occur under the
     continuous time, i.e. $$\psi_h(u) < \psi(u).$$ Similarly,
     $$\psi_h(u,t) < \psi(u,t).$$
+3. For a given initial surplus $u$ and $0 < t_1 < t_2$, 
+$$\psi(u,t_1) < \psi(u,t_2).$$
+Intuitively, the longer the period considered when checking for ruin, the more likely it is that ruin will
+occur. 
 
-3.  The discrete time ultimate ruin probability $\psi_h(u)$ could be
+4.  The discrete time ultimate ruin probability $\psi_h(u)$ could be
     used as an approximation of $\psi(u)$ provided $h$ is sufficiently
     small.
 
-4.  The discrete time ruin probability in finite time $\psi_h(u,t)$
+5.  The discrete time ruin probability in finite time $\psi_h(u,t)$
     could be used as an approximation of $\psi(u,t)$ provided $h$ is
     sufficiently small.
 
@@ -302,8 +452,52 @@ policies is approximately normal.*
 negative.*
 :::
 
+```{r echo = FALSE}
+mu <- 3
+s2 <- 0.9
+lambda <- 50
+
+# initial surplus
+u <- 1000
+
+c <- 1500
+
+EX <- exp(mu + s2/2)
+EX2 <- exp(2*mu + 2*s2)
+
+ES2 <- 2*lambda*EX
+VS2 <- 2*lambda*EX2
+
+z <- (u + 2*c - ES2)/sqrt(VS2)
+
+ans <- pnorm(z, lower.tail=FALSE)
+```
+
+**Solution:** Using the normal approximation, the total claims $S$ can be approximated by $S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])$. We have
+\begin{align}
+\mathrm{E}[X] &= e^{\mu + \sigma^2/2} = `r round(EX,6)` \\
+\mathrm{E}[X^2] &= e^{2\mu + 2\sigma^2} = `r round(EX2,6)`. 
+\end{align}
+
+Therefore, 
+\begin{align}
+\mathrm{E}[S(2)] &= 2(`r lambda`)\mathrm{E}[X] = `r round(ES2,6)` \\
+\mathrm{Var}[S(2)] &= 2(`r lambda`)\mathrm{E}[X2] = `r round(VS2,6)` . 
+\end{align}
+
+Hence, ruin will occur if $S(2)$ is greater than the initial surplus plus premiums received. Therefore, the probability of ruin is
+\begin{align}
+\Pr(S(2) > u + 2c) &= \Pr(S(2) > `r u` + 2(`r c`)) \\
+&= \Pr(Z > \frac{`r u` + 2(`r c`)  - `r ES2`}{\sqrt{`r VS2`}}) \\
+&= \Pr(Z > `r round(z,6)`)  = `r round(ans,5)`.
+\end{align}
+the probability of ruin is approximately `r 100*round(ans,5)`\%.
+
+
 Simulation of ruin probabilities
 --------------------------------
+In this section, we will use simulation to numerically estimate the probability of ruin. First, we introduce the **inverse transform method**, which is a method for generating random numbers from any probability distribution by using its inverse cumulative distribution. 
+
 
 ::: {.example}
 *Let $F(x)$ be a continuous cumulative density
@@ -311,6 +505,24 @@ function. Let $Y$ be a random variable with a $U(0,1)$ distribution.
 Define the random variable $X$ by $$X = F^{-1}(Y).$$ Show that the
 cumulative density function of $X$, $F_X(x)$ is $F(x)$.*
 :::
+
+**Solution:**
+We need to show that $Pr(X \le x) = F(x)$ for all $x$, i.e. $F_X(x)= F(x)$ as defined above.
+
+It follows from the monotonicity of $F$ and the definition
+
+\begin{align}
+F_X(x) &= \Pr(X \le x)\\ 
+&= \Pr(F^{-1}(Y) \le x)\\
+&= \Pr(F(F^{-1}(Y)) \le F(x)\\
+&= \Pr(Y \le F(x))\\
+\end{align}
+
+Since $Y \sim U(0,1)$, we have $\Pr(Y \le t) = t$ for any $t \in [0,1]. Therefore,
+$$ F_X(x) = \Pr(Y \le F(x)) = F(x).$$
+**Note** We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate $X_1, X_2, X_3, \ldots, X_n$ from $\mathcal{G}(\alpha,\lambda)$ (or any other distributions) in Excel, we use `GAMMAINV(RAND(), alpha, 1/lambda)`. However, in R, we can simply use `rgamma(n, alpha, lambda)` to generate $n$ random numbers from the $\mathcal{G}(\alpha,\lambda)$  distribution.
+
+
 
 ::: {.example}
 *The aggregate claims process for a risk is compound
@@ -335,3 +547,123 @@ approximation,*
 <!-- ![image](RuinSimulation.pdf){width="90%"} -->
 
 <!-- ![image](RuinSimulation2.pdf){width="90%"} -->
+
+
+```{r, echo = FALSE}
+u <- 50
+c<- 110
+lambda <- 100
+n <- 1000 #number of simulations
+
+M <- 21
+p <- M/n
+s <- sqrt(p*(1-p)/n)
+
+
+alpha <- 4
+beta <- 3
+
+m1 <- beta/(alpha-1)
+m2 <- (2*beta^2)/ ((alpha - 1) * (alpha -2))    
+m3 <- (6*beta^3)/ ((alpha - 1) * (alpha -2) * (alpha -3)) 
+
+ES <- lambda*m1
+VS <- lambda*m2
+Sk <- (lambda * m3)/(lambda * m2)^(3/2)
+
+
+lowerCI <- p - qnorm(0.975)*s
+upperCI <- p + qnorm(0.975)*s
+
+ESHalf <- (1/2)*ES
+VSHalf <- (1/2)*VS
+SkHalf <- sqrt(2)*Sk 
+
+
+alphaHalf <- 4/SkHalf^2
+
+betaHalf <- sqrt(alphaHalf/VSHalf)
+
+kHalf <- ESHalf - alphaHalf/betaHalf 
+
+
+```
+
+
+**Solution:**
+
+1. An estimate of $\psi_1(u,5)$ with $u = 50$ and $c =110$ can be obtained as follows:
+
+From the properties of $S(t)$,
+
+*  The aggregate claims in
+    the first year have $S(1) \sim \mathcal{CP}(\lambda, F_X(x))$ distribution with $\lambda = 100$ and $X \sim \text{Pa}(4,3)$
+
+*  The aggregate
+    claims in the $j$th year, for $j = 1,2, \ldots, 5$ have $S(j) - S(j-1) \sim \mathcal{CP}(\lambda, F_X(x))$ distribution. 
+
+It follows that
+\begin{align}
+\psi_1(u,5) &= \Pr(U(j) < 0 \quad \text{ for at least one of } j \in \{1,2, \ldots, 5\}) \\
+&= \Pr(u + cj - S(j) < 0 ), \text{ for at least one of } j = 1,2, \ldots, 5.
+\end{align}
+When
+
+* $j = 1, U(1) = `r u` + `r c` - S(1)$
+
+* $j = 2, U(2) = `r u` + `r c(2)` - S(2) = U(1) + c - (S(2) - S(1))$
+
+* $j = 3, U(3) = `r u` + `r c(3)` - S(3) = U(2) + c - (S(3) - S(2))$
+
+* $j = 4, U(4) = `r u` + `r c(4)` - S(4) = U(3) + c - (S(4) - S(3))$
+
+* $j = 5, U(5) = `r u` + `r c(5)` - S(5) = U(4) + c - (S(5) - S(4))$
+
+The algorithm to estimate the finite time ruin in discrete time can be described as follows: 
+
+Step 1. Simulate values of $S(1), S(2) - S(1), \ldots, , S(5) - S(4)$ from $\mathcal{CP}(\lambda, F_X(x))$ distribution. Then compute $U(1), U(2), \ldots U(5)$. 
+
+Step 2. Check if one of $U(1), U(2), \ldots U(5)$ are negative.
+
+Step 3. Repeat the simulations (1 and 2) 1000 times.
+
+Step 4. Le $M$ be the number of simulations out of 1000 where ruin occurs. Then $\hat{\psi}_1(50, 5) = \frac{M}{1000}.$
+
+From the results, there are $M = 21$ simulations that ruin occurs, and hence 
+$$\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.$$
+
+2. The estimation of the standard error of $\hat{\psi}_1(50, 5)$ can be obtained as follows. We know that $M \sim \mathcal{B}(1000,p)$ where $p = \hat{\psi}_1(50, 5)$. Then,
+$$\textrm{Var}\left[\frac{M}{1000}\right] = \frac{1}{1000^2}\textrm{Var}[M] = \frac{1000 (p) (1-p)}{1000^2}$$ and
+$$ \textrm{SD}[\hat{\psi}_1(50, 5)] = \frac{1000 (`r round(p,3)`) (1-`r round(p,3)`)}{1000^2} = `r round(s,6)` $$
+
+3. The 95\% confidence interval of the estimate is
+$$ (\hat{\psi}_1(50, 5) - z_{\alpha/2}\textrm{SD}[\hat{\psi}_1(50, 5)], \hat{\psi}_1(50, 5) + z_{\alpha/2} \textrm{SD}[\hat{\psi}_1(50, 5)]) = (`r round(lowerCI,6)`,`r round(upperCI,6)`).$$
+
+4. For the estimation of discrete time probability of ruin where the surplus process is checked at time intervals of length 0.5, we proceed as follows. First we note that
+
+$S(1/2), S(1) - S(1/2), S(3/2) - S(1), \ldots, S(5) - S(9/2)  \sim \mathcal{CP}((1/2)\lambda, F_X(x))$ distribution. 
+
+In addition,
+
+*  U(1/2) = U(0) + c (1/2)  - S(1/2)$
+
+*  U(1) = U(1/2) + c (1/2)  - ( S(1) - S(1/2) )$
+
+*  U(3/2) = U(1) + c (1/2)  - (S(3/2) - S(1))$ , $\ldots$,
+
+*  U(5) = U(9/2) + `c (1/2)  - ( S(5) - S(9/2) )$.
+
+It follows that 
+
+
+\begin{align}
+\mathrm{E}[S(1/2)] &= (1/2)(`r lambda`)\mathrm{E}[X] = (1/2)\mathrm{E}[S(1)] = `r round(ESHalf,6)` \\
+\mathrm{Var}[S(1/2)] &= (1/2)(`r lambda`)\mathrm{E}[X^2] =  (1/2)\mathrm{Var}[S(1)]  = `r round(VSHalf,6)` \\
+\mathrm{Sk}[S(1/2)] &= \sqrt{2} \mathrm{Sk}[S(1)] = `r round(SkHalf,6)` . 
+\end{align}
+
+
+Now we assume that $S(j) - S(j-1)$ for $j = 1/2, 1, 3/2, \ldots, 5$ can be approximated by $Y + k$ where
+$Y \sim \mathcal{G}(\alpha, \lambda)$ and $k$ is a constant. It follows that
+$$ \hat{\alpha} = `r round(alphaHalf,6)`, \quad \hat{\beta} = `r round(betaHalf,6)`, \quad \hat{k} = `r round(kHalf,6)`.  $$ 
+The simulations can be obtained in the same way.
