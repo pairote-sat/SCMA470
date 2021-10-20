@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.12)  12 OCT 2021 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.12)  14 OCT 2021 10:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1680,18 +1680,31 @@ ere
 Chapter 5.
 [59
 
-] [60] [61] [62] [63] [64]
-Underfull \vbox (badness 10000) detected at line 1479
+] [60] [61] <unnamed-chunk-19-1.pdf, id=456, 439.6425pt x 248.93pt>
+File: unnamed-chunk-19-1.pdf Graphic file (type pdf)
+
+<use unnamed-chunk-19-1.pdf>
+Package pdftex.def Info: unnamed-chunk-19-1.pdf used on input line 1389.
+(pdftex.def)             Requested size: 439.64812pt x 248.93317pt.
+ [62] [63 <./unnamed-chunk-19-1.pdf>] [64]
+<unnamed-chunk-21-1.pdf, id=485, 439.6425pt x 248.93pt>
+File: unnamed-chunk-21-1.pdf Graphic file (type pdf)
+
+<use unnamed-chunk-21-1.pdf>
+Package pdftex.def Info: unnamed-chunk-21-1.pdf used on input line 1428.
+(pdftex.def)             Requested size: 439.64812pt x 248.93317pt.
+ [65 <./unnamed-chunk-21-1.pdf>] [66] [67] [68]
+Underfull \vbox (badness 10000) detected at line 1556
  []
 
-[65] <PlotPoissonProcess-1.pdf, id=494, 436.63126pt x 250.9375pt>
+[69] <PlotPoissonProcess-1.pdf, id=541, 436.63126pt x 250.9375pt>
 File: PlotPoissonProcess-1.pdf Graphic file (type pdf)
 
 <use PlotPoissonProcess-1.pdf>
-Package pdftex.def Info: PlotPoissonProcess-1.pdf used on input line 1481.
+Package pdftex.def Info: PlotPoissonProcess-1.pdf used on input line 1558.
 (pdftex.def)             Requested size: 436.63019pt x 250.93687pt.
- [66] [67 <./PlotPoissonProcess-1.pdf>]
-Overfull \hbox (154.37953pt too wide) detected at line 1509
+ [70] [71 <./PlotPoissonProcess-1.pdf>]
+Overfull \hbox (154.37953pt too wide) detected at line 1586
 []\OT1/lmr/m/n/20.74 (\OML/lmm/m/it/20.74 N\OT1/lmr/m/n/20.74 (\OML/lmm/m/it/20
 .74 t\OT1/lmr/m/n/20.74 ) \OMS/lmsy/m/n/20.74 ^^@ \OML/lmm/m/it/20.74 N\OT1/lmr
 /m/n/20.74 (\OML/lmm/m/it/20.74 s\OT1/lmr/m/n/20.74 ) = \OML/lmm/m/it/20.74 n\O
@@ -1703,23 +1716,36 @@ lmsy/m/n/20.74 ^^@ \OML/lmm/m/it/20.74 N\OT1/lmr/m/n/20.74 (0) = \OML/lmm/m/it/
 mr/m/n/20.74 2\OML/lmm/m/it/20.74 ; []
  []
 
-[68] [69] [70] [71] [72] [73] [74] [75] [76] [77]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1732.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1732.
+[72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85] [86]
+[87] [88] [89]
+Overfull \hbox (82.54988pt too wide) detected at line 1947
+\OT1/lmr/m/n/20.74 ([](50\OML/lmm/m/it/20.74 ; \OT1/lmr/m/n/20.74 5) \OMS/lmsy/
+m/n/20.74 ^^@ \OML/lmm/m/it/20.74 z[][]\OT1/lmr/m/n/20.74 [[](50\OML/lmm/m/it/2
+0.74 ; \OT1/lmr/m/n/20.74 5)]\OML/lmm/m/it/20.74 ; []\OT1/lmr/m/n/20.74 (50\OML
+/lmm/m/it/20.74 ; \OT1/lmr/m/n/20.74 5) + \OML/lmm/m/it/20.74 z[][]\OT1/lmr/m/n
+/20.74 [[](50\OML/lmm/m/it/20.74 ; \OT1/lmr/m/n/20.74 5)]) = (0\OML/lmm/m/it/20
+.74 :\OT1/lmr/m/n/20.74 012113\OML/lmm/m/it/20.74 ; \OT1/lmr/m/n/20.74 0\OML/lm
+m/m/it/20.74 :\OT1/lmr/m/n/20.74 029887)\OML/lmm/m/it/20.74 :
+ []
+
+[90] [91]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1981.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1981.
  (./AggregateClaimsSlides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1732.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1732.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1981.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1981.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1732.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1981.
  ) 
 Here is how much of TeX's memory you used:
- 27725 strings out of 492995
- 490887 string characters out of 6132704
- 587219 words of memory out of 5000000
- 30336 multiletter control sequences out of 15000+600000
- 97847 words of font info for 148 fonts, out of 8000000 for 9000
+ 27796 strings out of 492995
+ 491791 string characters out of 6132704
+ 587407 words of memory out of 5000000
+ 30347 multiletter control sequences out of 15000+600000
+ 98057 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,17n,71p,915b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
@@ -1736,10 +1762,10 @@ type1/public/lm/lmri12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtk
 10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on AggregateClaimsSlides.pdf (78 pages, 316090 bytes).
+Output written on AggregateClaimsSlides.pdf (92 pages, 347129 bytes).
 PDF statistics:
- 787 PDF objects out of 1000 (max. 8388607)
- 684 compressed objects within 7 object streams
- 301 named destinations out of 1000 (max. 500000)
- 18663 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 915 PDF objects out of 1000 (max. 8388607)
+ 791 compressed objects within 8 object streams
+ 355 named destinations out of 1000 (max. 500000)
+ 18673 words of extra memory for PDF output out of 20736 (max. 10000000)
 

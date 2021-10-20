@@ -518,7 +518,7 @@ F_X(x) &= \Pr(X \le x)\\
 &= \Pr(Y \le F(x))\\
 \end{align}
 
-Since $Y \sim U(0,1)$, we have $\Pr(Y \le t) = t$ for any $t \in [0,1]. Therefore,
+Since $Y \sim U(0,1)$, we have $\Pr(Y \le t) = t$ for any $t \in [0,1]$. Therefore,
 $$ F_X(x) = \Pr(Y \le F(x)) = F(x).$$
 **Note** We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate $X_1, X_2, X_3, \ldots, X_n$ from $\mathcal{G}(\alpha,\lambda)$ (or any other distributions) in Excel, we use `GAMMAINV(RAND(), alpha, 1/lambda)`. However, in R, we can simply use `rgamma(n, alpha, lambda)` to generate $n$ random numbers from the $\mathcal{G}(\alpha,\lambda)$  distribution.
 
@@ -611,13 +611,13 @@ When
 
 * $j = 1, U(1) = `r u` + `r c` - S(1)$
 
-* $j = 2, U(2) = `r u` + `r c(2)` - S(2) = U(1) + c - (S(2) - S(1))$
+* $j = 2, U(2) = `r u` + (2)`r c` - S(2) = U(1) + c - (S(2) - S(1))$
 
-* $j = 3, U(3) = `r u` + `r c(3)` - S(3) = U(2) + c - (S(3) - S(2))$
+* $j = 3, U(3) = `r u` + (3)`r c` - S(3) = U(2) + c - (S(3) - S(2))$
 
-* $j = 4, U(4) = `r u` + `r c(4)` - S(4) = U(3) + c - (S(4) - S(3))$
+* $j = 4, U(4) = `r u` + (4)`r c` - S(4) = U(3) + c - (S(4) - S(3))$
 
-* $j = 5, U(5) = `r u` + `r c(5)` - S(5) = U(4) + c - (S(5) - S(4))$
+* $j = 5, U(5) = `r u` + (5)`r c` - S(5) = U(4) + c - (S(5) - S(4))$
 
 The algorithm to estimate the finite time ruin in discrete time can be described as follows: 
 
@@ -627,7 +627,7 @@ Step 2. Check if one of $U(1), U(2), \ldots U(5)$ are negative.
 
 Step 3. Repeat the simulations (1 and 2) 1000 times.
 
-Step 4. Le $M$ be the number of simulations out of 1000 where ruin occurs. Then $\hat{\psi}_1(50, 5) = \frac{M}{1000}.$
+Step 4. Let $M$ be the number of simulations out of 1000 where ruin occurs. Then $\hat{\psi}_1(50, 5) = \frac{M}{1000}.$
 
 From the results, there are $M = 21$ simulations that ruin occurs, and hence 
 $$\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.$$
@@ -667,3 +667,257 @@ Now we assume that $S(j) - S(j-1)$ for $j = 1/2, 1, 3/2, \ldots, 5$ can be appro
 $Y \sim \mathcal{G}(\alpha, \lambda)$ and $k$ is a constant. It follows that
 $$ \hat{\alpha} = `r round(alphaHalf,6)`, \quad \hat{\beta} = `r round(betaHalf,6)`, \quad \hat{k} = `r round(kHalf,6)`.  $$ 
 The simulations can be obtained in the same way.
+
+
+```{r figSurplus, echo = FALSE, fig.cap = 'The sample paths of surplus process.', fig.align="center"}
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+
+lambdaN <- 100
+c <- 110
+u <- 50
+alpha <- 4
+beta  <- 3
+
+# n = number of simulations
+n <- 1000
+# We then have S(1) ~ CP(lambdaN, Pa(alpha,beta))
+# S(2) - S(1) ~ CP(lambdaN, Pa(alpha,beta))
+# S(3) - S(2) ~ CP(lambdaN, Pa(alpha,beta))
+
+# We then approximate the compound Poisson with translated Gamma distribution
+# Therefore, we need to approximate CP(lambdaN, Pa(alpha,beta)) ~ Y + k
+# where Y ~ Ga(a,b)
+
+m1 <- beta/(alpha-1)
+m2 <- (2*beta^2)/ ((alpha - 1) * (alpha -2))    
+m3 <- (6*beta^3)/ ((alpha - 1) * (alpha -2) * (alpha -3)) 
+
+ES <- lambdaN*m1
+VS <- lambdaN*m2
+SkS <- (lambdaN * m3)/(lambdaN * m2)^(3/2)
+
+
+k <- ES - 2*sqrt(VS)/SkS  
+a <- 4/SkS^2
+b <- 2/(SkS*sqrt(VS))
+
+
+#############################################################
+# USE random number generators from standard normal distribution.
+library(readxl)
+#Z <- read_excel("/Users/Kaemyuijang/Documents/R Directory/Risk Theory/RuinTheory/Tutorial6HW_RuinTheory.xlsx", skip = 2)
+Z <- read_excel("Tutorial6HW_RuinTheory.xlsx", skip = 2)
+
+
+Z <- as.data.frame(Z)
+
+
+
+
+dat <- as_tibble(Z)
+
+###  ###
+# Simulate numbers from CP(lambdaN, Pa(alpha,beta)) ~ Y + k,  where Y ~ Ga(a,b)
+#translatedGamma <- function(x, a, b, k){
+#  qgamma(as.numeric(x),shape = a, rate = b) + k
+#}
+#translatedGamma(Z[1:2], a, b, k)
+
+# Simulate numbers from CP(lambdaN, Pa(alpha,beta)) ~ Y + k,  where Y ~ Ga(a,b)
+translatedGamma <- function(x, a, b, k){
+  qgamma(as.numeric(unlist(x)),shape = a, rate = b) + k
+}
+#translatedGamma(Z[1:2], a, b, k)
+
+
+
+# Add U0 column
+dat <- dat %>% mutate(U0 = u)
+
+# Create U1, U2, U3, U4, U5
+U <- setNames(data.frame(matrix(ncol = 5, nrow = n)),  paste0("U",1:5,sep=""))
+U[1] <- u + c -  translatedGamma(Z[1],a, b, k)
+for (i in 2:5){
+  U[i] <-  U[i-1] + c - translatedGamma(Z[i],a, b, k)
+}
+
+dat <- cbind(dat,U)
+
+# Check whether ruin occurs or not
+# With dplyr, using the function rowwise: reference: https://stackoverflow.com/questions/35902842/min-and-median-of-multiple-columns-of-a-df-by-row-in-r
+dat <- mutate(rowwise(dat), Ruin = min(U1,U2,U3,U4,U5)<0)  
+# or
+dat <- dat %>% rowwise() %>% mutate(Ruin = min(U1,U2,U3,U4,U5)<0)  
+
+# Let M be the number of simulations out of 1000 where ruin occurs. 
+M <- dat %>% pull(Ruin) %>% sum()
+
+
+
+
+# Using ggplot2 to plot sample paths
+# We need to select only columns U0,...,U5 and then transpose the selected range.
+# By transposing the selected range, we need to format our data table as follows:
+#
+# time |  P1(or Path1)|  P2        |  ...
+# 0    | U(0) of P1   | U(0) of P2 |  ...
+# 1    | U(1) of P1   | U(1) of P2 |  ...
+# 2    | U(2) of P1   | U(2) of P2 |  ...
+# 3    | U(3) of P1   | U(3) of P2 |  ...
+# 4    | U(4) of P1   | U(4) of P2 |  ...
+# 5    | U(5) of P1   | U(5) of P2 |  ...
+
+
+datSample <- dplyr::select(dat,num_range("U", 0:5)) %>% head(10)
+datSample <- as_tibble(t(datSample))
+colnames(datSample) <- paste("P",1:10,sep="")
+
+
+datSample <- datSample %>% mutate(time=0:5)
+
+# Reformat datSample for ggplot2
+datPathsGather <- datSample %>% gather("path","y",-time)
+datPathsGather <- datSample %>% pivot_longer(1:10, names_to = "path", values_to = "y")
+
+datPathsGather %>% ggplot(aes(time,y,col = path)) + geom_line() +  scale_x_continuous(breaks=0:5)
+```
+
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+```{r ex="ruin", type="sample-code"}
+library(dplyr)
+library(tidyr)
+load("simZ.Rdata")
+```
+
+```{r ex="ruin", type="sample-code"}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+lambdaN <- 100
+c <- 110
+u <- 50
+alpha <- 4
+beta  <- 3
+
+# n = number of simulations
+n <- 1000
+# We then have S(1) ~ CP(lambdaN, Pa(alpha,beta))
+# S(2) - S(1) ~ CP(lambdaN, Pa(alpha,beta))
+# S(3) - S(2) ~ CP(lambdaN, Pa(alpha,beta))
+
+# We then approximate the compound Poisson with translated Gamma distribution
+# Therefore, we need to approximate CP(lambdaN, Pa(alpha,beta)) ~ Y + k
+# where Y ~ Ga(a,b)
+
+m1 <- beta/(alpha-1)
+m2 <- (2*beta^2)/ ((alpha - 1) * (alpha -2))    
+m3 <- (6*beta^3)/ ((alpha - 1) * (alpha -2) * (alpha -3)) 
+
+ES <- lambdaN*m1
+VS <- lambdaN*m2
+SkS <- (lambdaN * m3)/(lambdaN * m2)^(3/2)
+
+
+k <- ES - 2*sqrt(VS)/SkS  
+a <- 4/SkS^2
+b <- 2/(SkS*sqrt(VS))
+
+
+#############################################################
+# USE random number generators from standard normal distribution.
+#library(readxl)
+#Z <- read_excel("/Users/Kaemyuijang/Documents/R Directory/Risk Theory/RuinTheory/Tutorial6HW_RuinTheory.xlsx", skip = 2)
+#Z <- read_excel("Tutorial6HW_RuinTheory.xlsx", skip = 2)
+
+#load("simZ.Rdata")
+
+# Simulate numbers from U(0,1)
+set.seed(1)
+Z1 <- runif(1000, min = 0, max = 1)
+Z2 <- runif(1000, min = 0, max = 1)
+Z3 <- runif(1000, min = 0, max = 1)
+Z4 <- runif(1000, min = 0, max = 1)
+Z5 <- runif(1000, min = 0, max = 1)
+
+Z <- cbind(Z1,Z2,Z3,Z4,Z5)
+
+
+
+Z <- as.data.frame(Z)
+
+#dat <- as_tibble(Z)
+dat <- Z
+
+###  ###
+# Simulate numbers from CP(lambdaN, Pa(alpha,beta)) ~ Y + k,  where Y ~ Ga(a,b)
+#translatedGamma <- function(x, a, b, k){
+#  qgamma(as.numeric(x),shape = a, rate = b) + k
+#}
+#translatedGamma(Z[1:2], a, b, k)
+
+# Simulate numbers from CP(lambdaN, Pa(alpha,beta)) ~ Y + k,  where Y ~ Ga(a,b)
+translatedGamma <- function(x, a, b, k){
+  qgamma(as.numeric(unlist(x)),shape = a, rate = b) + k
+}
+#translatedGamma(Z[1:2], a, b, k)
+
+
+
+# Add U0 column
+dat <- dat %>% mutate(U0 = u)
+
+# Create U1, U2, U3, U4, U5
+U <- setNames(data.frame(matrix(ncol = 5, nrow = n)),  paste0("U",1:5,sep=""))
+U[1] <- u + c -  translatedGamma(Z[1],a, b, k)
+for (i in 2:5){
+  U[i] <-  U[i-1] + c - translatedGamma(Z[i],a, b, k)
+}
+
+dat <- cbind(dat,U)
+
+# Check whether ruin occurs or not
+# With dplyr, using the function rowwise: reference: https://stackoverflow.com/questions/35902842/min-and-median-of-multiple-columns-of-a-df-by-row-in-r
+dat <- mutate(rowwise(dat), Ruin = min(U1,U2,U3,U4,U5)<0)  
+# or
+dat <- dat %>% rowwise() %>% mutate(Ruin = min(U1,U2,U3,U4,U5)<0)  
+
+# Let M be the number of simulations out of 1000 where ruin occurs. 
+M <- dat$Ruin %>% sum()
+
+
+
+
+# Using ggplot2 to plot sample paths
+# We need to select only columns U0,...,U5 and then transpose the selected range.
+# By transposing the selected range, we need to format our data table as follows:
+#
+# time |  P1(or Path1)|  P2        |  ...
+# 0    | U(0) of P1   | U(0) of P2 |  ...
+# 1    | U(1) of P1   | U(1) of P2 |  ...
+# 2    | U(2) of P1   | U(2) of P2 |  ...
+# 3    | U(3) of P1   | U(3) of P2 |  ...
+# 4    | U(4) of P1   | U(4) of P2 |  ...
+# 5    | U(5) of P1   | U(5) of P2 |  ...
+
+
+datSample <- dplyr::select(dat,num_range("U", 0:5)) %>% head(10)
+#datSample <- as_tibble(t(datSample))
+datSample <- as.data.frame(t(datSample))
+colnames(datSample) <- paste("P",1:10,sep="")
+
+
+datSample <- datSample %>% mutate(time=0:5)
+
+# Reformat datSample for ggplot2
+datPathsGather <- datSample %>% gather("path","y",-time)
+#datPathsGather <- datSample %>% pivot_longer(1:10, names_to = "path", values_to = "y")
+
+datPathsGather %>% ggplot(aes(time,y,col = path)) + geom_line() +  scale_x_continuous(breaks=0:5)
+```
+

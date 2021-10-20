@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-10-14" />
+<meta name="date" content="2021-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -702,7 +702,7 @@ F_X(x) &amp;= \Pr(X \le x)\\
 &amp;= \Pr(F(F^{-1}(Y)) \le F(x)\\
 &amp;= \Pr(Y \le F(x))\\
 \end{align}\]</span></p>
-<p>Since <span class="math inline">\(Y \sim U(0,1)\)</span>, we have <span class="math inline">\(\Pr(Y \le t) = t\)</span> for any $t . Therefore,
+<p>Since <span class="math inline">\(Y \sim U(0,1)\)</span>, we have <span class="math inline">\(\Pr(Y \le t) = t\)</span> for any <span class="math inline">\(t \in [0,1]\)</span>. Therefore,
 <span class="math display">\[ F_X(x) = \Pr(Y \le F(x)) = F(x).\]</span>
 <strong>Note</strong> We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate <span class="math inline">\(X_1, X_2, X_3, \ldots, X_n\)</span> from <span class="math inline">\(\mathcal{G}(\alpha,\lambda)\)</span> (or any other distributions) in Excel, we use <code>GAMMAINV(RAND(), alpha, 1/lambda)</code>. However, in R, we can simply use <code>rgamma(n, alpha, lambda)</code> to generate <span class="math inline">\(n\)</span> random numbers from the <span class="math inline">\(\mathcal{G}(\alpha,\lambda)\)</span> distribution.</p>
 <div class="example">
@@ -742,16 +742,16 @@ claims in the <span class="math inline">\(j\)</span>th year, for <span class="ma
 When</p>
 <ul>
 <li><p><span class="math inline">\(j = 1, U(1) = 50 + 110 - S(1)\)</span></p></li>
-<li><p><span class="math inline">\(j = 2, U(2) = 50 + 2 - S(2) = U(1) + c - (S(2) - S(1))\)</span></p></li>
-<li><p><span class="math inline">\(j = 3, U(3) = 50 + 3 - S(3) = U(2) + c - (S(3) - S(2))\)</span></p></li>
-<li><p><span class="math inline">\(j = 4, U(4) = 50 + 4 - S(4) = U(3) + c - (S(4) - S(3))\)</span></p></li>
-<li><p><span class="math inline">\(j = 5, U(5) = 50 + 5 - S(5) = U(4) + c - (S(5) - S(4))\)</span></p></li>
+<li><p><span class="math inline">\(j = 2, U(2) = 50 + (2)110 - S(2) = U(1) + c - (S(2) - S(1))\)</span></p></li>
+<li><p><span class="math inline">\(j = 3, U(3) = 50 + (3)110 - S(3) = U(2) + c - (S(3) - S(2))\)</span></p></li>
+<li><p><span class="math inline">\(j = 4, U(4) = 50 + (4)110 - S(4) = U(3) + c - (S(4) - S(3))\)</span></p></li>
+<li><p><span class="math inline">\(j = 5, U(5) = 50 + (5)110 - S(5) = U(4) + c - (S(5) - S(4))\)</span></p></li>
 </ul>
 <p>The algorithm to estimate the finite time ruin in discrete time can be described as follows:</p>
 <p>Step 1. Simulate values of <span class="math inline">\(S(1), S(2) - S(1), \ldots, , S(5) - S(4)\)</span> from <span class="math inline">\(\mathcal{CP}(\lambda, F_X(x))\)</span> distribution. Then compute <span class="math inline">\(U(1), U(2), \ldots U(5)\)</span>.</p>
 <p>Step 2. Check if one of <span class="math inline">\(U(1), U(2), \ldots U(5)\)</span> are negative.</p>
 <p>Step 3. Repeat the simulations (1 and 2) 1000 times.</p>
-<p>Step 4. Le <span class="math inline">\(M\)</span> be the number of simulations out of 1000 where ruin occurs. Then <span class="math inline">\(\hat{\psi}_1(50, 5) = \frac{M}{1000}.\)</span></p>
+<p>Step 4. Let <span class="math inline">\(M\)</span> be the number of simulations out of 1000 where ruin occurs. Then <span class="math inline">\(\hat{\psi}_1(50, 5) = \frac{M}{1000}.\)</span></p>
 <p>From the results, there are <span class="math inline">\(M = 21\)</span> simulations that ruin occurs, and hence
 <span class="math display">\[\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.\]</span></p>
 <ol start="2" style="list-style-type: decimal">
@@ -780,6 +780,39 @@ When</p>
 <span class="math inline">\(Y \sim \mathcal{G}(\alpha, \lambda)\)</span> and <span class="math inline">\(k\)</span> is a constant. It follows that
 <span class="math display">\[ \hat{\alpha} = 7.407407, \quad \hat{\beta} = 0.222222, \quad \hat{k} = 16.666667.  \]</span>
 The simulations can be obtained in the same way.</p>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MASS&#39;:
+## 
+##     select</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ tibble  3.1.4     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1
+## ✓ purrr   0.3.4</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## x dplyr::select() masks MASS::select()</code></pre>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
+## Using compatibility `.name_repair`.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:figSurplus"></span>
+<img src="SCMA470Bookdownproj_files/figure-html/figSurplus-1.png" alt="The sample paths of surplus process." width="672" />
+<p class="caption">
+Figure 5.3: The sample paths of surplus process.
+</p>
+</div>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGRwbHlyKVxubGlicmFyeSh0aWR5cilcbmxpYnJhcnkoZ2dwbG90MilcblxubGFtYmRhTiA8LSAxMDBcbmMgPC0gMTEwXG51IDwtIDUwXG5hbHBoYSA8LSA0XG5iZXRhICA8LSAzXG5cbiMgbiA9IG51bWJlciBvZiBzaW11bGF0aW9uc1xubiA8LSAxMDAwXG4jIFdlIHRoZW4gaGF2ZSBTKDEpIH4gQ1AobGFtYmRhTiwgUGEoYWxwaGEsYmV0YSkpXG4jIFMoMikgLSBTKDEpIH4gQ1AobGFtYmRhTiwgUGEoYWxwaGEsYmV0YSkpXG4jIFMoMykgLSBTKDIpIH4gQ1AobGFtYmRhTiwgUGEoYWxwaGEsYmV0YSkpXG5cbiMgV2UgdGhlbiBhcHByb3hpbWF0ZSB0aGUgY29tcG91bmQgUG9pc3NvbiB3aXRoIHRyYW5zbGF0ZWQgR2FtbWEgZGlzdHJpYnV0aW9uXG4jIFRoZXJlZm9yZSwgd2UgbmVlZCB0byBhcHByb3hpbWF0ZSBDUChsYW1iZGFOLCBQYShhbHBoYSxiZXRhKSkgfiBZICsga1xuIyB3aGVyZSBZIH4gR2EoYSxiKVxuXG5tMSA8LSBiZXRhLyhhbHBoYS0xKVxubTIgPC0gKDIqYmV0YV4yKS8gKChhbHBoYSAtIDEpICogKGFscGhhIC0yKSkgICAgXG5tMyA8LSAoNipiZXRhXjMpLyAoKGFscGhhIC0gMSkgKiAoYWxwaGEgLTIpICogKGFscGhhIC0zKSkgXG5cbkVTIDwtIGxhbWJkYU4qbTFcblZTIDwtIGxhbWJkYU4qbTJcblNrUyA8LSAobGFtYmRhTiAqIG0zKS8obGFtYmRhTiAqIG0yKV4oMy8yKVxuXG5cbmsgPC0gRVMgLSAyKnNxcnQoVlMpL1NrUyAgXG5hIDwtIDQvU2tTXjJcbmIgPC0gMi8oU2tTKnNxcnQoVlMpKVxuXG5cbiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyNcbiMgVVNFIHJhbmRvbSBudW1iZXIgZ2VuZXJhdG9ycyBmcm9tIHN0YW5kYXJkIG5vcm1hbCBkaXN0cmlidXRpb24uXG4jbGlicmFyeShyZWFkeGwpXG4jWiA8LSByZWFkX2V4Y2VsKFwiL1VzZXJzL0thZW15dWlqYW5nL0RvY3VtZW50cy9SIERpcmVjdG9yeS9SaXNrIFRoZW9yeS9SdWluVGhlb3J5L1R1dG9yaWFsNkhXX1J1aW5UaGVvcnkueGxzeFwiLCBza2lwID0gMilcbiNaIDwtIHJlYWRfZXhjZWwoXCJUdXRvcmlhbDZIV19SdWluVGhlb3J5Lnhsc3hcIiwgc2tpcCA9IDIpXG5cbiNsb2FkKFwic2ltWi5SZGF0YVwiKVxuXG4jIFNpbXVsYXRlIG51bWJlcnMgZnJvbSBVKDAsMSlcbnNldC5zZWVkKDEpXG5aMSA8LSBydW5pZigxMDAwLCBtaW4gPSAwLCBtYXggPSAxKVxuWjIgPC0gcnVuaWYoMTAwMCwgbWluID0gMCwgbWF4ID0gMSlcblozIDwtIHJ1bmlmKDEwMDAsIG1pbiA9IDAsIG1heCA9IDEpXG5aNCA8LSBydW5pZigxMDAwLCBtaW4gPSAwLCBtYXggPSAxKVxuWjUgPC0gcnVuaWYoMTAwMCwgbWluID0gMCwgbWF4ID0gMSlcblxuWiA8LSBjYmluZChaMSxaMixaMyxaNCxaNSlcblxuXG5cblogPC0gYXMuZGF0YS5mcmFtZShaKVxuXG4jZGF0IDwtIGFzX3RpYmJsZShaKVxuZGF0IDwtIFpcblxuIyMjICAjIyNcbiMgU2ltdWxhdGUgbnVtYmVycyBmcm9tIENQKGxhbWJkYU4sIFBhKGFscGhhLGJldGEpKSB+IFkgKyBrLCAgd2hlcmUgWSB+IEdhKGEsYilcbiN0cmFuc2xhdGVkR2FtbWEgPC0gZnVuY3Rpb24oeCwgYSwgYiwgayl7XG4jICBxZ2FtbWEoYXMubnVtZXJpYyh4KSxzaGFwZSA9IGEsIHJhdGUgPSBiKSArIGtcbiN9XG4jdHJhbnNsYXRlZEdhbW1hKFpbMToyXSwgYSwgYiwgaylcblxuIyBTaW11bGF0ZSBudW1iZXJzIGZyb20gQ1AobGFtYmRhTiwgUGEoYWxwaGEsYmV0YSkpIH4gWSArIGssICB3aGVyZSBZIH4gR2EoYSxiKVxudHJhbnNsYXRlZEdhbW1hIDwtIGZ1bmN0aW9uKHgsIGEsIGIsIGspe1xuICBxZ2FtbWEoYXMubnVtZXJpYyh1bmxpc3QoeCkpLHNoYXBlID0gYSwgcmF0ZSA9IGIpICsga1xufVxuI3RyYW5zbGF0ZWRHYW1tYShaWzE6Ml0sIGEsIGIsIGspXG5cblxuXG4jIEFkZCBVMCBjb2x1bW5cbmRhdCA8LSBkYXQgJT4lIG11dGF0ZShVMCA9IHUpXG5cbiMgQ3JlYXRlIFUxLCBVMiwgVTMsIFU0LCBVNVxuVSA8LSBzZXROYW1lcyhkYXRhLmZyYW1lKG1hdHJpeChuY29sID0gNSwgbnJvdyA9IG4pKSwgIHBhc3RlMChcIlVcIiwxOjUsc2VwPVwiXCIpKVxuVVsxXSA8LSB1ICsgYyAtICB0cmFuc2xhdGVkR2FtbWEoWlsxXSxhLCBiLCBrKVxuZm9yIChpIGluIDI6NSl7XG4gIFVbaV0gPC0gIFVbaS0xXSArIGMgLSB0cmFuc2xhdGVkR2FtbWEoWltpXSxhLCBiLCBrKVxufVxuXG5kYXQgPC0gY2JpbmQoZGF0LFUpXG5cbiMgQ2hlY2sgd2hldGhlciBydWluIG9jY3VycyBvciBub3RcbiMgV2l0aCBkcGx5ciwgdXNpbmcgdGhlIGZ1bmN0aW9uIHJvd3dpc2U6IHJlZmVyZW5jZTogaHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMzU5MDI4NDIvbWluLWFuZC1tZWRpYW4tb2YtbXVsdGlwbGUtY29sdW1ucy1vZi1hLWRmLWJ5LXJvdy1pbi1yXG5kYXQgPC0gbXV0YXRlKHJvd3dpc2UoZGF0KSwgUnVpbiA9IG1pbihVMSxVMixVMyxVNCxVNSk8MCkgIFxuIyBvclxuZGF0IDwtIGRhdCAlPiUgcm93d2lzZSgpICU+JSBtdXRhdGUoUnVpbiA9IG1pbihVMSxVMixVMyxVNCxVNSk8MCkgIFxuXG4jIExldCBNIGJlIHRoZSBudW1iZXIgb2Ygc2ltdWxhdGlvbnMgb3V0IG9mIDEwMDAgd2hlcmUgcnVpbiBvY2N1cnMuIFxuTSA8LSBkYXQkUnVpbiAlPiUgc3VtKClcblxuXG5cblxuIyBVc2luZyBnZ3Bsb3QyIHRvIHBsb3Qgc2FtcGxlIHBhdGhzXG4jIFdlIG5lZWQgdG8gc2VsZWN0IG9ubHkgY29sdW1ucyBVMCwuLi4sVTUgYW5kIHRoZW4gdHJhbnNwb3NlIHRoZSBzZWxlY3RlZCByYW5nZS5cbiMgQnkgdHJhbnNwb3NpbmcgdGhlIHNlbGVjdGVkIHJhbmdlLCB3ZSBuZWVkIHRvIGZvcm1hdCBvdXIgZGF0YSB0YWJsZSBhcyBmb2xsb3dzOlxuI1xuIyB0aW1lIHwgIFAxKG9yIFBhdGgxKXwgIFAyICAgICAgICB8ICAuLi5cbiMgMCAgICB8IFUoMCkgb2YgUDEgICB8IFUoMCkgb2YgUDIgfCAgLi4uXG4jIDEgICAgfCBVKDEpIG9mIFAxICAgfCBVKDEpIG9mIFAyIHwgIC4uLlxuIyAyICAgIHwgVSgyKSBvZiBQMSAgIHwgVSgyKSBvZiBQMiB8ICAuLi5cbiMgMyAgICB8IFUoMykgb2YgUDEgICB8IFUoMykgb2YgUDIgfCAgLi4uXG4jIDQgICAgfCBVKDQpIG9mIFAxICAgfCBVKDQpIG9mIFAyIHwgIC4uLlxuIyA1ICAgIHwgVSg1KSBvZiBQMSAgIHwgVSg1KSBvZiBQMiB8ICAuLi5cblxuXG5kYXRTYW1wbGUgPC0gZHBseXI6OnNlbGVjdChkYXQsbnVtX3JhbmdlKFwiVVwiLCAwOjUpKSAlPiUgaGVhZCgxMClcbiNkYXRTYW1wbGUgPC0gYXNfdGliYmxlKHQoZGF0U2FtcGxlKSlcbmRhdFNhbXBsZSA8LSBhcy5kYXRhLmZyYW1lKHQoZGF0U2FtcGxlKSlcbmNvbG5hbWVzKGRhdFNhbXBsZSkgPC0gcGFzdGUoXCJQXCIsMToxMCxzZXA9XCJcIilcblxuXG5kYXRTYW1wbGUgPC0gZGF0U2FtcGxlICU+JSBtdXRhdGUodGltZT0wOjUpXG5cbiMgUmVmb3JtYXQgZGF0U2FtcGxlIGZvciBnZ3Bsb3QyXG5kYXRQYXRoc0dhdGhlciA8LSBkYXRTYW1wbGUgJT4lIGdhdGhlcihcInBhdGhcIixcInlcIiwtdGltZSlcbiNkYXRQYXRoc0dhdGhlciA8LSBkYXRTYW1wbGUgJT4lIHBpdm90X2xvbmdlcigxOjEwLCBuYW1lc190byA9IFwicGF0aFwiLCB2YWx1ZXNfdG8gPSBcInlcIilcblxuZGF0UGF0aHNHYXRoZXIgJT4lIGdncGxvdChhZXModGltZSx5LGNvbCA9IHBhdGgpKSArIGdlb21fbGluZSgpICsgIHNjYWxlX3hfY29udGludW91cyhicmVha3M9MDo1KSJ9
+</div>
 
 </div>
 </div>
@@ -832,7 +865,7 @@ gitbook.start({
 "link": "https://github.com/pairote-sat/SCMA470/blob/master/05-Ruin-Theory.Rmd",
 "text": null
 },
-"download": null,
+"download": ["SCMA470Bookdownproj.pdf"],
 "toc": {
 "collapse": "subsection"
 }

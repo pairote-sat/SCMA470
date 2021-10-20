@@ -214,12 +214,12 @@ defined to be
             &= E[X^2| Y] - (E[X|Y])^2. \\
 \end{split}\]
 The conditional variance formula is
-\begin{equation} 
+\begin{equation}
 \label{eq:exampleVariance}
     Var[X] = E[ Var[X|Y ]] + Var[E[X|Y ]].
 \end{equation}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-39}{}\label{exm:unlabeled-div-39}
 
 Show that \[Var[X] = E[ Var[X|Y ]] + Var[E[X|Y ]].\]
@@ -241,7 +241,7 @@ Consider the terms on the right-hand side of \eqref{eq:exampleVariance}. We have
                 \end{aligned}\] Adding
 both terms gives the required result.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-40}{}\label{exm:unlabeled-div-40}
 
 In three coloured boxes - Red, Green and Blue, each box has two bags.
@@ -268,7 +268,7 @@ Let \(X\) be the value of the contents of the chosen bag.
 \textbf{Solution:}
 1. The distribution of \(X\) can be obtained by using the law of total
 probability: for example \[\begin{aligned}
-        P(X= 1) &= P(X = 1 , R) + P(X = 1 , G) + P(X = 1 , B) \\ 
+        P(X= 1) &= P(X = 1 , R) + P(X = 1 , G) + P(X = 1 , B) \\
         &= P(X = 1 | R) \cdot P(R) + P(X = 1 | G) \cdot P(G) + P(X = 1 | B) \cdot P(B) \\
         &= \frac{1}{2} \cdot  \frac{1}{3} + \frac{1}{2} \cdot  \frac{1}{3} + \frac{1}{2} \cdot  \frac{1}{3} = \frac{1}{2}.
         \end{aligned}\]
@@ -318,7 +318,7 @@ and \(Var[S | N] = N (m_2 - m_1^2).\) It follows that \[\begin{aligned}
            &= E[ N (m_2 - m_1^2) ] + Var[ N m_1 ] \\
            &= E[ N ]  (m_2 - m_1^2)  +  Var[ N ] m_1  ^2. \end{aligned}\]
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-41}{}\label{exm:unlabeled-div-41}
 
 Show that \(M_S(t) = M_N(\log(M_X(t)))\).
@@ -329,7 +329,7 @@ Show that \(M_S(t) = M_N(\log(M_X(t)))\).
 
 First, consider the following conditional expectation: \[\begin{aligned}
     E\left [e^{t S} | N = n \right] &= E\left[e^{t (X_1 + X_2 + \cdots X_n)}\right] \\
-                 &= E\left[e^{t X_1}\right]  \cdot E\left[e^{t X_2}\right]  \cdots E\left[e^{t X_n}\right]  \text{, since } X_1, X_2 \ldots, X_n \text{ are independent} \\ 
+                 &= E\left[e^{t X_1}\right]  \cdot E\left[e^{t X_2}\right]  \cdots E\left[e^{t X_n}\right]  \text{, since } X_1, X_2 \ldots, X_n \text{ are independent} \\
                  &= (M_X(t))^n.\end{aligned}\] Hence
 \(E \left [e^{t S} | N \right] = (M_X(t))^N.\)
 
@@ -356,7 +356,7 @@ and denote by \(\mathcal{CP}(\lambda,F_X)\).
 distributions, for e.g.~if \(N\) has a negative binomial distribution,
 then \(S\) is said to have a compound negative binomial distribution.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-42}{}\label{exm:unlabeled-div-42}
 
 Let \(S \sim \mathcal{CP}(\lambda,F_X)\). Show that
@@ -420,7 +420,7 @@ where \(m_k\) be the \(k\)th moment of \(X_1\)
           &= \lambda m_3.\end{aligned}\]
 \end{enumerate}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-43}{}\label{exm:unlabeled-div-43}
 
 Let \(S\) be the aggregate annual claims for a risk where
@@ -434,7 +434,7 @@ Since \(X \sim Pa(4,1)\) with \(\alpha = 4\) and \(\lambda = 1\), we
 have \[\begin{aligned}
 E[X^r] &= \frac{\Gamma(\alpha - r) \cdot \Gamma(1 + r) \cdot \lambda^r  }{\Gamma(\alpha)}\\
 E[X] &= \frac{\lambda}{\alpha - 1} = \frac{1}{4-1} = \frac{1}{3}\\
-E[X^2] &=  \frac{\Gamma(2) \cdot \Gamma(3) \cdot \lambda^2  }{\Gamma(4)} = \frac{1}{3}\\ 
+E[X^2] &=  \frac{\Gamma(2) \cdot \Gamma(3) \cdot \lambda^2  }{\Gamma(4)} = \frac{1}{3}\\
 E[X^3] &=  \frac{\Gamma(1) \cdot \Gamma(4) \cdot \lambda^3  }{\Gamma(4)} = 1.\\ \end{aligned}\]
 We have \[\begin{aligned}
 E[S]  &= \lambda E[X] = \frac{10}{3} \\
@@ -503,7 +503,7 @@ An important property of independent, but not necessarily identically
 distributed, compound Poisson random variables is that the sum of a
 fixed number of them is also a compound Poisson random variable.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:Additivity}{}\label{exm:Additivity}
 
 Let \(S_1, \ldots, S_n\)
@@ -536,7 +536,7 @@ It can be interpreted as the probability of getting \(n\) failures before
 the \(k\)th success occurs in a sequence of independent Bernoulli trials
 with probability of success \(p\).
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-44}{}\label{exm:unlabeled-div-44}
 
 Let \(N \sim NB(k,p)\). Show that the mean, variance and moment generating
@@ -596,7 +596,7 @@ Policyholders represent a variety of risks and have different risk parameters, a
 
 This enables us to allow for variability in the risks across a portfolio; that is, to model the heterogeneity of the numbers of claims occurring for different risks.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-45}{}\label{exm:unlabeled-div-45}
 
 A portfolio consists of a large number of individual policies. For each policy, the number of claims in a year has a poisson distribution \(N | \lambda \sim Poisson(\lambda)\). Let us suppose that the variation in \(\lambda\) across the portfolio of risks can be modelled using a gamma \(\mathcal{G}(\alpha,\beta)\) distribution with known parameters, and let us use this to average across the risks.
@@ -613,7 +613,7 @@ For \(k = 0,1,2,\ldots\), we have
 \begin{aligned}
 \Pr(N = k) &= \int f_\lambda(\lambda) \Pr(N = k | \lambda) \, d\lambda \\
 &= \int_{0}^\infty \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{\beta \lambda} e^{-\lambda} \frac{\lambda^k}{k!} \, d\lambda \\
-&= \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \frac{\beta^\alpha}{(\beta+1)^{\alpha+k}} \times \int_0^\infty h(\lambda) \, d\lambda 
+&= \frac{\Gamma(\alpha + k)}{\Gamma(\alpha) \Gamma(1 + k)} \frac{\beta^\alpha}{(\beta+1)^{\alpha+k}} \times \int_0^\infty h(\lambda) \, d\lambda
 \end{aligned}
 \]
 where \(h(\lambda)\) is the probability density function of \(\lambda \sim \mathcal{G}(\alpha + k, \beta + 1)\).
@@ -643,7 +643,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCg1MzUzKVxubiA8LSA1MDAwXG5hbHBoYSA8
 A compound binomial distribution can be used to model a portfolio of
 policies, each of which can give rise to at most one claim.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-46}{}\label{exm:unlabeled-div-46}
 
 Consider a portfolio of \(n\) independent and identical policies where
@@ -701,7 +701,7 @@ the amount of the \(i\)th claim.
   arranged.
 \end{enumerate}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-47}{}\label{exm:unlabeled-div-47}
 
 Aggregate claims from a risk in a given time have a compound Poisson
@@ -775,12 +775,12 @@ insurer has effected excess of loss reinsurance with retention level
 
 It follows that
 
-\begin{equation} 
+\begin{equation}
 \label{eq:eqnSI} S_I =  \sum_{i= 1}^N  Y_1 + Y_2 + \ldots + Y_N =  \sum_{i= 1}^N  \min(X_i,M)
 \end{equation}
 and
-\begin{equation} 
-\label{eq:eqnSR} S_R = \sum_{i= 1}^N  Z_1 + Z_2 + \ldots + Z_N  = \sum_{i= 1}^N \max(0,X_i - M), 
+\begin{equation}
+\label{eq:eqnSR} S_R = \sum_{i= 1}^N  Z_1 + Z_2 + \ldots + Z_N  = \sum_{i= 1}^N \max(0,X_i - M),
 \end{equation}
 where \(X_i\) is the amount of the \(i\)th claim.
 When \(N = 0\), we set \(S_I = 0\) and \(S_R = 0\).
@@ -797,7 +797,7 @@ counting only non-zero claims, we can rewrite \(S_R\) as follows. Let
 aggregate claim amount paid by the reinsurer can be written as
 \[S_R   =  \sum_{i= 1}^{N_R} W_i.\]
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-48}{}\label{exm:unlabeled-div-48}
 
 By using the probability generating function, show that if
@@ -809,9 +809,9 @@ By using the probability generating function, show that if
 \textbf{Solution:}
 Define the indicator random variable \(\{I_j\}_{j=1}^\infty\), where
 \[\begin{aligned}
-        I_j = 
+        I_j =
     \begin{cases}
-        1 &\text{if }  X_j > M\\   
+        1 &\text{if }  X_j > M\\
         0 &\text{if }  X_j \le M.
     \end{cases}\end{aligned}\] Therefore, \[N_R = \sum_{j= 1}^{N} I_j.\]
 The variable \(N_R\) has a compound distribution with its probability
@@ -853,7 +853,7 @@ from \eqref{eq:eqnSI} and
   where \(f_W(x) = \displaystyle{\frac{f_X(x+M)}{1- F_X(M)}}, x > 0\).
 \end{enumerate}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-49}{}\label{exm:unlabeled-div-49}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -910,7 +910,7 @@ Therefore, \(S_I \sim \mathcal{CP}(10,F_Y)\) and
 
 \[\begin{aligned}
   \mathrm{E}[S_I] &= 10 E[Y] = 10(1(0.4) + 2(0.3) + 4(0.3)) = 22, \\
-  \mathrm{Var}[S_I] &= 10 E[Y] = 10(1^2(0.4) + 2^2(0.3) + 4^2(0.3)) = 64. 
+  \mathrm{Var}[S_I] &= 10 E[Y] = 10(1^2(0.4) + 2^2(0.3) + 4^2(0.3)) = 64.
 \end{aligned}\]
 
 \begin{enumerate}
@@ -934,7 +934,7 @@ Therefore, \(S_R \sim \mathcal{CP}(10,F_Z)\) and
 
 \[\begin{aligned}
   \mathrm{E}[S_R] &= 10 E[Z] = 0, \\
-  \mathrm{Var}[S_R] &= 10 E[Z^2] = 38. 
+  \mathrm{Var}[S_R] &= 10 E[Z^2] = 38.
 \end{aligned}\]
 
 \textbf{Notes}
@@ -971,11 +971,11 @@ Hence,
 \[
 \begin{aligned}
   \mathrm{E}[S_R] &= (10 \times 0.3)(1(2/3) + 6(1/3)) = 8, \\
-  \mathrm{Var}[S_R] &= (10 \times 0.3)(1^2(2/3) + 6^2(1/3)) = 38. 
+  \mathrm{Var}[S_R] &= (10 \times 0.3)(1^2(2/3) + 6^2(1/3)) = 38.
 \end{aligned}
 \]
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-50}{}\label{exm:unlabeled-div-50}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -1017,7 +1017,7 @@ Note that the last integral above is the second moment about the origin of \(\ma
 Therefore,
 \[\begin{aligned}
   \mathrm{E}[S_R] &= \lambda E[Z] = 320/9, \\
-  \mathrm{Var}[S_R] &= \lambda E[Z^2] = 1280/3. 
+  \mathrm{Var}[S_R] &= \lambda E[Z^2] = 1280/3.
 \end{aligned}\]
 
 \begin{enumerate}
@@ -1083,7 +1083,7 @@ by a normal distribution, i.e.~\(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[
   probabilities which are the most interest quantities of insurers.
 \end{enumerate}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:approximation}{}\label{exm:approximation}
 
 Aggregate claims from a risk in a given
@@ -1118,7 +1118,7 @@ Sk[S] &= \frac{2}{\sqrt{\alpha}},  \\
 Var[S] &= \frac{\alpha}{\lambda^2},\\
 E[S] &= \frac{\alpha}{\lambda} + k.\end{aligned}\]
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-51}{}\label{exm:unlabeled-div-51}
 
 Show that the parameters \(\alpha, \lambda\) and \(k\) satisfy
@@ -1129,7 +1129,7 @@ k &= E[S] -  \frac{\alpha}{\lambda}.\end{aligned}\]
 
 \end{example}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-52}{}\label{exm:unlabeled-div-52}
 
 The aggregate claims \(S\) have the compound Poisson distribution as given
@@ -1157,7 +1157,7 @@ Panjer's recursion formula,
 \[p_n = \left( a + \frac{b}{n} \right) p_{n-1}, \quad n = 1,2, \ldots,\]
 where \(a\) and \(b\) are constants.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-53}{}\label{exm:unlabeled-div-53}
 
 Show that a Poisson distribution \(N \sim Poisson(\lambda)\) satisfies Panjer's
@@ -1190,7 +1190,7 @@ Then the unknown \(g_r\) can be recursively calculated by
 approximate it by a discrete distribution and then apply the Panjer's
 recursion algorithm.
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-54}{}\label{exm:unlabeled-div-54}
 
 Aggregate claims \(S\) have a compound Poisson distribution
@@ -1227,7 +1227,7 @@ calculation rules are as follows:
   \[P = E[S] + \theta\, Var[S].\]
 \end{enumerate}
 
-\newpage \begin{example}
+\newpage \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-55}{}\label{exm:unlabeled-div-55}
 
 Suppose that \(S\) has a compound Poisson distribution with Poisson
@@ -1306,6 +1306,7 @@ Hence, \(\theta = 1.644854\) and \(P = 19.009\).
 
 \textbf{Comment} The loading factors (for normal approximation) in both two cases are different because they are applied to different quantities (i.e.~\(\mathrm{E}[S]\) and \(\mathrm{Var}[S]\)). But they give the same premium.
 
+
 \hypertarget{ruin-theory}{%
 \chapter{Ruin Theory}\label{ruin-theory}}
 
@@ -1353,6 +1354,42 @@ first three years.}
 
 \end{example}
 
+\textbf{Solution:}
+The insurer's surplus (or cash flow) at any future time \(t\) (\textgreater{} 0) is a random variable, since its value depends on the claims experience up to time \(t\). The insurer's surplus at time \(t\) is a random variable. The insurer's surplus at time \(t\) is denoted \(U(t)\). The following formula for \(U(t)\) can be written as
+
+\begin{equation}
+U(t) = u + ct - S(t),
+\end{equation}
+where the \textbf{aggregate claim amount up to time}
+\(t\), \(S(t)\) is
+\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+The following table summarises the values of the surplus function at the time when claims occurs.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Time & Surplus (before claim) & Surplus (after claim) \\
+\midrule
+\endhead
+0 & 1 & 1 \\
+0.4 & 1.4 & 0.6 \\
+0.9 & 1.1 & 0.4 \\
+1.5 & 1 & -0.2 \\
+\bottomrule
+\end{longtable}
+
+The surplus function increases at a constant rate \(c\) until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate \(c\) and drops are repeated when claims occur. In this example,
+ruin occurs at time 1.5.
+The plot of the surplus process is given in the following figure.
+
+\begin{figure}
+\centering
+\includegraphics{unnamed-chunk-19-1.pdf}
+\caption{\label{fig:unnamed-chunk-19}The surplus process befor reinsurance arrangment.}
+\end{figure}
+
 \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-56}{}\label{exm:unlabeled-div-56}
 
@@ -1364,6 +1401,35 @@ surplus process and determine whether ruin occurs within the first three
 years. Comment on the results.}
 
 \end{example}
+
+\textbf{Solution:}
+The insurer's net premium income is 0.6 per year. The insurer's cash flow or surplus process is now given by
+\begin{equation}
+U_I(t) = u + (c - c_r)t - \alpha \cdot S(t),
+\end{equation}
+where \(c_r\) is the reinsurance premium rate and \(\alpha\) is the retained proportion.
+
+The following table summarises the values of the surplus function at the time when claims occurs.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Time & Surplus (before claim) & Surplus (after claim) \\
+\midrule
+\endhead
+0 & 1 & 1 \\
+0.4 & 1.24 & 0.68 \\
+0.9 & 0.98 & 0.49 \\
+1.5 & 0.85 & 0.01 \\
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{unnamed-chunk-21-1.pdf}
+\caption{\label{fig:unnamed-chunk-21}The surplus process under a proportional reinsurance arrangement.}
+\end{figure}
+
+It should be emphasised that under this proportional reinsurance arrangement, ruin does not occur within 2 years.
 
 \hypertarget{classical-risk-process}{%
 \subsection{Classical risk process}\label{classical-risk-process}}
@@ -1402,17 +1468,28 @@ where the \textbf{aggregate claim amount up to time}
 S(t) = \sum_{i = 1}^{N(t)} X_i .
 \end{equation}
 
-\textbf{Notes}
+The evolution of insurer's surplus defined in \eqref{eq:surplus}
+is also known as the \textbf{classical risk process}.
+The only random and uncertain quantity in
+\eqref{eq:surplus}
+is the aggregate claims \(S(t)\).
+
+\textbf{Notes} The classical risk model contains many simplification.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  The evolution of insurer's surplus defined in \eqref{eq:surplus}
-  is also known as the \textbf{classical risk process}.
+  The claim-arrival rate \(\lambda\) remains constant over time.
 \item
-  The only random and uncertain quantity in
-  \eqref{eq:surplus}
-  is the aggregate claims \(S(t)\).
+  No interest is pain on the surplus.
+\item
+  There is no inflation.
+\item
+  The premium income is received continuously in time.
+\item
+  Claims are paid out \textbf{immediately}.
+\item
+  there are assumptions of independence.
 \end{enumerate}
 
 \hypertarget{poisson-processes}{%
@@ -1526,8 +1603,7 @@ It follows from conditions the \textbf{Stationary Increments} and \textbf{Poisso
   \item
     the times between successive events (or interarrival times) are
     independent and identically distributed exponential random
-    variables with mean \(1/\lambda\). This follows from the following
-    result:
+    variables with mean \(1/\lambda\).
   \end{itemize}
 \item
   For more details about Poisson processes, please refer to the
@@ -1556,7 +1632,8 @@ important properties:
 \item
   It has stationary and independent increments, i.e.~for disjoint time
   intervals \(0 < s < t \le u < v\), the random variables \(N(t) - N(s)\)
-  and \(N(v) - N(u)\) are independent and have
+  and \(N(v) - N(u)\) are independent and \(N(t) - N(s)\) depends only on \(t -s\) and not on the values \(s\) and \(t\). Hence, the random variables \(S(t) - S(s)\) and \(S(v) - S(u)\)
+  are \textbf{independent} and have
   \(\mathcal{CP}(\lambda (t -s), F_X(x))\) and
   \(\mathcal{CP}(\lambda (v - u), F_X(x))\) distributions, respectively.
 \end{enumerate}
@@ -1581,8 +1658,15 @@ be summarised as follows:
 \hypertarget{the-relative-safety-loading}{%
 \subsection{The relative safety loading}\label{the-relative-safety-loading}}
 
-Let \(\mu_X\) and \(\sigma^2_X\) denote the mean and the variance of claim
-sizes \(X_i\).
+According to the expected value principle, the premium rate \(c\) per
+unit time is defined by
+\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]
+Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} or
+\textbf{relative security loading}) \(\theta\) is given by
+\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]
+In addition, the insurer should load the premium for profit so that \(c > \lambda \mu_X\). This finding follows from the following example.
+
+Let \(\mu_X\) and \(\sigma^2_X\) denote the mean and the variance of claim sizes \(X_i\) (in one period).
 
 \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-57}{}\label{exm:unlabeled-div-57}
@@ -1599,12 +1683,33 @@ Consider the following questions.
 
 \end{example}
 
-Based on the expected value premium principle, the premium rate \(c\) per
-unit time can be defined by
-\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]
-Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} or
-\textbf{relative security loading}) \(\theta\) is given by
-\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  From \(U(t) = u + ct - S(t),\) the expected surplus at time \(t\) is
+  \begin{align}
+  \mathrm{E}[U(t)] &= u + ct - \mathrm{E}[S(t)] \\
+  &= u + ct - (\lambda t)\mathrm{E}[X] \\
+  &= u + ct - (\lambda t)\mu_X \\
+  &= u + (c - \lambda \mu_X)\cdot t,
+  \end{align}
+  and \[ \mathrm{Var}[U(t)] = \mathrm{Var}[S(t)] = (\lambda t)\mathrm{E}[X^2].\]
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The expected profit per unit time in \((0, t]\) can be calculated from
+  \[\frac{\mathrm{E}[U(t) - U(0)]}{t} = c - \lambda \mu_X.\]
+  This motivates the \textbf{net profit condition}:
+  \[c > \lambda \mu_X.  \]
+  Given \(\lambda\) and \(\mu_X\), we aim to set the premium rate \(c\) that satisfies the net profit condition.
+\end{enumerate}
 
 \textbf{Notes}
 
@@ -1614,11 +1719,13 @@ Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} o
   The insurer can make a profit provided that \(c > \lambda \mu_X\) or
   the relative safety loading \(\theta\) is positive. In this case, the
   surplus will drift to \(\infty\), but ruin could still occur. The rate
-  at which premium income comes in is greather than the rate at which
+  at which premium income comes in is greater than the rate at which
   claims are paid out.
 \item
   On the other hand, if \(c < \lambda \mu_X\), then the surplus will
   drift to \(-\infty\), but ruin is certain.
+\item
+  If \(c = \lambda \mu_X\), the surplus will drift to \(\infty\) and \(-\infty\), but ruin is certain (eventually).
 \end{enumerate}
 
 \hypertarget{ruin-probabilities}{%
@@ -1649,12 +1756,21 @@ Various definitions of ruin probabilities are given.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  For \(0 \le u_1 \le u_2\), \[\psi(u_1) \ge \psi(u_2),\] i.e.~the
-  ultimate ruin probability is non-increasing in \(u\).
+  For \(0 \le u_1 \le u_2\), \[\psi(u_1) \ge \psi(u_2),\] and
+  \[\psi(u_1,t) \ge \psi(u_2,t),\]
+  i.e.~the
+  ultimate ruin probability and finite-time ruin probability are non-increasing in \(u\).
+  Intuitively, the larger the initial surplus, the less likely it is that ruin will occur either in a finite time period or an unlimited time
+  period.
 \item
   If ruin occurs under the discrete time, it must occur under the
   continuous time, i.e.~\[\psi_h(u) < \psi(u).\] Similarly,
   \[\psi_h(u,t) < \psi(u,t).\]
+\item
+  For a given initial surplus \(u\) and \(0 < t_1 < t_2\),
+  \[\psi(u,t_1) < \psi(u,t_2).\]
+  Intuitively, the longer the period considered when checking for ruin, the more likely it is that ruin will
+  occur.
 \item
   The discrete time ultimate ruin probability \(\psi_h(u)\) could be
   used as an approximation of \(\psi(u)\) provided \(h\) is sufficiently
@@ -1688,8 +1804,30 @@ negative.}
 
 \end{example}
 
+\textbf{Solution:} Using the normal approximation, the total claims \(S\) can be approximated by \(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])\). We have
+\begin{align}
+\mathrm{E}[X] &= e^{\mu + \sigma^2/2} = 31.500392 \\
+\mathrm{E}[X^2] &= e^{2\mu + 2\sigma^2} = 2440.601978.
+\end{align}
+
+Therefore,
+\begin{align}
+\mathrm{E}[S(2)] &= 2(50)\mathrm{E}[X] = 3150.039231 \\
+\mathrm{Var}[S(2)] &= 2(50)\mathrm{E}[X2] = \ensuremath{2.440602\times 10^{5}} .
+\end{align}
+
+Hence, ruin will occur if \(S(2)\) is greater than the initial surplus plus premiums received. Therefore, the probability of ruin is
+\begin{align}
+\Pr(S(2) > u + 2c) &= \Pr(S(2) > 1000 + 2(1500)) \\
+&= \Pr(Z > \frac{1000 + 2(1500)  - 3150.0392309}{\sqrt{\ensuremath{2.440602\times 10^{5}}}}) \\
+&= \Pr(Z > 1.720483)  = 0.04267.
+\end{align}
+the probability of ruin is approximately 4.267\%.
+
 \hypertarget{simulation-of-ruin-probabilities}{%
 \section{Simulation of ruin probabilities}\label{simulation-of-ruin-probabilities}}
+
+In this section, we will use simulation to numerically estimate the probability of ruin. First, we introduce the \textbf{inverse transform method}, which is a method for generating random numbers from any probability distribution by using its inverse cumulative distribution.
 
 \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-59}{}\label{exm:unlabeled-div-59}
@@ -1700,6 +1838,22 @@ Define the random variable \(X\) by \[X = F^{-1}(Y).\] Show that the
 cumulative density function of \(X\), \(F_X(x)\) is \(F(x)\).}
 
 \end{example}
+
+\textbf{Solution:}
+We need to show that \(Pr(X \le x) = F(x)\) for all \(x\), i.e.~\(F_X(x)= F(x)\) as defined above.
+
+It follows from the monotonicity of \(F\) and the definition
+
+\begin{align}
+F_X(x) &= \Pr(X \le x)\\
+&= \Pr(F^{-1}(Y) \le x)\\
+&= \Pr(F(F^{-1}(Y)) \le F(x)\\
+&= \Pr(Y \le F(x))\\
+\end{align}
+
+Since \(Y \sim U(0,1)\), we have \(\Pr(Y \le t) = t\) for any \(t \in [0,1]\). Therefore,
+\[ F_X(x) = \Pr(Y \le F(x)) = F(x).\]
+\textbf{Note} We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate \(X_1, X_2, X_3, \ldots, X_n\) from \(\mathcal{G}(\alpha,\lambda)\) (or any other distributions) in Excel, we use \texttt{GAMMAINV(RAND(),\ alpha,\ 1/lambda)}. However, in R, we can simply use \texttt{rgamma(n,\ alpha,\ lambda)} to generate \(n\) random numbers from the \(\mathcal{G}(\alpha,\lambda)\) distribution.
 
 \newpage \begin{example}
 \protect\hypertarget{exm:unlabeled-div-60}{}\label{exm:unlabeled-div-60}
@@ -1727,6 +1881,101 @@ approximation,}
 \end{enumerate}
 
 \end{example}
+
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An estimate of \(\psi_1(u,5)\) with \(u = 50\) and \(c =110\) can be obtained as follows:
+\end{enumerate}
+
+From the properties of \(S(t)\),
+
+\begin{itemize}
+\item
+  The aggregate claims in
+  the first year have \(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\) distribution with \(\lambda = 100\) and \(X \sim \text{Pa}(4,3)\)
+\item
+  The aggregate
+  claims in the \(j\)th year, for \(j = 1,2, \ldots, 5\) have \(S(j) - S(j-1) \sim \mathcal{CP}(\lambda, F_X(x))\) distribution.
+\end{itemize}
+
+It follows that
+\begin{align}
+\psi_1(u,5) &= \Pr(U(j) < 0 \quad \text{ for at least one of } j \in \{1,2, \ldots, 5\}) \\
+&= \Pr(u + cj - S(j) < 0 ), \text{ for at least one of } j = 1,2, \ldots, 5.
+\end{align}
+When
+
+\begin{itemize}
+\item
+  \(j = 1, U(1) = 50 + 110 - S(1)\)
+\item
+  \(j = 2, U(2) = 50 + 2 - S(2) = U(1) + c - (S(2) - S(1))\)
+\item
+  \(j = 3, U(3) = 50 + 3 - S(3) = U(2) + c - (S(3) - S(2))\)
+\item
+  \(j = 4, U(4) = 50 + 4 - S(4) = U(3) + c - (S(4) - S(3))\)
+\item
+  \(j = 5, U(5) = 50 + 5 - S(5) = U(4) + c - (S(5) - S(4))\)
+\end{itemize}
+
+The algorithm to estimate the finite time ruin in discrete time can be described as follows:
+
+Step 1. Simulate values of \(S(1), S(2) - S(1), \ldots, , S(5) - S(4)\) from \(\mathcal{CP}(\lambda, F_X(x))\) distribution. Then compute \(U(1), U(2), \ldots U(5)\).
+
+Step 2. Check if one of \(U(1), U(2), \ldots U(5)\) are negative.
+
+Step 3. Repeat the simulations (1 and 2) 1000 times.
+
+Step 4. Le \(M\) be the number of simulations out of 1000 where ruin occurs. Then \(\hat{\psi}_1(50, 5) = \frac{M}{1000}.\)
+
+From the results, there are \(M = 21\) simulations that ruin occurs, and hence
+\[\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  The estimation of the standard error of \(\hat{\psi}_1(50, 5)\) can be obtained as follows. We know that \(M \sim \mathcal{B}(1000,p)\) where \(p = \hat{\psi}_1(50, 5)\). Then,
+  \[\textrm{Var}\left[\frac{M}{1000}\right] = \frac{1}{1000^2}\textrm{Var}[M] = \frac{1000 (p) (1-p)}{1000^2}\] and
+  \[ \textrm{SD}[\hat{\psi}_1(50, 5)] = \frac{1000 (0.021) (1-0.021)}{1000^2} = 0.004534 \]
+\item
+  The 95\% confidence interval of the estimate is
+  \[ (\hat{\psi}_1(50, 5) - z_{\alpha/2}\textrm{SD}[\hat{\psi}_1(50, 5)], \hat{\psi}_1(50, 5) + z_{\alpha/2} \textrm{SD}[\hat{\psi}_1(50, 5)]) = (0.012113,0.029887).\]
+\item
+  For the estimation of discrete time probability of ruin where the surplus process is checked at time intervals of length 0.5, we proceed as follows. First we note that
+\end{enumerate}
+
+\(S(1/2), S(1) - S(1/2), S(3/2) - S(1), \ldots, S(5) - S(9/2) \sim \mathcal{CP}((1/2)\lambda, F_X(x))\) distribution.
+
+In addition,
+
+\begin{itemize}
+\item
+  U(1/2) = U(0) + c (1/2) - S(1/2)\$
+\item
+  U(1) = U(1/2) + c (1/2) - ( S(1) - S(1/2) )\$
+\item
+  U(3/2) = U(1) + c (1/2) - (S(3/2) - S(1))\$ , \(\ldots\),
+\item
+  U(5) = U(9/2) + `c (1/2) - ( S(5) - S(9/2) )\$.
+\end{itemize}
+
+It follows that
+
+\begin{align}
+\mathrm{E}[S(1/2)] &= (1/2)(100)\mathrm{E}[X] = (1/2)\mathrm{E}[S(1)] = 50 \\
+\mathrm{Var}[S(1/2)] &= (1/2)(100)\mathrm{E}[X^2] =  (1/2)\mathrm{Var}[S(1)]  = 150 \\
+\mathrm{Sk}[S(1/2)] &= \sqrt{2} \mathrm{Sk}[S(1)] = 0.734847 .
+\end{align}
+
+Now we assume that \(S(j) - S(j-1)\) for \(j = 1/2, 1, 3/2, \ldots, 5\) can be approximated by \(Y + k\) where
+\(Y \sim \mathcal{G}(\alpha, \lambda)\) and \(k\) is a constant. It follows that
+\[ \hat{\alpha} = 7.407407, \quad \hat{\beta} = 0.222222, \quad \hat{k} = 16.666667.  \]
+The simulations can be obtained in the same way.
 
 
 \end{document}
