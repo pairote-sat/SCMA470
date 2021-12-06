@@ -1,0 +1,744 @@
+# Project 2021 Risk Theory
+
+
+**Instructions**
+
+-   Form a group of 2 members.
+
+-   You will receive R and Excel files for the project. Use R to
+    generate an array of independent values
+    $\{\{Z_{i \,j} \}_{j=1}^5  \}_{i=1}^{1000}$, each from a $U(0,1)$
+    distribution (details are given below in the question section).
+    Remember to set the argument to set.seed(xxxx) where the argument,
+    xxxx, of the set.seed function is the final four digits of the lower
+    student identification number, e.g. **if students' I.D. are 6105389
+    and 6105395, then use set.seed(5389)**.
+
+    Then **use your preferred software**, EXCEL, R or other reasonable
+    software to do the subsequent computation. In case that you choose
+    to use EXCEL, you will need to copy and paste the array
+    $\{\{Z_{i \,j} \}_{j=1}^5  \}_{i=1}^{1000}$ generated from R into
+    EXCEL by hands.
+
+-   Each group submission consists of (1) a report in PDF format,
+    together with print-outs of your calculations (also in PDF) and (2)
+    an R or EXCEL file (one file only) with answers to questions with
+    required numerical answers (i.e. excluding questions asking for
+    comments).
+
+-   The report should not exceed four A4 pages in length (not including
+    the print-outs of the calculations). The report, R (or EXCEL) file
+    names should be in the format project6105389-6105395. **Submit the
+    group report and R (or Excel) files in Canvas to the student account
+    with the lower student ID**.
+
+-   **Failure to personalize your project with set.seed will result in a
+    project mark of 0.**
+
+-   Columns or variable names in your print-out should be clearly
+    labeled.
+
+-   When using EXCEL, R or any other reasonable software, to simulate
+    values of the surplus using a translated gamma approximation, use
+    the exact value of the parameters $\alpha, \beta$ and $k$ held by
+    the software, not the rounded values presented in your report.
+
+    For example, suppose you are using EXCEL to simulate $S(1)$, that a
+    $U(0,1)$ value is held in cell A1 and your calculated values of
+    $\alpha, \beta$ and $k$ are in cells A2, A3 and A4, respectively.
+    Suppose further that the values of these parameters, to 5 decimal
+    places, are 1.12345, 0.12345 and $-$123.12345. Note that EXCEL will
+    be holding these values to a far greater degree of accuracy. To
+    simulate a value of $S(1)$, you should use the command
+
+    = GAMMAINV(A1,A2,1/A3) + A4
+
+    not the command:
+
+    = GAMMAINV(A1,1.12345,1/0.12345) $-$ 123.12345.
+
+
+```{r, echo = FALSE}
+set.seed(5377)
+#
+#     Generate sample A times with censorng
+#
+#############################################################
+# Simulate Z_ij using a translated gamma approximation, for e.g. 
+# simS1 is a vector of simulated S(1)
+
+Z1 <- runif(1000, min = 0, max = 1)
+Z2 <- runif(1000, min = 0, max = 1)
+Z3 <- runif(1000, min = 0, max = 1)
+Z4 <- runif(1000, min = 0, max = 1)
+Z5 <- runif(1000, min = 0, max = 1)
+
+Z <- cbind(Z1,Z2,Z3,Z4,Z5)
+
+#library(xlsx)
+#setwd("d:")
+#write.xlsx(Z, file = "Zgenerated.xlsx")
+
+
+####################################################
+# Please insert your R code after this line
+####################################################
+
+lambdaN <- 10
+theta <- 0.2
+# Initial surplus
+u <- 3500
+
+#number of simulation
+n <- 1000
+
+#Retention limit
+M <- 900
+
+x <- c(10,100,500,1000)
+px <- c(0.5,0.3,0.15,0.05)
+
+EX <- sum(x*px)
+EX2 <- sum(x^2 * px)
+EX3 <- sum(x^3 * px)
+
+# ES means E[S(1)]
+ES <- lambdaN*EX
+VS <- lambdaN*EX2
+SkS <- (lambdaN * EX3)/(lambdaN * EX2)^(3/2)
+
+# ES5 means E[S(5)]
+ES5 <- 5*lambdaN*EX
+VS5 <- 5*lambdaN*EX2
+
+#The negativity of k implies that
+#negative aggregated claims can occur in the approximation. 
+#This is an unrealistic effect that we have to be aware of in the following.
+
+k <- ES - 2*sqrt(VS)/SkS  
+a <- 4/SkS^2
+b <- 2/(SkS*sqrt(VS))
+
+# Premium rate per unit of time
+c <- (1 + theta)*ES
+
+# Calculate E[U(5)] and V[U(5)]
+EU5 <- u + 5*c - ES5
+VU5 <- VS5
+
+
+simS1 <- qgamma(Z1, shape = a, rate = b) + k
+simS2 <- qgamma(Z2, shape = a, rate = b) + k
+simS3 <- qgamma(Z3, shape = a, rate = b) + k
+simS4 <- qgamma(Z4, shape = a, rate = b) + k
+simS5 <- qgamma(Z5, shape = a, rate = b) + k
+#############################################################
+
+U1 <- u + c - simS1
+U2 <- U1 + c - simS2
+U3 <- U2 + c - simS3
+U4 <- U3 + c - simS4
+U5 <- U4 + c - simS5
+
+Ut <- cbind(U1,U2,U3,U4,U5)
+
+# Calculate mean(U(5)) from simulation
+# mean(U5)
+
+# Estimate psi_1(3500,5)
+minOfColumnsofUt <- apply(Ut, 1, function(x) min(x) )
+psi1hat <- sum(minOfColumnsofUt < 0)/n
+
+# Estimate the sd of psi_1_hat(u,5)
+VEst <- n*psi1hat*(1-psi1hat)*(1/n^2)
+SdEst <- sqrt(VEst)
+
+#######################################################################
+# Estimate of psi_1(u+delta_u , 5)
+delta_u <- 500
+minOfColumnsofUt <- apply(Ut, 1, function(x) min(x) )
+psi1hat[2] <- sum(minOfColumnsofUt < -delta_u)/n
+
+
+#########################################
+# After reinsurance 
+y <- pmin(x,M)
+py <- px
+
+EY <- sum(y*py)
+EY2 <- sum(y^2 * py)
+EY3 <- sum(y^3 * py)
+
+
+# ES means E[S(1)]
+ESI <- lambdaN*EY
+VSI <- lambdaN*EY2
+SkSI <- (lambdaN * EY3)/(lambdaN * EY2)^(3/2)
+
+
+#The negativity of k implies that
+#negative aggregated claims can occur in the approximation. 
+#This is an unrealistic effect that we have to be aware of in the following.
+
+kI <- ESI - 2*sqrt(VSI)/SkSI  
+aI <- 4/SkSI^2
+bI <- 2/(SkSI*sqrt(VSI))
+
+# Reinsurance premium rate per unit of time
+thetaR <- c(3*theta, 2*theta, 1*theta)
+cR <- (1 + thetaR)*(ES - ESI)
+
+# Calculate E[U(5)] and V[U(5)]
+EUI5 <- u + 5*(c - cR) - 5*ESI
+VUI5 <- 5*lambdaN*EY2
+
+#######################
+# Estimate probability of ruin after reinsurance
+
+
+simSI1 <- qgamma(Z1,shape = aI, rate = bI) + kI
+simSI2 <- qgamma(Z2,shape = aI, rate = bI) + kI
+simSI3 <- qgamma(Z3,shape = aI, rate = bI) + kI
+simSI4 <- qgamma(Z4,shape = aI, rate = bI) + kI
+simSI5 <- qgamma(Z5,shape = aI, rate = bI) + kI
+#############################################################
+
+
+
+psiI1hat <- rep(0, time=length(thetaR))
+for (i in 1:length(thetaR) ){
+  
+  UI1 <- u +  c - cR[i] - simSI1
+  UI2 <- UI1 + c - cR[i] - simSI2
+  UI3 <- UI2 + c - cR[i] - simSI3
+  UI4 <- UI3 + c - cR[i] - simSI4
+  UI5 <- UI4 + c - cR[i] - simSI5
+  
+  UIt <- cbind(UI1,UI2,UI3,UI4,UI5)
+  
+  # Estimate psi_1(1000,5)
+  minOfColumnsofUIt <- apply(UIt, 1, function(x) min(x) )
+  psiI1hat[i] <- sum(minOfColumnsofUIt < 0)/n
+}
+
+
+
+
+
+#############################################
+
+
+
+
+listM <- c(550,600,650,700,750,800,850,900)
+psiI1hatM <- rep(0, time=length(listM))
+
+
+for (i in 1:length(listM) ){
+  #########################################
+  # After reinsurance 
+  M <- listM[i]
+  y <- pmin(x,M)
+  py <- px
+  
+  EY <- sum(y*py)
+  EY2 <- sum(y^2 * py)
+  EY3 <- sum(y^3 * py)
+  
+  
+  # ES means E[S(1)]
+  ESI <- lambdaN*EY
+  VSI <- lambdaN*EY2
+  SkSI <- (lambdaN * EY3)/(lambdaN * EY2)^(3/2)
+  
+  
+  #The negativity of k implies that
+  #negative aggregated claims can occur in the approximation. 
+  #This is an unrealistic effect that we have to be aware of in the following.
+  
+  kI <- ESI - 2*sqrt(VSI)/SkSI  
+  aI <- 4/SkSI^2
+  bI <- 2/(SkSI*sqrt(VSI))
+  
+  # Reinsurance premium rate per unit of time
+  thetaR <- 2*theta
+  cR <- (1 + thetaR)*(ES - ESI)
+  
+  # Calculate E[U(5)] and V[U(5)]
+  # EUI5 <- u + 5*(c - cR) - 5*ESI
+  # VUI5 <- 5*lambdaN*EY2
+  
+  #######################
+  # Estimate probability of ruin after reinsurance
+  
+  
+  simSI1 <- qgamma(Z1,shape = aI, rate = bI) + kI
+  simSI2 <- qgamma(Z2,shape = aI, rate = bI) + kI
+  simSI3 <- qgamma(Z3,shape = aI, rate = bI) + kI
+  simSI4 <- qgamma(Z4,shape = aI, rate = bI) + kI
+  simSI5 <- qgamma(Z5,shape = aI, rate = bI) + kI
+  #############################################################
+  
+  UI1 <- u +  c - cR - simSI1
+  UI2 <- UI1 + c - cR - simSI2
+  UI3 <- UI2 + c - cR - simSI3
+  UI4 <- UI3 + c - cR - simSI4
+  UI5 <- UI4 + c - cR - simSI5
+  
+  UIt <- cbind(UI1,UI2,UI3,UI4,UI5)
+  
+  # Estimate psi_1(1000,5)
+  minOfColumnsofUIt <- apply(UIt, 1, function(x) min(x) )
+  psiI1hatM[i] <- sum(minOfColumnsofUIt < 0)/n
+}
+
+# max(listM[which(psiI1hatM <= 0.01)])
+
+
+
+####################################################
+# Make sure you define the variables
+Answer_a1 = EX
+Answer_a2 = EX2
+Answer_a3 = EX3
+
+Answer_b1 = ES
+Answer_b2 = VS
+Answer_b3 = SkS
+
+Answer_c1 = ES5
+Answer_c2 = VS5
+
+# Answer_d1 is the estimated alpha, Answer_d2 is the estimated beta, and Answer_d3 is the estimated k.
+Answer_d1 = a 
+Answer_d2 = b
+Answer_d3 = k
+
+Answer_f = c
+
+Answer_g1 = EU5
+Answer_g2 = VU5
+
+Answer_h = mean(U5)
+
+Answer_j1 = psi1hat[1]
+Answer_j2 = psi1hat[2]
+
+Answer_l1 = EY
+Answer_l2 = EY2
+Answer_l3 = EY3
+
+Answer_m1 = ESI 
+Answer_m2 = VSI
+Answer_m3 = SkSI
+
+Answer_n1 = aI
+Answer_n2 = bI
+Answer_n3 = kI
+
+# Answers, for e.g. Answer_o_i1 and Answer_o_i2, are E[U_I(5)] and Var[U_I(5)] for the case (i) of question 1o.
+Answer_o_i1 = EUI5[1]
+Answer_o_i2 = VUI5
+Answer_o_ii1 = EUI5[2] 
+Answer_o_ii2 = VUI5
+Answer_o_iii1 = EUI5[3]
+Answer_o_iii2 = VUI5
+
+Answer_p1 = psiI1hat[1]
+Answer_p2 = psiI1hat[2]
+Answer_p3 = psiI1hat[3]
+
+# Answers r1-r8 correponding to M = 550,600,...,900
+# Answer r9 is the largest M such that the estimated probability of ruin is not greater than 1%
+Answer_r1 = psiI1hatM[1]
+Answer_r2 = psiI1hatM[2]
+Answer_r3 = psiI1hatM[3]
+Answer_r4 = psiI1hatM[4]
+Answer_r5 = psiI1hatM[5]
+Answer_r6 = psiI1hatM[6]
+Answer_r7 = psiI1hatM[7]
+Answer_r8 = psiI1hatM[8]
+
+Answer_r9 = max(listM[which(psiI1hatM <= 0.01)])
+####################################################
+
+
+ANSWER <- rbind(Answer_a1, Answer_a2 , Answer_a3, Answer_b1,Answer_b2,Answer_b3,Answer_c1,Answer_c2,Answer_d1,Answer_d2,Answer_d3,Answer_f,Answer_g1,Answer_g2,Answer_h,Answer_j1,Answer_j2,Answer_l1,Answer_l2,Answer_l3,Answer_m1,Answer_m2,Answer_m3,Answer_n1,Answer_n2,Answer_n3,Answer_o_i1,Answer_o_i2,Answer_o_ii1,Answer_o_ii2,Answer_o_iii1,Answer_o_iii2,Answer_p1,Answer_p2,Answer_p3,Answer_r1,Answer_r2,Answer_r3,Answer_r4,Answer_r5,Answer_r6,Answer_r7,Answer_r8,Answer_r9)
+
+
+
+```
+
+
+**Questions**
+
+Suppose the aggregate claims process for a portfolio
+    $\{ S(t) \}_{t \ge 0}$ is a compound Poisson process with Poisson
+    parameter 10 and individual claim amounts $X$ have the following
+    distribution
+
+  $x$ | 10 |   100 |   500  |  1000
+   :-: | :-:  | :-: |  :-:  | :-:
+  $\Pr(X = x)$ |  0.5 |  0.3  |  0.15 |  0.05
+
+
+In the simulations below, the seed number has been set to be `set.seed(5377)`.
+
+1.  Calculate the first three non-central moments of $X$, i.e.
+        $\text{E}[X]$, $\text{E}[X^2]$ and $\text{E}[X^3]$.
+
+$$
+\begin{aligned}
+\text{E}[X]     &= `r x[1]` \cdot `r px[1]` + `r x[2]` \cdot `r px[2]` + `r x[3]` \cdot `r px[3]` + `r x[4]` \cdot `r px[4]` = `r EX`  \\
+\text{E}[X^2]   &= `r (x^2)[1]` \cdot `r px[1]` + `r (x^2)[2]` \cdot `r px[2]` + `r (x^2)[3]` \cdot `r px[3]` + `r (x^2)[4]` \cdot `r px[4]` = `r EX2`  \\ 
+\text{E}[X^3]   &= `r (x^3)[1]` \cdot `r px[1]` + `r (x^3)[2]` \cdot `r px[2]` + `r (x^3)[3]` \cdot `r px[3]` + `r (x^3)[4]` \cdot `r px[4]` = `r EX3`. \\
+\end{aligned}
+$$
+
+
+2.  Calculate the mean, variance and coefficient of skewness of the aggregate claims at time $t = 1$, i.e. $\text{E}[S(1)]$, $\text{Var}[S(1)]$
+        and $\text{Sk}[S(1)]$.
+
+$$
+\begin{aligned}
+\text{E}[S(1)] &= \lambda \text{E}[X] = `r ES` \\
+\text{Var}[S(1)] &=  \lambda \text{E}[X^2] = `r VS` \\
+\text{Sk}[S(1)] &= \frac{\lambda \text{E}[X^3]}{(\text{Var}[S(1)])^{3/2}} = `r SkS`. \\
+\end{aligned}
+$$
+
+3.  Calculate $\text{E}[S(5)]$ and $\text{Var}[S(5)]$.
+
+$$
+\begin{aligned}
+\text{E}[S(5)] &= 5 \lambda \text{E}[X] = `r ES5` \\
+\text{Var}[S(5)] &= 5 \lambda \text{E}[X^2] = `r VS5`. \\
+\end{aligned}
+$$
+
+Assume that $S(1)$ can be approximated by $Y + k$ where
+    $Y \sim \mathcal{G}(\alpha,\beta)$ and $k$ is a constant.
+
+4.  Calculate $\alpha$,
+        $\beta$ and $k$.
+
+$$
+\begin{aligned}
+\alpha &= \left(\frac{2}{\text{Sk}[S(1)]}\right)^2 = `r a` \\
+\beta &= \sqrt{\frac{\alpha}{\text{Var}[S(1)]}} = `r b` \\
+k &= \text{E}[S(1)] - \frac{\alpha}{\beta} =  `r k`. \\
+\end{aligned}
+$$
+
+
+5.  Comment on the values obtained in 4.
+
+The negativity of $k$ implies that negative aggregate claims can occur in the approximation. This is an unrealistic effect of which we must be aware in what follows.
+
+The insurer sets the annual premium to be charged for this portfolio using the expected value principle (EVP) with the relative security loading $\theta = 0.2$ so that the annual premium before reinsurance is $c$, where 
+$$c = ( 1 + \theta)\text{E}[S(1)].$$
+
+6.  Calculate the premium rate $c$.
+$$c = ( 1 + \theta)\text{E}[S(1)] =( 1 + \theta)\lambda \text{E}[X] = `r c` .$$
+
+Let $U(n)$ denote the insurer's surplus at time $n$, $n = 1,2, \ldots, 5$ so that $$U(n) = u + n c - S(n),$$ where $u$ is the insurer's initial surplus.
+
+Use R to generate an array of independent values
+$\{\{Z_{i \,j} \}_{j=1}^5  \}_{i=1}^{1000}$, each from a $U(0,1)$
+distribution. Remember to set the argument to set.seed(xxxx) where
+the argument, xxxx, of the set.seed function is the final four
+digits of your student identification number, e.g. if your student
+I.D. is 6105389, then use set.seed(5389).
+
+Then **use your preferred software**, EXCEL, R or other reasonable
+software to do the subsequent computation. In case that you choose
+to use EXCEL, you will need to copy and paste the array
+$\{\{Z_{i \,j} \}_{j=1}^5  \}_{i=1}^{1000}$ generated from R into
+EXCEL by hands.
+
+Let $\hat{U_i}(5), \, i = 1,2,\ldots, 1000$, denote the simulated
+surplus after five years calculated using the five values
+$Z_{i \,1}, Z_{i \,2}, \ldots,
+Z_{i \,5}$ and the translated gamma approximations to
+$S(1), S(2) - S(1), \ldots, S(5) - S(4)$ as discussed in the
+lecture.
+
+7.  Calculate $E[U(5)]$ and $\text{Var}[U(5)]$, given that $u = 3500$.
+
+$$
+\begin{aligned}
+\text{E}[U(5)] &= \text{E}[3500 + 5c - S(5)]  = `r EU5` \\
+\text{Var}[U(5)] &=  \text{Var}[3500 + 5c - S(5)] = \text{Var}[S(5)] =  `r VU5` \\
+\end{aligned}
+$$
+
+8.  Calculate
+        $\sum_{i=1}^{1000} \hat{U_i}(5)/1000$, given that $u = 3500$.
+
+We have 
+$$\sum_{i=1}^{1000} \hat{U_i}(5)/1000 = `r mean(U5)`$$
+
+9.  Comment on your answers to questions
+        7 and 8.
+
+* The value in 8 is an estimator for E[U(5)] based on an approximation by simulation and an approximation by the translated gamma distribution.
+
+* The estimation error is relatively small, but not completely negligible, so our simulation results in this coursework must be interpreted with care.
+
+10. Estimate the ruin
+        probabilities $\psi_1(3500,5)$ and $\psi_1(4000,5)$ from the
+        simulated surplus paths
+        $(\hat{U_i}(n))_{i = 1,2,\ldots 1000, \, n = 1,2, \ldots, 5}$.
+
+In the 1000 simulations, we observe `r psi1hat[1]*1000` and `r psi1hat[2]*1000` times a ruin. 
+
+$$
+\begin{aligned}
+\psi_1(3500,5) &= \frac{`r psi1hat[1]*1000`}{1000}  = `r psi1hat[1]` \\
+\psi_1(4000,5) &= \frac{`r psi1hat[2]*1000`}{1000} = `r psi1hat[2]`.
+\end{aligned}
+$$
+
+11. Comment on your answers to questions
+        10, taking into consideration your answer to
+        question 7.
+
+As expected from the theory, the probability of ruin is lower in the second case, where the initial capital is higher.
+
+
+The direct insurer is considering entering into an excess of loss
+reinsurance contract with retention $900$. The reinsurer uses a
+relative security loading $\theta_R$ to calculate its reinsurance
+premium.
+
+**After taking account of reinsurance**, the subscript $I$, for
+example $X_I$, $S_I(1)$, denotes the relevant quantities for the
+insurer. The probability of ruin for the insurer, checking for ruin
+at the end of each year for 5 years and given initial surplus 3500
+is $\psi_{I,1}(3500,5)$.
+
+12. Calculate the first three non-central moments of $X$, i.e.
+        $\text{E}[X_I]$, $\text{E}[X_I^2]$ and $\text{E}[X_I^3]$.
+
+The distribution of claim amounts paid by the insurer, $F_{X_I}(x)$ is given by
+
+  $x$ | 10 |   100 |   500  |  900
+   :-: | :-:  | :-: |  :-:  | :-:
+  $\Pr(X_I = x)$ |  0.5 |  0.3  |  0.15 |  0.05
+
+where $X_I = \min(X,M)$.
+
+Hence, 
+
+$$
+\begin{aligned}
+\text{E}[X_I]     &= `r y[1]` \cdot `r py[1]` + `r y[2]` \cdot `r py[2]` + `r y[3]` \cdot `r py[3]` + `r y[4]` \cdot `r py[4]` = `r EY`  \\
+\text{E}[X_I^2]   &= `r (y^2)[1]` \cdot `r py[1]` + `r (y^2)[2]` \cdot `r py[2]` + `r (y^2)[3]` \cdot `r py[3]` + `r (y^2)[4]` \cdot `r py[4]` = `r EY2`  \\ 
+\text{E}[X_I^3]   &= `r (y^3)[1]` \cdot `r py[1]` + `r (y^3)[2]` \cdot `r py[2]` + `r (y^3)[3]` \cdot `r py[3]` + `r (y^3)[4]` \cdot `r py[4]` = `r EY3`. \\
+\end{aligned}
+$$
+
+
+13. Calculate the mean, variance and coefficient of skewness of the aggregate claims $S_I(1)$ at time $t = 1$, i.e. $\text{E}[S_I(1)]$, $\text{Var}[S_I(1)]$ and $\text{Sk}[S_I(1)]$.
+
+$$
+\begin{aligned}
+\text{E}[S_I(1)] &= \lambda \text{E}[X_I] = `r ESI` \\
+\text{Var}[S_I(1)] &=  \lambda \text{E}[X_I^2] = `r VSI` \\
+\text{Sk}[S_I(1)] &= \frac{\lambda \text{E}[X_I^3]}{(\text{Var}[S_I(1)])^{3/2}} = `r SkSI`. \\
+\end{aligned}
+$$
+
+
+14. Assume that $S_I(1)$ can be approximated by $Y_I + k_I$ where $Y_I \sim \mathcal{G}(\alpha_I,\beta_I)$ and $k_I$ is a constant. Calculate $\alpha_I$, $\beta_I$ and $k_I$.
+
+$$
+\begin{aligned}
+\alpha_I &= \left(\frac{2}{\text{Sk}[S_I(1)]}\right)^2 = `r aI` \\
+\beta_I &= \sqrt{\frac{\alpha_I}{\text{Var}[S_I(1)]}} = `r bI` \\
+k_I &= \text{E}[S_I(1)] - \frac{\alpha_I}{\beta_I} =  `r kI`. \\
+\end{aligned}
+$$
+
+
+15. Calculate $E[U_I(5)]$
+        and $\text{Var}[U_I(5)]$, given that $u = 3500$ and assuming:
+
+    1. $\theta_R = 3\theta$.
+
+    2. $\theta_R = 2\theta$.
+
+    3. $\theta_R = \theta$.
+
+The insurer's surplus process can be calculated from
+$$ U_I(t) = u + (c - c_r)t - S_I(t),$$
+where $c_R = (1 + \theta_R)\text{E}[S - S_I]$ is the reinsurance premium rate.
+
+* For $\theta_R = 3\theta$, 
+$$
+\begin{aligned}
+\text{E}[U_I(5)] &= \text{E}[U(0) + 5(c - c_R) - S_I(5)]  = `r EUI5[1]` \\
+\text{Var}[U_I(5)] &=  \text{Var}[U(0) + 5(c - c_R) - S_I(5)] = \text{Var}[S_I(5)] =  `r VUI5`. \\
+\end{aligned}
+$$
+
+* For $\theta_R = 2\theta$, 
+$$
+\begin{aligned}
+\text{E}[U_I(5)] &=`r EUI5[2]` \\
+\text{Var}[U_I(5)] &= `r VUI5`. \\
+\end{aligned}
+$$
+
+* For $\theta_R = 1\theta$, 
+$$
+\begin{aligned}
+\text{E}[U_I(5)] &=`r EUI5[3]` \\
+\text{Var}[U_I(5)] &= `r VUI5`. \\
+\end{aligned}
+$$
+
+It should be emphasised that the value of $\text{Var}[U_I(5)]$ is not affected by the (net) premium income and so is not affected by the values of $\theta$ or $\theta_R$.
+
+16. Using
+        $\{\{Z_{i \,j} \}_{j=1}^5  \}_{i=1}^{1000}$ and the translated
+        gamma approximation, estimate $\psi_{I,1}(3500,5)$ assuming:
+
+    1. $\theta_R = 3\theta$.
+
+    2. $\theta_R = 2\theta$.
+
+    3. $\theta_R = \theta$.
+
+* For $\theta_R = 3\theta$, $\theta_R = 2\theta$ and $\theta_R = 1\theta$, 
+in the 1000 simulations, we observe `r psiI1hat[1]*1000`, `r psiI1hat[2]*1000` and `r psiI1hat[3]*1000` times a ruin, respectively. 
+
+$$
+\begin{aligned}
+\psi_1(3500,5) &= 
+\begin{cases}
+        `r psiI1hat[1]`, & \text{ if } \theta_R = 3\theta \\
+        `r psiI1hat[2]`, & \text{ if } \theta_R = 2\theta \\  
+        `r psiI1hat[3]`, & \text{ if } \theta_R = 1 \theta.  
+     \end{cases} 
+\end{aligned}
+$$
+
+
+
+
+`r psiI1hat[1]`, `r psiI1hat[2]` \text{ and } `r psiI1hat[3]`, \text{ respectively.}
+
+
+
+
+17. Comment on your answers to questions 10 and 16, taking into consideration the answers to question 15.
+
+    1. The excess of loss reinsurance has reduced the amount of the largest possible claim. This makes the portfolio much safer for the insurer. However, the standard deviation of the surplus at the end of 5 years has been reduced by only a factor of about `r sqrt(VU5)/sqrt(VUI5)`.
+
+    2. This reduced risk is reflected in the ruin probabilities, which are smaller than the value in question 10.
+
+    3. The more expensive the reinsurance (= the higher the value of $\theta_R$), the lower the insurer's net premium income and the higher the (estimated) ruin probability.
+
+    4. This reduced risk is "paid for" by the insurer's expected surplus. This has fallen substantially (from `r EU5` to `r EUI5[1]` ($\theta_R = 3 \theta$) and to `r EUI5[3]` ($\theta_R =  \theta$)). Clearly, the insurer would prefer $\theta_R =  \theta$, as this implies the lowest cost of reinsurance and hence the highest expected net surplus and the lowest probability of ruin.
+
+
+
+18. Suppose that
+        $\theta_R = 2\theta$. Estimate the probability of ruin $\psi_{I,1}(3500,5)$ for the reinsurer, given the retention limit is $M = 550, 600, 650, \ldots, 900$. Identify the largest $M \in \{550, 600, 650, \ldots, 900 \}$ such that the corresponding estimated probability of ruin is not greater than 1%.
+
+The estimates the probability of ruin $\psi_{I,1}(3500,5)$ for the reinsurer, given the retention limit is $M = 550, 600, 650, \ldots, 900$ are `r psiI1hatM`. Hence, the largest $M \in \{550, 600, 650, \ldots, 900 \}$ such that the corresponding estimated probability of ruin is not greater than 1% is $M = `r Answer_r9`$. The results are also illustrated in the figure below.
+
+```{r, echo = FALSE, fig.align='center'}
+plot(seq(550,900,50),psiI1hatM, xlab = 'M', ylab = 'Probability of Ruin')
+```
+
+
+
+
+
+
+```{r, echo = FALSE}
+# Before reinsurance 
+
+ProfitPerYearBefore <- theta*ES
+
+
+# After reinsurance with *****M = 650****
+M <- Answer_r9 
+y <- pmin(x,M)
+py <- px
+
+EY <- sum(y*py)
+EY2 <- sum(y^2 * py)
+EY3 <- sum(y^3 * py)
+
+# ES means E[S(1)]
+  ESI <- lambdaN*EY
+  VSI <- lambdaN*EY2
+  SkSI <- (lambdaN * EY3)/(lambdaN * EY2)^(3/2)
+
+  # Reinsurance premium rate per unit of time
+  thetaR <- 2*theta
+  cR <- (1 + thetaR)*(ES - ESI)
+
+ProfitPerYearAfter <- c - cR - ESI
+```
+
+
+19. Comment on your answers to questions 18.
+
+It is possible to get the estimated probability of ruin below 1% even in the case that the reinsurance is "expensive", i.e. the reinsurance risk loading is higher than the risk loading the insurer charges on the original insurance contracts.
+
+While before reinsurance the average profit per year was $c - \text{E}[S(1)] = ((1+\theta)−1) \times \text{E}[S(1)] = `r ProfitPerYearBefore`$.  To run a sustainable business in the long run, the annual cost of capital should not be higher than the average annual profit, i.e. not higher than
+$$ \frac{`r ProfitPerYearBefore`}{`r u`} = `r 100*ProfitPerYearBefore/u`\%.$$
+This return looks large enough to attract investors.
+
+With the results in 18, adding excess of loss reinsurance with $\theta_R = 2\theta$ and the retention limit $M = 650$ reduces the average profit to 
+$$ c - c_R - \text{E}[S_I(1)] = (1+\theta) \text{E}[S(1)] - (1+\theta_R) ( \text{E}[S(1)] - \text{E}[S_I(1)]) - \text{E}[S_I(1)]) = `r c - cR - ESI`.$$
+
+The insurer can still make a profit provided  the surplus will drift to $\infty$, but ruin could still occur. The rate at which premium income comes in is greater than the rate at which claims are paid out and reinsurance premium charged.
+
+
+```{r, echo = FALSE}
+# Before reinsurance 
+
+ProfitPerYearBefore <- theta*ES
+
+ProfitPerYearAfterM <- rep(0, length(listM))
+cRM <- rep(0, length(listM))
+ESIM <- rep(0, length(listM))
+
+for (i in 1:length(listM) ){
+# After reinsurance with *****M = 650****
+M <- listM[i]
+y <- pmin(x,M)
+py <- px
+
+EY <- sum(y*py)
+EY2 <- sum(y^2 * py)
+EY3 <- sum(y^3 * py)
+
+# ES means E[S(1)]
+  ESI <- lambdaN*EY
+  VSI <- lambdaN*EY2
+  SkSI <- (lambdaN * EY3)/(lambdaN * EY2)^(3/2)
+
+  # Reinsurance premium rate per unit of time
+  thetaR <- 2*theta
+  cR <- (1 + thetaR)*(ES - ESI)
+
+cRM[i] <- cR
+ESIM[i] <- ESI
+ProfitPerYearAfterM[i] <- c - cR - ESI
+
+}
+```
+
+It should be noted that the average profit per year after the excess of loss reinsurance with $\theta_R = 2\theta$ is an increasing function of $M$ as shown in the figure below:
+
+
+```{r, echo = FALSE, fig.align='center'}
+plot(seq(550,900,50),ProfitPerYearAfterM, xlab = 'M', ylab = 'Average profit per year')
+```
+

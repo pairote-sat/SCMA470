@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Project 2021 Risk Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
+  <meta name="description" content="Chapter 7 Project 2021 Risk Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Project 2021 Risk Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Project 2021 Risk Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
+  
+  
+  
+
+<meta name="author" content="Pairote Satiracoo" />
+
+
+<meta name="date" content="2021-12-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tutorials.html"/>
+<link rel="next" href="interactive-lecture.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SCMA470 Risk Analysis and Credibility</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Basic Probability Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-functions-for-probability-distributions"><i class="fa fa-check"></i><b>1.1.1</b> R Functions for Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectation"><i class="fa fa-check"></i><b>1.2</b> Expectation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#variances-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Variances of Random Variables</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#moments-and-moment-generating-function"><i class="fa fa-check"></i><b>1.4</b> Moments and Moment Generating Function</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#probability-generating-function"><i class="fa fa-check"></i><b>1.5</b> Probability generating function</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#multivariate-distributions"><i class="fa fa-check"></i><b>1.6</b> Multivariate Distributions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#independent-random-variables"><i class="fa fa-check"></i><b>1.7</b> Independent random variables</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#conditional-distributions"><i class="fa fa-check"></i><b>1.8</b> Conditional Distributions</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#covariance"><i class="fa fa-check"></i><b>1.9</b> Covariance</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#correlation"><i class="fa fa-check"></i><b>1.10</b> Correlation</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#model-fitting"><i class="fa fa-check"></i><b>1.11</b> Model Fitting</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#the-method-of-moments"><i class="fa fa-check"></i><b>1.12</b> The method of moments</a></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#the-method-of-maximum-likelihood"><i class="fa fa-check"></i><b>1.13</b> The method of maximum likelihood</a></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>1.14</b> Goodness of fit tests</a></li>
+<li class="chapter" data-level="1.15" data-path="index.html"><a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion"><i class="fa fa-check"></i><b>1.15</b> the Pearson chi-square goodness-of-fit criterion</a></li>
+<li class="chapter" data-level="1.16" data-path="index.html"><a href="index.html#kolmogorov-smirnov-k-s-test."><i class="fa fa-check"></i><b>1.16</b> Kolmogorov-Smirnov (K-S) test.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>3</b> Deductibles and reinsurance</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#deductibles"><i class="fa fa-check"></i><b>3.2</b> Deductibles</a></li>
+<li class="chapter" data-level="3.3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#reinsurance"><i class="fa fa-check"></i><b>3.3</b> Reinsurance</a></li>
+<li class="chapter" data-level="3.4" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>3.4</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="3.5" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#mixed-distributions"><i class="fa fa-check"></i><b>3.5</b> Mixed distributions</a></li>
+<li class="chapter" data-level="3.6" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#the-distribution-of-reinsurance-claims"><i class="fa fa-check"></i><b>3.6</b> The distribution of reinsurance claims</a></li>
+<li class="chapter" data-level="3.7" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html#proportional-reinsurance"><i class="fa fa-check"></i><b>3.7</b> Proportional reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="collective-risk-model.html"><a href="collective-risk-model.html"><i class="fa fa-check"></i><b>4</b> Collective Risk Model</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#conditional-expectation-and-variance-formulas"><i class="fa fa-check"></i><b>4.1</b> Conditional expectation and variance formulas</a></li>
+<li class="chapter" data-level="4.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#sectionCompoundDistribution"><i class="fa fa-check"></i><b>4.2</b> The moments of a compound distribution <span class="math inline">\(S\)</span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-mean-of-s"><i class="fa fa-check"></i><b>4.2.1</b> The mean of <span class="math inline">\(S\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-variance-of-s"><i class="fa fa-check"></i><b>4.2.2</b> The variance of <span class="math inline">\(S\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#special-compound-distributions"><i class="fa fa-check"></i><b>4.3</b> Special compound distributions</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-poisson-distributions"><i class="fa fa-check"></i><b>4.3.1</b> Compound Poisson distributions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-negative-binomial-distributions"><i class="fa fa-check"></i><b>4.3.2</b> Compound negative binomial distributions</a></li>
+<li class="chapter" data-level="4.3.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-binomial-distributions"><i class="fa fa-check"></i><b>4.3.3</b> Compound binomial distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-effect-of-reinsurance"><i class="fa fa-check"></i><b>4.4</b> The effect of reinsurance</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#proportional-reinsurance-1"><i class="fa fa-check"></i><b>4.4.1</b> Proportional reinsurance</a></li>
+<li class="chapter" data-level="4.4.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#excess-of-loss-reinsurance-1"><i class="fa fa-check"></i><b>4.4.2</b> Excess of loss reinsurance</a></li>
+<li class="chapter" data-level="4.4.3" data-path="collective-risk-model.html"><a href="collective-risk-model.html#compound-poisson-distributions-under-excess-of-loss-reinsurance"><i class="fa fa-check"></i><b>4.4.3</b> Compound Poisson distributions under excess of loss reinsurance</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="collective-risk-model.html"><a href="collective-risk-model.html#approximation-of-the-collective-risk-model"><i class="fa fa-check"></i><b>4.5</b> Approximation of the collective risk model</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-normal-approximation"><i class="fa fa-check"></i><b>4.5.1</b> The normal approximation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="collective-risk-model.html"><a href="collective-risk-model.html#the-translated-gamma-approximation"><i class="fa fa-check"></i><b>4.5.2</b> The translated gamma approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="collective-risk-model.html"><a href="collective-risk-model.html#recursive-calculation-of-the-collective-risk-model"><i class="fa fa-check"></i><b>4.6</b> Recursive calculation of the collective risk model</a></li>
+<li class="chapter" data-level="4.7" data-path="collective-risk-model.html"><a href="collective-risk-model.html#premium-calculation"><i class="fa fa-check"></i><b>4.7</b> Premium calculation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ruin-theory.html"><a href="ruin-theory.html"><i class="fa fa-check"></i><b>5</b> Ruin Theory</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ruin-theory.html"><a href="ruin-theory.html#the-classical-risk-process"><i class="fa fa-check"></i><b>5.1</b> The classical risk process</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="ruin-theory.html"><a href="ruin-theory.html#classical-risk-process"><i class="fa fa-check"></i><b>5.1.1</b> Classical risk process</a></li>
+<li class="chapter" data-level="5.1.2" data-path="ruin-theory.html"><a href="ruin-theory.html#poisson-processes"><i class="fa fa-check"></i><b>5.1.2</b> Poisson processes</a></li>
+<li class="chapter" data-level="5.1.3" data-path="ruin-theory.html"><a href="ruin-theory.html#compound-poisson-processes"><i class="fa fa-check"></i><b>5.1.3</b> Compound Poisson processes</a></li>
+<li class="chapter" data-level="5.1.4" data-path="ruin-theory.html"><a href="ruin-theory.html#the-relative-safety-loading"><i class="fa fa-check"></i><b>5.1.4</b> The relative safety loading</a></li>
+<li class="chapter" data-level="5.1.5" data-path="ruin-theory.html"><a href="ruin-theory.html#ruin-probabilities"><i class="fa fa-check"></i><b>5.1.5</b> Ruin probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ruin-theory.html"><a href="ruin-theory.html#simulation-of-ruin-probabilities"><i class="fa fa-check"></i><b>5.2</b> Simulation of ruin probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutorials.html"><a href="tutorials.html"><i class="fa fa-check"></i><b>6</b> Tutorials</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tutorials.html"><a href="tutorials.html#tutorial-1"><i class="fa fa-check"></i><b>6.1</b> Tutorial 1</a></li>
+<li class="chapter" data-level="6.2" data-path="tutorials.html"><a href="tutorials.html#tutorial-2"><i class="fa fa-check"></i><b>6.2</b> Tutorial 2</a></li>
+<li class="chapter" data-level="6.3" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-2"><i class="fa fa-check"></i><b>6.3</b> Solutions to Tutorial 2</a></li>
+<li class="chapter" data-level="6.4" data-path="tutorials.html"><a href="tutorials.html#tutorial-3"><i class="fa fa-check"></i><b>6.4</b> Tutorial 3</a></li>
+<li class="chapter" data-level="6.5" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-3"><i class="fa fa-check"></i><b>6.5</b> Solutions to Tutorial 3</a></li>
+<li class="chapter" data-level="6.6" data-path="tutorials.html"><a href="tutorials.html#tutorial-4"><i class="fa fa-check"></i><b>6.6</b> Tutorial 4</a></li>
+<li class="chapter" data-level="6.7" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-4"><i class="fa fa-check"></i><b>6.7</b> Solutions to Tutorial 4</a></li>
+<li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
+<li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
+<li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
+<li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="interactive-lecture.html"><a href="interactive-lecture.html#datacamp-light"><i class="fa fa-check"></i><b>8.1</b> DataCamp Light</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><strong>SCMA 470 : Risk Analysis and Credibility</strong> <strong>Tutorial 3</strong></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="project-2021-risk-theory" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Project 2021 Risk Theory</h1>
+<p><strong>Instructions</strong></p>
+<ul>
+<li><p>Form a group of 2 members.</p></li>
+<li><p>You will receive R and Excel files for the project. Use R to
+generate an array of independent values
+<span class="math inline">\(\{\{Z_{i \,j} \}_{j=1}^5 \}_{i=1}^{1000}\)</span>, each from a <span class="math inline">\(U(0,1)\)</span>
+distribution (details are given below in the question section).
+Remember to set the argument to set.seed(xxxx) where the argument,
+xxxx, of the set.seed function is the final four digits of the lower
+student identification number, e.g. <strong>if students’ I.D. are 6105389
+and 6105395, then use set.seed(5389)</strong>.</p>
+<p>Then <strong>use your preferred software</strong>, EXCEL, R or other reasonable
+software to do the subsequent computation. In case that you choose
+to use EXCEL, you will need to copy and paste the array
+<span class="math inline">\(\{\{Z_{i \,j} \}_{j=1}^5 \}_{i=1}^{1000}\)</span> generated from R into
+EXCEL by hands.</p></li>
+<li><p>Each group submission consists of (1) a report in PDF format,
+together with print-outs of your calculations (also in PDF) and (2)
+an R or EXCEL file (one file only) with answers to questions with
+required numerical answers (i.e. excluding questions asking for
+comments).</p></li>
+<li><p>The report should not exceed four A4 pages in length (not including
+the print-outs of the calculations). The report, R (or EXCEL) file
+names should be in the format project6105389-6105395. <strong>Submit the
+group report and R (or Excel) files in Canvas to the student account
+with the lower student ID</strong>.</p></li>
+<li><p><strong>Failure to personalize your project with set.seed will result in a
+project mark of 0.</strong></p></li>
+<li><p>Columns or variable names in your print-out should be clearly
+labeled.</p></li>
+<li><p>When using EXCEL, R or any other reasonable software, to simulate
+values of the surplus using a translated gamma approximation, use
+the exact value of the parameters <span class="math inline">\(\alpha, \beta\)</span> and <span class="math inline">\(k\)</span> held by
+the software, not the rounded values presented in your report.</p>
+<p>For example, suppose you are using EXCEL to simulate <span class="math inline">\(S(1)\)</span>, that a
+<span class="math inline">\(U(0,1)\)</span> value is held in cell A1 and your calculated values of
+<span class="math inline">\(\alpha, \beta\)</span> and <span class="math inline">\(k\)</span> are in cells A2, A3 and A4, respectively.
+Suppose further that the values of these parameters, to 5 decimal
+places, are 1.12345, 0.12345 and $-$123.12345. Note that EXCEL will
+be holding these values to a far greater degree of accuracy. To
+simulate a value of <span class="math inline">\(S(1)\)</span>, you should use the command</p>
+<p>= GAMMAINV(A1,A2,1/A3) + A4</p>
+<p>not the command:</p>
+<p>= GAMMAINV(A1,1.12345,1/0.12345) <span class="math inline">\(-\)</span> 123.12345.</p></li>
+</ul>
+<p><strong>Questions</strong></p>
+<p>Suppose the aggregate claims process for a portfolio
+<span class="math inline">\(\{ S(t) \}_{t \ge 0}\)</span> is a compound Poisson process with Poisson
+parameter 10 and individual claim amounts <span class="math inline">\(X\)</span> have the following
+distribution</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center">10</th>
+<th align="center">100</th>
+<th align="center">500</th>
+<th align="center">1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\Pr(X = x)\)</span></td>
+<td align="center">0.5</td>
+<td align="center">0.3</td>
+<td align="center">0.15</td>
+<td align="center">0.05</td>
+</tr>
+</tbody>
+</table>
+<p>In the simulations below, the seed number has been set to be <code>set.seed(5377)</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the first three non-central moments of <span class="math inline">\(X\)</span>, i.e.
+<span class="math inline">\(\text{E}[X]\)</span>, <span class="math inline">\(\text{E}[X^2]\)</span> and <span class="math inline">\(\text{E}[X^3]\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[X]     &amp;= 10 \cdot 0.5 + 100 \cdot 0.3 + 500 \cdot 0.15 + 1000 \cdot 0.05 = 160  \\
+\text{E}[X^2]   &amp;= 100 \cdot 0.5 + 10^{4} \cdot 0.3 + 2.5\times 10^{5} \cdot 0.15 + 10^{6} \cdot 0.05 = 9.055\times 10^{4}  \\ 
+\text{E}[X^3]   &amp;= 1000 \cdot 0.5 + 10^{6} \cdot 0.3 + 1.25\times 10^{8} \cdot 0.15 + 10^{9} \cdot 0.05 = 6.90505\times 10^{7}. \\
+\end{aligned}
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the mean, variance and coefficient of skewness of the aggregate claims at time <span class="math inline">\(t = 1\)</span>, i.e. <span class="math inline">\(\text{E}[S(1)]\)</span>, <span class="math inline">\(\text{Var}[S(1)]\)</span>
+and <span class="math inline">\(\text{Sk}[S(1)]\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[S(1)] &amp;= \lambda \text{E}[X] = 1600 \\
+\text{Var}[S(1)] &amp;=  \lambda \text{E}[X^2] = 9.055\times 10^{5} \\
+\text{Sk}[S(1)] &amp;= \frac{\lambda \text{E}[X^3]}{(\text{Var}[S(1)])^{3/2}} = 0.801372. \\
+\end{aligned}
+\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Calculate <span class="math inline">\(\text{E}[S(5)]\)</span> and <span class="math inline">\(\text{Var}[S(5)]\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[S(5)] &amp;= 5 \lambda \text{E}[X] = 8000 \\
+\text{Var}[S(5)] &amp;= 5 \lambda \text{E}[X^2] = 4.5275\times 10^{6}. \\
+\end{aligned}
+\]</span></p>
+<p>Assume that <span class="math inline">\(S(1)\)</span> can be approximated by <span class="math inline">\(Y + k\)</span> where
+<span class="math inline">\(Y \sim \mathcal{G}(\alpha,\beta)\)</span> and <span class="math inline">\(k\)</span> is a constant.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Calculate <span class="math inline">\(\alpha\)</span>,
+<span class="math inline">\(\beta\)</span> and <span class="math inline">\(k\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\alpha &amp;= \left(\frac{2}{\text{Sk}[S(1)]}\right)^2 = 6.228618 \\
+\beta &amp;= \sqrt{\frac{\alpha}{\text{Var}[S(1)]}} = 0.0026227 \\
+k &amp;= \text{E}[S(1)] - \frac{\alpha}{\beta} =  -774.8712899. \\
+\end{aligned}
+\]</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Comment on the values obtained in 4.</li>
+</ol>
+<p>The negativity of <span class="math inline">\(k\)</span> implies that negative aggregate claims can occur in the approximation. This is an unrealistic effect of which we must be aware in what follows.</p>
+<p>The insurer sets the annual premium to be charged for this portfolio using the expected value principle (EVP) with the relative security loading <span class="math inline">\(\theta = 0.2\)</span> so that the annual premium before reinsurance is <span class="math inline">\(c\)</span>, where
+<span class="math display">\[c = ( 1 + \theta)\text{E}[S(1)].\]</span></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Calculate the premium rate <span class="math inline">\(c\)</span>.
+<span class="math display">\[c = ( 1 + \theta)\text{E}[S(1)] =( 1 + \theta)\lambda \text{E}[X] = 1920 .\]</span></li>
+</ol>
+<p>Let <span class="math inline">\(U(n)\)</span> denote the insurer’s surplus at time <span class="math inline">\(n\)</span>, <span class="math inline">\(n = 1,2, \ldots, 5\)</span> so that <span class="math display">\[U(n) = u + n c - S(n),\]</span> where <span class="math inline">\(u\)</span> is the insurer’s initial surplus.</p>
+<p>Use R to generate an array of independent values
+<span class="math inline">\(\{\{Z_{i \,j} \}_{j=1}^5 \}_{i=1}^{1000}\)</span>, each from a <span class="math inline">\(U(0,1)\)</span>
+distribution. Remember to set the argument to set.seed(xxxx) where
+the argument, xxxx, of the set.seed function is the final four
+digits of your student identification number, e.g. if your student
+I.D. is 6105389, then use set.seed(5389).</p>
+<p>Then <strong>use your preferred software</strong>, EXCEL, R or other reasonable
+software to do the subsequent computation. In case that you choose
+to use EXCEL, you will need to copy and paste the array
+<span class="math inline">\(\{\{Z_{i \,j} \}_{j=1}^5 \}_{i=1}^{1000}\)</span> generated from R into
+EXCEL by hands.</p>
+<p>Let <span class="math inline">\(\hat{U_i}(5), \, i = 1,2,\ldots, 1000\)</span>, denote the simulated
+surplus after five years calculated using the five values
+<span class="math inline">\(Z_{i \,1}, Z_{i \,2}, \ldots, Z_{i \,5}\)</span> and the translated gamma approximations to
+<span class="math inline">\(S(1), S(2) - S(1), \ldots, S(5) - S(4)\)</span> as discussed in the
+lecture.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Calculate <span class="math inline">\(E[U(5)]\)</span> and <span class="math inline">\(\text{Var}[U(5)]\)</span>, given that <span class="math inline">\(u = 3500\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[U(5)] &amp;= \text{E}[3500 + 5c - S(5)]  = 5100 \\
+\text{Var}[U(5)] &amp;=  \text{Var}[3500 + 5c - S(5)] = \text{Var}[S(5)] =  4.5275\times 10^{6} \\
+\end{aligned}
+\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Calculate
+<span class="math inline">\(\sum_{i=1}^{1000} \hat{U_i}(5)/1000\)</span>, given that <span class="math inline">\(u = 3500\)</span>.</li>
+</ol>
+<p>We have
+<span class="math display">\[\sum_{i=1}^{1000} \hat{U_i}(5)/1000 = 5171.9715293\]</span></p>
+<ol start="9" style="list-style-type: decimal">
+<li>Comment on your answers to questions
+7 and 8.</li>
+</ol>
+<ul>
+<li><p>The value in 8 is an estimator for E[U(5)] based on an approximation by simulation and an approximation by the translated gamma distribution.</p></li>
+<li><p>The estimation error is relatively small, but not completely negligible, so our simulation results in this coursework must be interpreted with care.</p></li>
+</ul>
+<ol start="10" style="list-style-type: decimal">
+<li>Estimate the ruin
+probabilities <span class="math inline">\(\psi_1(3500,5)\)</span> and <span class="math inline">\(\psi_1(4000,5)\)</span> from the
+simulated surplus paths
+<span class="math inline">\((\hat{U_i}(n))_{i = 1,2,\ldots 1000, \, n = 1,2, \ldots, 5}\)</span>.</li>
+</ol>
+<p>In the 1000 simulations, we observe 17 and 11 times a ruin.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\psi_1(3500,5) &amp;= \frac{17}{1000}  = 0.017 \\
+\psi_1(4000,5) &amp;= \frac{11}{1000} = 0.011.
+\end{aligned}
+\]</span></p>
+<ol start="11" style="list-style-type: decimal">
+<li>Comment on your answers to questions
+10, taking into consideration your answer to
+question 7.</li>
+</ol>
+<p>As expected from the theory, the probability of ruin is lower in the second case, where the initial capital is higher.</p>
+<p>The direct insurer is considering entering into an excess of loss
+reinsurance contract with retention <span class="math inline">\(900\)</span>. The reinsurer uses a
+relative security loading <span class="math inline">\(\theta_R\)</span> to calculate its reinsurance
+premium.</p>
+<p><strong>After taking account of reinsurance</strong>, the subscript <span class="math inline">\(I\)</span>, for
+example <span class="math inline">\(X_I\)</span>, <span class="math inline">\(S_I(1)\)</span>, denotes the relevant quantities for the
+insurer. The probability of ruin for the insurer, checking for ruin
+at the end of each year for 5 years and given initial surplus 3500
+is <span class="math inline">\(\psi_{I,1}(3500,5)\)</span>.</p>
+<ol start="12" style="list-style-type: decimal">
+<li>Calculate the first three non-central moments of <span class="math inline">\(X\)</span>, i.e.
+<span class="math inline">\(\text{E}[X_I]\)</span>, <span class="math inline">\(\text{E}[X_I^2]\)</span> and <span class="math inline">\(\text{E}[X_I^3]\)</span>.</li>
+</ol>
+<p>The distribution of claim amounts paid by the insurer, <span class="math inline">\(F_{X_I}(x)\)</span> is given by</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center">10</th>
+<th align="center">100</th>
+<th align="center">500</th>
+<th align="center">900</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\Pr(X_I = x)\)</span></td>
+<td align="center">0.5</td>
+<td align="center">0.3</td>
+<td align="center">0.15</td>
+<td align="center">0.05</td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(X_I = \min(X,M)\)</span>.</p>
+<p>Hence,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[X_I]     &amp;= 10 \cdot 0.5 + 100 \cdot 0.3 + 500 \cdot 0.15 + 900 \cdot 0.05 = 155  \\
+\text{E}[X_I^2]   &amp;= 100 \cdot 0.5 + 10^{4} \cdot 0.3 + 2.5\times 10^{5} \cdot 0.15 + 8.1\times 10^{5} \cdot 0.05 = 8.105\times 10^{4}  \\ 
+\text{E}[X_I^3]   &amp;= 1000 \cdot 0.5 + 10^{6} \cdot 0.3 + 1.25\times 10^{8} \cdot 0.15 + 7.29\times 10^{8} \cdot 0.05 = 5.55005\times 10^{7}. \\
+\end{aligned}
+\]</span></p>
+<ol start="13" style="list-style-type: decimal">
+<li>Calculate the mean, variance and coefficient of skewness of the aggregate claims <span class="math inline">\(S_I(1)\)</span> at time <span class="math inline">\(t = 1\)</span>, i.e. <span class="math inline">\(\text{E}[S_I(1)]\)</span>, <span class="math inline">\(\text{Var}[S_I(1)]\)</span> and <span class="math inline">\(\text{Sk}[S_I(1)]\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{E}[S_I(1)] &amp;= \lambda \text{E}[X_I] = 1550 \\
+\text{Var}[S_I(1)] &amp;=  \lambda \text{E}[X_I^2] = 8.105\times 10^{5} \\
+\text{Sk}[S_I(1)] &amp;= \frac{\lambda \text{E}[X_I^3]}{(\text{Var}[S_I(1)])^{3/2}} = 0.7606193. \\
+\end{aligned}
+\]</span></p>
+<ol start="14" style="list-style-type: decimal">
+<li>Assume that <span class="math inline">\(S_I(1)\)</span> can be approximated by <span class="math inline">\(Y_I + k_I\)</span> where <span class="math inline">\(Y_I \sim \mathcal{G}(\alpha_I,\beta_I)\)</span> and <span class="math inline">\(k_I\)</span> is a constant. Calculate <span class="math inline">\(\alpha_I\)</span>, <span class="math inline">\(\beta_I\)</span> and <span class="math inline">\(k_I\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\alpha_I &amp;= \left(\frac{2}{\text{Sk}[S_I(1)]}\right)^2 = 6.9139344 \\
+\beta_I &amp;= \sqrt{\frac{\alpha_I}{\text{Var}[S_I(1)]}} = 0.0029207 \\
+k_I &amp;= \text{E}[S_I(1)] - \frac{\alpha_I}{\beta_I} =  -817.2228178. \\
+\end{aligned}
+\]</span></p>
+<ol start="15" style="list-style-type: decimal">
+<li><p>Calculate <span class="math inline">\(E[U_I(5)]\)</span>
+and <span class="math inline">\(\text{Var}[U_I(5)]\)</span>, given that <span class="math inline">\(u = 3500\)</span> and assuming:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\theta_R = 3\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta_R = 2\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta_R = \theta\)</span>.</p></li>
+</ol></li>
+</ol>
+<p>The insurer’s surplus process can be calculated from
+<span class="math display">\[ U_I(t) = u + (c - c_r)t - S_I(t),\]</span>
+where <span class="math inline">\(c_R = (1 + \theta_R)\text{E}[S - S_I]\)</span> is the reinsurance premium rate.</p>
+<ul>
+<li><p>For <span class="math inline">\(\theta_R = 3\theta\)</span>,
+<span class="math display">\[
+\begin{aligned}
+\text{E}[U_I(5)] &amp;= \text{E}[U(0) + 5(c - c_R) - S_I(5)]  = 4950 \\
+\text{Var}[U_I(5)] &amp;=  \text{Var}[U(0) + 5(c - c_R) - S_I(5)] = \text{Var}[S_I(5)] =  4.0525\times 10^{6}. \\
+\end{aligned}
+\]</span></p></li>
+<li><p>For <span class="math inline">\(\theta_R = 2\theta\)</span>,
+<span class="math display">\[
+\begin{aligned}
+\text{E}[U_I(5)] &amp;=5000 \\
+\text{Var}[U_I(5)] &amp;= 4.0525\times 10^{6}. \\
+\end{aligned}
+\]</span></p></li>
+<li><p>For <span class="math inline">\(\theta_R = 1\theta\)</span>,
+<span class="math display">\[
+\begin{aligned}
+\text{E}[U_I(5)] &amp;=5050 \\
+\text{Var}[U_I(5)] &amp;= 4.0525\times 10^{6}. \\
+\end{aligned}
+\]</span></p></li>
+</ul>
+<p>It should be emphasised that the value of <span class="math inline">\(\text{Var}[U_I(5)]\)</span> is not affected by the (net) premium income and so is not affected by the values of <span class="math inline">\(\theta\)</span> or <span class="math inline">\(\theta_R\)</span>.</p>
+<ol start="16" style="list-style-type: decimal">
+<li><p>Using
+<span class="math inline">\(\{\{Z_{i \,j} \}_{j=1}^5 \}_{i=1}^{1000}\)</span> and the translated
+gamma approximation, estimate <span class="math inline">\(\psi_{I,1}(3500,5)\)</span> assuming:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\theta_R = 3\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta_R = 2\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta_R = \theta\)</span>.</p></li>
+</ol></li>
+</ol>
+<ul>
+<li>For <span class="math inline">\(\theta_R = 3\theta\)</span>, <span class="math inline">\(\theta_R = 2\theta\)</span> and <span class="math inline">\(\theta_R = 1\theta\)</span>,
+in the 1000 simulations, we observe 14, 13 and 13 times a ruin, respectively.</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\psi_1(3500,5) &amp;= 
+\begin{cases}
+        0.014, &amp; \text{ if } \theta_R = 3\theta \\
+        0.013, &amp; \text{ if } \theta_R = 2\theta \\  
+        0.013, &amp; \text{ if } \theta_R = 1 \theta.  
+     \end{cases} 
+\end{aligned}
+\]</span></p>
+<p>0.014, 0.013  0.013, </p>
+<ol start="17" style="list-style-type: decimal">
+<li><p>Comment on your answers to questions 10 and 16, taking into consideration the answers to question 15.</p>
+<ol style="list-style-type: decimal">
+<li><p>The excess of loss reinsurance has reduced the amount of the largest possible claim. This makes the portfolio much safer for the insurer. However, the standard deviation of the surplus at the end of 5 years has been reduced by only a factor of about 1.0569823.</p></li>
+<li><p>This reduced risk is reflected in the ruin probabilities, which are smaller than the value in question 10.</p></li>
+<li><p>The more expensive the reinsurance (= the higher the value of <span class="math inline">\(\theta_R\)</span>), the lower the insurer’s net premium income and the higher the (estimated) ruin probability.</p></li>
+<li><p>This reduced risk is “paid for” by the insurer’s expected surplus. This has fallen substantially (from 5100 to 4950 (<span class="math inline">\(\theta_R = 3 \theta\)</span>) and to 5050 (<span class="math inline">\(\theta_R = \theta\)</span>)). Clearly, the insurer would prefer <span class="math inline">\(\theta_R = \theta\)</span>, as this implies the lowest cost of reinsurance and hence the highest expected net surplus and the lowest probability of ruin.</p></li>
+</ol></li>
+<li><p>Suppose that
+<span class="math inline">\(\theta_R = 2\theta\)</span>. Estimate the probability of ruin <span class="math inline">\(\psi_{I,1}(3500,5)\)</span> for the reinsurer, given the retention limit is <span class="math inline">\(M = 550, 600, 650, \ldots, 900\)</span>. Identify the largest <span class="math inline">\(M \in \{550, 600, 650, \ldots, 900 \}\)</span> such that the corresponding estimated probability of ruin is not greater than 1%.</p></li>
+</ol>
+<p>The estimates the probability of ruin <span class="math inline">\(\psi_{I,1}(3500,5)\)</span> for the reinsurer, given the retention limit is <span class="math inline">\(M = 550, 600, 650, \ldots, 900\)</span> are 0.01, 0.01, 0.01, 0.011, 0.011, 0.011, 0.011, 0.013. Hence, the largest <span class="math inline">\(M \in \{550, 600, 650, \ldots, 900 \}\)</span> such that the corresponding estimated probability of ruin is not greater than 1% is <span class="math inline">\(M = 650\)</span>. The results are also illustrated in the figure below.</p>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="19" style="list-style-type: decimal">
+<li>Comment on your answers to questions 18.</li>
+</ol>
+<p>It is possible to get the estimated probability of ruin below 1% even in the case that the reinsurance is “expensive”, i.e. the reinsurance risk loading is higher than the risk loading the insurer charges on the original insurance contracts.</p>
+<p>While before reinsurance the average profit per year was <span class="math inline">\(c - \text{E}[S(1)] = ((1+\theta)−1) \times \text{E}[S(1)] = 320\)</span>. To run a sustainable business in the long run, the annual cost of capital should not be higher than the average annual profit, i.e. not higher than
+<span class="math display">\[ \frac{320}{3500} = 9.1428571\%.\]</span>
+This return looks large enough to attract investors.</p>
+<p>With the results in 18, adding excess of loss reinsurance with <span class="math inline">\(\theta_R = 2\theta\)</span> and the retention limit <span class="math inline">\(M = 650\)</span> reduces the average profit to
+<span class="math display">\[ c - c_R - \text{E}[S_I(1)] = (1+\theta) \text{E}[S(1)] - (1+\theta_R) ( \text{E}[S(1)] - \text{E}[S_I(1)]) - \text{E}[S_I(1)]) = 250.\]</span></p>
+<p>The insurer can still make a profit provided the surplus will drift to <span class="math inline">\(\infty\)</span>, but ruin could still occur. The rate at which premium income comes in is greater than the rate at which claims are paid out and reinsurance premium charged.</p>
+<p>It should be noted that the average profit per year after the excess of loss reinsurance with <span class="math inline">\(\theta_R = 2\theta\)</span> is an increasing function of <span class="math inline">\(M\)</span> as shown in the figure below:</p>
+<p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tutorials.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pairote-sat/SCMA470/edit/master/07-Project-Solutions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/pairote-sat/SCMA470/blob/master/07-Project-Solutions.Rmd",
+"text": null
+},
+"download": ["SCMA470Bookdownproj.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
