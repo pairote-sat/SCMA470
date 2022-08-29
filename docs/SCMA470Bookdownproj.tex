@@ -128,7 +128,7 @@
 
 \title{\textbf{SCMA 470 : Risk Analysis and Credibility} \textbf{Tutorial 3}}
 \author{Pairote Satiracoo}
-\date{2021-12-06}
+\date{2022-08-22}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -245,6 +245,21 @@ For the binomial distribution, these functions are pbinom, qbinom, dbinom, and r
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: replacing previous import 'lifecycle::last_warnings' by
+## 'rlang::last_warnings' when loading 'tibble'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: replacing previous import 'lifecycle::last_warnings' by
+## 'rlang::last_warnings' when loading 'pillar'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\DecValTok{20}
 \NormalTok{myData }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{( }\AttributeTok{k =} \FunctionTok{factor}\NormalTok{(x), }\AttributeTok{pK =} \FunctionTok{dbinom}\NormalTok{(x, }\DecValTok{20}\NormalTok{, .}\DecValTok{5}\NormalTok{))}
 \FunctionTok{ggplot}\NormalTok{(myData,}\FunctionTok{aes}\NormalTok{(k,}\AttributeTok{ymin=}\DecValTok{0}\NormalTok{,}\AttributeTok{ymax=}\NormalTok{pK)) }\SpecialCharTok{+} 
@@ -932,6 +947,68 @@ to the reference text for more details.
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
+
+The main objective of the course is to provide methods for analysing insurance data leading to decisions with an emphasis in an insurance context.
+
+\hypertarget{the-importance-of-insurance-or-the-benefits-of-insurance-for-society}{%
+\subsection{The importance of insurance or the benefits of insurance for society}\label{the-importance-of-insurance-or-the-benefits-of-insurance-for-society}}
+
+Let us begin with the importance of insurance or the benefits of insurance for society.
+
+The insurer protects the wealth of society through a variety of insurance plans. Life insurance provides protection against loss of human wealth. General insurance protects property from damage by fire, theft, accidents, earthquakes, etc. Consequently, both general insurance and life insurance provide security to maintain financial and business conditions.
+
+The \textbf{insurance policy} is a contract between the insurer and the policyholder, which sets out the claims that the insurer is legally obliged to pay. The insurer guarantees compensation for losses caused by risks covered by the insurance policy, called the insurance claim in return for an initial payment, called the \textbf{premium}.
+
+\hypertarget{the-types-of-insurance}{%
+\subsection{The types of insurance}\label{the-types-of-insurance}}
+
+Families and organisations that do not want to bear their own risks can choose from a variety of insurance policies.The following questions can be asked about an insurance policy (\href{https://saylordotorg.github.io/text_risk-management-for-enterprises-and-individuals/s10-04-types-of-insurance-and-insurer.html}{Click here for more details}):
+
+\begin{itemize}
+\item
+  \textbf{the nature of insurance is who buys it:} Is it a personal, group or commercial?
+\item
+  \textbf{the nature of insurance is the type of risk being covered:} Is it a life/health insurance policy or a property/casualty policy?
+\item
+  \textbf{the nature of insurance is by the duration of an insurance contract, known as the term:} Is it a short-term or a long-term contract?
+\item
+  Is it issued by a private insurer or a government agency?
+\item
+  Was it taken out voluntarily or involuntarily?
+\end{itemize}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The amount of benefits provided by life insurance policies is often specified in the policies. In contrast, most non-life insurance policies provide compensation for insured losses that were not known prior to the event (usually the compensation amounts are limited).
+\item
+  The time value of money is important in a life insurance contract that runs over a long period of time. In a non-life contract, the random amount of compensation takes priority.
+\end{enumerate}
+
+\hypertarget{insurance-operations-and-data-analytics}{%
+\subsection{Insurance Operations and Data Analytics}\label{insurance-operations-and-data-analytics}}
+
+The ultimate goal is to use insurance data as a basis for decision-making. Throughout the course, we will learn more about techniques for analysing and extrapolating data. To begin with, we will describe five key operational areas of insurance companies and highlight the role of data and analytics in each operational area.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Initiate insurance:} The company decides at this stage whether or not to accept a risk (the underwriting step) and then determines the appropriate premium (or rate). The basics of insurance analysis are found in ratemaking, where analysts try to find the appropriate price for the appropriate risk.
+\item
+  \textbf{Renewal of insurance:} Many policies, especially in general insurance, are only valid for a few months or a year. The insurer has the option of refusing cover and changing the premium, even though it assumes that such contracts would be renewed. The purpose of this phase of policy renewal, where analytics are also used, is to retain profitable customers.
+\item
+  \textbf{Claims management:} Analytics have been used for years to (1) identify claims.
+  and prevent claims fraud, (2) control claims costs, including identifying the right type of support to cover the costs associated with claims handling, and (3) capture additional layers for reinsurance and retention.
+\item
+  \textbf{Reserves for losses:} Management obtains an accurate estimate of future responsibilities using analytical techniques, and the uncertainty of these predictions is quantified.
+\item
+  \textbf{Capital allocation and solvency:} Among the important analytical operations is the choice of the amount of capital required and its allocation to the various investments. Companies need to be aware of their capital requirements in order to have sufficient cash flow to meet their obligations when they are likely to occur (solvency). This is an important concern not only for management, but also for clients, shareholders, regulators and the public.
+\end{enumerate}
+
+\hypertarget{loss-distributions-1}{%
+\section{Loss Distributions}\label{loss-distributions-1}}
 
 The aim of the course is to provide a fundamental basis which applies
 mainly in general insurance. General insurance companies' products are
@@ -3804,6 +3881,11 @@ The simulations can be obtained in the same way.
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: replacing previous import 'lifecycle::last_warnings' by
+## 'rlang::last_warnings' when loading 'hms'
 \end{verbatim}
 
 \begin{verbatim}

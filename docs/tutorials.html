@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2021-12-06" />
+<meta name="date" content="2022-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,11 +160,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="loss-distributions.html"><a href="loss-distributions.html"><i class="fa fa-check"></i><b>2</b> Loss distributions</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.2</b> Exponential Distribution</a></li>
-<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.3</b> Gamma distribution</a></li>
-<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.4</b> Lognormal distribution</a></li>
-<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.5</b> Pareto distribution</a></li>
+<li class="chapter" data-level="2.1" data-path="loss-distributions.html"><a href="loss-distributions.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="loss-distributions.html"><a href="loss-distributions.html#the-importance-of-insurance-or-the-benefits-of-insurance-for-society"><i class="fa fa-check"></i><b>2.1.1</b> The importance of insurance or the benefits of insurance for society</a></li>
+<li class="chapter" data-level="2.1.2" data-path="loss-distributions.html"><a href="loss-distributions.html#the-types-of-insurance"><i class="fa fa-check"></i><b>2.1.2</b> The types of insurance</a></li>
+<li class="chapter" data-level="2.1.3" data-path="loss-distributions.html"><a href="loss-distributions.html#insurance-operations-and-data-analytics"><i class="fa fa-check"></i><b>2.1.3</b> Insurance Operations and Data Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="loss-distributions.html"><a href="loss-distributions.html#loss-distributions-1"><i class="fa fa-check"></i><b>2.2</b> Loss Distributions</a></li>
+<li class="chapter" data-level="2.3" data-path="loss-distributions.html"><a href="loss-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>2.3</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="2.4" data-path="loss-distributions.html"><a href="loss-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>2.4</b> Gamma distribution</a></li>
+<li class="chapter" data-level="2.5" data-path="loss-distributions.html"><a href="loss-distributions.html#lognormal-distribution"><i class="fa fa-check"></i><b>2.5</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="2.6" data-path="loss-distributions.html"><a href="loss-distributions.html#pareto-distribution"><i class="fa fa-check"></i><b>2.6</b> Pareto distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="deductibles-and-reinsurance.html"><a href="deductibles-and-reinsurance.html"><i class="fa fa-check"></i><b>3</b> Deductibles and reinsurance</a>
 <ul>
@@ -273,12 +279,12 @@ gamma, lognormal and Pareto distributions for which
 <li><p>the MME cannot apply for the Pareto distribution. For the given values of <span class="math display">\[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2\]</span>, the obtained values of <span class="math inline">\(\tilde{\alpha}\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> from the method of moments are negative. Note that if we fix <span class="math inline">\(s = 100^2\)</span> and vary <span class="math inline">\(\bar{x}\)</span> within the interval <span class="math inline">\([90,110]\)</span>, the plot of <span class="math inline">\(\bar{x}\)</span> against <span class="math inline">\(\tilde{\alpha}\)</span> is shown below. Notice that when <span class="math inline">\(\bar{x} = 100\)</span>, <span class="math inline">\(\tilde{\alpha}\)</span> tends to infinity.</p></li>
 </ol>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tutorials.html#cb37-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
-<span id="cb37-2"><a href="tutorials.html#cb37-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb37-3"><a href="tutorials.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
-<span id="cb37-4"><a href="tutorials.html#cb37-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb37-5"><a href="tutorials.html#cb37-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb37-6"><a href="tutorials.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tutorials.html#cb29-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
+<span id="cb29-2"><a href="tutorials.html#cb29-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb29-3"><a href="tutorials.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
+<span id="cb29-4"><a href="tutorials.html#cb29-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb29-5"><a href="tutorials.html#cb29-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb29-6"><a href="tutorials.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
 <p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Show that if <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, then the random variable

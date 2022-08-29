@@ -1,0 +1,28 @@
+\contentsline {chapter}{\numberline {1}Basic Probability Concepts}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Random Variables}{5}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}R Functions for Probability Distributions}{5}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Expectation}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}Variances of Random Variables}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Moments and Moment Generating Function}{9}{section.1.4}
+\contentsline {section}{\numberline {1.5}Probability generating function}{12}{section.1.5}
+\contentsline {section}{\numberline {1.6}Multivariate Distributions}{13}{section.1.6}
+\contentsline {section}{\numberline {1.7}Independent random variables}{14}{section.1.7}
+\contentsline {section}{\numberline {1.8}Conditional Distributions}{15}{section.1.8}
+\contentsline {section}{\numberline {1.9}Covariance}{15}{section.1.9}
+\contentsline {section}{\numberline {1.10}Correlation}{16}{section.1.10}
+\contentsline {section}{\numberline {1.11}Model Fitting}{17}{section.1.11}
+\contentsline {section}{\numberline {1.12}The method of moments}{17}{section.1.12}
+\contentsline {section}{\numberline {1.13}The method of maximum likelihood}{17}{section.1.13}
+\contentsline {section}{\numberline {1.14}Goodness of fit tests}{18}{section.1.14}
+\contentsline {section}{\numberline {1.15}the Pearson chi-square goodness-of-fit criterion}{18}{section.1.15}
+\contentsline {section}{\numberline {1.16}Kolmogorov-Smirnov (K-S) test.}{18}{section.1.16}
+\contentsline {chapter}{\numberline {2}Loss distributions}{19}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{19}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}The importance of insurance or the benefits of insurance for society}{19}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}The types of insurance}{19}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Insurance Operations and Data Analytics}{20}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Loss Distributions}{20}{section.2.2}
+\contentsline {section}{\numberline {2.3}Exponential Distribution}{21}{section.2.3}
+\contentsline {section}{\numberline {2.4}Gamma distribution}{23}{section.2.4}
+\contentsline {section}{\numberline {2.5}Lognormal distribution}{24}{section.2.5}
+\contentsline {section}{\numberline {2.6}Pareto distribution}{25}{section.2.6}
