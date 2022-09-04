@@ -24,7 +24,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-08-23" />
+<meta name="date" content="2022-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,12 +279,12 @@ gamma, lognormal and Pareto distributions for which
 <li><p>the MME cannot apply for the Pareto distribution. For the given values of <span class="math display">\[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2\]</span>, the obtained values of <span class="math inline">\(\tilde{\alpha}\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> from the method of moments are negative. Note that if we fix <span class="math inline">\(s = 100^2\)</span> and vary <span class="math inline">\(\bar{x}\)</span> within the interval <span class="math inline">\([90,110]\)</span>, the plot of <span class="math inline">\(\bar{x}\)</span> against <span class="math inline">\(\tilde{\alpha}\)</span> is shown below. Notice that when <span class="math inline">\(\bar{x} = 100\)</span>, <span class="math inline">\(\tilde{\alpha}\)</span> tends to infinity.</p></li>
 </ol>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tutorials.html#cb29-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
-<span id="cb29-2"><a href="tutorials.html#cb29-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb29-3"><a href="tutorials.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
-<span id="cb29-4"><a href="tutorials.html#cb29-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb29-5"><a href="tutorials.html#cb29-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb29-6"><a href="tutorials.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tutorials.html#cb38-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
+<span id="cb38-2"><a href="tutorials.html#cb38-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb38-3"><a href="tutorials.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
+<span id="cb38-4"><a href="tutorials.html#cb38-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb38-5"><a href="tutorials.html#cb38-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb38-6"><a href="tutorials.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
 <p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Show that if <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, then the random variable
