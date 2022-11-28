@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Interactive Lecture | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="Chapter 8 Interactive Lecture | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Interactive Lecture | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="project-2021-risk-theory.html"/>
 
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -263,11 +263,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="interactive-lecture" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Interactive Lecture</h1>
+<div id="interactive-lecture" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Interactive Lecture<a href="interactive-lecture.html#interactive-lecture" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
-<div id="datacamp-light" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> DataCamp Light</h2>
+<div id="datacamp-light" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> DataCamp Light<a href="interactive-lecture.html#datacamp-light" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 <p>By default, <code>tutorial</code> will convert all R chunks.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
@@ -289,7 +289,6 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -329,6 +328,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -342,7 +345,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

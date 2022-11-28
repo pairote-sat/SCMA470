@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 
 <link rel="next" href="loss-distributions.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -266,12 +266,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title"><strong>SCMA 470 : Risk Analysis and Credibility</strong> <strong>Tutorial 3</strong></h1>
 <p class="author"><em>Pairote Satiracoo</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2022-09-04</em></p>
+<p class="date"><em>2022-11-28</em></p>
 </div>
-<div id="basic-probability-concepts" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Basic Probability Concepts</h1>
-<div id="random-variables" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Random Variables</h2>
+<div id="basic-probability-concepts" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Basic Probability Concepts<a href="index.html#basic-probability-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="random-variables" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Random Variables<a href="index.html#random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 1.1  </strong></span><em>Let <span class="math inline">\(S\)</span> be the sample space of an experiment. A
 real-valued function <span class="math inline">\(X : S \rightarrow \mathbb{R}\)</span> is called a <strong>random
@@ -305,8 +305,8 @@ c.d.f <span class="math inline">\(F\)</span> and there exists a nonnegative, int
 <span class="math display">\[F(x) = \int_{-\infty}^x f(y)\, dy\]</span> Then the function <span class="math inline">\(f\)</span> is called
 the <strong>probability density function</strong> (p.d.f) of a random variable <span class="math inline">\(X\)</span>.</em></p>
 </div>
-<div id="r-functions-for-probability-distributions" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> R Functions for Probability Distributions</h3>
+<div id="r-functions-for-probability-distributions" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> R Functions for Probability Distributions<a href="index.html#r-functions-for-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, density, distribution function, for the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span> is shown as follows:</p>
 <table>
 <colgroup>
@@ -354,8 +354,8 @@ the <strong>probability density function</strong> (p.d.f) of a random variable <
 <p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 </div>
-<div id="expectation" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Expectation</h2>
+<div id="expectation" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Expectation<a href="index.html#expectation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 1.5  </strong></span><em>The <strong>expected value</strong> of a discrete random variable
 <span class="math inline">\(X\)</span> with the set of possible values <span class="math inline">\(A\)</span> and probability mass function
@@ -380,7 +380,7 @@ defined by <span class="math display">\[\mathrm{E}(X) = \int_{-\infty}^\infty x 
 </div>
 <div class="theorem">
 <ul>
-<li></li>
+<li><span id="thm:unlabeled-div-8" class="theorem"><strong>Theorem 1.2  </strong></span></li>
 <li>Let <span class="math inline">\(X\)</span> be a continuous random variable with
 probability density function <span class="math inline">\(f (x)\)</span>; then for any function
 <span class="math inline">\(h: \mathbb{R} \rightarrow \mathbb{R}\)</span>,
@@ -388,7 +388,7 @@ probability density function <span class="math inline">\(f (x)\)</span>; then fo
 </ul>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.2  </strong></span><em>Let <span class="math inline">\(X\)</span> be a random variable. Let
+<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.3  </strong></span><em>Let <span class="math inline">\(X\)</span> be a random variable. Let
 <span class="math inline">\(h_1, h_2, . . . , h_n\)</span> be real-valued functions, and
 <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span> be real numbers. Then
 <span class="math display">\[\mathrm{E}[a_1 h_1(X) + a_2 h_2(X) + \cdots + a_n h_n(X)] = a_1 \mathrm{E}[h_1(X)] + a_2 \mathrm{E}[h_2(X)] + \ldots +
@@ -397,8 +397,8 @@ probability density function <span class="math inline">\(f (x)\)</span>; then fo
 <p>Moreover, if <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then
 <span class="math display">\[\mathrm{E}(aX +b) = a\mathrm{E}(x) + b\]</span></p>
 </div>
-<div id="variances-of-random-variables" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Variances of Random Variables</h2>
+<div id="variances-of-random-variables" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Variances of Random Variables<a href="index.html#variances-of-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.7  </strong></span><em>Let <span class="math inline">\(X\)</span> be a discrete random variable with a set of
 possible values <span class="math inline">\(A\)</span>, probability mass function <span class="math inline">\(f(x)\)</span>, and
@@ -421,8 +421,8 @@ defined by
 <span class="math display">\[\mathrm{Var}(aX + b) = a^2\ Var(X), \quad   \sigma_{aX + b}= |a|\sigma_X\]</span>
 where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants.</p>
 </div>
-<div id="moments-and-moment-generating-function" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Moments and Moment Generating Function</h2>
+<div id="moments-and-moment-generating-function" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Moments and Moment Generating Function<a href="index.html#moments-and-moment-generating-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 1.9  </strong></span><em>For <span class="math inline">\(r &gt; 0\)</span>, the <span class="math inline">\(r\)</span>th moment of <span class="math inline">\(X\)</span> (the <span class="math inline">\(r\)</span>th
 moment about the origin) is <span class="math inline">\(\mathrm{E}[X^r]\)</span>, when it is defined. The
@@ -503,8 +503,8 @@ differentiation of <span class="math inline">\(M_X(t)\)</span> and letting <span
 Hint: its mgf is <span class="math inline">\(e^{\frac{1}{2} t^2}\)</span>.</p>
 </div>
 </div>
-<div id="probability-generating-function" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Probability generating function</h2>
+<div id="probability-generating-function" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Probability generating function<a href="index.html#probability-generating-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.13  </strong></span><em>For a counting variable <span class="math inline">\(N\)</span> (a variable which
 assumes some or all of the values <span class="math inline">\(0, 1, 2, \ldots,\)</span> but no others), The
@@ -519,8 +519,8 @@ probability generating function of <span class="math inline">\(N\)</span> is <sp
 both pgf and mgf of <span class="math inline">\(N\)</span> are defined, we have
 <span class="math display">\[G_N(t) = M_N(\log(t)) \quad \text{ and } M_N(t) = G_N(e^t).\]</span></p>
 </div>
-<div id="multivariate-distributions" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Multivariate Distributions</h2>
+<div id="multivariate-distributions" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Multivariate Distributions<a href="index.html#multivariate-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When <span class="math inline">\(X_1,X_2,\ldots ,X_n\)</span> be random variables defined on the same
 sample space, a multivariate probability density function or probability
 mass function<br />
@@ -544,11 +544,11 @@ terms of <span class="math inline">\(f\)</span> , note that, on the one hand, fo
 have
 <span class="math display">\[P(Y \in B) = P(X \in (-\infty, \infty), Y \in B) = \int_B \left(    \int_{-\infty}^\infty f(x,y)\, dx  \right) \, dy.\]</span></p>
 <p>We have
-<span class="math display" id="eq:label">\[\begin{equation} 
+<span class="math display" id="eq:label">\[\begin{equation}
 \tag{1.1} f_Y(y) =   \int_{-\infty}^\infty f(x,y)\, dx
 \end{equation}\]</span>
 and
-<span class="math display" id="eq:label2">\[\begin{equation} 
+<span class="math display" id="eq:label2">\[\begin{equation}
 \tag{1.2}  f_X(x) =   \int_{-\infty}^\infty f(x,y)\, dy
 \end{equation}\]</span></p>
 <div class="definition">
@@ -572,7 +572,7 @@ found from <span class="math inline">\(F\)</span> as follows:
 <p>We also have
 <span class="math display">\[\mathrm{E}(X) =   \int_{-\infty}^\infty x f_X(x)\, dx , \quad \mathrm{E}(Y) =   \int_{-\infty}^\infty y f_Y(y)\, dy\]</span></p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-20" class="theorem"><strong>Theorem 1.3  </strong></span><em>Let <span class="math inline">\(f (x, y)\)</span> be the joint probability density function
+<p><span id="thm:unlabeled-div-20" class="theorem"><strong>Theorem 1.4  </strong></span><em>Let <span class="math inline">\(f (x, y)\)</span> be the joint probability density function
 of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. If <span class="math inline">\(h\)</span> is a function of two variables
 from <span class="math inline">\(\mathbb{R}^2\)</span> to <span class="math inline">\(\mathbb{R}\)</span>, then <span class="math inline">\(h(X, Y )\)</span> is a random
 variable with the expected value given by
@@ -582,8 +582,8 @@ provided that the integral is absolutely convergent.</em></p>
 <p>As a consequence of the above theorem, for random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>,
 <span class="math display">\[\mathrm{E}(X + Y) = \mathrm{E}(X) + \mathrm{E}(Y)\]</span></p>
 </div>
-<div id="independent-random-variables" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Independent random variables</h2>
+<div id="independent-random-variables" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Independent random variables<a href="index.html#independent-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
 <p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 1.16  </strong></span><em>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are called
 independent if, for arbitrary subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of real numbers, the
@@ -591,32 +591,32 @@ events <span class="math inline">\(\{X \in A\}\)</span> and <span class="math in
 <span class="math display">\[P(X \in A, Y \in B) = P(X \in A) P(Y \in B).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-22" class="theorem"><strong>Theorem 1.4  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables defined on the
+<p><span id="thm:unlabeled-div-22" class="theorem"><strong>Theorem 1.5  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables defined on the
 same sample space. If <span class="math inline">\(F\)</span> is the joint probability distribution function
 of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if and only if for all
 real numbers <span class="math inline">\(t\)</span> and <span class="math inline">\(u\)</span>, <span class="math display">\[F(t,u)  = F_X(t) F_Y(u).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-23" class="theorem"><strong>Theorem 1.5  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly continuous random variables
+<p><span id="thm:unlabeled-div-23" class="theorem"><strong>Theorem 1.6  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be jointly continuous random variables
 with joint probability density function <span class="math inline">\(f (x, y)\)</span>. Then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are
 independent if and only if <span class="math display">\[f (x, y) = f_X(x) f_Y (y).\]</span></em></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-24" class="theorem"><strong>Theorem 1.6  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables and
+<p><span id="thm:unlabeled-div-24" class="theorem"><strong>Theorem 1.7  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables and
 <span class="math inline">\(g : \mathbb{R} \rightarrow\mathbb{R}\)</span> and
 <span class="math inline">\(h : \mathbb{R} \rightarrow\mathbb{R}\)</span> be real-valued functions; then
 <span class="math inline">\(g(X)\)</span> and <span class="math inline">\(h(Y )\)</span> are also independent random variables.</em></p>
 </div>
 <p>As a consequence of the above theorem, we obtain</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-25" class="theorem"><strong>Theorem 1.7  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables. Then
+<p><span id="thm:unlabeled-div-25" class="theorem"><strong>Theorem 1.8  </strong></span><em>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables. Then
 for all real-value functions <span class="math inline">\(g : \mathbb{R} \rightarrow\mathbb{R}\)</span> and
 <span class="math inline">\(h : \mathbb{R} \rightarrow\mathbb{R}\)</span>,
 <span class="math display">\[\mathrm{E}[g(X)h(Y)] = \mathrm{E}[g(X)]\mathrm{E}[h(Y)]\]</span> </em></p>
 </div>
 </div>
-<div id="conditional-distributions" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Conditional Distributions</h2>
+<div id="conditional-distributions" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Conditional Distributions<a href="index.html#conditional-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two continuous random variables with the joint
 probability density function <span class="math inline">\(f (x, y)\)</span>. Note that the case of discrete
 random variables can be considered in the same way. When no information
@@ -640,8 +640,8 @@ where <span class="math inline">\(f_Y(y) &gt; 0\)</span>.</p>
 <span class="math inline">\(f_X\)</span> because
 <span class="math display">\[f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} =\frac{f_X(x)f_Y(y)}{f_Y(y)} = f_X(x).\]</span></p>
 </div>
-<div id="covariance" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> Covariance</h2>
+<div id="covariance" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> Covariance<a href="index.html#covariance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The notion of the variance of a random variable <span class="math inline">\(X\)</span>,
 <span class="math inline">\(\mathrm{Var}(X) = \mathrm{E}[ ( X - \mathrm{E}(X))^2]\)</span> measures the
 average magnitude of the fluctuations of the random variable <span class="math inline">\(X\)</span> from
@@ -684,8 +684,8 @@ uncorrelated.</p>
 the converse of this is not true; that is, two dependent random
 variables might be uncorrelated.</p>
 </div>
-<div id="correlation" class="section level2" number="1.10">
-<h2><span class="header-section-number">1.10</span> Correlation</h2>
+<div id="correlation" class="section level2 hasAnchor" number="1.10">
+<h2><span class="header-section-number">1.10</span> Correlation<a href="index.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A large covariance can mean a strong relationship between variables.
 However, we cannot compare variances over data sets with different
 scales. A weak covariance in one data set may be a strong one in a
@@ -717,16 +717,16 @@ linear relationship.</p>
 <span class="math display">\[-1 \le \rho(X, Y ) \le 1\]</span>
 <span class="math display">\[\rho(a X + b, cY +d) = \text{sign}(ac) \rho(X, Y )\]</span></p>
 </div>
-<div id="model-fitting" class="section level2" number="1.11">
-<h2><span class="header-section-number">1.11</span> Model Fitting</h2>
+<div id="model-fitting" class="section level2 hasAnchor" number="1.11">
+<h2><span class="header-section-number">1.11</span> Model Fitting<a href="index.html#model-fitting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The contents in this section are taken from Gray and Pitts.</p>
 <p>To fit a parametric model, we have to calculate estimates of the unknown
 parameters of the probability distribution. Various criteria are
 available, including the method of moments, the method of maximum
 likelihood, etc.</p>
 </div>
-<div id="the-method-of-moments" class="section level2" number="1.12">
-<h2><span class="header-section-number">1.12</span> The method of moments</h2>
+<div id="the-method-of-moments" class="section level2 hasAnchor" number="1.12">
+<h2><span class="header-section-number">1.12</span> The method of moments<a href="index.html#the-method-of-moments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The method of moments leads to parameter estimates by simply matching
 the moments of the model,
 <span class="math inline">\(\mathrm{E}[X], \mathrm{E}[X^2], \mathrm{E}[X^3], \ldots ,\)</span> in turn to
@@ -742,8 +742,8 @@ particular matching <span class="math inline">\(\mathrm{E}[X]\)</span> to the sa
 the MME of a parameter <span class="math inline">\(\theta\)</span>, say, is usually denoted
 <span class="math inline">\(\tilde{\theta}\)</span>.</p>
 </div>
-<div id="the-method-of-maximum-likelihood" class="section level2" number="1.13">
-<h2><span class="header-section-number">1.13</span> The method of maximum likelihood</h2>
+<div id="the-method-of-maximum-likelihood" class="section level2 hasAnchor" number="1.13">
+<h2><span class="header-section-number">1.13</span> The method of maximum likelihood<a href="index.html#the-method-of-maximum-likelihood" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The method of maximum likelihood is the most widely used method for
 parameter estimation. The estimates it produces are those values of the
 parameters which give the maximum value attainable by the likelihood
@@ -768,8 +768,8 @@ mean, that is <span class="math inline">\(\hat{\lambda} = \bar{x}\)</span></p></
 reciprocal of the sample mean, that is <span class="math inline">\(\hat{\lambda} = 1/\bar{x}\)</span></p></li>
 </ul>
 </div>
-<div id="goodness-of-fit-tests" class="section level2" number="1.14">
-<h2><span class="header-section-number">1.14</span> Goodness of fit tests</h2>
+<div id="goodness-of-fit-tests" class="section level2 hasAnchor" number="1.14">
+<h2><span class="header-section-number">1.14</span> Goodness of fit tests<a href="index.html#goodness-of-fit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can assess how well the fitted distributions reflect the distribution
 of the data in various ways. We should, of course, examine and compare
 the tables of frequencies and, if appropriate, plot and compare
@@ -777,8 +777,8 @@ empirical distribution functions. More formally, we can perform certain
 statistical tests. Here we will use the Pearson chi-square
 goodness-of-fit criterion.</p>
 </div>
-<div id="the-pearson-chi-square-goodness-of-fit-criterion" class="section level2" number="1.15">
-<h2><span class="header-section-number">1.15</span> the Pearson chi-square goodness-of-fit criterion</h2>
+<div id="the-pearson-chi-square-goodness-of-fit-criterion" class="section level2 hasAnchor" number="1.15">
+<h2><span class="header-section-number">1.15</span> the Pearson chi-square goodness-of-fit criterion<a href="index.html#the-pearson-chi-square-goodness-of-fit-criterion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We construct the test statistic <span class="math display">\[\chi^2 = \frac{\sum(O - E)^2}{E},\]</span>
 where <span class="math inline">\(O\)</span> is the observed frequency in a cell in the frequency table and
 <span class="math inline">\(E\)</span> is the fitted or expected frequency (the frequency expected in that
@@ -800,8 +800,8 @@ this reference distribution, we conclude that the fitted
 distribution does not provide a good fit to the data.</p></li>
 </ol>
 </div>
-<div id="kolmogorov-smirnov-k-s-test." class="section level2" number="1.16">
-<h2><span class="header-section-number">1.16</span> Kolmogorov-Smirnov (K-S) test.</h2>
+<div id="kolmogorov-smirnov-k-s-test." class="section level2 hasAnchor" number="1.16">
+<h2><span class="header-section-number">1.16</span> Kolmogorov-Smirnov (K-S) test.<a href="index.html#kolmogorov-smirnov-k-s-test." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The K-S test statistic is the maximum difference between the values of
 the ecdf of the sample and the cdf of the fully specified fitted
 distribution.</p>
@@ -820,7 +820,6 @@ to the reference text for more details.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -860,6 +859,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -873,7 +876,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

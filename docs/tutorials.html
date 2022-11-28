@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Tutorials | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="Chapter 6 Tutorials | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Tutorials | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="ruin-theory.html"/>
 <link rel="next" href="project-2021-risk-theory.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -263,10 +263,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tutorials" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Tutorials</h1>
-<div id="tutorial-1" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Tutorial 1</h2>
+<div id="tutorials" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Tutorials<a href="tutorials.html#tutorials" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tutorial-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Tutorial 1<a href="tutorials.html#tutorial-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Using the method of moments, calculate the parameter values for the
 gamma, lognormal and Pareto distributions for which
@@ -279,12 +279,12 @@ gamma, lognormal and Pareto distributions for which
 <li><p>the MME cannot apply for the Pareto distribution. For the given values of <span class="math display">\[\mathrm{E}[X] = 500 \quad  \text{and} \quad  \mathrm{Var}[X] = 100^2\]</span>, the obtained values of <span class="math inline">\(\tilde{\alpha}\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> from the method of moments are negative. Note that if we fix <span class="math inline">\(s = 100^2\)</span> and vary <span class="math inline">\(\bar{x}\)</span> within the interval <span class="math inline">\([90,110]\)</span>, the plot of <span class="math inline">\(\bar{x}\)</span> against <span class="math inline">\(\tilde{\alpha}\)</span> is shown below. Notice that when <span class="math inline">\(\bar{x} = 100\)</span>, <span class="math inline">\(\tilde{\alpha}\)</span> tends to infinity.</p></li>
 </ol>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tutorials.html#cb38-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
-<span id="cb38-2"><a href="tutorials.html#cb38-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb38-3"><a href="tutorials.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
-<span id="cb38-4"><a href="tutorials.html#cb38-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb38-5"><a href="tutorials.html#cb38-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb38-6"><a href="tutorials.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tutorials.html#cb29-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span><span class="dv">90</span><span class="sc">:</span><span class="dv">110</span></span>
+<span id="cb29-2"><a href="tutorials.html#cb29-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb29-3"><a href="tutorials.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># MME</span></span>
+<span id="cb29-4"><a href="tutorials.html#cb29-4" aria-hidden="true" tabindex="-1"></a>alpha_tilde <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>xbar<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb29-5"><a href="tutorials.html#cb29-5" aria-hidden="true" tabindex="-1"></a>lambda_tilde <span class="ot">&lt;-</span> xbar<span class="sc">*</span>(alpha_tilde <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb29-6"><a href="tutorials.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xbar,alpha_tilde, <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">ylab =</span> <span class="fu">expression</span>(alpha))</span></code></pre></div>
 <p><img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Show that if <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, then the random variable
@@ -295,13 +295,18 @@ gamma, lognormal and Pareto distributions for which
 Let <span class="math inline">\(W = Z|Z&gt;0\)</span> be a random variable representing the amount of a
 non-zero payment by the reinsurer on a reinsurance claim. The
 distribution and density of <span class="math inline">\(W\)</span> can be calculated as follows: for
-<span class="math inline">\(x &gt; 0\)</span>, <span class="math display">\[\begin{aligned}
+<span class="math inline">\(x &gt; 0\)</span>,
+<span class="math display">\[
+\begin{aligned}
      \Pr[W \le x ] &amp;= \Pr[Z \le x | Z &gt;0] \\
             &amp;= \Pr[X - M \le x | X &gt; M] \\
             &amp;= \frac{\Pr[M &lt; X \le x + M]}{\Pr[X &gt; M]}\\
-            &amp;= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.\end{aligned}\]</span></p>
+            &amp;= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.
+\end{aligned}
+\]</span></p>
 <p>Given <span class="math inline">\(X \sim \textrm{Exp}(\lambda)\)</span>, <span class="math inline">\(F_X(x) = 1 - e^{-\lambda x}.\)</span> Moreover,</p>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 \Pr[W \le x ]  &amp;= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}  \\
 &amp;= \frac{  e^{-\lambda (M)} - e^{-\lambda (x+M)}}{e^{-\lambda (M)}} \\
 &amp;=  1 - e^{-\lambda x}.
@@ -324,12 +329,12 @@ Recall that that for <span class="math inline">\(X \sim \mathcal{Pa}(\alpha,\lam
 Using the fact that for <span class="math inline">\(X \sim \mathcal{Pa}(\alpha,\lambda)\)</span>, <span class="math inline">\(\textrm{E}[X]\)</span> exists when <span class="math inline">\(\alpha &gt; 1\)</span>, which will be assumed on the first term above. This assumption simplifies the above results as follows:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\mathrm{E}[X] &amp;= 
- 0 + \int_0^\infty \frac{\lambda^\alpha}{(\lambda + x)^\alpha} \, dx \\
- &amp;= 
- \frac{\lambda}{\alpha - 1} \int_0^\infty \frac{(\alpha - 1)\lambda^{\alpha - 1}}{(\lambda + x)^\alpha} \, dx \\ 
- &amp;= 
- \frac{\lambda}{\alpha - 1} \cdot 1.
+\mathrm{E}[X] &amp;=
+0 + \int_0^\infty \frac{\lambda^\alpha}{(\lambda + x)^\alpha} \, dx \\
+&amp;=
+\frac{\lambda}{\alpha - 1} \int_0^\infty \frac{(\alpha - 1)\lambda^{\alpha - 1}}{(\lambda + x)^\alpha} \, dx \\
+&amp;=
+\frac{\lambda}{\alpha - 1} \cdot 1.
 \end{aligned}
 \]</span>
 Note that the last integral integrate to 1 because the integrand is the density function of a Pareto distribution.</p>
@@ -371,8 +376,8 @@ From <span class="math inline">\(X \sim \mathcal{LN}(5,0.4)\)</span>, <span clas
 I used <code>R</code> to obtain the required probability.</p></li>
 </ol>
 </div>
-<div id="tutorial-2" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Tutorial 2</h2>
+<div id="tutorial-2" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Tutorial 2<a href="tutorials.html#tutorial-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Claims occur on a general insurance portfolio independently and at
 random. Each claim is classified as being of “Type A” or “Type B”.
@@ -420,8 +425,8 @@ this.</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="solutions-to-tutorial-2" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Solutions to Tutorial 2</h2>
+<div id="solutions-to-tutorial-2" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Solutions to Tutorial 2<a href="tutorials.html#solutions-to-tutorial-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Solution:</strong></p>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
@@ -433,12 +438,12 @@ this.</p></li>
 <li><p>Using the conditional expectation and conditional variance formulas, we have</p></li>
 </ol></li>
 </ol>
-<p><span class="math display">\[\begin{aligned} 
+<p><span class="math display">\[\begin{aligned}
 \mathrm{E}[X|A] &amp;= \frac{400 }{3 - 1} = 200, \\
 \mathrm{E}[X|B] &amp;= \frac{1000 }{4 - 1} = 333.3333333.
 \end{aligned} \]</span>
 Hence,
-<span class="math display">\[\begin{aligned} 
+<span class="math display">\[\begin{aligned}
 \mathrm{E}[X] &amp;= \mathrm{E}[\mathrm{E}[X|\text{type}]] \\
 &amp;=  \Pr(A) \, \mathrm{E}[X|A]   + \Pr(B) \, \mathrm{E}[X|B]   \\
 &amp;= (0.9)(200) + (0.1)(333.3333333) \\
@@ -446,15 +451,15 @@ Hence,
 \end{aligned}
 \]</span></p>
 <pre><code>We also have</code></pre>
-<p><span class="math display">\[\begin{aligned} 
+<p><span class="math display">\[\begin{aligned}
 \mathrm{E}[X^2|A] &amp;= \mathrm{Var}[X|A] + (\mathrm{E}[X|A])^2 = \frac{(3) (400)^2}{(3 - 1)^2 (3 - 2)} + (200)^2   =   1.6\times 10^{5},\\
-\mathrm{E}[X^2|B] &amp;= \mathrm{Var}[X|B] + (\mathrm{E}[X|B])^2 = \frac{(4) (1000)^2}{(4 - 1)^2 (4 - 2)} + (333.3333333)^2   =   3.3333333\times 10^{5}. 
+\mathrm{E}[X^2|B] &amp;= \mathrm{Var}[X|B] + (\mathrm{E}[X|B])^2 = \frac{(4) (1000)^2}{(4 - 1)^2 (4 - 2)} + (333.3333333)^2   =   3.3333333\times 10^{5}.
 \end{aligned}
 \]</span>
 Therefore,
 <span class="math inline">\(\mathrm{E}[X^2] = (0.9)(1.6\times 10^{5}) + (0.1)(3.3333333\times 10^{5}) = 1.7733333\times 10^{5}\)</span>,
 and
-<span class="math inline">\(\mathrm{Var}[X] = 1.3182222\times 10^{5}\)</span>, 
+<span class="math inline">\(\mathrm{Var}[X] = 1.3182222\times 10^{5}\)</span>,
 <span class="math inline">\(\mathrm{SD}[X] = 363.0733014\)</span>.</p>
 <pre><code>3. Using moment matching estimation, we have</code></pre>
 <p><span class="math inline">\(\tilde{\alpha} = 3.0545829\)</span> and <span class="math inline">\(\tilde{\beta} = 438.3110196\)</span>. Therefore, <span class="math inline">\(\Pr[Y &gt; 1000] = 0.0265228 &lt; 0.0272413\)</span>.</p>
@@ -518,14 +523,14 @@ Letting <span class="math inline">\(\lambda + d = \phi\)</span> results in <span
 \end{aligned}\]</span></p>
 <p>The last integral defines the mean of the Pareto random variable with parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\phi + M\)</span> and so equals to <span class="math inline">\(\frac{\phi + M}{\alpha - 1}\)</span>. After simplifying, we have
 <span class="math display">\[\begin{aligned}
-    \mathrm{E}[Y_I] 
+    \mathrm{E}[Y_I]
     &amp;=  \mathrm{E}[Y] - \left(\frac{\phi}{\phi+M} \right)^\alpha \left(\frac{\phi + M}{\alpha - 1}\right) = \left(\frac{\lambda + d}{\alpha - 1} \right)\left(1 - \left( \frac{\lambda + d}{\lambda + d + M} \right)^{\alpha - 1}  \right).
 \end{aligned}\]</span></p>
 <p>Substituting all the parameter values and <span class="math inline">\(\mathrm{E}[Y_I] = 160\)</span>, we solve for <span class="math inline">\(M\)</span> which results in
 <span class="math display">\[M = \frac{\tilde{\lambda} + d}{\left(1- \frac{(\tilde{\alpha} -1)\mathrm{E}[Y_I]}{(\tilde{\lambda} + d)}  \right)^{ \frac{1}{\tilde{\alpha} - 1}   }} - (\tilde{\lambda} + d )  =  386.0795.\]</span></p>
 </div>
-<div id="tutorial-3" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Tutorial 3</h2>
+<div id="tutorial-3" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Tutorial 3<a href="tutorials.html#tutorial-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>The aggregate claims <span class="math inline">\(S\)</span> have a compound Poisson random variable
 with Poisson parameter <span class="math inline">\(\lambda = 20\)</span> and claim amounts have a
@@ -571,8 +576,8 @@ expected insurer’s payout.</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="solutions-to-tutorial-3" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Solutions to Tutorial 3</h2>
+<div id="solutions-to-tutorial-3" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Solutions to Tutorial 3<a href="tutorials.html#solutions-to-tutorial-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li>The aggregate claims <span class="math inline">\(S\)</span> have a compound Poisson random variable, <span class="math inline">\(S \sim \mathcal{CP}(\lambda, F_X)\)</span> with <span class="math inline">\(\lambda = 20\)</span> and <span class="math inline">\(X \sim \mathcal{G}(\alpha,\beta) = \mathcal{G}(2,1)\)</span> distribution.
@@ -673,8 +678,8 @@ and
 <p>Therefore, the expected insurer’s payout is
 <span class="math display">\[ \mathrm{E}[N]\mathrm{E}[\max(0, X - 20)] = (0.8)(32) = 25.6. \]</span></p>
 </div>
-<div id="tutorial-4" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> Tutorial 4</h2>
+<div id="tutorial-4" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Tutorial 4<a href="tutorials.html#tutorial-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Given <span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span>, find the distribution of <span class="math inline">\(Y = kX\)</span>
 for some positive <span class="math inline">\(k\)</span>. Repeat the same question if</p>
@@ -707,8 +712,8 @@ independent. Find the mean and variance of the aggregate claims for
 this fixed time period.</p></li>
 </ol>
 </div>
-<div id="solutions-to-tutorial-4" class="section level2" number="6.7">
-<h2><span class="header-section-number">6.7</span> Solutions to Tutorial 4</h2>
+<div id="solutions-to-tutorial-4" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Solutions to Tutorial 4<a href="tutorials.html#solutions-to-tutorial-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li>Given <span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span>, the distribution of <span class="math inline">\(Y = kX\)</span> can be founded by using the moment generating function.</li>
@@ -731,7 +736,7 @@ M_Y(t) &amp;= M_{kX}(t) = \mathrm{E}[e^{(tk)X}] = M_X(kt) \\
 F_Y(x) &amp;= \Pr(Y \le x) = \Pr(kX \le x) \\
 &amp;= \Pr(\ln(X) \le \ln(x/k)) \\
 &amp;= \Pr(\frac{\ln(X) - \mu}{\sigma} \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ) \\
-&amp;= \Pr(Z \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ). 
+&amp;= \Pr(Z \le   \frac{\ln(x) - \ln(k) - \mu}{\sigma} ).
 \end{aligned}
 \]</span></p>
 <p>It follows that <span class="math inline">\(Y = kX \sim \mathcal{LN}(\mu + \ln(k), \sigma^2)\)</span>.</p>
@@ -743,7 +748,7 @@ F_Y(x) &amp;= \Pr(Y \le x) = \Pr(kX \le x) \\
 <p><span class="math display">\[\begin{aligned}
 F_Y(x) &amp;= \Pr(Y \le x) = \Pr(kX \le x) = \Pr(X \le x/k) \\
 &amp;= 1 - \left(\frac{\lambda}{\lambda + (x/k)}\right)^\alpha \\
-&amp;= 1 - \left(\frac{\lambda k}{\lambda k + x}\right)^\alpha. 
+&amp;= 1 - \left(\frac{\lambda k}{\lambda k + x}\right)^\alpha.
 \end{aligned}\]</span></p>
 <p>Therefore, <span class="math inline">\(Y = kX \sim \mathcal{Pa}(\alpha, k\lambda)\)</span>.</p>
 <ol start="2" style="list-style-type: decimal">
@@ -776,7 +781,7 @@ where <span class="math inline">\(q = 1 - p\)</span>.</li>
 </ol>
 <p>Define the indicator random variable <span class="math inline">\(\{I_j\}_{j=1}^\infty\)</span>, where
 <span class="math display">\[\begin{aligned}
-        I_j = 
+        I_j =
     \begin{cases}
         1 &amp;\text{if }  X_j &gt; M\\   
         0 &amp;\text{if }  X_j \le M.
@@ -800,8 +805,8 @@ Then, <span class="math inline">\(\mathrm{E}[N] = 0.8\)</span> and <span class="
 and
 <span class="math display">\[ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \mathrm{Var}[N] (\mathrm{E}[X])^2  = 0.2844444 .\]</span></p>
 </div>
-<div id="tutorial-5" class="section level2" number="6.8">
-<h2><span class="header-section-number">6.8</span> Tutorial 5</h2>
+<div id="tutorial-5" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Tutorial 5<a href="tutorials.html#tutorial-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Aggregate claims from a risk in a given time have a compound Poisson
 distribution with Poisson parameter <span class="math inline">\(10\)</span> and an individual claim
@@ -851,13 +856,13 @@ approximation to approximate the values of <span class="math inline">\(Pr(S(100)
 </ol></li>
 </ol>
 </div>
-<div id="solutions-to-tutorial-5" class="section level2" number="6.9">
-<h2><span class="header-section-number">6.9</span> Solutions to Tutorial 5</h2>
+<div id="solutions-to-tutorial-5" class="section level2 hasAnchor" number="6.9">
+<h2><span class="header-section-number">6.9</span> Solutions to Tutorial 5<a href="tutorials.html#solutions-to-tutorial-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li>Aggregate claims <span class="math inline">\(S\)</span> from a risk in a given time have a compound Poisson
 distribution <span class="math inline">\(S \sim \mathcal{CP}(10,F_X)\)</span> where <span class="math inline">\(X \sim \mathcal{Pa}(\alpha,\beta) = \mathcal{Pa}(3,2000)\)</span>. Using the expected value principle, the insurer sets a premium before reinsurance <span class="math inline">\(P = (1 + \theta)\mathrm{E}[S]\)</span> with relative security loading of <span class="math inline">\(\theta = 0.15\)</span>. The insurer’s expected profit before reinsurance can be obtained from
-<span class="math display">\[\begin{aligned} 
+<span class="math display">\[\begin{aligned}
 \mathrm{E}[\text{Profit}] &amp;=  \mathrm{E}[P-S] \\
 &amp;= P-  \mathrm{E}[S]  \\
 &amp;= (1 + \theta)\mathrm{E}[S] - \mathrm{E}[S] \\
@@ -868,7 +873,7 @@ distribution <span class="math inline">\(S \sim \mathcal{CP}(10,F_X)\)</span> wh
 <p>Note that <span class="math inline">\(\mathrm{E}[S] = \lambda \mathrm{E}[X] = (10)(1000) = 10^{4}\)</span>. Hence <span class="math inline">\(\mathrm{E}[\text{Profit}] = 1500\)</span>.</p>
 <pre><code>2. The insurer is considering effecting excess of loss reinsurance with retention limit $M = 1200$.</code></pre>
 <p>The reinsurance premium would be calculated using the same principle with relative security loading of <span class="math inline">\(\theta_R = 0.2\)</span>. The insurer’s expected profit after reinsurance can be obtained from (in terms of <span class="math inline">\(\mathrm{E}[S]\)</span> and <span class="math inline">\(\mathrm{E}[S_R]\)</span>)
-<span class="math display">\[\begin{aligned} 
+<span class="math display">\[\begin{aligned}
 \mathrm{E}[\text{Profit (after reinsurance)}] &amp;=  \mathrm{E}[P- P_R - S_I] \\
 &amp;= P- P_R - \mathrm{E}[S_I]  \\
 &amp;= P- P_R - \mathrm{E}[S - S_R]  \\
@@ -894,8 +899,8 @@ With reinsurance, the insurer’s profit is equal to premiums charged less the r
 <ol start="2" style="list-style-type: decimal">
 <li><p>Given <span class="math inline">\(X \sim \text{Exp}(\beta)\)</span> with <span class="math inline">\(\beta = 1/10\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>The aggregate claim amount paid by the direct insurer <span class="math inline">\(S_I\)</span> is
-<span class="math display">\[S_I \sim \mathcal{CP}(80,F_Y), \quad Y= \min(X,M)\]</span>
+<li>\begin{aligned} insurer <span class="math inline">\(S_I\)</span> is
+<span class="math display">\[S_I \sim \mathcal{CP}(10,F_Y), \quad Y= \min(X,M)\]</span>
 The distribution and its first two moments of <span class="math inline">\(Y\)</span> can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.</li>
 </ol></li>
 </ol>
@@ -903,61 +908,60 @@ The distribution and its first two moments of <span class="math inline">\(Y\)</s
 <span class="math display">\[ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),\]</span>
 where <span class="math inline">\(p = \Pr(X &gt; M) = e^{-\lambda M} = e^{-\lambda/\mu}\)</span> is the proportion of claims which involve the reinsurer (see the <a href="https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1">link</a> for more helps)</p>
 <p>It follows that
-<span class="math display">\[\begin{aligned}
-\mathrm{E}[Y] &amp;= M_Y&#39;(0) = (1 - p)\mu = 8.6466472 \\
-\mathrm{E}[Y^2] &amp;= M_Y&#39;&#39;(0) = -2 \mu (M p + (-1 + p) \mu) = 118.7988301. 
+<span class="math display">\[
+\begin{aligned}
+\mathrm{E}[Y] &amp;= M_Y&#39;(0) = (1 - p)\mu = 200 \\
+\mathrm{E}[Y^2] &amp;= M_Y&#39;&#39;(0) = -2 \mu (M p + (-1 + p) \mu) = 5.625\times 10^{5}.
 \end{aligned}
 \]</span></p>
 <p>The total expected total claim payout of the insurer and its variance are
-<span class="math display">\[ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = 691.7317734, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  9503.9064046.\]</span></p>
+<span class="math display">\[ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = 6093.75, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  5.625\times 10^{6}.\]</span></p>
 <p>The aggregate claim amount paid by the reinsurer <span class="math inline">\(S_R\)</span> is
-<span class="math display">\[S_R \sim \mathcal{CP}(80,F_Z), \quad Z= \max(0,X-M)\]</span></p>
+<span class="math display">\[S_R \sim \mathcal{CP}(10,F_Z), \quad Z= \max(0,X-M)\]</span></p>
 <p>It follows that
-<span class="math display">\[\begin{aligned}
+<span class="math display">\[
+\begin{aligned}
 \mathrm{E}[Z] &amp;= p\mu = 1.3533528 \\
-\mathrm{E}[Z^2] &amp;= 2 \mu^2 p = 27.0670566. 
+\mathrm{E}[Z^2] &amp;= 2 \mu^2 p = 27.0670566.
 \end{aligned}
 \]</span></p>
 <p>The total expected total claim payout of the insurer and its variance are
-<span class="math display">\[ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = 108.2682266, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  2165.3645318.\]</span></p>
+<span class="math display">\[ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = 3906.25, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  2.5\times 10^{7}.\]</span></p>
 <pre><code>2. It follows that </code></pre>
-<p><span class="math inline">\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = 1.1669271\times 10^{4} &lt; 1.6\times 10^{4} = \mathrm{Var}[S]\)</span>.</p>
+<p><span class="math inline">\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = 3.0625\times 10^{7} &lt; 4\times 10^{7} = \mathrm{Var}[S]\)</span>.</p>
 <pre><code>After excess of loss reinsurance arrangement, there is a reduction in the variability of the amount paid out by the insurer on claims.</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>From Panjer’s recursion formula,
 <span class="math display">\[ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.\]</span>
 Therefore,
-<span class="math display">\[\begin{aligned}
+<span class="math display">\[
+\begin{aligned}
 g_0 &amp;= e^{-\lambda} = 0.606531 \\
 g_1 &amp;= \lambda f_1 g_0  = 0.151633 \\
 g_2 &amp;= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = 0.09477 \\
 g_3 &amp;= (\lambda/3)(f_1 g_2 + 2 f_2 g_1 + 3 f_3 g_0)  = 0.09635 \\
 g_4 &amp;= (\lambda/4)(f_1 g_3 + 2 f_2 g_2 + 3 f_3 g_1)  = 0.026161 \\
- &amp;\vdots \\
+&amp;\vdots \\
 g_r &amp;=  (\lambda/r)(f_1 g_{r-1} + 2 f_2 g_{r-2} + 3 f_3 g_{r-3}).
 \end{aligned}
 \]</span>
 Also <span class="math inline">\(g_5 - g_{10} = 0.013233, 0.007663, 0.002148, 9.27\times 10^{-4}, 4.05\times 10^{-4}, 1.14\times 10^{-4}\)</span>, respectively.</li>
 </ol>
 </div>
-<div id="tutorial-6" class="section level2" number="6.10">
-<h2><span class="header-section-number">6.10</span> Tutorial 6</h2>
+<div id="tutorial-6" class="section level2 hasAnchor" number="6.10">
+<h2><span class="header-section-number">6.10</span> Tutorial 6<a href="tutorials.html#tutorial-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Suppose <span class="math inline">\(S \sim \mathcal{CP}(\lambda, F_X)\)</span> where individual claim
 amounts are distributed on the positive integers and
 <span class="math inline">\(\lambda = 0.5\)</span>. An individual claim amounts <span class="math inline">\(X\)</span> are either 1 or 2
 with probability 2/3 and 1/3 respectively.</p>
 <ol style="list-style-type: decimal">
-<li><p><span id="QuestionPanjer" label="QuestionPanjer"><span class="math display">\[QuestionPanjer\]</span></span>
-Write down an expression for <span class="math inline">\(E[S]\)</span> in terms of <span class="math inline">\(\lambda\)</span> and
-the mean of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Write down an expression for <span class="math inline">\(E[S]\)</span> in terms of <span class="math inline">\(\lambda\)</span> and the mean of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Use Panjer’s recursion to show that
 <span class="math display">\[g_r = \frac{1}{3r} (g_{r-1} + g_{r-2}), \quad r = 2,3,\ldots.\]</span></p></li>
 <li><p>Calculate <span class="math inline">\(g_r\)</span> for <span class="math inline">\(r = 0,1,2, 3, 4\)</span>.</p></li>
 <li><p>Verify that <span class="math inline">\(\sum_{r=0}^4 g_r &gt; 0.995\)</span>.</p></li>
-<li><p>Compare <span class="math inline">\(\sum_{r=0}^4 r g_r\)</span> with the exact mean of <span class="math inline">\(S\)</span> computed
-by using
-<a href="tutorials.html#QuestionPanjer" reference-type="ref" reference="QuestionPanjer"><span class="math display">\[QuestionPanjer\]</span></a>.</p></li>
+<li><p>Compare <span class="math inline">\(\sum_{r=0}^4 r g_r\)</span> with the exact mean of <span class="math inline">\(S\)</span> computed by using 1.1.</p></li>
 <li><p>Comment on the results.</p></li>
 </ol></li>
 <li><p>Consider a portfolio of 1000 life insurance policies over a one-year
@@ -1016,11 +1020,180 @@ distribution with parameter <span class="math inline">\(\lambda = 0.002\)</span>
 Uniform distribution <span class="math inline">\(U(20,000, 50,000)\)</span>.</p>
 <p>Suppose that 10% of policies result in a claim, 80% of which are
 Type I and the remaining are type II.</p>
-<p>Calculate the premium charged for each policy.</p></li>
+<p>Calculate the premium charged for each policy <strong>provided that a premium loading factor of 10% is applied</strong>.</p></li>
 </ol>
 </div>
-<div id="tutorial-7" class="section level2" number="6.11">
-<h2><span class="header-section-number">6.11</span> Tutorial 7</h2>
+<div id="solutions-to-tutorial-6" class="section level2 hasAnchor" number="6.11">
+<h2><span class="header-section-number">6.11</span> Solutions to Tutorial 6<a href="tutorials.html#solutions-to-tutorial-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(S \sim \mathcal{CP}(\lambda, F_X)\)</span> where
+<span class="math inline">\(\lambda = 0.5\)</span> and an individual claim amounts <span class="math inline">\(X\)</span> are either 1 or 2
+with probability 2/3 and 1/3 respectively.</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(E[S] = \lambda \cdot E[X]\)</span>.</p></li>
+<li><p>The Panjer’s recursion formula <span class="math inline">\(g_r\)</span> can be recursively calculated by</p></li>
+</ol></li>
+</ol>
+<p><span class="math inline">\(g_0 = p_0 = \Pr(S = 0) = \exp(-\lambda)\)</span>,</p>
+<p><span class="math inline">\(g_r= \Pr(S = r) = \frac{\lambda}{r}\sum_{j=1}^r j\cdot f_j \cdot g_{r-j} = = \frac{\lambda}{r}\sum_{j=1}^2 j\cdot f_j \cdot g_{r-j}, \quad r = 1,2 \ldots.\)</span></p>
+<p>This follows from <span class="math inline">\(f_j = 0\)</span> for <span class="math inline">\(j \ge 3\)</span>. Hence,</p>
+<p><span class="math display">\[g_r = \frac{1}{2r}(1\cdot\frac{2}{3}\cdot g_{r-1} + 2\cdot\frac{1}{3}\cdot g_{r-2}) = \frac{1}{3r} (g_{r-1} + g_{r-2}),\]</span></p>
+<p>for <span class="math inline">\(r = 2,3,\ldots\)</span>.</p>
+<pre><code>3. Following the Panjer&#39;s recursion formula, we have</code></pre>
+<p><span class="math display">\[
+\begin{aligned}
+g_0 &amp;= 0.6065307 \\
+g_1 &amp;= 0.2021769 \\
+g_2 &amp;= 0.1347846 \\
+g_3 &amp;= 0.0374402 \\
+g_4 &amp;= 0.0143521.
+\end{aligned}
+\]</span></p>
+<pre><code>4. Clearly, </code></pre>
+<p><span class="math inline">\(\sum_{r=0}^4 g_r &gt; 0.995\)</span>.</p>
+<pre><code>5. From 1.1, </code></pre>
+<p><span class="math inline">\(E[S] = \lambda \cdot E[X] = \frac{1}{2} \cdot \frac{4}{3} = \frac{2}{3}\)</span>. However,
+<span class="math display">\[\sum_{r=0}^4 r \cdot g_r \approx  0.6418.\]</span></p>
+<pre><code>6. Truncating the distribution of </code></pre>
+<p><span class="math inline">\(S\)</span> at <span class="math inline">\(r=4\)</span> gives more than 99.5% of the probability mass but only <span class="math inline">\(\frac{0.6418}{2/3} \approx 96\%\)</span> of the mean.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>The aggregate claim <span class="math inline">\(S\)</span> in this portfolio has a compound binomial
+distribution, denoted by <span class="math inline">\(\mathcal{CB}(n,p,F_X)\)</span> with <span class="math inline">\(n = 100\)</span>, <span class="math inline">\(p = 0.04\)</span> and <span class="math inline">\(X \sim Exp(\lambda)\)</span>, where <span class="math inline">\(\lambda = 1/2\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>From <span class="math inline">\(X \sim Exp(1/2)\)</span>,
+<span class="math display">\[
+\begin{aligned}
+E[X] &amp;= 1/\lambda = 2 \\
+E[X^2] &amp;= 2/\lambda^2 = 8.
+\end{aligned}
+\]</span></li>
+</ol></li>
+</ol>
+<p>It follows that</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[S] &amp;= n p m_1 = 80, \\
+Var[S] &amp;= np m_2 - n p^2 m_1^2 = 313.6.
+\end{aligned}
+\]</span></p>
+<pre><code>2. The profit on this portfolio is</code></pre>
+<p><span class="math display">\[(1+\theta)E[S] - S.\]</span>
+To calculate the relative security loading <span class="math inline">\(\theta_1\)</span> such that the probability of a profit on this portfolio is 0.95, we require
+<span class="math display">\[0.95 = \Pr((1+\theta)E[S] - S).\]</span>
+Suppose that the aggregate claims can be approximated by the normal distribution, i.e. <span class="math inline">\(S \sim \mathcal{N}(\mathrm{E}[S],\mathrm{Var}[S]) = \mathcal{N}(80,313.6)\)</span>. Therefore,
+<span class="math display">\[
+\begin{aligned}
+0.95 &amp;= \Pr( P - S &gt; 0)  \\
+&amp;= \Pr( ( 1 + \theta_1)(80) - S &gt; 0)  \\
+&amp;= \Pr( S &lt; ( 1 + \theta_1)(80) ) \\
+&amp;= \Pr( Z &lt; \frac{( 1 + \theta_1)(80) - 80 }{\sqrt{313.6}} ) \\
+&amp;= \Pr( Z &lt; \frac{( \theta_1)(80) }{\sqrt{313.6}} ).
+\end{aligned}
+\]</span>
+This gives <span class="math inline">\(\frac{( \theta_1)(80) }{\sqrt{313.6}} = 1.6448536\)</span> and
+<span class="math display">\[\theta_1 = 0.3641039.\]</span>
+3. Suppose that the insurer imposes a deductible of <span class="math inline">\(d= 1\)</span>. Let
+<span class="math display">\[Y^* = X-d|X&gt;d\]</span>
+be the claim amount with which the insurer is involved.</p>
+<p>Note that for <span class="math inline">\(X \sim Exp(\lambda)\)</span>, where <span class="math inline">\(\lambda = 1/2\)</span>, <span class="math inline">\(Y^* \sim Exp(\lambda) = Exp(1/2)\)</span> (due to the memorylessness property of the exponential distributions). Hence,
+<span class="math display">\[
+\begin{aligned}
+E[Y^*] &amp;= 1/\lambda = 2 \\
+E[(Y^*)^2] &amp;= 2/\lambda^2 = 8.
+\end{aligned}
+\]</span></p>
+<p>With the deductible in place, the probability of a claim is</p>
+<p><span class="math display">\[p^* = p \cdot \Pr(X &gt; d) = p \cdot e^{-\lambda d} = 0.0242612\]</span></p>
+<p>Hence,
+<span class="math display">\[
+\begin{aligned}
+E[S^*] &amp;= n p^* E[Y^*]  = 48.5224528, \\
+Var[S^*] &amp;= np^* E[(Y^*)^2] - n (p^*)^2 (E[Y^*])^2 = 191.7353827.
+\end{aligned}
+\]</span></p>
+<p>Then, using the same argument as before, we have <span class="math inline">\(\theta_2 = 0.3641039.\)</span></p>
+<pre><code>4. With the deductible, the security loading has gone up. The deductible has reduced the variability from </code></pre>
+<p><span class="math inline">\(\sqrt(313.6)\)</span> to <span class="math inline">\(\sqrt(191.7353827)\)</span>. Moreover, the expected claim amount has been reduced by a greater factor from <span class="math inline">\(80\)</span> to <span class="math inline">\(48.5224528\)</span>.</p>
+<p>Using a normal approximation, the relative security loading depends on the coefficient of variation, which is defined by the ratio of the standard deviation to the mean,
+<span class="math display">\[\text{CV = Standard Deviation/Mean}.\]</span></p>
+<p>The larger this is, the larger the relative security loading required, which can be varified by
+<span class="math display">\[\frac{\sqrt{313.6}}{80} &lt; \frac{\sqrt{191.7353827}}{48.5224528}.\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>From A portfolio of 5000 life insurance policies for one year term with the benefit amounts</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Benefit amount</th>
+<th align="center">1</th>
+<th align="center">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Number of policies</td>
+<td align="center">4000</td>
+<td align="center">1000</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>The aggregate claims <span class="math inline">\(S\)</span> is given by
+<span class="math display">\[S = 1\cdot N1 +2\cdot N2, \]</span>
+where <span class="math inline">\(N_1 \sim Bin(4000,0.03)\)</span> and <span class="math inline">\(N_2 \sim Bin(1000,0.03)\)</span> are the number of claims with the benefit amounts of 1 and 2, respectively.</li>
+</ol></li>
+</ol>
+<p>Therefore,
+<span class="math display">\[
+\begin{aligned}
+E[S] &amp;= 1\cdot E[N1] +2\cdot E[N2] = 180, \\
+V[S] &amp;= 1^2\cdot V[N1] +2^2\cdot V[N2] = 232.8.
+\end{aligned}
+\]</span>
+2. Suppose that the aggregate claims can be approximated by the normal distribution, i.e. <span class="math inline">\(S \sim \mathcal{N}(\mathrm{E}[S],\mathrm{Var}[S]) = \mathcal{N}(180,232.8)\)</span>. It follows that
+<span class="math display">\[
+\begin{aligned}
+\Pr(S &gt; 200) &amp;= \Pr(\frac{S - E[S]}{\sqrt{V[S]}} &gt; \frac{200 - 180}{\sqrt{232.8}}) \\
+&amp;= \Pr(Z &gt; 1.3108063) \\
+&amp;= 0.0949616.
+\end{aligned}
+\]</span></p>
+<pre><code>3. Let </code></pre>
+<p><span class="math inline">\(S_R\)</span> be the aggregate claim amount paid by the reinsurer. With the retention limit of 1.5,
+<span class="math display">\[E[S_R] = 1000 \cdot (2 - 1.5) \cdot p = 15.\]</span>
+Therefore,
+<span class="math display">\[P_R = (1 + \theta_R) \cdot E[S_R] = 18.\]</span>
+4. After the reinsurance arrangement,</p>
+<p><span class="math display">\[E[S_I] = E[S] - E[S_R] = 165.\]</span></p>
+<p>By replacing 2 by 1.5 in 3.1,
+<span class="math display">\[V[S_I] = 181.875.\]</span></p>
+<pre><code>5. To calculate </code></pre>
+<p><span class="math inline">\(\Pr(S_I + P_R &gt; 200)\)</span>, we assume that the aggregate claims can be approximated by the normal distribution, i.e. <span class="math inline">\(S_I \sim \mathcal{N}(\mathrm{E}[S_I],\mathrm{Var}[S_I]) = \mathcal{N}(165,181.875)\)</span>. It follows that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr(S_I + P_R &gt; 200) &amp;= \Pr(S_I  &gt; 200 - P_R) \\
+&amp;= \Pr(\frac{S_I - E[S_I]}{\sqrt{V[S_I]}} &gt; \frac{200 - 18 - 180}{\sqrt{232.8}}) \\
+&amp;= \Pr(Z &gt; 1.2605568) \\
+&amp;= 0.1037343.
+\end{aligned}
+\]</span></p>
+<pre><code>6. The probability that </code></pre>
+<p><span class="math inline">\(\Pr(\text{Cost} &gt; 200)\)</span> has increased from 0.0949616 to 0.1037343, i.e. about 9.2381258%. This reflects the fact that the cost of the reinsurance <span class="math inline">\(P_R\)</span> is too expensive.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X\)</span> denote an individual claim amount. From the conditional expectation formula, it follows that</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+E[X] &amp;= E[E[X|\text{type}]] \\
+&amp;=  \Pr(\text{Type I}) \, E[X|\text{Type I}]   + \Pr(\text{Type II}) \, E[X|\text{Type II}]   \\
+&amp;= 0.8 \cdot 500 + 0.2 \cdot 3.5\times 10^{4} \\
+&amp;= 7400.
+\end{aligned}
+\]</span></p>
+<p>Furthermore, assuming that 10% of policies result in a claim and that a premium loading factor of 10% is applied, the premium is</p>
+<p><span class="math display">\[0.1 \cdot 7400\cdot (1 + 0.15) = 851.\]</span></p>
+</div>
+<div id="tutorial-7" class="section level2 hasAnchor" number="6.12">
+<h2><span class="header-section-number">6.12</span> Tutorial 7<a href="tutorials.html#tutorial-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><ol style="list-style-type: decimal">
 <li><p>An insurer has initial surplus <span class="math inline">\(u\)</span> of 5.5 (in suitable units)
@@ -1116,8 +1289,8 @@ following probabilities of ruin.</p>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-8" class="section level2" number="6.12">
-<h2><span class="header-section-number">6.12</span> Tutorial 8</h2>
+<div id="tutorial-8" class="section level2 hasAnchor" number="6.13">
+<h2><span class="header-section-number">6.13</span> Tutorial 8<a href="tutorials.html#tutorial-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>The table below gives the payments (in 000s THB) in cumulative form
 in successive development years in respect of a motor insurance
@@ -1528,8 +1701,8 @@ will be 95%.</p>
 </table></li>
 </ol>
 </div>
-<div id="tutorial-9" class="section level2" number="6.13">
-<h2><span class="header-section-number">6.13</span> Tutorial 9</h2>
+<div id="tutorial-9" class="section level2 hasAnchor" number="6.14">
+<h2><span class="header-section-number">6.14</span> Tutorial 9<a href="tutorials.html#tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>(Taken from Gray and Pitts) Suppose the number of claims which arise
 in a year on a group of policies is modelled as
@@ -1705,7 +1878,6 @@ the means for the individual risks.</p></li>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1745,6 +1917,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -1758,7 +1934,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

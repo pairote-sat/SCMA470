@@ -34,15 +34,20 @@ plot(xbar,alpha_tilde, xlab = expression(bar(x)), ylab = expression(alpha))
 Let $W = Z|Z>0$ be a random variable representing the amount of a
 non-zero payment by the reinsurer on a reinsurance claim. The
 distribution and density of $W$ can be calculated as follows: for
-$x > 0$, $$\begin{aligned}
+$x > 0$, 
+$$
+\begin{aligned}
      \Pr[W \le x ] &= \Pr[Z \le x | Z >0] \\
             &= \Pr[X - M \le x | X > M] \\
             &= \frac{\Pr[M < X \le x + M]}{\Pr[X > M]}\\
-            &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.\end{aligned}$$
+            &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}.
+\end{aligned}
+$$
 
 Given $X \sim \textrm{Exp}(\lambda)$, $F_X(x) = 1 - e^{-\lambda x}.$ Moreover,
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \Pr[W \le x ]  &= \frac{F_X(x+M) - F_X(M)}{1-F_X(M)}  \\
 &= \frac{  e^{-\lambda (M)} - e^{-\lambda (x+M)}}{e^{-\lambda (M)}} \\
 &=  1 - e^{-\lambda x}.
@@ -946,63 +951,9 @@ $$ \mathrm{Var}[\text{Profit (with reinsurance)}] = `r VSI`.$$
 
 Note that here the reinsurance has a greater effect on the variability of the claim size than on the average, ie the standard deviation is reduced by a greater percentage than the mean. This is very often the case for excess-of-loss reinsurance.
 
-```{r tutorial5-2, echo = FALSE }
-# Compound Poisson Distribution
-# CP(lambda,FX)
-# N ~ Poisson(lambda) = Poisson(80)
-# X ~ Exp(beta)
-
-lambda <-80
-beta <- 1/10
-
-#retention level M = 20
-M <- 20
-
-mu <- 1/beta
-
-#The proportion of claims which involve the reinsurer 
-p <- exp(-M/mu)
-
-EZ <- p*mu
-EZ2 <- 2*p*mu^2
-VZ <- EZ2 - EZ^2
-covZ <- sqrt(VZ)/EZ
-
-
-EX <- 1/beta
-EX2 <- 2/beta^2
-
-EY <- (1- exp(-beta*M))*EX
-
-VY <- (1/beta^2)*(2 - exp(-beta*M)*( (beta*M)^2 + 2*(beta*M) + 2 )  ) + M^2*(exp(-beta*M)) - (EY)^2
-
-EY2 <- 2*mu* (  mu*(1 - exp(-M/mu)) - M*exp(-M/mu)   )
-VY <- EY2 - (EY)^2  
-covY <- sqrt(VY)/EY
-
-
-EZ <- exp(-M*beta)*EX
-EZ2 <- 2*mu^2*exp(-M/mu)
-VZ <- EZ2 - (EZ)^2  
-covZ <- sqrt(VZ)/EZ
-####
-
-
-ES <- lambda*EX
-VS <- lambda*EX2
-
-
-ESI <- lambda*EY
-VSI <- lambda*EY2
-
-ESR <- lambda*EZ
-VSR <- lambda*EZ2
-```
-
-
 2. Given $X \sim \text{Exp}(\beta)$ with $\beta = 1/10$,
 
-    1. The aggregate claim amount paid by the direct insurer $S_I$ is
+    1. \begin{aligned} insurer $S_I$ is
 $$S_I \sim \mathcal{CP}(`r lambda`,F_Y), \quad Y= \min(X,M)$$ 
 The distribution and its first two moments of $Y$ can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.
 
@@ -1011,7 +962,8 @@ $$ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),$$
 where $p = \Pr(X > M) = e^{-\lambda M} = e^{-\lambda/\mu}$ is the proportion of claims which involve the reinsurer (see the [link](https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1) for more helps)
 
 It follows that
-$$\begin{aligned}
+$$
+\begin{aligned}
 \mathrm{E}[Y] &= M_Y'(0) = (1 - p)\mu = `r EY` \\
 \mathrm{E}[Y^2] &= M_Y''(0) = -2 \mu (M p + (-1 + p) \mu) = `r EY2`. 
 \end{aligned}
@@ -1026,7 +978,8 @@ The aggregate claim amount paid by the reinsurer $S_R$ is
 $$S_R \sim \mathcal{CP}(`r lambda`,F_Z), \quad Z= \max(0,X-M)$$
 
 It follows that
-$$\begin{aligned}
+$$
+\begin{aligned}
 \mathrm{E}[Z] &= p\mu = `r EZ` \\
 \mathrm{E}[Z^2] &= 2 \mu^2 p = `r EZ2`. 
 \end{aligned}
@@ -1055,7 +1008,8 @@ gr <- round(c(Fs(0), diff(Fs(0:11))),6)  # probability mass function
 3. From Panjer's recursion formula,
 $$ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.$$
 Therefore,
-$$\begin{aligned}
+$$
+\begin{aligned}
 g_0 &= e^{-\lambda} = `r gr[1]` \\
 g_1 &= \lambda f_1 g_0  = `r gr[2]` \\
 g_2 &= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = `r gr[3]` \\
@@ -1075,9 +1029,7 @@ Also $g_5 - g_{10} = `r gr[6:11]`$, respectively.
     $\lambda = 0.5$. An individual claim amounts $X$ are either 1 or 2
     with probability 2/3 and 1/3 respectively.
 
-    1.  [\[QuestionPanjer\]]{#QuestionPanjer label="QuestionPanjer"}
-        Write down an expression for $E[S]$ in terms of $\lambda$ and
-        the mean of $X$.
+    1.    Write down an expression for $E[S]$ in terms of $\lambda$ and the mean of $X$.
 
     2.  Use Panjer's recursion to show that
         $$g_r = \frac{1}{3r} (g_{r-1} + g_{r-2}), \quad r = 2,3,\ldots.$$
@@ -1086,10 +1038,7 @@ Also $g_5 - g_{10} = `r gr[6:11]`$, respectively.
 
     4.  Verify that $\sum_{r=0}^4 g_r > 0.995$.
 
-    5.  Compare $\sum_{r=0}^4 r g_r$ with the exact mean of $S$ computed
-        by using
-        [\[QuestionPanjer\]](#QuestionPanjer){reference-type="ref"
-        reference="QuestionPanjer"}.
+    5.  Compare $\sum_{r=0}^4 r g_r$ with the exact mean of $S$ computed by using 1.1.
 
     6.  Comment on the results.
 
@@ -1150,7 +1099,300 @@ Also $g_5 - g_{10} = `r gr[6:11]`$, respectively.
     Suppose that 10% of policies result in a claim, 80% of which are
     Type I and the remaining are type II.
 
-    Calculate the premium charged for each policy.
+    Calculate the premium charged for each policy **provided that a premium loading factor of 10\% is applied**.
+
+
+
+## Solutions to Tutorial 6
+
+1. $S \sim \mathcal{CP}(\lambda, F_X)$ where
+$\lambda = 0.5$ and an individual claim amounts $X$ are either 1 or 2
+with probability 2/3 and 1/3 respectively.
+
+    1. $E[S] = \lambda \cdot E[X]$.
+    
+    2. The Panjer's recursion formula $g_r$ can be recursively calculated by
+
+$g_0 = p_0 = \Pr(S = 0) = \exp(-\lambda)$,
+
+$g_r= \Pr(S = r) = \frac{\lambda}{r}\sum_{j=1}^r j\cdot f_j \cdot g_{r-j} = = \frac{\lambda}{r}\sum_{j=1}^2 j\cdot f_j \cdot g_{r-j}, \quad r = 1,2 \ldots.$
+
+This follows from $f_j = 0$ for $j \ge 3$. Hence,
+
+$$g_r = \frac{1}{2r}(1\cdot\frac{2}{3}\cdot g_{r-1} + 2\cdot\frac{1}{3}\cdot g_{r-2}) = \frac{1}{3r} (g_{r-1} + g_{r-2}),$$
+
+for $r = 2,3,\ldots$.
+
+```{r tutorial6-1, echo = FALSE }
+lam <- 0.5 
+f1 <- 2/3
+f2 <- 1/3
+g0 <- exp(-lam)
+g1 <- lam*f1*g0
+g2 <- 1/(3*2)*(g1 + g0)
+g3 <- 1/(3*3)*(g2 + g1)
+g4 <- 1/(3*4)*(g3 + g2)
+
+```
+
+
+    3. Following the Panjer's recursion formula, we have
+$$
+\begin{aligned}
+g_0 &= `r g0` \\
+g_1 &= `r g1` \\
+g_2 &= `r g2` \\
+g_3 &= `r g3` \\
+g_4 &= `r g4`.
+\end{aligned}
+$$
+
+    4. Clearly, 
+$\sum_{r=0}^4 g_r > 0.995$.
+
+    5. From 1.1, 
+$E[S] = \lambda \cdot E[X] = \frac{1}{2} \cdot \frac{4}{3} = \frac{2}{3}$. However, 
+ $$\sum_{r=0}^4 r \cdot g_r \approx  0.6418.$$
+ 
+    6. Truncating the distribution of 
+$S$ at $r=4$ gives more than 99.5% of the probability mass but only $\frac{0.6418}{2/3} \approx 96\%$ of the mean.
+
+
+2. The aggregate claim $S$ in this portfolio has a compound binomial
+distribution, denoted by $\mathcal{CB}(n,p,F_X)$ with $n = 100$, $p = 0.04$ and $X \sim Exp(\lambda)$, where $\lambda = 1/2$.
+
+```{r tutorial6-2, echo = FALSE }
+n <- 1000
+p <- 0.04
+d <- 1 #deductible
+
+lam2 <- 1/2
+EX <- 1/lam2
+EX2 <- 2/lam2^2
+
+
+ES <- n*p*EX
+VS <- n*p*(EX2- p*EX^2)
+
+theta1 <- qnorm(0.95)*sqrt(VS)/ES
+
+pstar <- p*exp(-lam2*d)
+
+EY <- EX
+EY2 <- EX2
+
+ESD <- n*pstar*EY
+VSD <- n*pstar*(EY2- pstar*EY^2)
+
+theta2 <- qnorm(0.95)*sqrt(VS)/ES
+```
+
+
+    1. From $X \sim Exp(1/2)$,
+$$
+\begin{aligned}
+E[X] &= 1/\lambda = `r EX` \\
+E[X^2] &= 2/\lambda^2 = `r EX2`.
+\end{aligned}
+$$
+
+
+It follows that
+
+$$
+\begin{aligned}
+E[S] &= n p m_1 = `r ES`, \\
+Var[S] &= np m_2 - n p^2 m_1^2 = `r VS`.
+\end{aligned}
+$$
+
+    2. The profit on this portfolio is
+$$(1+\theta)E[S] - S.$$
+To calculate the relative security loading $\theta_1$ such that the probability of a profit on this portfolio is 0.95, we require
+$$0.95 = \Pr((1+\theta)E[S] - S).$$
+Suppose that the aggregate claims can be approximated by the normal distribution, i.e. $S \sim \mathcal{N}(\mathrm{E}[S],\mathrm{Var}[S]) = \mathcal{N}(`r ES`,`r VS`)$. Therefore,
+$$
+\begin{aligned}
+0.95 &= \Pr( P - S > 0)  \\
+&= \Pr( ( 1 + \theta_1)(`r ES`) - S > 0)  \\
+&= \Pr( S < ( 1 + \theta_1)(`r ES`) ) \\
+&= \Pr( Z < \frac{( 1 + \theta_1)(`r ES`) - `r ES` }{\sqrt{`r VS`}} ) \\
+&= \Pr( Z < \frac{( \theta_1)(`r ES`) }{\sqrt{`r VS`}} ).
+\end{aligned}
+$$
+This gives $\frac{( \theta_1)(`r ES`) }{\sqrt{`r VS`}} = `r qnorm(0.95)`$ and 
+$$\theta_1 = `r theta1`.$$
+    3. Suppose that the insurer imposes a deductible of $d= 1$. Let
+$$Y^* = X-d|X>d$$
+be the claim amount with which the insurer is involved.
+
+Note that for $X \sim Exp(\lambda)$, where $\lambda = 1/2$, $Y^* \sim Exp(\lambda) = Exp(1/2)$ (due to the memorylessness property of the exponential distributions). Hence,
+$$
+\begin{aligned}
+E[Y^*] &= 1/\lambda = `r EX` \\
+E[(Y^*)^2] &= 2/\lambda^2 = `r EX2`.
+\end{aligned}
+$$
+
+With the deductible in place, the probability of a claim is
+
+$$p^* = p \cdot \Pr(X > d) = p \cdot e^{-\lambda d} = `r pstar`$$
+
+Hence, 
+$$
+\begin{aligned}
+E[S^*] &= n p^* E[Y^*]  = `r ESD`, \\
+Var[S^*] &= np^* E[(Y^*)^2] - n (p^*)^2 (E[Y^*])^2 = `r VSD`.
+\end{aligned}
+$$
+
+Then, using the same argument as before, we have $\theta_2 = `r theta2`.$
+
+    4. With the deductible, the security loading has gone up. The deductible has reduced the variability from 
+$\sqrt(`r VS`)$ to $\sqrt(`r VSD`)$. Moreover, the expected claim amount has been reduced by a greater factor from $`r ES`$ to $`r ESD`$.
+
+Using a normal approximation, the relative security loading depends on the coefficient of variation, which is defined by the ratio of the standard deviation to the mean,
+$$\text{CV = Standard Deviation/Mean}.$$
+
+The larger this is, the larger the relative security loading required, which can be varified by
+$$\frac{\sqrt{`r VS`}}{`r ES`} < \frac{\sqrt{`r VSD`}}{`r ESD`}.$$
+
+
+3. From A portfolio of 5000 life insurance policies for one year term with the benefit amounts 
+
+      Benefit amount         1      2
+      -------------------- ------ ------
+      Number of policies    4000   1000
+      
+
+```{r tutorial6-3, echo = FALSE }
+b1 <- 1 #benefit amount
+b2 <- 2
+
+n1 <- 4000 #no. of policies
+n2 <- 1000
+
+p <- 0.03 # prob of a claim
+
+ES1 <- b1*n1*p
+ES2 <- b2*n2*p
+ES <- ES1 + ES2
+
+VS1 <- b1^2*n1*p*(1-p)
+VS2 <- b2^2*n2*p*(1-p)
+VS <- VS1 + VS2
+
+z <- (200 - ES)/sqrt(VS)
+
+prob <- 1 - pnorm(z,0,1)
+
+M <- 1.5
+ESR <- (b2-M )*n2*p
+
+thetaR <- 0.2
+PR <- (1+thetaR)*ESR
+
+
+VS1I <- b1^2*n1*p*(1-p)
+VS2I <- (M)^2*n2*p*(1-p)
+VSI <- VS1I + VS2I
+
+ESI <- ES - ESR
+
+z2 <- (200 - ESI - PR)/sqrt(VSI)
+prob2 <- 1 - pnorm(z2,0,1)
+
+ratio <- 100*(prob - prob2)/prob
+
+```
+
+      
+    1. The aggregate claims $S$ is given by
+$$S = 1\cdot N1 +2\cdot N2, $$
+where $N_1 \sim Bin(4000,0.03)$ and $N_2 \sim Bin(1000,0.03)$ are the number of claims with the benefit amounts of 1 and 2, respectively.
+
+
+
+Therefore,
+$$
+\begin{aligned}
+E[S] &= 1\cdot E[N1] +2\cdot E[N2] = `r ES`, \\
+V[S] &= 1^2\cdot V[N1] +2^2\cdot V[N2] = `r VS`.
+\end{aligned}
+$$
+    2. Suppose that the aggregate claims can be approximated by the normal distribution, i.e. $S \sim \mathcal{N}(\mathrm{E}[S],\mathrm{Var}[S]) = \mathcal{N}(`r ES`,`r VS`)$. It follows that
+$$
+\begin{aligned}
+\Pr(S > 200) &= \Pr(\frac{S - E[S]}{\sqrt{V[S]}} > \frac{200 - `r ES`}{\sqrt{`r VS`}}) \\
+&= \Pr(Z > `r z`) \\
+&= `r prob`.
+\end{aligned}
+$$
+
+    3. Let 
+$S_R$ be the aggregate claim amount paid by the reinsurer. With the retention limit of 1.5, 
+$$E[S_R] = `r n2` \cdot (`r b2` - `r M`) \cdot p = `r ESR`.$$
+Therefore, 
+$$P_R = (1 + \theta_R) \cdot E[S_R] = `r PR`.$$
+    4. After the reinsurance arrangement, 
+
+$$E[S_I] = E[S] - E[S_R] = `r ES - ESR`.$$
+
+By replacing 2 by 1.5 in 3.1, 
+$$V[S_I] = `r VSI`.$$
+
+    5. To calculate 
+$\Pr(S_I + P_R > 200)$, we assume that the aggregate claims can be approximated by the normal distribution, i.e. $S_I \sim \mathcal{N}(\mathrm{E}[S_I],\mathrm{Var}[S_I]) = \mathcal{N}(`r ESI`,`r VSI`)$. It follows that
+
+$$
+\begin{aligned}
+\Pr(S_I + P_R > 200) &= \Pr(S_I  > 200 - P_R) \\
+&= \Pr(\frac{S_I - E[S_I]}{\sqrt{V[S_I]}} > \frac{200 - `r PR` - `r ES`}{\sqrt{`r VS`}}) \\
+&= \Pr(Z > `r z2`) \\
+&= `r prob2`.
+\end{aligned}
+$$
+
+    6. The probability that 
+$\Pr(\text{Cost} > 200)$ has increased from `r prob` to `r prob2`, i.e. about `r abs(ratio)`%. This reflects the fact that the cost of the reinsurance $P_R$ is too expensive.
+
+4. Let $X$ denote an individual claim amount. From the conditional expectation formula, it follows that
+
+```{r tutorial6-4, echo = FALSE }
+pt1 <- 0.8   #prob of type 1 claim
+pt2 <- 1-pt1
+
+lambdat1 <- 0.002     #for Exponential dist for type I
+at2 <- 20000        # U(a,b) for type II
+bt2 <- 50000
+
+EXt1 <- 1/lambdat1
+EXt2 <- (1/2)*(at2 + bt2)
+
+EX <- pt1*EXt1 + pt2*EXt2
+
+prop_claims <- 0.1 # proportion of policies result in a claim
+theta <- 0.15  #Security loading
+
+premium <-  prop_claims*EX*(1+theta)
+```
+
+
+$$
+\begin{aligned} 
+E[X] &= E[E[X|\text{type}]] \\
+&=  \Pr(\text{Type I}) \, E[X|\text{Type I}]   + \Pr(\text{Type II}) \, E[X|\text{Type II}]   \\
+&= `r pt1` \cdot `r EXt1 ` + `r pt2` \cdot `r EXt2 ` \\
+&= `r EX`.
+\end{aligned}
+$$
+
+Furthermore, assuming that 10% of policies result in a claim and that a premium loading factor of 10\% is applied, the premium is 
+
+$$`r prop_claims` \cdot `r EX `\cdot (1 + `r theta`) = `r premium`.$$
+
+
+
 
 ## Tutorial 7
 

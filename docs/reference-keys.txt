@@ -5,6 +5,7 @@ def:unlabeled-div-4
 def:unlabeled-div-5
 thm:unlabeled-div-6
 def:unlabeled-div-7
+thm:unlabeled-div-8
 thm:unlabeled-div-9
 def:unlabeled-div-10
 def:unlabeled-div-11
@@ -155,6 +156,7 @@ solutions-to-tutorial-4
 tutorial-5
 solutions-to-tutorial-5
 tutorial-6
+solutions-to-tutorial-6
 tutorial-7
 tutorial-8
 tutorial-9

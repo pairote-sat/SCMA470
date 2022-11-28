@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Deductibles and reinsurance | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="Chapter 3 Deductibles and reinsurance | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Deductibles and reinsurance | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="loss-distributions.html"/>
 <link rel="next" href="collective-risk-model.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -263,10 +263,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="deductibles-and-reinsurance" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Deductibles and reinsurance</h1>
-<div id="introduction-1" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<div id="deductibles-and-reinsurance" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Deductibles and reinsurance<a href="deductibles-and-reinsurance.html#deductibles-and-reinsurance" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction<a href="deductibles-and-reinsurance.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this chapter, we will introduce the concept of risk-sharing. We will
 consider two types of risk-sharing including deductibles and
 reinsurance. The purpose of risk sharing is to spread the risk among the
@@ -288,8 +288,8 @@ reduce the mean and variability of the amount paid by the direct
 insurer, and also the probability that the insurer will be involved on
 very large claims.</p>
 </div>
-<div id="deductibles" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Deductibles</h2>
+<div id="deductibles" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Deductibles<a href="deductibles-and-reinsurance.html#deductibles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The insurer can modify the policy so that the policyholder is
 responsible for some of the risk by including a deductible (also known
 as policy excess).</p>
@@ -308,12 +308,12 @@ by the policyholder, the (direct) insurer, respectively, i.e.
 <span class="math display">\[X = V + Y.\]</span> So the amount paid by the policyholder and the insurer
 are given by</p>
 <p><span class="math display">\[\begin{aligned}
-    V = 
+    V =
     \begin{cases}
         X &amp;\text{if }  X \le d\\   
         d &amp;\text{if }  X &gt; d,
     \end{cases} \\
-    Y = 
+    Y =
     \begin{cases}
         0 &amp;\text{if }  X \le d\\   
         X - d &amp;\text{if }  X &gt; d.
@@ -324,8 +324,8 @@ between the insurer and reinsurer. Therefore, the detailed analysis of a
 policy with a deductible is analogous to reinsurance, which will be
 discussed in the following section.</p>
 </div>
-<div id="reinsurance" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Reinsurance</h2>
+<div id="reinsurance" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Reinsurance<a href="deductibles-and-reinsurance.html#reinsurance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Reinsurance is insurance purchased by an insurance company in order to
 protect itself from large claims. There are two main types of
 reinsurance arrangement:</p>
@@ -334,8 +334,8 @@ reinsurance arrangement:</p>
 <li><p>proportional reinsurance.</p></li>
 </ol>
 </div>
-<div id="excess-of-loss-reinsurance" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Excess of loss reinsurance</h2>
+<div id="excess-of-loss-reinsurance" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Excess of loss reinsurance<a href="deductibles-and-reinsurance.html#excess-of-loss-reinsurance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Under excess of loss reinsurance arrangement, the direct insurer sets a
 certain limit called a retention level <span class="math inline">\(M &gt;0\)</span>. For a claim <span class="math inline">\(X\)</span>,</p>
 <ul>
@@ -352,12 +352,12 @@ consider the case in which there is no deductible in place, i.e. <span class="m
 and <span class="math display">\[X = Y + Z.\]</span> So the amount paid by the direct insurer and the
 reinsurer are given by</p>
 <p><span class="math display">\[\begin{aligned}
-    Y = 
+    Y =
     \begin{cases}
         X &amp;\text{if }  X \le M\\   
         M &amp;\text{if }  X &gt; M,
     \end{cases} \\
-    Z = 
+    Z =
     \begin{cases}
         0 &amp;\text{if }  X \le M\\   
         X - M &amp;\text{if }  X &gt; M.
@@ -383,8 +383,8 @@ total amount paid by:*</p>
 <li><p>The reinsurer : <span class="math display">\[0 + 0 + 14000 + 0 + 9000 = 23000.\]</span></p></li>
 </ul>
 </div>
-<div id="mixed-distributions" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Mixed distributions</h2>
+<div id="mixed-distributions" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Mixed distributions<a href="deductibles-and-reinsurance.html#mixed-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the subsequent sections, we will derive the probability distribution
 of the random variables <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span>, which are the insurer’s and
 reinsurer’s payouts on claims. Their distributions are neither purely
@@ -397,7 +397,7 @@ values of <span class="math inline">\(x\)</span> in a countable set <span class=
 there exists a function <span class="math inline">\(f_U(x)\)</span> such that
 <span class="math display">\[F_U(x) = \Pr(U \le x) = \int_{-\infty}^x f_U(x) dx + \sum_{x_i \in S, x_i \le x } \Pr(U = x_i).\]</span>
 The expected value of <span class="math inline">\(g(U)\)</span> for some function <span class="math inline">\(g\)</span> is given by</p>
-<p><span class="math display" id="eq:eqnExpectationMixed">\[\begin{equation} 
+<p><span class="math display" id="eq:eqnExpectationMixed">\[\begin{equation}
 \tag{3.1} \mathrm{E}[g(U)] = \int_{-\infty}^\infty g(x) f_U(x) \mathop{}\!d{x} + \sum_{x_i \in S } g(x_i) \Pr(U = x_i).
 \end{equation}\]</span></p>
 <p>It is the sum of the integral over the intervals at which <span class="math inline">\(f_U(x)\)</span> is
@@ -415,7 +415,7 @@ of the random variables <span class="math inline">\(Y\)</span> and <span class="
 <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> are examples of mixed distributions.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-30" class="example"><strong>Example 3.2  </strong></span><em>Let <span class="math inline">\(F_Y\)</span> denote the distribution function of
-<span class="math inline">\(Y = \min(X,M)\)</span>. It follows that <span class="math display">\[F_Y(x) = 
+<span class="math inline">\(Y = \min(X,M)\)</span>. It follows that <span class="math display">\[F_Y(x) =
     \begin{cases}
         F_X(x) &amp;\text{if }  x &lt; M\\   
         1 &amp;\text{if }  x \ge M
@@ -443,7 +443,7 @@ last equality follows from <span class="math display">\[\begin{aligned}
         &amp;= \int_0^M x \cdot f_X(x) \, dx + \int_M^\infty x \cdot f_X(x) \, dx + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
         &amp;= \mathrm{E}[X] + \int_M^\infty (M - x) \cdot f_X(x) \, dx \\
     &amp;= \mathrm{E}[X] + \int_0^\infty (-y) \cdot f_X(y+M) \, dy \\
-    &amp;=  \mathrm{E}[X] - \int_0^\infty y \cdot f_X(y+M) \, dy 
+    &amp;=  \mathrm{E}[X] - \int_0^\infty y \cdot f_X(y+M) \, dy
 \end{aligned}\]</span></p>
 <p><strong>Note</strong>
 Under excess of loss reinsurance arrangement, the mean amount paid by
@@ -451,7 +451,7 @@ the insurer is reduced by the amount equal to
 <span class="math inline">\(\int_0^\infty y f_X(y+M) \mathop{}\!dy.\)</span></p>
 <div class="example">
 <p><span id="exm:unlabeled-div-32" class="example"><strong>Example 3.4  </strong></span><em>Let <span class="math inline">\(X\)</span> be an exponential distribution with parameter
-<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(Y = \min(X,M)\)</span>. Then <span class="math display">\[F_Y(x) = 
+<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(Y = \min(X,M)\)</span>. Then <span class="math display">\[F_Y(x) =
     \begin{cases}
         1 - e^{-\lambda x} &amp;\text{if }  x &lt; M\\   
         1 &amp;\text{if }  x \ge M
@@ -470,7 +470,7 @@ mass at <span class="math inline">\(M\)</span> is <span class="math inline">\(\P
 <!-- $M = 2$.](mixed.pdf){#figMixedDist} -->
 <div class="example">
 <p><span id="exm:unlabeled-div-33" class="example"><strong>Example 3.5  </strong></span><em>Let <span class="math inline">\(F_Z\)</span> denote the distribution function of
-<span class="math inline">\(Z = \max(0,X-M)\)</span>. It follows that <span class="math display">\[F_Z(x) = 
+<span class="math inline">\(Z = \max(0,X-M)\)</span>. It follows that <span class="math display">\[F_Z(x) =
     \begin{cases}
         F_{X}(M) &amp;\text{if }  x = 0\\   
         F_{X}(x + M) &amp;\text{if }  x &gt; 0
@@ -542,8 +542,8 @@ single claim satisfies:
 </ol>
 </div>
 </div>
-<div id="the-distribution-of-reinsurance-claims" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> The distribution of reinsurance claims</h2>
+<div id="the-distribution-of-reinsurance-claims" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> The distribution of reinsurance claims<a href="deductibles-and-reinsurance.html#the-distribution-of-reinsurance-claims" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In practice, the reinsurer involves only claims which exceed the
 retention limit, i.e. <span class="math inline">\(X &gt; M\)</span>. Information of claims which are less or
 equal to <span class="math inline">\(M\)</span> may not be available to the reinsurer. The claim amount <span class="math inline">\(Z\)</span>
@@ -565,8 +565,8 @@ Differentiating with respect to <span class="math inline">\(x\)</span>, we obtai
 <span class="math inline">\(W\)</span> as <span class="math display">\[f_W(x) = \frac{f_X(x+M)}{1 - F_X(M)}.\]</span> Hence, the mean and
 variance can be directly obtained from the density function of <span class="math inline">\(W\)</span>.</p>
 </div>
-<div id="proportional-reinsurance" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Proportional reinsurance</h2>
+<div id="proportional-reinsurance" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Proportional reinsurance<a href="deductibles-and-reinsurance.html#proportional-reinsurance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Under excess of loss reinsurance arrangement, the direct insurer pays a
 fixed proportion <span class="math inline">\(\alpha\)</span>, called the proportion of the risk retained by
 the insurer, and the reinsurer pays the remainder of the claim.</p>
@@ -598,7 +598,6 @@ Hence, the density function is <span class="math display">\[f_Y(x) = \frac{1}{a}
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -638,6 +637,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -651,7 +654,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

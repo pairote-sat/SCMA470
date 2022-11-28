@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Loss distributions | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="Chapter 2 Loss distributions | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Loss distributions | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="deductibles-and-reinsurance.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -263,19 +263,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loss-distributions" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Loss distributions</h1>
-<div id="introduction" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Introduction</h2>
+<div id="loss-distributions" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Loss distributions<a href="loss-distributions.html#loss-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introduction<a href="loss-distributions.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The main objective of the course is to provide methods for analysing insurance data leading to decisions with an emphasis in an insurance context.</p>
-<div id="the-importance-of-insurance-or-the-benefits-of-insurance-for-society" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> The importance of insurance or the benefits of insurance for society</h3>
+<div id="the-importance-of-insurance-or-the-benefits-of-insurance-for-society" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> The importance of insurance or the benefits of insurance for society<a href="loss-distributions.html#the-importance-of-insurance-or-the-benefits-of-insurance-for-society" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us begin with the importance of insurance or the benefits of insurance for society.</p>
 <p>The insurer protects the wealth of society through a variety of insurance plans. Life insurance provides protection against loss of human wealth. General insurance protects property from damage by fire, theft, accidents, earthquakes, etc. Consequently, both general insurance and life insurance provide security to maintain financial and business conditions.</p>
 <p>The <strong>insurance policy</strong> is a contract between the insurer and the policyholder, which sets out the claims that the insurer is legally obliged to pay. The insurer guarantees compensation for losses caused by risks covered by the insurance policy, called the insurance claim in return for an initial payment, called the <strong>premium</strong>.</p>
 </div>
-<div id="the-types-of-insurance" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> The types of insurance</h3>
+<div id="the-types-of-insurance" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> The types of insurance<a href="loss-distributions.html#the-types-of-insurance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Families and organisations that do not want to bear their own risks can choose from a variety of insurance policies.The following questions can be asked about an insurance policy (<a href="https://saylordotorg.github.io/text_risk-management-for-enterprises-and-individuals/s10-04-types-of-insurance-and-insurer.html">Click here for more details</a>):</p>
 <ul>
 <li><p><strong>the nature of insurance is who buys it:</strong> Is it a personal, group or commercial?</p></li>
@@ -290,8 +290,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The time value of money is important in a life insurance contract that runs over a long period of time. In a non-life contract, the random amount of compensation takes priority.</p></li>
 </ol>
 </div>
-<div id="insurance-operations-and-data-analytics" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Insurance Operations and Data Analytics</h3>
+<div id="insurance-operations-and-data-analytics" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Insurance Operations and Data Analytics<a href="loss-distributions.html#insurance-operations-and-data-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The ultimate goal is to use insurance data as a basis for decision-making. Throughout the course, we will learn more about techniques for analysing and extrapolating data. To begin with, we will describe five key operational areas of insurance companies and highlight the role of data and analytics in each operational area.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Initiate insurance:</strong> The company decides at this stage whether or not to accept a risk (the underwriting step) and then determines the appropriate premium (or rate). The basics of insurance analysis are found in ratemaking, where analysts try to find the appropriate price for the appropriate risk.</p></li>
@@ -303,8 +303,8 @@ and prevent claims fraud, (2) control claims costs, including identifying the ri
 </ol>
 </div>
 </div>
-<div id="loss-distributions-1" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Loss Distributions</h2>
+<div id="loss-distributions-1" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Loss Distributions<a href="loss-distributions.html#loss-distributions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The aim of the course is to provide a fundamental basis which applies
 mainly in general insurance. General insurance companies’ products are
 short-term policies that can be purchased for a short period of time.
@@ -340,8 +340,8 @@ features of loss distributions include:</p>
 <li><p>tailing off gradually with a few very large claims.</p></li>
 </ul>
 </div>
-<div id="exponential-distribution" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Exponential Distribution</h2>
+<div id="exponential-distribution" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Exponential Distribution<a href="loss-distributions.html#exponential-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A random variable <span class="math inline">\(X\)</span> has an exponential distribution with a parameter
 <span class="math inline">\(\lambda &gt; 0\)</span>, denoted by <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span> if its
 probability density function is given by
@@ -411,15 +411,15 @@ variable <span class="math inline">\(X-w\)</span> conditional on <span class="ma
 <span id="cb15-8"><a href="loss-distributions.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp,<span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> (<span class="at">mean=</span><span class="fl">1.5</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;1.5&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb15-9"><a href="loss-distributions.html#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp,<span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> (<span class="at">mean=</span><span class="dv">2</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;2&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb15-10"><a href="loss-distributions.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="fu">expression</span>(<span class="fu">paste</span>(lambda, <span class="st">&quot; = &quot;</span>)), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>))</span></code></pre></div>
-<div class="figure"><span id="fig:FigExp"></span>
+<div class="figure"><span style="display:block;" id="fig:FigExp"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FigExp-1.png" alt="The probability density functions (pdf) of exponential distributions with various parameters lambda." width="672" />
 <p class="caption">
 Figure 2.1: The probability density functions (pdf) of exponential distributions with various parameters lambda.
 </p>
 </div>
 </div>
-<div id="gamma-distribution" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Gamma distribution</h2>
+<div id="gamma-distribution" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Gamma distribution<a href="loss-distributions.html#gamma-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A random variable <span class="math inline">\(X\)</span> has a gamma distribution with parameters
 <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span>, denoted by
 <span class="math inline">\(X \sim \mathcal{G}(\alpha, \lambda)\)</span> or
@@ -482,15 +482,15 @@ various shape parameters <span class="math inline">\(\alpha\)</span> and rate pa
 <span id="cb16-5"><a href="loss-distributions.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dgamma, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">2</span>, <span class="at">rate=</span><span class="dv">1</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;2&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb16-6"><a href="loss-distributions.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dgamma, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">6</span>, <span class="at">rate=</span><span class="dv">1</span>) , <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;6&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb16-7"><a href="loss-distributions.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="fu">expression</span>(<span class="fu">paste</span>(lambda, <span class="st">&quot; = 1 and &quot;</span>, alpha ,<span class="st">&quot; = &quot;</span>)), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<div class="figure"><span id="fig:FigGamma"></span>
+<div class="figure"><span style="display:block;" id="fig:FigGamma"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FigGamma-1.png" alt="The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1." width="672" />
 <p class="caption">
 Figure 2.2: The probability density functions (pdf) of gamma distributions with various shape alpha and rate parameter lambda = 1.
 </p>
 </div>
 </div>
-<div id="lognormal-distribution" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Lognormal distribution</h2>
+<div id="lognormal-distribution" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Lognormal distribution<a href="loss-distributions.html#lognormal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A random variable <span class="math inline">\(X\)</span> has a lognormal distribution with parameters <span class="math inline">\(\mu\)</span>
 and <span class="math inline">\(\sigma^2\)</span>, denoted by <span class="math inline">\(X \sim \mathcal{LN}(\mu, \sigma^2)\)</span> if its
 probability density function is given by
@@ -517,15 +517,15 @@ various shape parameters <span class="math inline">\(\alpha\)</span> and rate pa
 <span id="cb17-5"><a href="loss-distributions.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dlnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">meanlog =</span> <span class="dv">0</span>, <span class="at">sdlog =</span> <span class="fl">0.25</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;0.25&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb17-6"><a href="loss-distributions.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dlnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">meanlog =</span> <span class="dv">0</span>, <span class="at">sdlog =</span> <span class="dv">1</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;1&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb17-7"><a href="loss-distributions.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="fu">expression</span>(<span class="fu">paste</span>(mu, <span class="st">&quot; = 0 and &quot;</span>, sigma, <span class="st">&quot;= &quot;</span>)), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<div class="figure"><span id="fig:FigLognormal"></span>
+<div class="figure"><span style="display:block;" id="fig:FigLognormal"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FigLognormal-1.png" alt="The probability density functions (pdf) of lognormal distributions with mu = 0 and sigma = 0.25 or 1." width="672" />
 <p class="caption">
 Figure 2.3: The probability density functions (pdf) of lognormal distributions with mu = 0 and sigma = 0.25 or 1.
 </p>
 </div>
 </div>
-<div id="pareto-distribution" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Pareto distribution</h2>
+<div id="pareto-distribution" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Pareto distribution<a href="loss-distributions.html#pareto-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A random variable <span class="math inline">\(X\)</span> has a Pareto distribution with parameters
 <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span>, denoted by
 <span class="math inline">\(X \sim \text{Pa}(\alpha, \lambda)\)</span> if its probability density function
@@ -566,7 +566,7 @@ Weibull and loggamma distributions</strong>.</p></li>
 <span id="cb18-6"><a href="loss-distributions.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dpareto, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">3</span>, <span class="at">scale=</span><span class="dv">20</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;alpha = 3, lambda = 20&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb18-7"><a href="loss-distributions.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dpareto, <span class="at">args=</span><span class="fu">list</span>(<span class="at">shape=</span><span class="dv">6</span>, <span class="at">scale=</span><span class="dv">50</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;alpha = 6, lambda = 50&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb18-8"><a href="loss-distributions.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="st">&quot;Parameters&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">expression</span>(<span class="fu">paste</span>(alpha, <span class="st">&quot; = 3 and &quot;</span>, lambda, <span class="st">&quot;= 20&quot;</span>)),  <span class="fu">expression</span>(<span class="fu">paste</span>(alpha, <span class="st">&quot; = 6 and &quot;</span>, lambda, <span class="st">&quot;= 50&quot;</span>)))) </span></code></pre></div>
-<div class="figure"><span id="fig:FigPareto"></span>
+<div class="figure"><span style="display:block;" id="fig:FigPareto"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FigPareto-1.png" alt="The probability density functions (pdf) of Pareto distributions with various shape alpha and rate parameter lambda = 1." width="672" />
 <p class="caption">
 Figure 2.4: The probability density functions (pdf) of Pareto distributions with various shape alpha and rate parameter lambda = 1.
@@ -749,8 +749,8 @@ The expected frequencies under the fitted gamma distribution are
 given in the fourth column of Table <a href="loss-distributions.html#tab:tableFitted">2.1</a>.</p></li>
 <li><p>(Excel) For the fitted lognormal, the expected number of claims in the
 range <span class="math inline">\((a,b]\)</span> can be obtained from
-<span class="math display">\[200 \cdot\left(  \text{NORMDIST} \left(\frac{LN(b) - 
-        \tilde{\mu}}{\tilde{\sigma}}\right)  - \text{NORMDIST}\left(\frac{LN(a) - 
+<span class="math display">\[200 \cdot\left(  \text{NORMDIST} \left(\frac{LN(b) -
+        \tilde{\mu}}{\tilde{\sigma}}\right)  - \text{NORMDIST}\left(\frac{LN(a) -
         \tilde{\mu}}{\tilde{\sigma}}\right) \right).\]</span></p></li>
 <li><p>For the fitted Pareto distribution, the expected number of
 claims in the range <span class="math inline">\((a,b]\)</span> can be obtained from
@@ -799,7 +799,7 @@ better fit to the observed claim data?</p></li>
 <span id="cb19-12"><a href="loss-distributions.html#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> claims, <span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">90</span> , <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb19-13"><a href="loss-distributions.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dexp, <span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> (<span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(dat<span class="sc">$</span>claims)), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;Exponential&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb19-14"><a href="loss-distributions.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dgamma, <span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape =</span> alpha_tilde ,<span class="at">rate =</span> lambda_tilde), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;Gamma&quot;</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.0015</span>) <span class="sc">+</span> <span class="fu">scale_color_discrete</span>(<span class="at">name=</span><span class="st">&quot;Fitted Distributions&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:FittedExpGamma"></span>
+<div class="figure"><span style="display:block;" id="fig:FittedExpGamma"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FittedExpGamma-1.png" alt="Histogram of claim sizes with fitted exponential and gamma distributions." width="672" />
 <p class="caption">
 Figure 2.5: Histogram of claim sizes with fitted exponential and gamma distributions.
@@ -820,7 +820,7 @@ Figure 2.5: Histogram of claim sizes with fitted exponential and gamma distribut
 <span id="cb20-13"><a href="loss-distributions.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dlnorm, <span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">meanlog =</span> mu_tilda, <span class="at">sdlog =</span> sigma_tilda), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;Lognormal&quot;</span>)) <span class="sc">+</span> </span>
 <span id="cb20-14"><a href="loss-distributions.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span>dpareto, <span class="at">geom =</span><span class="st">&quot;line&quot;</span>, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape =</span> alpha_tilda, <span class="at">scale =</span> lambda_tilda), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">&quot;Pareto&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb20-15"><a href="loss-distributions.html#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name=</span><span class="st">&quot;Fitted Distributions&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:FittedLognormalPareto"></span>
+<div class="figure"><span style="display:block;" id="fig:FittedLognormalPareto"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/FittedLognormalPareto-1.png" alt="Histogram of claim sizes with fitted lognormal and pareto distributions." width="672" />
 <p class="caption">
 Figure 2.6: Histogram of claim sizes with fitted lognormal and pareto distributions.
@@ -857,7 +857,6 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoc3RhdHMpXG5saWJyYXJ5
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -897,6 +896,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -910,7 +913,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

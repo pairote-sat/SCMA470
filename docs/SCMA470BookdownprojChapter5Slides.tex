@@ -1,0 +1,829 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+%\documentclass[
+%]{book}
+\documentclass[landscape, 20pt]{extreport}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={SCMA 470 : Risk Analysis and Credibility Tutorial 3},
+  pdfauthor={Pairote Satiracoo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{LectureNoteMacro}
+\usepackage{bbm}
+\usepackage{mathtools}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{\textbf{SCMA 470 : Risk Analysis and Credibility}}
+\author{Pairote Satiracoo}
+\date{2021-09-23}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\setcounter{chapter}{4}
+%\maketitle
+
+
+
+\hypertarget{ruin-theory}{%
+\chapter{Ruin Theory}\label{ruin-theory}}
+
+\hypertarget{the-classical-risk-process}{%
+\section{The classical risk process}\label{the-classical-risk-process}}
+
+Short term risk models for a fixed time period have been studied in the
+previous sections. In this section, risk models that evolve over time
+will be presented. Suppose that an insurer
+
+\begin{itemize}
+\item
+  begins with an initial capital \(u\), called an initial surplus,
+\item
+  collects premiums at a constant rate \(c\) per unit time,
+\item
+  and pays claims when losses occur.
+\end{itemize}
+
+The insurer is in ruin if the insurer's capital becomes negative at some
+point in time, i.e.~the insurer's surplus falls to zero or below.
+
+\textbf{Note} A surplus is an excess of income or assets over expenditure or
+liabilities in a given period, typically a financial year:
+
+\newpage \begin{example}
+\protect\hypertarget{exm:ExampleSurplus}{}\label{exm:ExampleSurplus}
+
+\emph{An insurer has initial surplus \(u\) of 1 (in suitable
+units) and receives premium payments at a rate of 1 per year. Suppose
+claims from a portfolio of insurance over the first two years are as
+follows:}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\emph{Time (years)} & \emph{0.4} & \emph{0.9} & \emph{1.5} \\
+\midrule
+\endhead
+\emph{Amount} & \emph{0.8} & \emph{0.7} & \emph{1.2} \\
+\bottomrule
+\end{longtable}
+
+\emph{Plot a surplus process and determine whether ruin occurs within the
+first three years.}
+
+\end{example}
+
+\textbf{Solution:}
+The insurer's surplus (or cash flow) at any future time \(t\) (\textgreater{} 0) is a random variable, since its value depends on the claims experience up to time \(t\). The insurer's surplus at time \(t\) is a random variable. The insurer's surplus at time \(t\) is denoted \(U(t)\). The following formula for \(U(t)\) can be written as
+
+\begin{equation}
+U(t) = u + ct - S(t),
+\end{equation}
+where the \textbf{aggregate claim amount up to time}
+\(t\), \(S(t)\) is
+\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+The following table summarises the values of the surplus function at the time when claims occurs.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Time & Surplus (before claim) & Surplus (after claim) \\
+\midrule
+\endhead
+0 & 1 & 1 \\
+0.4 & 1.4 & 0.6 \\
+0.9 & 1.1 & 0.4 \\
+1.5 & 1 & -0.2 \\
+\bottomrule
+\end{longtable}
+
+The surplus function increases at a constant rate \(c\) until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate \(c\) and drops are repeated when claims occur. In this example,
+ruin occurs at time 1.5.
+The plot of the surplus process is given in the following figure.
+
+\begin{figure}
+\centering
+\includegraphics{unnamed-chunk-19-1.pdf}
+\caption{\label{fig:unnamed-chunk-19}The surplus process befor reinsurance arrangment.}
+\end{figure}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-56}{}\label{exm:unlabeled-div-56}
+
+\emph{As given in Example
+\ref{exm:ExampleSurplus}, suppose that the insurer has effected
+proportional reinsurance with retained proportion of 0.7. The
+reinsurance premium is 0.4 per year to be paid continuously. Plot a
+surplus process and determine whether ruin occurs within the first three
+years. Comment on the results.}
+
+\end{example}
+
+\textbf{Solution:}
+The insurer's net premium income is 0.6 per year. The insurer's cash flow or surplus process is now given by
+\begin{equation}
+U_I(t) = u + (c - c_r)t - \alpha \cdot S(t),
+\end{equation}
+where \(c_r\) is the reinsurance premium rate and \(\alpha\) is the retained proportion.
+
+The following table summarises the values of the surplus function at the time when claims occurs.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Time & Surplus (before claim) & Surplus (after claim) \\
+\midrule
+\endhead
+0 & 1 & 1 \\
+0.4 & 1.24 & 0.68 \\
+0.9 & 0.98 & 0.49 \\
+1.5 & 0.85 & 0.01 \\
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{unnamed-chunk-21-1.pdf}
+\caption{\label{fig:unnamed-chunk-21}The surplus process under a proportional reinsurance arrangement.}
+\end{figure}
+
+It should be emphasised that under this proportional reinsurance arrangement, ruin does not occur within 2 years.
+
+\hypertarget{classical-risk-process}{%
+\subsection{Classical risk process}\label{classical-risk-process}}
+
+The following assumptions are assumed for the study of the evolution of
+insurer's surplus over time.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer's initial capital is \(u\).
+\item
+  The premium rate per unit of time received continuously is \(c\), i.e.
+  the total amount of premiums received by time \(t\) is \(ct\).
+\item
+  The counting process \(\{N(t) \}_{t \ge 0}\) for the number of claims
+  occurred in the time interval \([0,t]\) is a Poisson process with
+  parameter \(\lambda\).
+\item
+  The claim sizes (or individual claim amounts) \(X_1, X_2, \ldots\) are
+  independent and identically distributed random variables.
+\item
+  The claim sizes \(X_1, X_2, \ldots\) are independent of the counting
+  process \(N(t)\).
+\end{enumerate}
+
+The \textbf{surplus process} \(\{U(t) \}_{t \ge 0}\) is then given by
+\begin{equation}
+\label{eq:surplus}
+U(t) = u + ct - S(t),
+\end{equation}
+where the \textbf{aggregate claim amount up to time}
+\(t\), \(S(t)\) is
+\begin{equation}
+\label{eq:St}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+The evolution of insurer's surplus defined in \eqref{eq:surplus}
+is also known as the \textbf{classical risk process}.
+The only random and uncertain quantity in
+\eqref{eq:surplus}
+is the aggregate claims \(S(t)\).
+
+\textbf{Notes} The classical risk model contains many simplification.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The claim-arrival rate \(\lambda\) remains constant over time.
+\item
+  No interest is pain on the surplus.
+\item
+  There is no inflation.
+\item
+  The premium income is received continuously in time.
+\item
+  Claims are paid out \textbf{immediately}.
+\item
+  there are assumptions of independence.
+\end{enumerate}
+
+\hypertarget{poisson-processes}{%
+\subsection{Poisson processes}\label{poisson-processes}}
+
+A \textbf{Poisson process} is a special type of counting process. It can be
+represented by a continuous time stochastic process \(\{N(t)\}_{t \ge 0}\)
+which takes values in the non-negative integers. It can be used to model
+the occurrence or arrival of events over a continuous time interval. The
+state space is discrete but the time set is continuous. Here \(N(t)\)
+represents the number of events in the interval \((0,t]\).
+
+The following examples can also be modelled by a Poisson process:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Claims arrivals at an insurance company,
+\item
+  Accidents occurring on the highway, and
+\item
+  Telephone calls to a call centre.
+\end{enumerate}
+
+\hypertarget{counting-process}{%
+\subsubsection*{Counting Process}\label{counting-process}}
+\addcontentsline{toc}{subsubsection}{Counting Process}
+
+A counting process \(\{N_t \}_{t \ge 0}\) is a collection of non-negative,
+integer-valued random variables such that if \(0 \le s \le t\), then
+\(N(s) \le N(t)\).
+
+The following figure illustrates a trajectory of the Poisson process.
+The sample path of a Poisson process is a right-continuous step
+function. There are jumps occurring at time \(t_1, t_2, t_3, \ldots\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \DecValTok{17}
+\CommentTok{\# the length of time horizon for the simulation T\_length \textless{}{-} 31}
+\NormalTok{last\_arrival }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{T\_length }\OtherTok{\textless{}{-}} \DecValTok{1}
+\ControlFlowTok{while}\NormalTok{ (inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }\SpecialCharTok{\textless{}}\NormalTok{ T\_length) \{ }
+\NormalTok{  last\_arrival }\OtherTok{\textless{}{-}}\NormalTok{ inter\_arrival }\SpecialCharTok{+}\NormalTok{ last\_arrival }
+\NormalTok{  arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(arrival\_time,last\_arrival) }
+\NormalTok{  inter\_arrival }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda)}
+\NormalTok{\}}
+
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(arrival\_time)}
+\NormalTok{counts }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n}
+
+\FunctionTok{plot}\NormalTok{(arrival\_time, counts, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, n))}
+\FunctionTok{points}\NormalTok{(arrival\_time, }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]))}
+\FunctionTok{segments}\NormalTok{(}
+  \AttributeTok{x0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, arrival\_time[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{y0 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n]),}
+  \AttributeTok{x1 =}\NormalTok{ arrival\_time,}
+  \AttributeTok{y1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, counts[}\SpecialCharTok{{-}}\NormalTok{n])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PlotPoissonProcess-1.pdf}
+
+Recall that a stochastic process \(\{N(t) \}_{t \ge 0}\) is a Poisson
+process with parameter \(\lambda\) if the process satisfies the three
+properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(N(0) = 0\).
+\item
+  \textbf{Independent increments} For \(0 < s < t \le u < v\), the increment
+  \(N(t) - N(s)\) is independent of the increment \(N(v) - N(u)\), i.e.
+  the number of events in \((s,t]\) is independent of the number of
+  events in \((u,v]\).
+\item
+  \textbf{Stationary increments} For
+  \(0 < s <t\), the distribution \(N(t) - N(s)\) depends only on \(t -s\)
+  and not on the values \(s\) and \(t\), i.e.~the increments of the
+  process over time has a distribution that only depend on the time
+  difference \(t - s\), the lenght of the time interval.
+\item
+  \textbf{Poisson distribution} For
+  \(t \ge 0\), the random variable \(N(t)\) has a Poisson distribution
+  with mean \(\lambda t\).
+\end{enumerate}
+
+It follows from conditions the \textbf{Stationary Increments} and \textbf{Poisson Distribution} properties that
+\[\Pr(N(t) - N(s) = n) = \Pr(N(t-s) - N(0) = n) =  \frac{ ( \lambda(t-s))^n e^{-\lambda(t-s)} }{n!},  \quad \quad s < t, \, n = 0,1,2, \ldots\]
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The sample paths of \(\{N(t) \}_{t \ge 0}\) are non-decreasing step
+  functions, or the process is referred to be as a counting process.
+\item
+  A process with stationary and independent increments can be thought
+  of as \textbf{starting over} at any point in time in a probabilistic
+  sense. The `starting over' property follows from the fact that
+
+  \begin{itemize}
+  \item
+    the exponential distribution has the memoryless property, and
+  \item
+    the times between successive events (or interarrival times) are
+    independent and identically distributed exponential random
+    variables with mean \(1/\lambda\).
+  \end{itemize}
+\item
+  For more details about Poisson processes, please refer to the
+  contents of the course ``SCMA 469 Actuarial Statistics''
+\end{enumerate}
+
+\hypertarget{compound-poisson-processes}{%
+\subsection{Compound Poisson processes}\label{compound-poisson-processes}}
+
+The aggregate claims process \(S(t)\) defined in \eqref{eq:St}
+of the classical
+risk process is said to be a \textbf{compound Poisson process} with Poisson
+parameter \(\lambda\). The compound Poisson process has the following
+important properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For each \(t\), the random variable \(S(t)\) has a compound Poisson
+  distribution with parameter \(\lambda t\), i.e.
+  \[S(t) \sim \mathcal{CP}(\lambda t, F_X(x)).\] Thus, the mean and
+  variance of the compound Poisson distribution are
+  \[\mathrm{E}[S(t)] = \lambda t \mathrm{E}[X], \quad \mathrm{Var}[S(t)] =\lambda t \mathrm{E}[X^2].\]
+  The moment generating function of \(S(t)\) is
+  \[M_{S(t)}(r) = \exp(\lambda t(M_X(r) - 1)).\]
+\item
+  It has stationary and independent increments, i.e.~for disjoint time
+  intervals \(0 < s < t \le u < v\), the random variables \(N(t) - N(s)\)
+  and \(N(v) - N(u)\) are independent and \(N(t) - N(s)\) depends only on \(t -s\) and not on the values \(s\) and \(t\). Hence, the random variables \(S(t) - S(s)\) and \(S(v) - S(u)\)
+  are \textbf{independent} and have
+  \(\mathcal{CP}(\lambda (t -s), F_X(x))\) and
+  \(\mathcal{CP}(\lambda (v - u), F_X(x))\) distributions, respectively.
+\end{enumerate}
+
+\textbf{Notes} Various properties of the aggregate claims process \(S(t)\) can
+be summarised as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate claims in
+  the first year.
+\item
+  \(S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))\) is the aggregate
+  claims in the \(n\)th year, for \(n = 1,2, \ldots\).
+\item
+  The process \(\{ S(n) - S(n-1) \}_{n=1}^\infty\) is a sequence of
+  \textbf{independent and identically distributed} random variables
+  representing the aggregate claims in successive years.
+\end{enumerate}
+
+\hypertarget{the-relative-safety-loading}{%
+\subsection{The relative safety loading}\label{the-relative-safety-loading}}
+
+According to the expected value principle, the premium rate \(c\) per
+unit time is defined by
+\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]
+Hence the \textbf{relative safety loading} (or \textbf{premium loading factor} or
+\textbf{relative security loading}) \(\theta\) is given by
+\[\theta = \frac{c - \lambda \mu_X}{\lambda \mu_X}.\]
+In addition, the insurer should load the premium for profit so that \(c > \lambda \mu_X\). This finding follows from the following example.
+
+Let \(\mu_X\) and \(\sigma^2_X\) denote the mean and the variance of claim sizes \(X_i\) (in one period).
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-57}{}\label{exm:unlabeled-div-57}
+
+Consider the following questions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calculate the expected surplus and the variance surplus at time \(t\).
+\item
+  Calculate the expected profit per unit time in \((0, t]\).
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  From \(U(t) = u + ct - S(t),\) the expected surplus at time \(t\) is
+  \begin{align}
+  \mathrm{E}[U(t)] &= u + ct - \mathrm{E}[S(t)] \\
+  &= u + ct - (\lambda t)\mathrm{E}[X] \\
+  &= u + ct - (\lambda t)\mu_X \\
+  &= u + (c - \lambda \mu_X)\cdot t,
+  \end{align}
+  and \[ \mathrm{Var}[U(t)] = \mathrm{Var}[S(t)] = (\lambda t)\mathrm{E}[X^2].\]
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The expected profit per unit time in \((0, t]\) can be calculated from
+  \[\frac{\mathrm{E}[U(t) - U(0)]}{t} = c - \lambda \mu_X.\]
+  This motivates the \textbf{net profit condition}:
+  \[c > \lambda \mu_X.  \]
+  Given \(\lambda\) and \(\mu_X\), we aim to set the premium rate \(c\) that satisfies the net profit condition.
+\end{enumerate}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The insurer can make a profit provided that \(c > \lambda \mu_X\) or
+  the relative safety loading \(\theta\) is positive. In this case, the
+  surplus will drift to \(\infty\), but ruin could still occur. The rate
+  at which premium income comes in is greater than the rate at which
+  claims are paid out.
+\item
+  On the other hand, if \(c < \lambda \mu_X\), then the surplus will
+  drift to \(-\infty\), but ruin is certain.
+\item
+  If \(c = \lambda \mu_X\), the surplus will drift to \(\infty\) and \(-\infty\), but ruin is certain (eventually).
+\end{enumerate}
+
+\hypertarget{ruin-probabilities}{%
+\subsection{Ruin probabilities}\label{ruin-probabilities}}
+
+Various definitions of ruin probabilities are given.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \textbf{probability of ruin in infinite time} (or the \textbf{ultimate ruin
+  probability}) is defined by
+  \[\psi(u) = \Pr(U(t) < 0 \quad \text{ for some } t > 0).\]
+\item
+  The \textbf{finite-time ruin probability} (or the \textbf{probability of ruin
+  by time \(t\)}) is defined by
+  \[\psi(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in (0,t]).\]
+\item
+  The \textbf{discrete time ultimate ruin probability} is defined by
+  \[\psi_h(u) = \Pr(U(t) < 0 \quad \text{ for some } t \in \{h, 2h, 3h, \ldots \}).\]
+\item
+  The \textbf{discrete time ruin probability in finite time} is defined by
+  \[\psi_h(u,t) = \Pr(U(s) < 0 \quad \text{ for some } s \in \{h, 2h, 3h, \ldots, t\}).\]
+\end{enumerate}
+
+\textbf{Notes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For \(0 \le u_1 \le u_2\), \[\psi(u_1) \ge \psi(u_2),\] and
+  \[\psi(u_1,t) \ge \psi(u_2,t),\]
+  i.e.~the
+  ultimate ruin probability and finite-time ruin probability are non-increasing in \(u\).
+  Intuitively, the larger the initial surplus, the less likely it is that ruin will occur either in a finite time period or an unlimited time
+  period.
+\item
+  If ruin occurs under the discrete time, it must occur under the
+  continuous time, i.e.~\[\psi_h(u) < \psi(u).\] Similarly,
+  \[\psi_h(u,t) < \psi(u,t).\]
+\item
+  For a given initial surplus \(u\) and \(0 < t_1 < t_2\),
+  \[\psi(u,t_1) < \psi(u,t_2).\]
+  Intuitively, the longer the period considered when checking for ruin, the more likely it is that ruin will
+  occur.
+\item
+  The discrete time ultimate ruin probability \(\psi_h(u)\) could be
+  used as an approximation of \(\psi(u)\) provided \(h\) is sufficiently
+  small.
+\item
+  The discrete time ruin probability in finite time \(\psi_h(u,t)\)
+  could be used as an approximation of \(\psi(u,t)\) provided \(h\) is
+  sufficiently small.
+\end{enumerate}
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-58}{}\label{exm:unlabeled-div-58}
+
+\emph{Suppose the annual aggregate claims for a portfolio of
+policies is approximately normal.}
+
+\begin{itemize}
+\item
+  \emph{The insurer's initial surplus is 1000 (in suitable units) and the
+  premium rate is 1500 per year.}
+\item
+  \emph{The number of claims per year has a Poisson distribution with
+  parameter 50.}
+\item
+  \emph{The distribution of claim sizes is lognormal with parameters
+  \(\mu = 3\) and \(\sigma^2 = 0.9\).}
+\end{itemize}
+
+\emph{Calculate the probability that the insurer's surplus at time 2 will be
+negative.}
+
+\end{example}
+
+\textbf{Solution:} Using the normal approximation, the total claims \(S\) can be approximated by \(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])\). We have
+\begin{align}
+\mathrm{E}[X] &= e^{\mu + \sigma^2/2} = 31.500392 \\
+\mathrm{E}[X^2] &= e^{2\mu + 2\sigma^2} = 2440.601978.
+\end{align}
+
+Therefore,
+\begin{align}
+\mathrm{E}[S(2)] &= 2(50)\mathrm{E}[X] = 3150.039231 \\
+\mathrm{Var}[S(2)] &= 2(50)\mathrm{E}[X2] = \ensuremath{2.440602\times 10^{5}} .
+\end{align}
+
+Hence, ruin will occur if \(S(2)\) is greater than the initial surplus plus premiums received. Therefore, the probability of ruin is
+\begin{align}
+\Pr(S(2) > u + 2c) &= \Pr(S(2) > 1000 + 2(1500)) \\
+&= \Pr(Z > \frac{1000 + 2(1500)  - 3150.0392309}{\sqrt{\ensuremath{2.440602\times 10^{5}}}}) \\
+&= \Pr(Z > 1.720483)  = 0.04267.
+\end{align}
+the probability of ruin is approximately 4.267\%.
+
+\hypertarget{simulation-of-ruin-probabilities}{%
+\section{Simulation of ruin probabilities}\label{simulation-of-ruin-probabilities}}
+
+In this section, we will use simulation to numerically estimate the probability of ruin. First, we introduce the \textbf{inverse transform method}, which is a method for generating random numbers from any probability distribution by using its inverse cumulative distribution.
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-59}{}\label{exm:unlabeled-div-59}
+
+\emph{Let \(F(x)\) be a continuous cumulative density
+function. Let \(Y\) be a random variable with a \(U(0,1)\) distribution.
+Define the random variable \(X\) by \[X = F^{-1}(Y).\] Show that the
+cumulative density function of \(X\), \(F_X(x)\) is \(F(x)\).}
+
+\end{example}
+
+\textbf{Solution:}
+We need to show that \(Pr(X \le x) = F(x)\) for all \(x\), i.e.~\(F_X(x)= F(x)\) as defined above.
+
+It follows from the monotonicity of \(F\) and the definition
+
+\begin{align}
+F_X(x) &= \Pr(X \le x)\\
+&= \Pr(F^{-1}(Y) \le x)\\
+&= \Pr(F(F^{-1}(Y)) \le F(x)\\
+&= \Pr(Y \le F(x))\\
+\end{align}
+
+Since \(Y \sim U(0,1)\), we have \(\Pr(Y \le t) = t\) for any \(t \in [0,1]\). Therefore,
+\[ F_X(x) = \Pr(Y \le F(x)) = F(x).\]
+\textbf{Note} We can use this result to generate values from the required probability distribution (which will be useful in Excel). In order to generate \(X_1, X_2, X_3, \ldots, X_n\) from \(\mathcal{G}(\alpha,\lambda)\) (or any other distributions) in Excel, we use \texttt{GAMMAINV(RAND(),\ alpha,\ 1/lambda)}. However, in R, we can simply use \texttt{rgamma(n,\ alpha,\ lambda)} to generate \(n\) random numbers from the \(\mathcal{G}(\alpha,\lambda)\) distribution.
+
+\newpage \begin{example}
+\protect\hypertarget{exm:unlabeled-div-60}{}\label{exm:unlabeled-div-60}
+
+\emph{The aggregate claims process for a risk is compound
+Poisson with Poisson parameter \(\lambda = 100\) per year. Individual
+claim amounts have \(\text{Pa}(4,3)\). The premium income per year is
+\(c = 110\) (in suitable units), received continuously.}
+
+\emph{Using either Excel or R to simulate 1000 values of aggregate claims
+\(S\), assuming that \(S\) is approximated by a translated gamma
+approximation,}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Estimate
+  \(\hat{\psi}_1(50, 5)\), an estimate of \(\psi_1(50,5)\).}
+\item
+  \emph{Estimate the standard error of \(\hat{\psi}_1(50, 5)\).}
+\item
+  \emph{Calculate a 95\% confidence interval for your estimate in 1.}
+\item
+  \emph{Estimate \(\psi_{0.5}(50, 5)\).}
+\end{enumerate}
+
+\end{example}
+
+\textbf{Solution:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An estimate of \(\psi_1(u,5)\) with \(u = 50\) and \(c =110\) can be obtained as follows:
+\end{enumerate}
+
+From the properties of \(S(t)\),
+
+\begin{itemize}
+\item
+  The aggregate claims in
+  the first year have \(S(1) \sim \mathcal{CP}(\lambda, F_X(x))\) distribution with \(\lambda = 100\) and \(X \sim \text{Pa}(4,3)\)
+\item
+  The aggregate
+  claims in the \(j\)th year, for \(j = 1,2, \ldots, 5\) have \(S(j) - S(j-1) \sim \mathcal{CP}(\lambda, F_X(x))\) distribution.
+\end{itemize}
+
+It follows that
+\begin{align}
+\psi_1(u,5) &= \Pr(U(j) < 0 \quad \text{ for at least one of } j \in \{1,2, \ldots, 5\}) \\
+&= \Pr(u + cj - S(j) < 0 ), \text{ for at least one of } j = 1,2, \ldots, 5.
+\end{align}
+When
+
+\begin{itemize}
+\item
+  \(j = 1, U(1) = 50 + 110 - S(1)\)
+\item
+  \(j = 2, U(2) = 50 + 2 - S(2) = U(1) + c - (S(2) - S(1))\)
+\item
+  \(j = 3, U(3) = 50 + 3 - S(3) = U(2) + c - (S(3) - S(2))\)
+\item
+  \(j = 4, U(4) = 50 + 4 - S(4) = U(3) + c - (S(4) - S(3))\)
+\item
+  \(j = 5, U(5) = 50 + 5 - S(5) = U(4) + c - (S(5) - S(4))\)
+\end{itemize}
+
+The algorithm to estimate the finite time ruin in discrete time can be described as follows:
+
+Step 1. Simulate values of \(S(1), S(2) - S(1), \ldots, , S(5) - S(4)\) from \(\mathcal{CP}(\lambda, F_X(x))\) distribution. Then compute \(U(1), U(2), \ldots U(5)\).
+
+Step 2. Check if one of \(U(1), U(2), \ldots U(5)\) are negative.
+
+Step 3. Repeat the simulations (1 and 2) 1000 times.
+
+Step 4. Le \(M\) be the number of simulations out of 1000 where ruin occurs. Then \(\hat{\psi}_1(50, 5) = \frac{M}{1000}.\)
+
+From the results, there are \(M = 21\) simulations that ruin occurs, and hence
+\[\hat{\psi}_1(50, 5) = \frac{M}{1000} = \frac{21}{1000}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  The estimation of the standard error of \(\hat{\psi}_1(50, 5)\) can be obtained as follows. We know that \(M \sim \mathcal{B}(1000,p)\) where \(p = \hat{\psi}_1(50, 5)\). Then,
+  \[\textrm{Var}\left[\frac{M}{1000}\right] = \frac{1}{1000^2}\textrm{Var}[M] = \frac{1000 (p) (1-p)}{1000^2}\] and
+  \[ \textrm{SD}[\hat{\psi}_1(50, 5)] = \frac{1000 (0.021) (1-0.021)}{1000^2} = 0.004534 \]
+\item
+  The 95\% confidence interval of the estimate is
+  \[ (\hat{\psi}_1(50, 5) - z_{\alpha/2}\textrm{SD}[\hat{\psi}_1(50, 5)], \hat{\psi}_1(50, 5) + z_{\alpha/2} \textrm{SD}[\hat{\psi}_1(50, 5)]) = (0.012113,0.029887).\]
+\item
+  For the estimation of discrete time probability of ruin where the surplus process is checked at time intervals of length 0.5, we proceed as follows. First we note that
+\end{enumerate}
+
+\(S(1/2), S(1) - S(1/2), S(3/2) - S(1), \ldots, S(5) - S(9/2) \sim \mathcal{CP}((1/2)\lambda, F_X(x))\) distribution.
+
+In addition,
+
+\begin{itemize}
+\item
+  U(1/2) = U(0) + c (1/2) - S(1/2)\$
+\item
+  U(1) = U(1/2) + c (1/2) - ( S(1) - S(1/2) )\$
+\item
+  U(3/2) = U(1) + c (1/2) - (S(3/2) - S(1))\$ , \(\ldots\),
+\item
+  U(5) = U(9/2) + `c (1/2) - ( S(5) - S(9/2) )\$.
+\end{itemize}
+
+It follows that
+
+\begin{align}
+\mathrm{E}[S(1/2)] &= (1/2)(100)\mathrm{E}[X] = (1/2)\mathrm{E}[S(1)] = 50 \\
+\mathrm{Var}[S(1/2)] &= (1/2)(100)\mathrm{E}[X^2] =  (1/2)\mathrm{Var}[S(1)]  = 150 \\
+\mathrm{Sk}[S(1/2)] &= \sqrt{2} \mathrm{Sk}[S(1)] = 0.734847 .
+\end{align}
+
+Now we assume that \(S(j) - S(j-1)\) for \(j = 1/2, 1, 3/2, \ldots, 5\) can be approximated by \(Y + k\) where
+\(Y \sim \mathcal{G}(\alpha, \lambda)\) and \(k\) is a constant. It follows that
+\[ \hat{\alpha} = 7.407407, \quad \hat{\beta} = 0.222222, \quad \hat{k} = 16.666667.  \]
+The simulations can be obtained in the same way.
+
+
+\end{document}

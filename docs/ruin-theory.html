@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3</title>
   <meta name="description" content="Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Ruin Theory | SCMA 470 : Risk Analysis and Credibility Tutorial 3" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-09-04" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="collective-risk-model.html"/>
 <link rel="next" href="tutorials.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -234,9 +233,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8" data-path="tutorials.html"><a href="tutorials.html#tutorial-5"><i class="fa fa-check"></i><b>6.8</b> Tutorial 5</a></li>
 <li class="chapter" data-level="6.9" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-5"><i class="fa fa-check"></i><b>6.9</b> Solutions to Tutorial 5</a></li>
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
-<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.11</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.12</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.13</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
+<li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -263,10 +263,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ruin-theory" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Ruin Theory</h1>
-<div id="the-classical-risk-process" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> The classical risk process</h2>
+<div id="ruin-theory" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Ruin Theory<a href="ruin-theory.html#ruin-theory" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="the-classical-risk-process" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> The classical risk process<a href="ruin-theory.html#the-classical-risk-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Short term risk models for a fixed time period have been studied in the
 previous sections. In this section, risk models that evolve over time
 will be presented. Suppose that an insurer</p>
@@ -350,7 +350,7 @@ S(t) = \sum_{i = 1}^{N(t)} X_i .
 <p>The surplus function increases at a constant rate <span class="math inline">\(c\)</span> until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate <span class="math inline">\(c\)</span> and drops are repeated when claims occur. In this example,
 ruin occurs at time 1.5.
 The plot of the surplus process is given in the following figure.</p>
-<div class="figure"><span id="fig:unnamed-chunk-19"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-19-1.png" alt="The surplus process befor reinsurance arrangment." width="672" />
 <p class="caption">
 Figure 5.1: The surplus process befor reinsurance arrangment.
@@ -402,15 +402,15 @@ where <span class="math inline">\(c_r\)</span> is the reinsurance premium rate a
 </tr>
 </tbody>
 </table>
-<div class="figure"><span id="fig:unnamed-chunk-21"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-21-1.png" alt="The surplus process under a proportional reinsurance arrangement." width="672" />
 <p class="caption">
 Figure 5.2: The surplus process under a proportional reinsurance arrangement.
 </p>
 </div>
 <p>It should be emphasised that under this proportional reinsurance arrangement, ruin does not occur within 2 years.</p>
-<div id="classical-risk-process" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Classical risk process</h3>
+<div id="classical-risk-process" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Classical risk process<a href="ruin-theory.html#classical-risk-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following assumptions are assumed for the study of the evolution of
 insurer’s surplus over time.</p>
 <ol style="list-style-type: decimal">
@@ -451,8 +451,8 @@ is the aggregate claims <span class="math inline">\(S(t)\)</span>.</p>
 <li><p>there are assumptions of independence.</p></li>
 </ol>
 </div>
-<div id="poisson-processes" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Poisson processes</h3>
+<div id="poisson-processes" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Poisson processes<a href="ruin-theory.html#poisson-processes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A <strong>Poisson process</strong> is a special type of counting process. It can be
 represented by a continuous time stochastic process <span class="math inline">\(\{N(t)\}_{t \ge 0}\)</span>
 which takes values in the non-negative integers. It can be used to model
@@ -465,8 +465,8 @@ represents the number of events in the interval <span class="math inline">\((0,t
 <li><p>Accidents occurring on the highway, and</p></li>
 <li><p>Telephone calls to a call centre.</p></li>
 </ol>
-<div id="counting-process" class="section level4 unnumbered">
-<h4>Counting Process</h4>
+<div id="counting-process" class="section level4 unnumbered hasAnchor">
+<h4>Counting Process<a href="ruin-theory.html#counting-process" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A counting process <span class="math inline">\(\{N_t \}_{t \ge 0}\)</span> is a collection of non-negative,
 integer-valued random variables such that if <span class="math inline">\(0 \le s \le t\)</span>, then
 <span class="math inline">\(N(s) \le N(t)\)</span>.</p>
@@ -536,8 +536,8 @@ contents of the course “SCMA 469 Actuarial Statistics”</p></li>
 </ol>
 </div>
 </div>
-<div id="compound-poisson-processes" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Compound Poisson processes</h3>
+<div id="compound-poisson-processes" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Compound Poisson processes<a href="ruin-theory.html#compound-poisson-processes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The aggregate claims process <span class="math inline">\(S(t)\)</span> defined in <a href="ruin-theory.html#eq:St">(5.2)</a>
 of the classical
 risk process is said to be a <strong>compound Poisson process</strong> with Poisson
@@ -570,8 +570,8 @@ claims in the <span class="math inline">\(n\)</span>th year, for <span class="ma
 representing the aggregate claims in successive years.</p></li>
 </ol>
 </div>
-<div id="the-relative-safety-loading" class="section level3" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> The relative safety loading</h3>
+<div id="the-relative-safety-loading" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> The relative safety loading<a href="ruin-theory.html#the-relative-safety-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>According to the expected value principle, the premium rate <span class="math inline">\(c\)</span> per
 unit time is defined by
 <span class="math display">\[c = (1 + \theta) \mathrm{E}[S(1)] = (1 + \theta) \lambda \mu_X.\]</span>
@@ -594,7 +594,7 @@ In addition, the insurer should load the premium for profit so that <span class=
 \mathrm{E}[U(t)] &amp;= u + ct - \mathrm{E}[S(t)] \\
 &amp;= u + ct - (\lambda t)\mathrm{E}[X] \\
 &amp;= u + ct - (\lambda t)\mu_X \\
-&amp;= u + (c - \lambda \mu_X)\cdot t, 
+&amp;= u + (c - \lambda \mu_X)\cdot t,
 \end{align}\]</span>
 and <span class="math display">\[ \mathrm{Var}[U(t)] = \mathrm{Var}[S(t)] = (\lambda t)\mathrm{E}[X^2].\]</span></li>
 </ol>
@@ -621,8 +621,8 @@ drift to <span class="math inline">\(-\infty\)</span>, but ruin is certain.</p><
 <li><p>If <span class="math inline">\(c = \lambda \mu_X\)</span>, the surplus will drift to <span class="math inline">\(\infty\)</span> and <span class="math inline">\(-\infty\)</span>, but ruin is certain (eventually).</p></li>
 </ol>
 </div>
-<div id="ruin-probabilities" class="section level3" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Ruin probabilities</h3>
+<div id="ruin-probabilities" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Ruin probabilities<a href="ruin-theory.html#ruin-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Various definitions of ruin probabilities are given.</p>
 <ol style="list-style-type: decimal">
 <li><p>The <strong>probability of ruin in infinite time</strong> (or the <strong>ultimate ruin
@@ -675,12 +675,12 @@ negative.</em></p>
 <p><strong>Solution:</strong> Using the normal approximation, the total claims <span class="math inline">\(S\)</span> can be approximated by <span class="math inline">\(S \sim \mathcal{N}(\mathrm{E}[S], \mathrm{Var}[S])\)</span>. We have
 <span class="math display">\[\begin{align}
 \mathrm{E}[X] &amp;= e^{\mu + \sigma^2/2} = 31.500392 \\
-\mathrm{E}[X^2] &amp;= e^{2\mu + 2\sigma^2} = 2440.601978. 
+\mathrm{E}[X^2] &amp;= e^{2\mu + 2\sigma^2} = 2440.601978.
 \end{align}\]</span></p>
 <p>Therefore,
 <span class="math display">\[\begin{align}
 \mathrm{E}[S(2)] &amp;= 2(50)\mathrm{E}[X] = 3150.039231 \\
-\mathrm{Var}[S(2)] &amp;= 2(50)\mathrm{E}[X2] = 2.440602\times 10^{5} . 
+\mathrm{Var}[S(2)] &amp;= 2(50)\mathrm{E}[X2] = 2.440602\times 10^{5} .
 \end{align}\]</span></p>
 <p>Hence, ruin will occur if <span class="math inline">\(S(2)\)</span> is greater than the initial surplus plus premiums received. Therefore, the probability of ruin is
 <span class="math display">\[\begin{align}
@@ -691,8 +691,8 @@ negative.</em></p>
 the probability of ruin is approximately 4.267%.</p>
 </div>
 </div>
-<div id="simulation-of-ruin-probabilities" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Simulation of ruin probabilities</h2>
+<div id="simulation-of-ruin-probabilities" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Simulation of ruin probabilities<a href="ruin-theory.html#simulation-of-ruin-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section, we will use simulation to numerically estimate the probability of ruin. First, we introduce the <strong>inverse transform method</strong>, which is a method for generating random numbers from any probability distribution by using its inverse cumulative distribution.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-59" class="example"><strong>Example 5.5  </strong></span><em>Let <span class="math inline">\(F(x)\)</span> be a continuous cumulative density
@@ -704,7 +704,7 @@ cumulative density function of <span class="math inline">\(X\)</span>, <span cla
 We need to show that <span class="math inline">\(Pr(X \le x) = F(x)\)</span> for all <span class="math inline">\(x\)</span>, i.e. <span class="math inline">\(F_X(x)= F(x)\)</span> as defined above.</p>
 <p>It follows from the monotonicity of <span class="math inline">\(F\)</span> and the definition</p>
 <p><span class="math display">\[\begin{align}
-F_X(x) &amp;= \Pr(X \le x)\\ 
+F_X(x) &amp;= \Pr(X \le x)\\
 &amp;= \Pr(F^{-1}(Y) \le x)\\
 &amp;= \Pr(F(F^{-1}(Y)) \le F(x)\\
 &amp;= \Pr(Y \le F(x))\\
@@ -781,39 +781,13 @@ When</p>
 <p><span class="math display">\[\begin{align}
 \mathrm{E}[S(1/2)] &amp;= (1/2)(100)\mathrm{E}[X] = (1/2)\mathrm{E}[S(1)] = 50 \\
 \mathrm{Var}[S(1/2)] &amp;= (1/2)(100)\mathrm{E}[X^2] =  (1/2)\mathrm{Var}[S(1)]  = 150 \\
-\mathrm{Sk}[S(1/2)] &amp;= \sqrt{2} \mathrm{Sk}[S(1)] = 0.734847 . 
+\mathrm{Sk}[S(1/2)] &amp;= \sqrt{2} \mathrm{Sk}[S(1)] = 0.734847 .
 \end{align}\]</span></p>
 <p>Now we assume that <span class="math inline">\(S(j) - S(j-1)\)</span> for <span class="math inline">\(j = 1/2, 1, 3/2, \ldots, 5\)</span> can be approximated by <span class="math inline">\(Y + k\)</span> where
 <span class="math inline">\(Y \sim \mathcal{G}(\alpha, \lambda)\)</span> and <span class="math inline">\(k\)</span> is a constant. It follows that
 <span class="math display">\[ \hat{\alpha} = 7.407407, \quad \hat{\beta} = 0.222222, \quad \hat{k} = 16.666667.  \]</span>
 The simulations can be obtained in the same way.</p>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:MASS&#39;:
-## 
-##     select</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre><code>## Warning: replacing previous import
-## &#39;lifecycle::last_warnings&#39; by
-## &#39;rlang::last_warnings&#39; when loading &#39;hms&#39;</code></pre>
-<pre><code>## ── Attaching packages ───── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ tibble  3.1.4     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.1
-## ✓ purrr   0.3.4</code></pre>
-<pre><code>## ── Conflicts ──────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-## x dplyr::select() masks MASS::select()</code></pre>
-<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
-## Using compatibility `.name_repair`.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:figSurplus"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:figSurplus"></span>
 <img src="SCMA470Bookdownproj_files/figure-html/figSurplus-1.png" alt="The sample paths of surplus process." width="672" />
 <p class="caption">
 Figure 5.3: The sample paths of surplus process.
@@ -836,7 +810,6 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGRwbHlyKVxubGlicmFyeSh0aWR5cilcbmxp
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -876,6 +849,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SCMA470Bookdownproj.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -889,7 +866,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
