@@ -1847,6 +1847,11 @@ $$\psi(0.3,1) = `r 1 - noRuinProb`.$$
                   2017  5203                                           6510
       ---------- ------ ------------------ ------ ------ ------ ------ ------
 
+
+## Solutions to Tutorial 8
+
+See the Excel solution file from the Google Classroom.
+
 ## Tutorial 9
 
 
@@ -1942,3 +1947,172 @@ $$\psi(0.3,1) = `r 1 - noRuinProb`.$$
     2.  Explain why the credibility premiums depend almost entirely on
         the means for the individual risks.
 
+
+
+
+```{r tutorial9-1, echo=FALSE}
+
+#likelihood
+sumx <- 14
+n <- 6
+lambdahat <- sumx/n
+
+#prio
+alpha <- 6
+beta <- 3
+lambdatilde <- alpha/beta
+```
+
+
+
+
+
+## Solutions to Tutorial 9
+
+1.
+
+a) Based on the lecture note, the data consist of $n$ observations  $x_1, x_2, \ldots, x_n$ of random variables $X_1, \ldots , X_n$, where, given $\lambda$, the $X_i$ are iid Poisson random variables with parameter $\lambda$ for $i = 1,\ldots,n$. 
+
+The likelihood is given by
+$$ f(\underline{x}|\lambda) = \Pi_{i=1}^n  \frac{e^{-\lambda} \lambda^{x_i}}{x_i!} \propto e^{-n\lambda} \lambda^{\sum x_i}. $$
+Therefore, the data-based estimator of $\lambda$  based on the maximum likelihood estimator is
+$$\hat{\lambda} = \frac{\sum_i x_i}{n} = \frac{`r sumx`}{`r n`} = `r lambdahat`.$$
+
+
+Without any data from the risk, a reasonable estimate value of $\lambda$ is the mean of the prior distribution with both parameters known and with density function 
+$$ f(\lambda) = \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{-\beta\lambda}, \quad \alpha >0, \, \beta >  0, \, \lambda > 0.$$
+It follows that the estimate of $\lambda$ using the prior mean is
+$$ \tilde{\lambda} = \frac{\alpha}{\beta} = \frac{`r alpha`}{`r beta`} = `r lambdatilde`.$$
+
+
+
+b) The posterior density is proportional to 
+
+$$ \begin{aligned}
+f(\lambda| \underline{x}) &\propto (\lambda^{\alpha -1} e^{-\beta\lambda}) (e^{-n\lambda} \lambda^{\sum x_i}) \\
+&= \lambda^{\alpha + \sum x_i -1} e^{-(\beta + n) \lambda} 
+\end{aligned}
+$$
+This is the functional part of a gamma density. The posterior distribution is 
+$$ \lambda | \underline{x} \sim \mathcal{G}(\alpha + \sum x_i, \beta + n) = \mathcal{G}(`r alpha + sumx`, `r beta + n`).$$
+
+The Bayesian estimator of $\lambda$ under the all or nothing loss is the mode of the distribution, which is given by
+$$\frac{`r alpha + sumx - 1`}{`r beta + n`} = `r (alpha + sumx - 1)/(beta + n)`.$$
+
+c) Under absolute error loss, the median of$\mathcal{G}(`r alpha + sumx`, `r beta + n`)$ 
+can be found by using the following R syntax 
+$$\text{qgamma}(0.5, \text{shape}= `r alpha + sumx`, \text{rate}=`r beta + n`) = `r qgamma(0.5,shape=20,rate=9)`$$
+Moreover, we can get
+$$\lambda_L = \text{qgamma}(0.025, \text{shape}= `r alpha + sumx`, \text{rate}=`r beta + n`) = `r qgamma(0.025,shape=20,rate=9)`$$
+and
+$$\lambda_U = \text{qgamma}(0.975, \text{shape}= `r alpha + sumx`, \text{rate}=`r beta + n`) = `r qgamma(0.975,shape=20,rate=9)`.$$
+
+
+d) The credibility estimate (i.e. the mean of $\mathcal{G}(`r alpha + sumx`, `r beta + n`)$) is
+
+$$
+\begin{aligned}
+\lambda^* &= \frac{\alpha + \sum x_i}{ \beta + n} = \frac{`r alpha + sumx`}{`r beta + n`} = `r (alpha + sumx)/(beta + n)`.
+\end{aligned},
+$$
+where $Z = n/(n+\beta)$. This can be expressed in the form of a credibility estimate.
+\end{enumerate}
+
+
+
+```{r tutorial9-2, echo=FALSE}
+#likelihood
+sumx <- 13
+n <- 50
+lambdahat <- sumx/n
+
+#prio
+alpha <- 6
+beta <- 30
+lambdatilde <- alpha/beta
+priorvar <- alpha/beta^2
+
+alpha2 <- 2
+beta2 <- 10
+lambdatilde2 <- alpha2/beta2
+priorvar2 <- alpha2/beta2^2
+
+Z <- n/(n + beta)
+CP <- Z*lambdahat + (1 - Z)*lambdatilde
+
+Z2 <- n/(n + beta2)
+CP2 <- Z2*lambdahat + (1 - Z2)*lambdatilde2
+
+```
+
+
+2. From the Poisson-Gamma model, 
+
+a) Therefore, the data-based estimator of $\lambda$  based on the maximum likelihood estimator is
+$$\hat{\lambda} = \frac{\sum_i x_i}{n} = \frac{`r sumx`}{`r n`} = `r lambdahat`.$$
+b) For $\lambda \sim \mathcal{G}(\alpha,\beta)$, we have
+$$\text{E}[\lambda] = \frac{\alpha}{\beta} \text{ and } \text{Var}[\lambda] = \frac{\alpha}{\beta^2}.$$
+
+i. For $\mathcal{G}(`r alpha`, `r beta`)$, the prior mean and prior variance are `r lambdatilde` and `r priorvar`, respectively.
+
+ii. For $\mathcal{G}(`r alpha2`, `r beta2`)$, the prior mean and prior variance are `r lambdatilde2` and `r priorvar2`, respectively.
+
+The variance of the prior distributions are `r priorvar` and `r priorvar2` in (i) and (ii), respectively. There is more uncertainty in  the prior distribution of (ii) which leads to the prior mean getting lower weight. Therefore, $Z$ should be larger in (ii).
+
+c) The posterior mean of $\lambda$ (also denoted by CP) is
+
+$$
+\begin{aligned}
+\text{CP}
+&= (Z) \left( \frac{\sum x_i}{n} \right) +(1-Z) \left( \frac{\alpha}{\beta} \right)
+\end{aligned},
+$$
+where $Z = n/(n+\beta)$. This can be expressed in the form of a credibility estimate.
+
+i. In this case, $Z = \frac{`r n`}{`r n` + `r beta`} = `r Z`$ and $\text{CP} = `r CP`$.
+
+ii. In this case, $Z = \frac{`r n`}{`r n` + `r beta2`} = `r Z2`$ and $\text{CP} = `r CP2`$.
+
+
+
+```{r tutorial9.3, echo=FALSE}
+x <- c(2369, 2341, 2284, 2347, 2332, 2300, 2267)
+sumx <- sum(x)
+n <- 7
+sigma2 <- 0.36
+
+mu0 <- 2000
+sigma02 <- 0.04
+
+Z <- n/(n + sigma2/sigma02)
+
+CP <- Z*sumx/n + (1-Z)*mu0
+
+#sigma*^2
+sigmas2 <- sigma02*sigma2/(n*sigma02 + sigma2)
+
+muL <- qnorm(0.025,CP/1000,sqrt(sigmas2))
+  
+muU <-  qnorm(0.975,CP/1000,sqrt(sigmas2)) 
+```
+
+
+3. 
+
+a) We have $\sum_{i=1}^7 x_i = `r `sumx`$.
+The credibility factor $Z$ is given by
+$$ Z = \frac{n}{n + \frac{\sigma^2}{{\sigma_0^2}}} = `r Z`.$$
+The credibility premium is
+$$\text{CP} = Z\cdot\frac{\sum x_i}{n} + (1-Z)\cdot \mu_0 = `r CP`.$$
+
+b) The posterior probability distribution function is $\mathcal{N}(\mu^*,\sigma^{*2})$, where (in unit of 1000)
+$$\mu^* = `r CP/1000` \text{ and } \sigma^{*2} = \frac{\sigma_0^2\sigma^2}{n\sigma_0^2 + \sigma^2} = `r sigmas2`.$$
+Therefore, using the following R commands, 
+$$\mu_L = \text{qnorm}(0.025,`r CP/1000`,\sqrt{`r sigmas2`}) = `r muL`,$$
+and
+$$\mu_U = \text{qnorm}(0.975,`r CP/1000`,\sqrt{`r sigmas2`}) = `r muU`.$$
+
+
+4. Not in the Final Examination.
+
+5. Not in the Final Examination.

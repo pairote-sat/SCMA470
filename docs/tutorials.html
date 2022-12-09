@@ -237,7 +237,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
 <li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-7"><i class="fa fa-check"></i><b>6.13</b> Solutions to Tutorial 7</a></li>
 <li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.14</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.15" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.15</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.15" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-8"><i class="fa fa-check"></i><b>6.15</b> Solutions to Tutorial 8</a></li>
+<li class="chapter" data-level="6.16" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.16</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.17" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-9"><i class="fa fa-check"></i><b>6.17</b> Solutions to Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -1909,8 +1911,12 @@ will be 95%.</p>
 </table></li>
 </ol>
 </div>
-<div id="tutorial-9" class="section level2 hasAnchor" number="6.15">
-<h2><span class="header-section-number">6.15</span> Tutorial 9<a href="tutorials.html#tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="solutions-to-tutorial-8" class="section level2 hasAnchor" number="6.15">
+<h2><span class="header-section-number">6.15</span> Solutions to Tutorial 8<a href="tutorials.html#solutions-to-tutorial-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See the Excel solution file from the Google Classroom.</p>
+</div>
+<div id="tutorial-9" class="section level2 hasAnchor" number="6.16">
+<h2><span class="header-section-number">6.16</span> Tutorial 9<a href="tutorials.html#tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>(Taken from Gray and Pitts) Suppose the number of claims which arise
 in a year on a group of policies is modelled as
@@ -2072,6 +2078,100 @@ each risk <span class="math inline">\(i\)</span>.</p></li>
 <li><p>Explain why the credibility premiums depend almost entirely on
 the means for the individual risks.</p></li>
 </ol></li>
+</ol>
+</div>
+<div id="solutions-to-tutorial-9" class="section level2 hasAnchor" number="6.17">
+<h2><span class="header-section-number">6.17</span> Solutions to Tutorial 9<a href="tutorials.html#solutions-to-tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Based on the lecture note, the data consist of <span class="math inline">\(n\)</span> observations <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> of random variables <span class="math inline">\(X_1, \ldots , X_n\)</span>, where, given <span class="math inline">\(\lambda\)</span>, the <span class="math inline">\(X_i\)</span> are iid Poisson random variables with parameter <span class="math inline">\(\lambda\)</span> for <span class="math inline">\(i = 1,\ldots,n\)</span>.</li>
+</ol>
+<p>The likelihood is given by
+<span class="math display">\[ f(\underline{x}|\lambda) = \Pi_{i=1}^n  \frac{e^{-\lambda} \lambda^{x_i}}{x_i!} \propto e^{-n\lambda} \lambda^{\sum x_i}. \]</span>
+Therefore, the data-based estimator of <span class="math inline">\(\lambda\)</span> based on the maximum likelihood estimator is
+<span class="math display">\[\hat{\lambda} = \frac{\sum_i x_i}{n} = \frac{14}{6} = 2.3333333.\]</span></p>
+<p>Without any data from the risk, a reasonable estimate value of <span class="math inline">\(\lambda\)</span> is the mean of the prior distribution with both parameters known and with density function
+<span class="math display">\[ f(\lambda) = \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha -1} e^{-\beta\lambda}, \quad \alpha &gt;0, \, \beta &gt;  0, \, \lambda &gt; 0.\]</span>
+It follows that the estimate of <span class="math inline">\(\lambda\)</span> using the prior mean is
+<span class="math display">\[ \tilde{\lambda} = \frac{\alpha}{\beta} = \frac{6}{3} = 2.\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The posterior density is proportional to</li>
+</ol>
+<p><span class="math display">\[ \begin{aligned}
+f(\lambda| \underline{x}) &amp;\propto (\lambda^{\alpha -1} e^{-\beta\lambda}) (e^{-n\lambda} \lambda^{\sum x_i}) \\
+&amp;= \lambda^{\alpha + \sum x_i -1} e^{-(\beta + n) \lambda}
+\end{aligned}
+\]</span>
+This is the functional part of a gamma density. The posterior distribution is
+<span class="math display">\[ \lambda | \underline{x} \sim \mathcal{G}(\alpha + \sum x_i, \beta + n) = \mathcal{G}(20, 9).\]</span></p>
+<p>The Bayesian estimator of <span class="math inline">\(\lambda\)</span> under the all or nothing loss is the mode of the distribution, which is given by
+<span class="math display">\[\frac{19}{9} = 2.1111111.\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Under absolute error loss, the median of<span class="math inline">\(\mathcal{G}(20, 9)\)</span>
+can be found by using the following R syntax
+<span class="math display">\[\text{qgamma}(0.5, \text{shape}= 20, \text{rate}=9) = 2.1852969\]</span>
+Moreover, we can get
+<span class="math display">\[\lambda_L = \text{qgamma}(0.025, \text{shape}= 20, \text{rate}=9) = 1.3573911\]</span>
+and
+<span class="math display">\[\lambda_U = \text{qgamma}(0.975, \text{shape}= 20, \text{rate}=9) = 3.2967615.\]</span></p></li>
+<li><p>The credibility estimate (i.e. the mean of <span class="math inline">\(\mathcal{G}(20, 9)\)</span>) is</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda^* &amp;= \frac{\alpha + \sum x_i}{ \beta + n} = \frac{20}{9} = 2.2222222.
+\end{aligned},
+\]</span>
+where <span class="math inline">\(Z = n/(n+\beta)\)</span>. This can be expressed in the form of a credibility estimate.
+\end{enumerate}</p>
+<ol start="2" style="list-style-type: decimal">
+<li>From the Poisson-Gamma model,</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Therefore, the data-based estimator of <span class="math inline">\(\lambda\)</span> based on the maximum likelihood estimator is
+<span class="math display">\[\hat{\lambda} = \frac{\sum_i x_i}{n} = \frac{13}{50} = 0.26.\]</span></li>
+<li>For <span class="math inline">\(\lambda \sim \mathcal{G}(\alpha,\beta)\)</span>, we have
+<span class="math display">\[\text{E}[\lambda] = \frac{\alpha}{\beta} \text{ and } \text{Var}[\lambda] = \frac{\alpha}{\beta^2}.\]</span></li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>For <span class="math inline">\(\mathcal{G}(6, 30)\)</span>, the prior mean and prior variance are 0.2 and 0.0066667, respectively.</p></li>
+<li><p>For <span class="math inline">\(\mathcal{G}(2, 10)\)</span>, the prior mean and prior variance are 0.2 and 0.02, respectively.</p></li>
+</ol>
+<p>The variance of the prior distributions are 0.0066667 and 0.02 in (i) and (ii), respectively. There is more uncertainty in the prior distribution of (ii) which leads to the prior mean getting lower weight. Therefore, <span class="math inline">\(Z\)</span> should be larger in (ii).</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The posterior mean of <span class="math inline">\(\lambda\)</span> (also denoted by CP) is</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\text{CP}
+&amp;= (Z) \left( \frac{\sum x_i}{n} \right) +(1-Z) \left( \frac{\alpha}{\beta} \right)
+\end{aligned},
+\]</span>
+where <span class="math inline">\(Z = n/(n+\beta)\)</span>. This can be expressed in the form of a credibility estimate.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>In this case, <span class="math inline">\(Z = \frac{50}{50 + 30} = 0.625\)</span> and <span class="math inline">\(\text{CP} = 0.2375\)</span>.</p></li>
+<li><p>In this case, <span class="math inline">\(Z = \frac{50}{50 + 10} = 0.8333333\)</span> and <span class="math inline">\(\text{CP} = 0.25\)</span>.</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>We have <span class="math inline">\(\sum_{i=1}^7 x_i = `r `sumx`\)</span>.
+The credibility factor <span class="math inline">\(Z\)</span> is given by
+<span class="math display">\[ Z = \frac{n}{n + \frac{\sigma^2}{{\sigma_0^2}}} = 0.4375.\]</span>
+The credibility premium is
+<span class="math display">\[\text{CP} = Z\cdot\frac{\sum x_i}{n} + (1-Z)\cdot \mu_0 = 2140.\]</span></p></li>
+<li><p>The posterior probability distribution function is <span class="math inline">\(\mathcal{N}(\mu^*,\sigma^{*2})\)</span>, where (in unit of 1000)
+<span class="math display">\[\mu^* = 2.14 \text{ and } \sigma^{*2} = \frac{\sigma_0^2\sigma^2}{n\sigma_0^2 + \sigma^2} = 0.0225.\]</span>
+Therefore, using the following R commands,
+<span class="math display">\[\mu_L = \text{qnorm}(0.025,2.14,\sqrt{0.0225}) = 1.8460054,\]</span>
+and
+<span class="math display">\[\mu_U = \text{qnorm}(0.975,2.14,\sqrt{0.0225}) = 2.4339946.\]</span></p></li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Not in the Final Examination.</p></li>
+<li><p>Not in the Final Examination.</p></li>
 </ol>
 
 </div>

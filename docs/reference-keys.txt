@@ -162,7 +162,9 @@ solutions-to-tutorial-6
 tutorial-7
 solutions-to-tutorial-7
 tutorial-8
+solutions-to-tutorial-8
 tutorial-9
+solutions-to-tutorial-9
 project-2021-risk-theory
 interactive-lecture
 datacamp-light
