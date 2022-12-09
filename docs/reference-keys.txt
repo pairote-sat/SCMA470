@@ -81,6 +81,8 @@ exm:unlabeled-div-58
 exm:unlabeled-div-59
 exm:unlabeled-div-60
 fig:figSurplus
+fig:unnamed-chunk-28
+fig:unnamed-chunk-30
 basic-probability-concepts
 random-variables
 r-functions-for-probability-distributions
@@ -158,6 +160,7 @@ solutions-to-tutorial-5
 tutorial-6
 solutions-to-tutorial-6
 tutorial-7
+solutions-to-tutorial-7
 tutorial-8
 tutorial-9
 project-2021-risk-theory

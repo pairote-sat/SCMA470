@@ -23,7 +23,7 @@
 <meta name="author" content="Pairote Satiracoo" />
 
 
-<meta name="date" content="2022-11-28" />
+<meta name="date" content="2022-12-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -235,8 +235,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.10" data-path="tutorials.html"><a href="tutorials.html#tutorial-6"><i class="fa fa-check"></i><b>6.10</b> Tutorial 6</a></li>
 <li class="chapter" data-level="6.11" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-6"><i class="fa fa-check"></i><b>6.11</b> Solutions to Tutorial 6</a></li>
 <li class="chapter" data-level="6.12" data-path="tutorials.html"><a href="tutorials.html#tutorial-7"><i class="fa fa-check"></i><b>6.12</b> Tutorial 7</a></li>
-<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.13</b> Tutorial 8</a></li>
-<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.14</b> Tutorial 9</a></li>
+<li class="chapter" data-level="6.13" data-path="tutorials.html"><a href="tutorials.html#solutions-to-tutorial-7"><i class="fa fa-check"></i><b>6.13</b> Solutions to Tutorial 7</a></li>
+<li class="chapter" data-level="6.14" data-path="tutorials.html"><a href="tutorials.html#tutorial-8"><i class="fa fa-check"></i><b>6.14</b> Tutorial 8</a></li>
+<li class="chapter" data-level="6.15" data-path="tutorials.html"><a href="tutorials.html#tutorial-9"><i class="fa fa-check"></i><b>6.15</b> Tutorial 9</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="project-2021-risk-theory.html"><a href="project-2021-risk-theory.html"><i class="fa fa-check"></i><b>7</b> Project 2021 Risk Theory</a></li>
 <li class="chapter" data-level="8" data-path="interactive-lecture.html"><a href="interactive-lecture.html"><i class="fa fa-check"></i><b>8</b> Interactive Lecture</a>
@@ -899,8 +900,8 @@ With reinsurance, the insurer’s profit is equal to premiums charged less the r
 <ol start="2" style="list-style-type: decimal">
 <li><p>Given <span class="math inline">\(X \sim \text{Exp}(\beta)\)</span> with <span class="math inline">\(\beta = 1/10\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>\begin{aligned} insurer <span class="math inline">\(S_I\)</span> is
-<span class="math display">\[S_I \sim \mathcal{CP}(10,F_Y), \quad Y= \min(X,M)\]</span>
+<li>The aggregate claim amount paid by the direct insurer <span class="math inline">\(S_I\)</span> is
+<span class="math display">\[S_I \sim \mathcal{CP}(80,F_Y), \quad Y= \min(X,M)\]</span>
 The distribution and its first two moments of <span class="math inline">\(Y\)</span> can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.</li>
 </ol></li>
 </ol>
@@ -908,34 +909,31 @@ The distribution and its first two moments of <span class="math inline">\(Y\)</s
 <span class="math display">\[ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),\]</span>
 where <span class="math inline">\(p = \Pr(X &gt; M) = e^{-\lambda M} = e^{-\lambda/\mu}\)</span> is the proportion of claims which involve the reinsurer (see the <a href="https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1">link</a> for more helps)</p>
 <p>It follows that
-<span class="math display">\[
-\begin{aligned}
-\mathrm{E}[Y] &amp;= M_Y&#39;(0) = (1 - p)\mu = 200 \\
-\mathrm{E}[Y^2] &amp;= M_Y&#39;&#39;(0) = -2 \mu (M p + (-1 + p) \mu) = 5.625\times 10^{5}.
+<span class="math display">\[\begin{aligned}
+\mathrm{E}[Y] &amp;= M_Y&#39;(0) = (1 - p)\mu = 8.6466472 \\
+\mathrm{E}[Y^2] &amp;= M_Y&#39;&#39;(0) = -2 \mu (M p + (-1 + p) \mu) = 118.7988301.
 \end{aligned}
 \]</span></p>
 <p>The total expected total claim payout of the insurer and its variance are
-<span class="math display">\[ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = 6093.75, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  5.625\times 10^{6}.\]</span></p>
+<span class="math display">\[ \mathrm{E}[S_I] = \lambda \mathrm{E}[Y] = 691.7317734, \quad \mathrm{Var}[S_I] = \lambda \mathrm{E}[Y^2] =  9503.9064046.\]</span></p>
 <p>The aggregate claim amount paid by the reinsurer <span class="math inline">\(S_R\)</span> is
-<span class="math display">\[S_R \sim \mathcal{CP}(10,F_Z), \quad Z= \max(0,X-M)\]</span></p>
+<span class="math display">\[S_R \sim \mathcal{CP}(80,F_Z), \quad Z= \max(0,X-M)\]</span></p>
 <p>It follows that
-<span class="math display">\[
-\begin{aligned}
+<span class="math display">\[\begin{aligned}
 \mathrm{E}[Z] &amp;= p\mu = 1.3533528 \\
 \mathrm{E}[Z^2] &amp;= 2 \mu^2 p = 27.0670566.
 \end{aligned}
 \]</span></p>
 <p>The total expected total claim payout of the insurer and its variance are
-<span class="math display">\[ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = 3906.25, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  2.5\times 10^{7}.\]</span></p>
+<span class="math display">\[ \mathrm{E}[S_R] = \lambda \mathrm{E}[Z] = 108.2682266, \quad \mathrm{Var}[S_R] = \lambda \mathrm{E}[Z^2] =  2165.3645318.\]</span></p>
 <pre><code>2. It follows that </code></pre>
-<p><span class="math inline">\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = 3.0625\times 10^{7} &lt; 4\times 10^{7} = \mathrm{Var}[S]\)</span>.</p>
+<p><span class="math inline">\(\mathrm{Var}[S_I] + \mathrm{Var}[S_R] = 1.1669271\times 10^{4} &lt; 1.6\times 10^{4} = \mathrm{Var}[S]\)</span>.</p>
 <pre><code>After excess of loss reinsurance arrangement, there is a reduction in the variability of the amount paid out by the insurer on claims.</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>From Panjer’s recursion formula,
 <span class="math display">\[ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.\]</span>
 Therefore,
-<span class="math display">\[
-\begin{aligned}
+<span class="math display">\[\begin{aligned}
 g_0 &amp;= e^{-\lambda} = 0.606531 \\
 g_1 &amp;= \lambda f_1 g_0  = 0.151633 \\
 g_2 &amp;= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = 0.09477 \\
@@ -1289,8 +1287,218 @@ following probabilities of ruin.</p>
 </ol></li>
 </ol>
 </div>
-<div id="tutorial-8" class="section level2 hasAnchor" number="6.13">
-<h2><span class="header-section-number">6.13</span> Tutorial 8<a href="tutorials.html#tutorial-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="solutions-to-tutorial-7" class="section level2 hasAnchor" number="6.13">
+<h2><span class="header-section-number">6.13</span> Solutions to Tutorial 7<a href="tutorials.html#solutions-to-tutorial-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>The insurer’s surplus (or cash flow) at any future time <span class="math inline">\(t\)</span> (&gt; 0) is a random variable, since its value depends on the claims experience up to time <span class="math inline">\(t\)</span>. The insurer’s surplus at time <span class="math inline">\(t\)</span> is a random variable. The insurer’s surplus at time <span class="math inline">\(t\)</span> is denoted <span class="math inline">\(U(t)\)</span>. The following formula for <span class="math inline">\(U(t)\)</span> can be written as</li>
+</ol>
+<p><span class="math display">\[\begin{equation}
+U(t) = u + ct - S(t) = 5.5 + 3 t - S(t),
+\end{equation}\]</span>
+where the <strong>aggregate claim amount up to time</strong>
+<span class="math inline">\(t\)</span>, <span class="math inline">\(S(t)\)</span> is
+<span class="math display">\[\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}\]</span></p>
+<p>The following table summarises the values of the surplus function at the time when claims occurs.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Time</th>
+<th align="center">Surplus (before claim)</th>
+<th align="center">Surplus (after claim)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">5.5</td>
+<td align="center">5.5</td>
+</tr>
+<tr class="even">
+<td align="center">0.3</td>
+<td align="center">6.4</td>
+<td align="center">2.4</td>
+</tr>
+<tr class="odd">
+<td align="center">0.8</td>
+<td align="center">3.9</td>
+<td align="center">-2.1</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">0</td>
+<td align="center">-2</td>
+</tr>
+</tbody>
+</table>
+<p>The surplus function increases at a constant rate <span class="math inline">\(c\)</span> until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate <span class="math inline">\(c\)</span> and drops are repeated when claims occur. In this example,
+ruin occurs at time 1.5.
+The plot of the surplus process is given in the following figure.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-28-1.png" alt="The surplus process befor reinsurance arrangment." width="672" />
+<p class="caption">
+Figure 6.1: The surplus process befor reinsurance arrangment.
+</p>
+</div>
+<ol style="list-style-type: lower-roman">
+<li><p>Ruin occurs at time 0.8 when ruin is checked continuously.</p></li>
+<li><p>Similarly, we have <span class="math inline">\(U(1) = -1.5\)</span> and <span class="math inline">\(U(2) = -0.5\)</span>. Therefore, ruin occurs at time 1 and 2 when ruin is checked at the end of each year.</p></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The insurer’s net premium income is 2 per year. The insurer’s cash flow or surplus process is now given by
+<span class="math display">\[\begin{equation}
+U_I(t) = u + (c - c_r)t - S_I(t) = 5.5 + (3 - 1) t - S_I(t),
+\end{equation}\]</span>
+where <span class="math inline">\(c_r\)</span> is the reinsurance premium rate. Claims that are involved the insurer after are</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Time (year)</th>
+<th align="center">0.3</th>
+<th align="center">0.8</th>
+<th align="center">1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Amount</td>
+<td align="center">3.5</td>
+<td align="center">3.5</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<p>The following table summarises the values of the surplus function at the time when claims occurs.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Time</th>
+<th align="center">Surplus (before claim)</th>
+<th align="center">Surplus (after claim)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">5.5</td>
+<td align="center">5.5</td>
+</tr>
+<tr class="even">
+<td align="center">0.3</td>
+<td align="center">6.1</td>
+<td align="center">2.6</td>
+</tr>
+<tr class="odd">
+<td align="center">0.8</td>
+<td align="center">3.6</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="even">
+<td align="center">1.5</td>
+<td align="center">1.5</td>
+<td align="center">-0.5</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<img src="SCMA470Bookdownproj_files/figure-html/unnamed-chunk-30-1.png" alt="The surplus process under a reinsurance arrangement." width="672" />
+<p class="caption">
+Figure 6.2: The surplus process under a reinsurance arrangement.
+</p>
+</div>
+<p>Under the reinsurance arrangement,</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Ruin occurs at time 1.5 when ruin is checked continuously.</p></li>
+<li><p>Similarly, we have <span class="math inline">\(U(1) = 0.5\)</span> and <span class="math inline">\(U(2) = 0.5\)</span>. Therefore, ruin does not occur when ruin is checked at the end of each year.</p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>According to the property of the aggregate claims process <span class="math inline">\(S(t)\)</span>,
+the aggregate claims in the <span class="math inline">\(n\)</span>th year, for <span class="math inline">\(n = 1,2, \ldots\)</span> are
+<span class="math inline">\(S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))\)</span>, all of them have the same compound Poisson distribution with the same parameters. Hence, the premium rate per year will be constant which can be obtained from
+<span class="math display">\[c = (1 + \theta)\text{E}[S],\]</span> where <span class="math inline">\(\theta = 0.1\)</span>.
+Note that <span class="math inline">\(\text{E}[S] = \lambda \text{E}[X] = 0.1 \cdot 59.75 = 5.975\)</span> and hence
+<span class="math inline">\(c = 6.5725.\)</span></li>
+</ol>
+<p>The surplus at time 2 is
+<span class="math display">\[U(2) = u + ct - S(2) = 100 + 6.5725 \cdot 2 - S(2) = 113.145  - S(2).\]</span>
+So the required probability is
+<span class="math display">\[\Pr(U(2) &lt; 0) = \Pr(S(2) &gt; 113.145) = 1- \Pr(S(2) \le 113.145).\]</span>
+We consider all possibilities that <span class="math inline">\(S(2) \le s0\)</span>. According to the information from the following table,</p>
+<table>
+<thead>
+<tr class="header">
+<th>Number of claims</th>
+<th>Amount of claims</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0 claim</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1 claim</td>
+<td>50 or 75</td>
+</tr>
+<tr class="odd">
+<td>2 claims</td>
+<td>100 = 50 + 50</td>
+</tr>
+</tbody>
+</table>
+<p>It follows that
+<span class="math display">\[
+\begin{aligned}
+\Pr(S(2) \le 113.145) &amp;= \Pr(N(2) = 0) +  \Pr(N(2) = 1 \text{ and } X_1 = 50) \\ &amp;+
+  \Pr(N(2) = 1 \text{ and } X_1 = 70) +  \Pr(N(2) = 2 \text{ and } X_1 = X_2 = 50).\\
+\end{aligned}
+\]</span>
+Note that
+<span class="math display">\[
+\begin{aligned}
+\Pr(N(2) = 0) &amp;= 0.8187308 \\
+\Pr(N(2) = 1 \text{ and } X_1 = 50) &amp;= \Pr(N(2) = 1) \cdot \Pr(X_1 = 50) = (0.1637462)(0.7) = 0.1146223 \\
+\Pr(N(2) = 1 \text{ and } X_1 = 75) &amp;= \Pr(N(2) = 1) \cdot \Pr(X_1 = 75) = (0.1637462)(0.25) = 0.0409365 \\
+\Pr(N(2) = 2 \text{ and } X_1 = X_2 = 50) &amp;= \Pr(N(2) = 2) \cdot \Pr(X_1 = 50) \cdot \Pr(X_2 = 50)= (0.0163746)(0.7)^2 = 0.0080236
+\end{aligned}
+\]</span>
+Therefore, $(S(2) ) = 0.9823132 and
+<span class="math display">\[\Pr(U(2) &lt; 0) = \Pr(S(2) &gt; 113.145) = 1- \Pr(S(2) \le 113.145) =
+1 - 0.9823132 = 0.0176868.\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ruin will occur in the first year if and only if a claim (of any amount) occurs. Therefore,
+<span class="math display">\[\psi(0.3,1) = 1 - \Pr(N(1) = 0) =  0.0951626.\]</span></p></li>
+<li><p>In a two year time interval, <strong>ruin will not occur</strong> if and only if there are no claims before time 1.75 years (at which point the insurer’s premium income plus initial surplus is equal to 1) AND there are no claims or at most one claim of amount 1 between the time interval 1.75 to 2.
+<span class="math display">\[
+\begin{aligned}
+1- \psi(0.3,1) &amp;= \Pr(N(1.75) = 0) \cdot [ \Pr(N(2) - N(1.75) = 0  \text{ or } (N(2) - N(1.75) = 1 \text{ and } X_1 = 1) ]  \\
+&amp;= \Pr(N(1.75) = 0) \cdot [ \Pr(N(2) - N(1.75) = 0)  + \Pr(N(2) - N(1.75) = 1 \text{ and } X_1 = 1) ].
+\end{aligned}
+\]</span>
+We have
+<span class="math display">\[
+\begin{aligned}
+\Pr(N(1.75) = 0) &amp;= 0.839457 \\
+\Pr(N(2) - N(1.75) = 0) &amp;= 0.9753099 \\
+\Pr(N(2) - N(1.75) = 1 \text{ and } X_1 = 1) &amp;= \Pr(N(2) - N(1.75) = 1) \cdot \Pr(X_1 = 1) = (0.0243827) \cdot (0.7) =  0.0170679.
+\end{aligned}
+\]</span></p></li>
+</ol>
+<p>Therefore,
+<span class="math display">\[1- \psi(0.3,1) = 0.839457\cdot (0.9753099 + 0.0170679)  = 0.8330585, \]</span>
+and
+<span class="math display">\[\psi(0.3,1) = 0.1669415.\]</span></p>
+</div>
+<div id="tutorial-8" class="section level2 hasAnchor" number="6.14">
+<h2><span class="header-section-number">6.14</span> Tutorial 8<a href="tutorials.html#tutorial-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>The table below gives the payments (in 000s THB) in cumulative form
 in successive development years in respect of a motor insurance
@@ -1701,8 +1909,8 @@ will be 95%.</p>
 </table></li>
 </ol>
 </div>
-<div id="tutorial-9" class="section level2 hasAnchor" number="6.14">
-<h2><span class="header-section-number">6.14</span> Tutorial 9<a href="tutorials.html#tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tutorial-9" class="section level2 hasAnchor" number="6.15">
+<h2><span class="header-section-number">6.15</span> Tutorial 9<a href="tutorials.html#tutorial-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>(Taken from Gray and Pitts) Suppose the number of claims which arise
 in a year on a group of policies is modelled as

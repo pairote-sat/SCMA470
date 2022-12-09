@@ -846,6 +846,7 @@ $$ \mathrm{Var}[S] =  \mathrm{E}[N] (\mathrm{E}[X^2] - (\mathrm{E}[X])^2  ) + \m
 
 
 
+
  
 ```{r tutorial5-1, echo = FALSE, }
 # Compound Poisson Distribution
@@ -951,9 +952,63 @@ $$ \mathrm{Var}[\text{Profit (with reinsurance)}] = `r VSI`.$$
 
 Note that here the reinsurance has a greater effect on the variability of the claim size than on the average, ie the standard deviation is reduced by a greater percentage than the mean. This is very often the case for excess-of-loss reinsurance.
 
+```{r tutorial5-2, echo = FALSE }
+# Compound Poisson Distribution
+# CP(lambda,FX)
+# N ~ Poisson(lambda) = Poisson(80)
+# X ~ Exp(beta)
+
+lambda <-80
+beta <- 1/10
+
+#retention level M = 20
+M <- 20
+
+mu <- 1/beta
+
+#The proportion of claims which involve the reinsurer 
+p <- exp(-M/mu)
+
+EZ <- p*mu
+EZ2 <- 2*p*mu^2
+VZ <- EZ2 - EZ^2
+covZ <- sqrt(VZ)/EZ
+
+
+EX <- 1/beta
+EX2 <- 2/beta^2
+
+EY <- (1- exp(-beta*M))*EX
+
+VY <- (1/beta^2)*(2 - exp(-beta*M)*( (beta*M)^2 + 2*(beta*M) + 2 )  ) + M^2*(exp(-beta*M)) - (EY)^2
+
+EY2 <- 2*mu* (  mu*(1 - exp(-M/mu)) - M*exp(-M/mu)   )
+VY <- EY2 - (EY)^2  
+covY <- sqrt(VY)/EY
+
+
+EZ <- exp(-M*beta)*EX
+EZ2 <- 2*mu^2*exp(-M/mu)
+VZ <- EZ2 - (EZ)^2  
+covZ <- sqrt(VZ)/EZ
+####
+
+
+ES <- lambda*EX
+VS <- lambda*EX2
+
+
+ESI <- lambda*EY
+VSI <- lambda*EY2
+
+ESR <- lambda*EZ
+VSR <- lambda*EZ2
+```
+
+
 2. Given $X \sim \text{Exp}(\beta)$ with $\beta = 1/10$,
 
-    1. \begin{aligned} insurer $S_I$ is
+    1. The aggregate claim amount paid by the direct insurer $S_I$ is
 $$S_I \sim \mathcal{CP}(`r lambda`,F_Y), \quad Y= \min(X,M)$$ 
 The distribution and its first two moments of $Y$ can be found as shown in the lecture note (Section 3.4 Excess of Loss Reinsurance) or by using the moment generating function. Here we will use the moment generating function.
 
@@ -962,8 +1017,7 @@ $$ M_Y(t) = \frac{1}{1- \mu t} ( 1 - \mu p t e^{Mt}),$$
 where $p = \Pr(X > M) = e^{-\lambda M} = e^{-\lambda/\mu}$ is the proportion of claims which involve the reinsurer (see the [link](https://math.stackexchange.com/questions/3033272/finding-the-moment-generating-function-of-miny-1) for more helps)
 
 It follows that
-$$
-\begin{aligned}
+$$\begin{aligned}
 \mathrm{E}[Y] &= M_Y'(0) = (1 - p)\mu = `r EY` \\
 \mathrm{E}[Y^2] &= M_Y''(0) = -2 \mu (M p + (-1 + p) \mu) = `r EY2`. 
 \end{aligned}
@@ -978,8 +1032,7 @@ The aggregate claim amount paid by the reinsurer $S_R$ is
 $$S_R \sim \mathcal{CP}(`r lambda`,F_Z), \quad Z= \max(0,X-M)$$
 
 It follows that
-$$
-\begin{aligned}
+$$\begin{aligned}
 \mathrm{E}[Z] &= p\mu = `r EZ` \\
 \mathrm{E}[Z^2] &= 2 \mu^2 p = `r EZ2`. 
 \end{aligned}
@@ -1008,8 +1061,7 @@ gr <- round(c(Fs(0), diff(Fs(0:11))),6)  # probability mass function
 3. From Panjer's recursion formula,
 $$ g_r = \frac{\lambda}{r}\sum_{j=1}^r j f_j g_{r-j}.$$
 Therefore,
-$$
-\begin{aligned}
+$$\begin{aligned}
 g_0 &= e^{-\lambda} = `r gr[1]` \\
 g_1 &= \lambda f_1 g_0  = `r gr[2]` \\
 g_2 &= (\lambda/2)(f_1 g_1 + 2 f_2 g_0)  = `r gr[3]` \\
@@ -1454,6 +1506,251 @@ $$`r prop_claims` \cdot `r EX `\cdot (1 + `r theta`) = `r premium`.$$
 
     2.  $\psi(0.3,2).$
 
+
+
+## Solutions to Tutorial 7
+
+
+
+
+```{r echo = FALSE}
+St <- c(4,6,2)
+ti <- c(0.3,0.8,1.5)
+cumSt <- cumsum(St)
+u <- 5.5
+c <- 3
+
+U <- function(t){ ifelse(( t < ti[1]) , u + c*t, 
+    ifelse( ( ti[1] <= t & t < ti[2]), u + c*t - cumSt[1],
+    ifelse( ( ti[2] <= t & t < ti[3]), u + c*t - cumSt[2],  
+    ifelse( ( ti[3] <= t), u + c*t - cumSt[3],NA))))}
+
+
+
+#plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+#abline(v = 0, h = 0)
+```
+
+1.
+
+a) The insurer's surplus (or cash flow) at any future time $t$ (> 0) is a random variable, since its value depends on the claims experience up to time $t$. The insurer's surplus at time $t$ is a random variable. The insurer's surplus at time $t$ is denoted $U(t)$. The following formula for $U(t)$ can be written as
+
+\begin{equation}
+U(t) = u + ct - S(t) = `r u` + `r c` t - S(t),
+\end{equation} 
+where the **aggregate claim amount up to time**
+$t$, $S(t)$ is 
+\begin{equation}
+S(t) = \sum_{i = 1}^{N(t)} X_i .
+\end{equation}
+
+
+The following table summarises the values of the surplus function at the time when claims occurs. 
+
+
+Time | Surplus (before claim) | Surplus (after claim)
+:-: | :-: | :-: 
+0 | `r u` | `r u`
+`r ti[1]` | `r U(ti[1]) + St[1]` | `r U(ti[1])`
+`r ti[2]` | `r U(ti[2]) + St[2]` | `r U(ti[2])`
+`r ti[3]` | `r U(ti[3]) + St[3]` | `r U(ti[3])`
+
+The surplus function increases at a constant rate $c$ until there is a claim and the surplus drops by the amount of the claim. The surplus then increases again at the same rate $c$ and drops are repeated when claims occur. In this example,
+ruin occurs at time `r ti[3]`.
+The plot of the surplus process is given in the following figure.
+
+```{r echo = FALSE, fig.cap = 'The surplus process befor reinsurance arrangment.'}
+plot(U,xlim=c(0,2), ylim = c(-3, 8), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+abline(v = 0, h = 0)
+```
+
+
+i. Ruin occurs at time 0.8 when ruin is checked continuously.
+
+ii. Similarly, we have $U(1) = `r U(1)`$ and $U(2) = `r U(2)`$. Therefore, ruin occurs at time 1 and 2 when ruin is checked at the end of each year.
+    
+    
+
+```{r echo = FALSE}
+St <- c(4,6,2)
+ti <- c(0.3,0.8,1.5)
+
+M <- 3.5 #Retention limit
+
+# now cumSt are paid amounts by insurer
+cumSt <- cumsum(pmin(St,M))
+u <- 5.5
+c <- 3
+cr <- 1
+
+
+#a <- 0.7
+
+U <- function(t){ ifelse(( t < ti[1]) , u + (c - cr)*t, 
+    ifelse( ( ti[1] <= t & t < ti[2]), u + (c - cr)*t - cumSt[1],
+    ifelse( ( ti[2] <= t & t < ti[3]), u + (c - cr)*t - cumSt[2],  
+    ifelse( ( ti[3] <= t), u + (c - cr)*t - cumSt[3],NA))))}
+
+
+
+#plot(U,xlim=c(0,2), ylim = c(-1, 2), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+#abline(v = 0, h = 0)
+```
+
+b) The insurer's net premium income is `r c - cr` per year. The insurer's cash flow or surplus process is now given by 
+\begin{equation}
+U_I(t) = u + (c - c_r)t - S_I(t) = `r u` + (`r c` - `r cr`) t - S_I(t),
+\end{equation} 
+where $c_r$ is the reinsurance premium rate. Claims that are involved the insurer after are 
+
+| Time (year) | 0.3 | 0.8 | 1.5 |
+|-------------|:---:|:---:|:---:|
+| Amount      | 3.5 | 3.5 |  2  |
+
+
+The following table summarises the values of the surplus function at the time when claims occurs. 
+
+Time | Surplus (before claim) | Surplus (after claim)
+:-: | :-: | :-: 
+0 | `r u` | `r u`
+`r ti[1]` | `r U(ti[1]) + min(St[1],M)` | `r U(ti[1])`
+`r ti[2]` | `r U(ti[2]) + min(St[2],M)` | `r U(ti[2])`
+`r ti[3]` | `r U(ti[3]) + min(St[3],M)` | `r U(ti[3])`
+
+```{r echo = FALSE, fig.cap = 'The surplus process under a reinsurance arrangement.'}
+plot(U,xlim=c(0,2), ylim = c(-3, 8), col = "red", xlab = expression(italic("t")), ylab = expression(italic("U(t)"))) 
+abline(v = 0, h = 0)
+```
+
+Under the reinsurance arrangement, 
+
+i. Ruin occurs at time 1.5 when ruin is checked continuously.
+
+ii. Similarly, we have $U(1) = `r U(1)`$ and $U(2) = `r U(2)`$. Therefore, ruin does not occur when ruin is checked at the end of each year.
+
+
+```{r echo = FALSE}
+lambda <- 0.1
+theta <- 0.1 #Security loading
+
+u <- 100
+x <- c(50,75,120)
+px <- c(0.7,0.25,0.05)
+
+EX <- sum(x*px)
+
+ES <- lambda*EX
+
+c <- (1+theta)*ES
+
+s0 <- u + 2*c # We require S(2) <= s0
+
+t<-2
+pn0 <- dpois(0,t*lambda)
+pn1 <- dpois(1,t*lambda)
+pn2 <- dpois(2,t*lambda)
+
+px50 <- px[which(x==50)]
+px75 <- px[which(x==75)]
+
+
+pS2 <- pn0 + pn1*px50 + pn1*px75 + pn2*px50*px50
+```
+
+
+2. According to the property of the aggregate claims process $S(t)$, 
+the aggregate claims in the $n$th year, for $n = 1,2, \ldots$ are
+$S(n) - S(n-1) \sim \mathcal{CP}(\lambda, F_X(x))$, all of them have the same compound Poisson distribution with the same parameters. Hence, the premium rate per year will be constant which can be obtained from
+$$c = (1 + \theta)\text{E}[S],$$ where $\theta = `r theta`$. 
+Note that $\text{E}[S] = \lambda \text{E}[X] = `r lambda` \cdot `r EX` = `r ES`$ and hence
+$c = `r c`.$
+
+The surplus at time 2 is
+$$U(2) = u + ct - S(2) = `r u` + `r c` \cdot 2 - S(2) = `r u+2*c`  - S(2).$$
+So the required probability is
+$$\Pr(U(2) < 0) = \Pr(S(2) > `r u + 2*c`) = 1- \Pr(S(2) \le `r u + 2*c`).$$
+We consider all possibilities that $S(2) \le s0$. According to the information from the following table, 
+
+| Number of claims | Amount of claims |
+|------------------|------------------|
+|      0 claim     |         0        |
+|      1 claim     |     50 or 75     |
+|     2 claims     |   100 = 50 + 50  |
+It follows that
+$$
+\begin{aligned}
+\Pr(S(2) \le `r u + 2*c`) &= \Pr(N(2) = 0) +  \Pr(N(2) = 1 \text{ and } X_1 = 50) \\ &+ 
+  \Pr(N(2) = 1 \text{ and } X_1 = 70) +  \Pr(N(2) = 2 \text{ and } X_1 = X_2 = 50).\\
+\end{aligned}
+$$
+Note that 
+$$
+\begin{aligned}
+\Pr(N(2) = 0) &= `r pn0` \\
+\Pr(N(2) = 1 \text{ and } X_1 = 50) &= \Pr(N(2) = 1) \cdot \Pr(X_1 = 50) = (`r pn1`)(`r px50`) = `r pn1*px50` \\
+\Pr(N(2) = 1 \text{ and } X_1 = 75) &= \Pr(N(2) = 1) \cdot \Pr(X_1 = 75) = (`r pn1`)(`r px75`) = `r pn1*px75` \\
+\Pr(N(2) = 2 \text{ and } X_1 = X_2 = 50) &= \Pr(N(2) = 2) \cdot \Pr(X_1 = 50) \cdot \Pr(X_2 = 50)= (`r pn2`)(`r px50`)^2 = `r pn2*px50*px50`
+\end{aligned}
+$$
+Therefore, $\Pr(S(2) \le `r u + 2*c`) = `r pS2` and
+$$\Pr(U(2) < 0) = \Pr(S(2) > `r u + 2*c`) = 1- \Pr(S(2) \le `r u + 2*c`) = 
+1 - `r pS2` = `r 1-pS2`.$$
+
+
+
+```{r echo = FALSE}
+lambda <- 0.1
+
+u <- 0.3
+x <- c(1,2)
+px <- c(0.7,0.3)
+
+EX <- sum(x*px)
+
+ES <- lambda*EX
+
+c <- 0.4
+
+#s0 <- u + 2*c # We require S(2) <= s0
+
+t<-1
+pn0 <- dpois(0,t*lambda)
+
+noRuinProb = dpois(0,1.75*lambda)*( dpois(0,0.25*lambda) +  dpois(1,0.25*lambda)*px[which(x==1)])
+
+```
+
+
+
+3.
+
+a) Ruin will occur in the first year if and only if a claim (of any amount) occurs. Therefore,
+$$\psi(0.3,1) = 1 - \Pr(N(1) = 0) =  `r 1-pn0`.$$ 
+
+b) In a two year time interval, **ruin will not occur** if and only if there are no claims before time 1.75 years (at which point the insurer's premium income plus initial surplus is equal to 1) AND there are no claims or at most one claim of amount 1 between the time interval 1.75 to 2.
+$$
+\begin{aligned}
+1- \psi(0.3,1) &= \Pr(N(1.75) = 0) \cdot [ \Pr(N(2) - N(1.75) = 0  \text{ or } (N(2) - N(1.75) = 1 \text{ and } X_1 = 1) ]  \\
+ &= \Pr(N(1.75) = 0) \cdot [ \Pr(N(2) - N(1.75) = 0)  + \Pr(N(2) - N(1.75) = 1 \text{ and } X_1 = 1) ]. 
+\end{aligned}
+$$
+We have
+$$
+\begin{aligned}
+\Pr(N(1.75) = 0) &= `r dpois(0,1.75*lambda) ` \\
+\Pr(N(2) - N(1.75) = 0) &= `r dpois(0,0.25*lambda) ` \\
+\Pr(N(2) - N(1.75) = 1 \text{ and } X_1 = 1) &= \Pr(N(2) - N(1.75) = 1) \cdot \Pr(X_1 = 1) = (`r dpois(1,0.25*lambda)`) \cdot (`r px[which(x==1)] `) =  `r dpois(1,0.25*lambda)*px[which(x==1)]`. 
+\end{aligned}
+$$
+
+Therefore, 
+$$1- \psi(0.3,1) = `r dpois(0,1.75*lambda) `\cdot (`r dpois(0,0.25*lambda) ` + `r dpois(1,0.25*lambda)*px[which(x==1)]`)  = `r noRuinProb`, $$
+and
+$$\psi(0.3,1) = `r 1 - noRuinProb`.$$ 
+
+
+
+
 ## Tutorial 8
 
 1.  The table below gives the payments (in 000s THB) in cumulative form
@@ -1644,3 +1941,4 @@ $$`r prop_claims` \cdot `r EX `\cdot (1 + `r theta`) = `r premium`.$$
 
     2.  Explain why the credibility premiums depend almost entirely on
         the means for the individual risks.
+
