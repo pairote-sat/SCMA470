@@ -789,7 +789,7 @@ From the results, there are \(M = 21\) simulations that ruin occurs, and hence
 \item
   The estimation of the standard error of \(\hat{\psi}_1(50, 5)\) can be obtained as follows. We know that \(M \sim \mathcal{B}(1000,p)\) where \(p = \hat{\psi}_1(50, 5)\). Then,
   \[\textrm{Var}\left[\frac{M}{1000}\right] = \frac{1}{1000^2}\textrm{Var}[M] = \frac{1000 (p) (1-p)}{1000^2}\] and
-  \[ \textrm{SD}[\hat{\psi}_1(50, 5)] = \frac{1000 (0.021) (1-0.021)}{1000^2} = 0.004534 \]
+  \[ \textrm{SD}[\hat{\psi}_1(50, 5)] = \sqrt{\frac{1000 (0.021) (1-0.021)}{1000^2}} = 0.004534 \]
 \item
   The 95\% confidence interval of the estimate is
   \[ (\hat{\psi}_1(50, 5) - z_{\alpha/2}\textrm{SD}[\hat{\psi}_1(50, 5)], \hat{\psi}_1(50, 5) + z_{\alpha/2} \textrm{SD}[\hat{\psi}_1(50, 5)]) = (0.012113,0.029887).\]
